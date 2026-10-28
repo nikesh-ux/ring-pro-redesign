@@ -10,7 +10,9 @@
 <style>
 :root{--blue:#112baf;--ink:#000;--mute:rgba(0,0,0,.6);--line:rgba(0,0,0,.16);--W:1600px}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:#fff;color:#000;font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html,body{background:#fff;color:#000;font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased}
+html{overflow-x:hidden}
+body{overflow-x:clip}
 img{display:block;max-width:none}
 a{color:inherit;text-decoration:none}
 .a{position:absolute}
@@ -64,11 +66,12 @@ section.hh,section.fd,section.tw,section.tl,section.ck,section.tx,section.rc,sec
 .hh .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#050506 0,rgba(5,5,6,.85) 14%,rgba(5,5,6,.2) 42%,rgba(5,5,6,.35) 100%),rgba(0,0,0,.18),radial-gradient(ellipse 55% 40% at 50% 28%,rgba(0,0,0,.45),transparent 80%)}
 .hh .txt{position:absolute;left:50%;top:150px;transform:translateX(-50%);width:1100px;display:flex;flex-direction:column;gap:26px;align-items:center;text-align:center;z-index:2}
 .hh h1{font-size:76px;font-weight:400;line-height:1.04;letter-spacing:-3.4px;width:1100px}
-.hh .sub{font-size:18px;line-height:1.5;letter-spacing:-.5px;color:rgba(255,255,255,.72);width:760px}
+.hh .sub{font-size:18px;line-height:1.5;letter-spacing:-.5px;color:rgba(255,255,255,.72);width:900px}
 .hh .note{font-size:13px;color:rgba(255,255,255,.6)}.hh .note i{font-style:normal;margin:0 6px}
 .hh .btn.ghost{border-color:rgba(255,255,255,.3);color:#fff}
 .hh .btn.blue{background:#fff;color:#000;height:48px;width:auto;padding:0 28px;font-size:15px}
-.hh .elig{font-size:14px;letter-spacing:-.3px;color:rgba(255,255,255,.75)}
+.hh .elig{display:inline-flex;align-items:center;gap:6px;padding:4px 14px 4px 10px;border-radius:40px;background:rgba(255,255,255,.1);box-shadow:0 2px 8px rgba(0,0,0,.1);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-size:14px;line-height:1.6;letter-spacing:-.6px;color:#fff}
+.hh .elig svg{width:20px;height:20px}
 .badge{display:inline-flex;align-self:center;color:#fff;gap:8px;align-items:center;padding:2px 10px;border-radius:40px;background:rgba(255,255,255,.12);box-shadow:0 2px 8.1px rgba(0,0,0,.25);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:14px;line-height:1.6;letter-spacing:-.6px}
 .badge .chk{position:relative;display:block;width:13px;height:18px;flex:none}
 .badge .chk img{position:absolute;left:.38px;top:2.23px;width:12.62px;height:13.83px;filter:invert(1)}
@@ -83,7 +86,7 @@ legend{font-size:26px;letter-spacing:-1px;margin-bottom:20px;padding:0}
 .opts label{position:relative}
 .opts input{position:absolute;opacity:0;pointer-events:none}
 .opts span{display:inline-flex;align-items:center;height:52px;padding:0 30px;font-size:16px;border-radius:50px;border:1px solid var(--line);background:#fff;font-size:15px;letter-spacing:-.2px;cursor:pointer;transition:background .15s,color .15s}
-.opts input:checked+span{background:#000;color:#fff;border-color:#000}
+.opts input:checked+span{background:#fff;color:#000;border-color:transparent;box-shadow:0 1px 2px rgba(0,0,0,.05),0 4px 12px rgba(0,0,0,.08)}
 .opts input:focus-visible+span{outline:2px solid var(--blue);outline-offset:2px}
 .hint{font-size:13px;color:var(--mute);margin-top:12px}
 .res{position:relative;width:680px;height:auto;border-radius:32px;background:#f4f4f5;padding:8px;display:flex;flex-direction:column;box-shadow:0 40px 70px -40px rgba(0,0,0,.28),0 0 0 1px rgba(0,0,0,.04)}
@@ -276,7 +279,7 @@ footer .wm img{width:1280px;height:117px}
 .hero2 .sub{font-size:16px;line-height:1.6;letter-spacing:-.6px;width:366px}
 .hero2 .acts{display:flex;flex-direction:column;gap:12px}
 .hero2 .note{font-size:14px;line-height:1.6;letter-spacing:-.6px;white-space:pre}
-.hero2 .note i{font-style:normal;color:rgba(0,0,0,.3)}
+.hero2 .note i{font-style:normal;color:rgba(0,0,0,.28)}
 .hero2 .ben{position:absolute;left:1042px;top:723.5px;display:flex;gap:32px;align-items:center;white-space:nowrap}
 .hero2 .ben b{display:block;font-weight:500;font-size:16px;letter-spacing:-.64px}
 .hero2 .ben span{display:block;font-size:14px;line-height:1.4;letter-spacing:-.14px;color:rgba(0,0,0,.6);margin-top:8px}
@@ -396,6 +399,9 @@ footer .wm img{width:1280px;height:117px}
 .hh .txt{width:1200px}
 .hcta{display:inline-flex;align-items:center;height:40px;padding:0 26px;border-radius:20px;background:#fff;color:#000;font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:opacity .15s}
 .hcta:hover{opacity:.88}
+.hbtns{display:flex;align-items:center;gap:28px}
+.h2cta{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:#fff;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px;transition:opacity .15s}
+.h2cta:hover{opacity:.7}
 .mu{color:rgba(0,0,0,.6)}
 .w3{padding:140px 80px;background:#f5f5f5}
 .w3 .wh{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:80px}
@@ -463,6 +469,29 @@ footer .wm img{width:1280px;height:117px}
 .w3 .chip.on{background:var(--blue);color:#fff;box-shadow:none}
 .w3 .ft div{padding:16px 0}
 .w3 .ft b.vc{font-size:17px;letter-spacing:-.4px;font-weight:500}
+.w3 .c3x{gap:20px}
+.w3 .c,.w3 .c+.c{background:#fff;border:0;border-radius:27px;padding:10px 10px 14px;gap:0}
+.w3 .pn{position:relative;overflow:hidden;border-radius:19px;padding:16px 16px 28px;display:flex;flex-direction:column;color:#fff;background:#8a6a58}
+.w3 .pn::before{content:"";position:absolute;inset:-60px;background:url(assets/hsa/way-blur.png) 30% 40%/cover;filter:blur(40px);z-index:0}
+.w3 .pn::after{content:"";position:absolute;inset:0;background:rgba(30,18,10,.22);z-index:0}
+.w3 .pn>*{position:relative;z-index:1}
+.w3 .c:nth-child(1) .pn::before{background-size:868.5px 1158.4px;background-position:-241.6px -283.9px;background-repeat:no-repeat;filter:blur(54px)}
+.w3 .c:nth-child(1) .pn::after{inset:auto;left:33.9px;top:0;width:501.9px;height:518.6px;background:linear-gradient(to bottom,rgba(242,242,242,0) 45%,rgba(242,242,242,.39) 72%,rgba(242,242,242,.45)),url(assets/hsa/way-blur2.png) 0 -92.6px/100% 129.02% no-repeat;filter:blur(45.6px);opacity:.86}
+.w3 .c:nth-child(2) .pn::before{background-size:260%;background-position:55% 8%}
+.w3 .c:nth-child(3) .pn::before{background-size:260%;background-position:92% 72%}
+.w3 .top{margin-bottom:34px}
+.w3 .ico,.w3 .ico.on{background:rgba(255,255,255,.2);color:#fff;box-shadow:none}
+.w3 .chip,.w3 .chip.on{background:rgba(251,252,255,.2);color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.35)}
+.w3 h3{font-size:31px;letter-spacing:-1.6px;line-height:40px;color:#fff}
+.w3 p{color:rgba(255,255,255,.6);font-size:17px;line-height:26px;min-height:52px;margin-top:10px}
+.w3 .ft{margin:4px 12px 0}
+.w3 .ft div:first-child{border-top:0}
+.w3{padding:80px 80px 90px}
+.w3 .wh{margin-bottom:44px}
+.w3 h2{font-size:56px;letter-spacing:-2.6px}
+.w3 .wh p{max-width:none;white-space:nowrap;font-size:16px}
+.w3 .top{margin-bottom:26px}
+.w3 .pn{padding-bottom:22px}
 
 /* finder: heading + questions in one left column, level with the result card */
 .fd{display:grid;grid-template-columns:1fr 680px;column-gap:96px;align-items:stretch;padding:130px 80px;justify-items:stretch}
@@ -494,7 +523,7 @@ footer .wm img{width:1280px;height:117px}
 .rowc select{flex:1}
 .seg2{display:inline-flex;gap:2px;padding:4px;border-radius:999px;background:#e8e8ea;flex:none}
 .seg2 button{appearance:none;border:0;background:transparent;height:40px;padding:0 24px;border-radius:999px;font:inherit;font-size:15px;letter-spacing:-.2px;color:rgba(0,0,0,.6);cursor:pointer;transition:background .15s,color .15s}
-.seg2 button.on{background:#fff;color:#000;box-shadow:0 1px 3px rgba(0,0,0,.14)}
+.seg2 button.on{background:#fff;color:#000;box-shadow:0 1px 3px rgba(0,0,0,.28)}
 .seg2 button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 
 /* tax rework: rate chips + one clear result */
@@ -596,6 +625,148 @@ footer .wm img{width:1280px;height:117px}
 
 .pxs .sub2{font-size:19px;color:rgba(0,0,0,.6);letter-spacing:-.4px}
 .pxs .sub2 b{font-weight:500;color:#000}
+/* eyebrows: Geist, as in Web Homepage */
+.eb{font-family:'Geist',sans-serif;font-weight:400;font-size:20px;line-height:1.2;letter-spacing:0;text-transform:uppercase;color:rgba(0,0,0,.6)}
+.pxs .eb{font-size:16px}
+.res .need .eb{font-size:13px}
+.vt .eb{font-size:14px;letter-spacing:0}
+.ck .eb,.ck .vt .eb{color:rgba(255,255,255,.6)}
+.fq .hd .eb{color:rgba(255,255,255,.6)}
+.w3 .pn{isolation:isolate;transform:translateZ(0);-webkit-mask-image:-webkit-radial-gradient(white,black);border-radius:19px}
+/* how it works: sticky scroll */
+.ck{padding-bottom:0;overflow:visible}
+.sk{height:calc(var(--vh,1000px)*3.1);margin:0 -80px}
+.stick{position:sticky;top:0;height:var(--vh,1000px);display:grid;grid-template-columns:1fr 1.12fr;gap:80px;align-items:center;padding:0 80px;box-sizing:border-box}
+.stx{display:flex;flex-direction:column;gap:44px;padding-left:40px}
+.stx .vt{padding:0;gap:16px;opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.stx .vt.on{opacity:.42;transform:none}
+.stx .vt.cur{opacity:1}
+.stx .vt h4{font-size:40px;letter-spacing:-1.7px}
+.stx .vt p{font-size:18px;max-width:520px}
+.stick .vp{position:relative;height:min(620px,calc(var(--vh,1000px) - 160px))}
+.stick .vp img{position:absolute;left:8%;top:50%;width:84%;transform:translateY(-46%);opacity:0;transition:opacity .6s ease,transform .6s ease}
+.stick .vp img.on{opacity:1;transform:translateY(-50%)}
+.w3 .c,.w3 .c+.c{border-radius:36px}
+.w3 .pn,.w3 .pn::before{border-radius:24px}
+.w3 .pn{border-radius:24px}
+.w3 .top{align-items:flex-start}
+.w3 p{line-height:22px}
+/* one step at a time, centred on the left */
+.stx{display:grid;align-items:center;align-content:center;gap:0}
+.stx .vt{grid-area:1/1;opacity:0;transform:translateY(28px);pointer-events:none}
+.stx .vt.on{opacity:0;transform:translateY(-28px)}
+.stx .vt.cur{opacity:1;transform:none;pointer-events:auto}
+/* heading pinned on the left above the steps; bigger steps */
+.ck{padding-top:0}
+.lcol{display:flex;flex-direction:column;justify-content:center;gap:72px;padding-left:40px}
+.ckh{align-items:flex-start;text-align:left;gap:18px}
+.ckh h2{font-size:64px;letter-spacing:-2.8px;line-height:1.02}
+.ckh p{font-size:18px;color:rgba(255,255,255,.55)}
+.lcol .stx{padding-left:0}
+.stx .vt h4{font-size:56px;letter-spacing:-2.4px;line-height:1.05}
+.stx .vt p{font-size:21px;line-height:1.5;max-width:560px}
+.stx .vt{gap:20px}
+/* aligned: heading top, step bottom, card same height */
+.stick{grid-template-rows:min(740px,calc(var(--vh,1000px) - 200px));align-content:center;align-items:stretch;grid-template-columns:1fr 1.2fr;gap:72px}
+.lcol{padding-left:0;justify-content:space-between;gap:0;height:100%}
+.lcol .stx{margin-top:auto;align-items:start;align-content:end}
+.stick .vp{height:100%}
+.stick .vp img{width:80%;left:10%}
+.stx .vt{align-self:start}
+.ckh h2{font-size:72px;letter-spacing:-3.2px}
+.ckh p{font-size:20px}
+.stx .vt{align-self:end}
+.lcol .stx{align-items:end}
+/* tighter: heading and step grouped from the card's top edge */
+.stick{grid-template-rows:min(660px,calc(var(--vh,1000px) - 200px))}
+.lcol{justify-content:flex-start;gap:84px}
+.lcol .stx{margin-top:0;align-items:start;align-content:start}
+.stx .vt{align-self:start}
+/* shop eligible products */
+.shp{padding:140px 80px 150px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:72px}
+.shp h2{font-size:64px;font-weight:400;letter-spacing:-3px;line-height:1.04;text-align:center}
+.pgrid{width:1160px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pcd{display:flex;flex-direction:column;background:#f5f5f5;border-radius:30px;padding:8px;color:#000;text-decoration:none;transition:transform .25s}
+.pcd:hover{transform:translateY(-4px)}
+.pim{background:#fff;border-radius:24px;aspect-ratio:300/380;display:grid;place-items:center;overflow:hidden}
+.pim img{width:88%;height:88%;object-fit:contain;display:block}
+.pin{padding:18px 14px 14px;display:flex;flex-direction:column;gap:6px}
+.pr1{display:flex;justify-content:space-between;align-items:center}
+.pr1 b{font-weight:500;font-size:20px;letter-spacing:-.5px}
+.pr1 .ex{font-size:15px;display:inline-flex;gap:6px;align-items:center}
+.pr1 .ex i{font-style:normal;font-size:18px;line-height:1}
+.pr2{font-size:16px;font-weight:500;letter-spacing:-.3px}
+.pr2 span{font-weight:400;color:rgba(0,0,0,.5)}
+/* heading as a label beside the step chip; slower scroll */
+.sk{height:calc(var(--vh,1000px)*6)}
+.lcol{justify-content:center}
+.lcol .stx{align-self:center;align-items:center;align-content:center}
+.stx .vt{align-self:center}
+.stl{display:flex;align-items:center;gap:16px}
+.stl .eb{align-self:auto}
+.hiw{font-size:20px;line-height:1.2;text-transform:uppercase;color:rgba(255,255,255,.6)}
+/* records: centred */
+.rcd{display:flex;flex-direction:column;align-items:center;gap:80px;padding:140px 80px}
+.rcd h2{text-align:center}
+.rcd .it3{width:1200px}
+.rcd .it,.rcd .it:first-child{padding:0 40px;align-items:center;text-align:center}
+.rcd .it svg{margin-bottom:28px}
+.rcd .it p{max-width:300px}
+.rcd .it3{width:1440px}
+.rcd .it,.rcd .it:first-child{padding:0 64px}
+.rcd .it p{max-width:340px}
+/* frosted gradient shader behind the step visuals */
+.stick .vp{background:#0b0b0d}
+#vsh{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+.stick .vp img{z-index:1}
+/* step visuals as clean UI */
+.stick .vp img{display:none}
+.vis{position:absolute;left:50%;top:50%;width:72%;transform:translate(-50%,-46%);opacity:0;transition:opacity .6s ease,transform .6s ease;display:flex;flex-direction:column;gap:22px;z-index:1}
+.vis.on{opacity:1;transform:translate(-50%,-50%)}
+.vbox{background:rgba(12,12,14,.72);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:34px;display:flex;flex-direction:column;gap:16px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
+.spay{height:56px;border-radius:14px;background:rgba(255,255,255,.08);display:grid;place-items:center;font-size:19px;font-weight:600;letter-spacing:-.4px;color:rgba(255,255,255,.55)}
+.vor{display:flex;align-items:center;gap:14px;font-size:14px;color:rgba(255,255,255,.4)}
+.vor i{flex:1;height:1px;background:rgba(255,255,255,.1)}
+.vguest{height:56px;border-radius:14px;background:#fff;color:#000;display:grid;place-items:center;font-size:18px;font-weight:500;letter-spacing:-.3px}
+.vopt{display:flex;align-items:center;gap:14px;height:60px;border-radius:14px;padding:0 20px;background:rgba(255,255,255,.05);font-size:17px;color:rgba(255,255,255,.7)}
+.vopt .rd{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);flex:none}
+.vopt .lb{flex:1}
+.vopt.sel{background:rgba(255,255,255,.12);color:#fff}
+.vopt.sel .rd{border-color:#fff;background:radial-gradient(#fff 0 38%,transparent 42%)}
+.vopt .fx{font-weight:700;font-style:italic;letter-spacing:-.5px;font-size:20px;color:#fff}
+.cards{display:flex;gap:6px}
+.cards u{text-decoration:none;font-size:10px;font-weight:700;letter-spacing:.04em;padding:5px 7px;border-radius:6px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.75)}
+.cards u.mc{width:26px;background:linear-gradient(90deg,#d9553b 50%,#e9a23b 50%);opacity:.85;padding:0}
+.vfld{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.vfld small{font-size:13px;color:rgba(255,255,255,.5)}
+.vfld div{height:52px;border-radius:12px;background:rgba(255,255,255,.05);display:flex;align-items:center;padding:0 18px;font-size:16px;color:rgba(255,255,255,.4);letter-spacing:.02em}
+.rhd{display:flex;justify-content:space-between;align-items:center;font-size:20px;font-weight:500;letter-spacing:-.4px;margin-bottom:6px}
+.rhd em{font-style:normal;font-size:12px;letter-spacing:.04em;text-transform:uppercase;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8)}
+.rrow{display:flex;justify-content:space-between;font-size:16px;padding:14px 0;border-top:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
+.rrow b{font-weight:500;color:#fff}
+.rrow.tt{font-size:19px;color:#fff}
+.vcap{display:flex;align-items:center;gap:16px;padding:0 8px}
+.vcap b{flex:none;width:34px;height:34px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-size:16px;font-weight:600}
+.vcap span{font-size:21px;font-weight:500;letter-spacing:-.5px;color:#fff;line-height:1.3}
+.vfld div{justify-content:space-between}
+.vfld small{font-size:14px;color:rgba(255,255,255,.7)}
+.vfld div{height:56px}
+.cards u.dc{width:26px;background:linear-gradient(135deg,rgba(255,255,255,.18),rgba(232,164,60,.5));padding:0}
+.vcap{justify-content:center;padding:0}
+.vcap span{text-align:left}
+/* scroll-scrubbed steps: no CSS transitions, opaque panels */
+.stx .vt,.vis,.stx .vt.on,.vis.on,.stx .vt.cur{transition:none !important}
+.vbox{background:#0e0e11;-webkit-backdrop-filter:none;backdrop-filter:none;border-color:rgba(255,255,255,.1)}
+.vis{will-change:opacity,transform}
+/* nav from CEO sample content; centred hero without image */
+.tnav .ln{gap:32px}
+.tnav .ln .pay{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;padding:3px 7px;border-radius:20px;background:rgba(255,255,255,.14);margin-left:6px;vertical-align:1px}
+.tnav .nr{justify-self:end;display:flex;align-items:center;gap:22px;font-size:13px;color:rgba(255,255,255,.75)}
+.tnav .nr .ex,.tnav .nr .cart{color:inherit}
+.tnav .nr .cta{justify-self:auto}
+.hh .bg{display:none}
+.hh{background:#050506}
+.hh .txt{top:50%;transform:translate(-50%,-50%)}
 </style>
 </head>
 <body>
@@ -605,29 +776,36 @@ footer .wm img{width:1280px;height:117px}
 <div class="tnav">
   <a class="lg" href="home.html" aria-label="Ultrahuman"><img src="figma/68979.svg" width="30" height="30" alt=""></a>
   <nav class="ln">
-    <a href="compare.html">Ultrahuman Ring</a>
-    <a href="#">Advanced Markers</a>
-    <a href="#">Performance Lab</a>
-    <a href="buy.html">Shop</a>
-    <a href="hsa-fsa.html" class="on"><i>•</i>HSA/FSA</a>
+    <a href="home.html">Ring PRO</a>
+    <a href="home.html#how">How it works</a>
+    <a href="compare.html">Compare</a>
+    <a href="home.html#press">Reviews</a>
+    <a href="hsa-fsa.html" class="on">HSA/FSA <span class="pay">PAY</span></a>
+    <a href="gift-cards.html">Gift cards</a>
   </nav>
-  <a class="cta" href="buy.html">Pre-order now</a>
+  <div class="nr">
+    <a class="ex" href="home.html#help">Talk to an expert</a>
+    <span class="fl">US</span>
+    <a class="cart" href="#" aria-label="Cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></a>
+    <a class="cta" href="buy.html">Buy · $479</a>
+  </div>
 </div>
 
 <!-- hero -->
 <section class="hh">
   <div class="bg"><img src="assets/hsa/hero-dark-baked.jpg" alt=""></div>
   <div class="txt">
-    <p class="elig">HSA/FSA-eligible · Powered by Flex</p>
-    <h1>Pay with your<br>HSA or FSA.</h1>
-    <a class="hcta" href="buy.html">Shop now</a>
+    <p class="elig"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" transform="translate(0.00 0.00)" d="M11.39 22.19C11.33 22.19 11.15 22.17 10.99 22.15C6.76 21.77 3.15 18.66 2.10 14.50C1.75 13.13 1.70 11.58 1.96 10.17C2.72 6.01 6.02 2.72 10.18 1.97C11.04 1.82 12.39 1.78 13.18 1.88C15.48 2.18 17.45 3.11 19.06 4.66C23.62 9.04 23.15 16.41 18.07 20.20C16.65 21.26 14.96 21.92 13.14 22.14C12.81 22.18 11.62 22.22 11.39 22.19ZM12.58 20.49C14.63 20.34 16.46 19.52 17.93 18.10C21.22 14.90 21.36 9.58 18.23 6.23C16.85 4.75 15.11 3.85 13.06 3.57C12.31 3.46 11.10 3.51 10.28 3.68C5.82 4.58 2.86 8.89 3.61 13.42C4.33 17.72 8.25 20.81 12.58 20.49ZM10.55 16.69C10.26 16.57 10.31 16.63 8.81 14.78C7.40 13.05 7.39 13.03 7.39 12.68C7.39 12.43 7.44 12.30 7.58 12.13C7.84 11.83 8.35 11.80 8.68 12.06C8.75 12.12 9.18 12.66 9.82 13.49C10.39 14.23 10.86 14.82 10.87 14.81C10.88 14.80 11.81 13.30 12.95 11.47C14.13 9.57 15.06 8.10 15.14 8.01C15.33 7.80 15.49 7.73 15.76 7.74C16.39 7.78 16.68 8.31 16.39 8.89C16.36 8.95 15.29 10.66 14.00 12.68C11.55 16.54 11.55 16.55 11.28 16.67C11.09 16.77 10.75 16.78 10.55 16.69Z"/></svg>HSA/FSA Eligible · Powered by Flex</p>
+    <h1>Save an average of 30%<br>with HSA/FSA.</h1>
+    <p class="sub">Ring PRO is SIGIS-listed. Pay with your HSA or FSA card at checkout.<br>No letter needed for most plans.</p>
+    <div class="hbtns"><a class="hcta" href="buy.html">Shop now</a><a class="h2cta" href="#checkout">How to pay</a></div>
   </div>
 </section>
 
 <!-- route finder -->
 <section class="fd" id="finder">
   <div class="fl2">
-  <div class="hd c"><h2>Two questions.<br>Your route.</h2><p>Answers stay on this page. Nothing is stored.</p></div>
+  <div class="hd c"><h2>Two questions.<br>Your route.</h2></div>
   <div class="qs">
     <fieldset><legend>Which account?</legend>
       <div class="opts">
@@ -661,38 +839,27 @@ footer .wm img{width:1280px;height:117px}
 
 <!-- three ways: warm, columns with hairlines, no boxes -->
 <section class="w3">
-  <div class="wh"><h2>Card first.<br>Backup ready.</h2><p>Three ways to pay. Most people stop at the first one.</p></div>
+  <div class="wh"><h2>Card first.<br>Backup ready.</h2></div>
   <div class="c3x">
     <div class="c">
-      <div class="top"><span class="ico on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6 15h4"/></svg></span><span class="chip on">Most people</span></div>
+      <div class="pn"><div class="top"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" transform="translate(-0.00 3.33)" d="M4.30 15.81C3.08 15.67 2.40 15.05 2.20 13.90C2.14 13.55 2.14 3.79 2.20 3.44C2.37 2.47 2.88 1.88 3.74 1.64C4.20 1.51 3.54 1.52 11.83 1.51C17.09 1.50 19.46 1.51 19.63 1.53C20.91 1.65 21.61 2.28 21.80 3.48C21.86 3.86 21.86 13.48 21.80 13.86C21.63 14.96 21.05 15.55 19.92 15.79C19.75 15.82 19.25 15.82 12.10 15.83C7.90 15.83 4.39 15.82 4.30 15.81ZM19.71 14.41C20.10 14.27 20.32 14.04 20.45 13.63C20.48 13.51 20.49 13.31 20.49 10.13L20.50 6.75L12.00 6.75L3.50 6.75L3.50 10.07C3.50 13.75 3.50 13.56 3.64 13.88C3.74 14.08 3.90 14.24 4.11 14.34C4.42 14.49 3.77 14.48 12.05 14.47L19.54 14.47L19.71 14.41ZM5.69 12.87C5.45 12.81 5.25 12.65 5.15 12.43C5.10 12.32 5.10 12.32 5.10 11.31L5.10 10.30L5.16 10.18C5.24 10.02 5.36 9.89 5.54 9.81L5.68 9.74L6.94 9.74L8.20 9.74L8.34 9.81C8.56 9.92 8.71 10.10 8.77 10.34C8.79 10.46 8.79 12.16 8.77 12.29C8.71 12.53 8.56 12.71 8.34 12.81L8.20 12.88L6.98 12.88C6.29 12.89 5.73 12.88 5.69 12.87ZM20.49 4.33C20.48 3.79 20.46 3.69 20.34 3.45C20.22 3.20 20.02 3.04 19.71 2.93L19.54 2.87L12.08 2.86C3.78 2.86 4.43 2.84 4.11 3.00C3.90 3.10 3.74 3.26 3.64 3.46C3.53 3.71 3.50 3.88 3.50 4.39L3.50 4.83L12.00 4.83L20.50 4.83L20.49 4.33Z"/></svg></span><span class="chip">Most people</span></div>
       <h3>Use your card.</h3>
-      <p>SIGIS-listed, so it goes through at checkout. Choose Flex, pay, done.</p>
+      <p>SIGIS-listed, so it goes through at checkout. Choose Flex, pay, done.</p></div>
       <div class="ft"><div><span>Time</span><b class="vc">~2 minutes</b></div><div><span>Letter</span><b class="vc">Usually not needed</b></div></div>
     </div>
     <div class="c">
-      <div class="top"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 13l2 2 3-4"/></svg></span><span class="chip">If your plan asks</span></div>
+      <div class="pn"><div class="top"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" transform="translate(1.48 0.00)" d="M4.88 22.26C3.50 22.10 2.75 21.40 2.51 20.05C2.44 19.69 2.44 4.34 2.51 3.98C2.75 2.66 3.48 1.95 4.79 1.78C5.23 1.72 10.62 1.74 10.90 1.80C11.50 1.93 11.85 2.14 12.36 2.64C12.78 3.06 17.63 8.01 17.79 8.18C18.19 8.62 18.40 9.03 18.50 9.59C18.55 9.91 18.56 19.61 18.51 19.97C18.32 21.13 17.75 21.83 16.75 22.13C16.27 22.28 16.67 22.27 10.61 22.27C7.56 22.27 4.98 22.27 4.88 22.26ZM16.10 20.66C16.54 20.51 16.81 20.23 16.95 19.77C16.99 19.63 16.99 19.39 17.00 15.14L17.01 10.65L14.07 10.64C10.77 10.63 10.99 10.65 10.58 10.45C10.09 10.22 9.83 9.79 9.77 9.11C9.75 8.98 9.74 7.65 9.74 6.08L9.74 3.29L7.46 3.29C5.29 3.29 5.18 3.29 5.00 3.34C4.47 3.47 4.15 3.81 4.04 4.33C3.98 4.59 3.98 19.43 4.04 19.69C4.12 20.10 4.35 20.41 4.69 20.57C5.04 20.74 4.65 20.73 10.56 20.73L15.91 20.72L16.10 20.66ZM6.62 17.80C6.59 17.79 6.50 17.75 6.43 17.71C6.02 17.47 6.10 16.83 6.55 16.68C6.65 16.64 7.07 16.64 10.40 16.64L14.15 16.64L14.27 16.70C14.75 16.92 14.70 17.63 14.20 17.78C14.09 17.81 13.57 17.82 10.38 17.81C8.35 17.81 6.66 17.80 6.62 17.80ZM6.55 14.43C6.03 14.25 6.04 13.47 6.57 13.33C6.74 13.28 14.10 13.29 14.24 13.34C14.75 13.52 14.72 14.29 14.19 14.44C14.10 14.47 13.50 14.48 10.38 14.48C6.82 14.48 6.68 14.48 6.55 14.43ZM16.68 9.18C16.68 9.17 15.44 7.91 13.94 6.37L11.20 3.58L11.20 6.15C11.19 8.00 11.20 8.76 11.22 8.85C11.25 9.02 11.36 9.14 11.51 9.17C11.64 9.20 16.69 9.21 16.68 9.18Z"/></svg></span><span class="chip">If your plan asks</span></div>
       <h3>Get a letter.</h3>
-      <p>Declined, or your plan wants proof? Flex connects you to a clinician. A letter only if appropriate.</p>
+      <p>Declined, or your plan wants proof? Flex connects you to a clinician. A letter only if appropriate.</p></div>
       <div class="ft"><div><span>Decided by</span><b class="vc">A clinician</b></div><div><span>Extra cost</span><b class="vc">Shown upfront</b></div></div>
     </div>
     <div class="c">
-      <div class="top"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span><span class="chip">Claim later</span></div>
+      <div class="pn"><div class="top"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" transform="translate(1.78 0.00)" d="M3.19 21.94C2.79 21.83 2.49 21.50 2.41 21.09C2.38 20.92 2.38 4.37 2.41 4.07C2.56 2.76 3.18 2.02 4.37 1.76C4.81 1.67 4.97 1.67 10.41 1.68L15.66 1.68L15.92 1.74C17.12 1.97 17.74 2.59 17.98 3.79C18.02 3.98 18.02 4.59 18.03 12.49C18.03 18.35 18.03 21.02 18.01 21.10C17.86 21.83 17.06 22.18 16.31 21.84C16.24 21.81 15.90 21.60 15.56 21.38C15.21 21.15 14.92 20.97 14.91 20.97C14.90 20.97 14.58 21.17 14.21 21.42C13.81 21.69 13.49 21.89 13.43 21.90C13.26 21.95 13.17 21.91 12.45 21.41C12.04 21.13 11.77 20.95 11.75 20.96C11.73 20.97 11.42 21.18 11.05 21.43C10.34 21.91 10.30 21.93 10.09 21.89C10.04 21.88 9.73 21.69 9.32 21.41L8.63 20.94L8.35 21.14C7.30 21.86 7.26 21.88 7.14 21.89C6.95 21.91 6.89 21.88 6.17 21.40L5.50 20.96L4.93 21.33C4.32 21.73 4.06 21.88 3.83 21.94C3.66 21.98 3.35 21.98 3.19 21.94ZM4.58 19.87C5.29 19.40 5.33 19.38 5.45 19.36C5.60 19.34 5.71 19.39 6.39 19.85C6.74 20.09 7.05 20.29 7.07 20.29C7.10 20.29 7.41 20.09 7.77 19.84C8.49 19.34 8.56 19.31 8.76 19.38C8.82 19.40 9.16 19.61 9.51 19.85C9.86 20.09 10.17 20.29 10.19 20.29C10.21 20.30 10.53 20.10 10.90 19.85C11.52 19.43 11.67 19.35 11.80 19.35C11.91 19.35 12.04 19.43 12.66 19.86C13.04 20.12 13.33 20.30 13.35 20.29C13.37 20.29 13.67 20.08 14.03 19.84C14.70 19.39 14.82 19.33 14.97 19.36C15.08 19.39 15.13 19.41 15.83 19.88C16.19 20.11 16.50 20.30 16.51 20.30C16.55 20.30 16.54 4.51 16.50 4.26C16.40 3.69 16.05 3.32 15.50 3.21C15.22 3.15 5.20 3.15 4.92 3.21C4.38 3.32 4.04 3.66 3.93 4.20C3.88 4.45 3.87 20.32 3.92 20.30C3.93 20.29 4.23 20.10 4.58 19.87ZM6.15 16.95C5.59 16.80 5.61 15.96 6.18 15.84C6.27 15.82 7.04 15.82 8.73 15.82L11.15 15.83L11.27 15.89C11.69 16.10 11.69 16.70 11.27 16.91L11.15 16.97L8.71 16.98C6.77 16.98 6.24 16.98 6.15 16.95ZM13.16 16.96C12.70 16.85 12.57 16.23 12.94 15.95C13.08 15.84 13.21 15.82 13.67 15.82C14.16 15.82 14.30 15.84 14.44 15.95C14.78 16.21 14.72 16.76 14.33 16.93C14.22 16.98 13.31 17.00 13.16 16.96ZM6.10 13.61C5.63 13.44 5.62 12.73 6.09 12.54C6.20 12.49 11.03 12.48 11.19 12.52C11.30 12.56 11.46 12.70 11.53 12.82C11.68 13.11 11.51 13.52 11.19 13.62C11.05 13.66 6.22 13.66 6.10 13.61ZM13.09 13.61C12.63 13.44 12.59 12.78 13.03 12.56C13.15 12.50 13.16 12.50 13.69 12.50C14.22 12.50 14.24 12.50 14.36 12.56C14.75 12.76 14.78 13.33 14.40 13.56L14.28 13.63L13.73 13.64C13.31 13.64 13.16 13.64 13.09 13.61ZM6.09 10.34C6.04 10.32 5.95 10.26 5.89 10.21C5.63 9.94 5.70 9.48 6.05 9.30L6.14 9.24L8.60 9.24C10.44 9.23 11.08 9.24 11.16 9.26C11.70 9.41 11.71 10.20 11.17 10.35C11.01 10.40 6.21 10.38 6.09 10.34ZM13.14 10.36C12.61 10.19 12.59 9.45 13.12 9.27C13.23 9.23 14.10 9.22 14.26 9.26C14.41 9.30 14.58 9.46 14.63 9.61C14.74 9.92 14.60 10.23 14.29 10.34C14.18 10.38 13.26 10.39 13.14 10.36ZM6.07 7.00C5.64 6.81 5.62 6.18 6.05 5.97L6.17 5.90L8.64 5.90C11.36 5.90 11.21 5.90 11.39 6.06C11.70 6.34 11.60 6.86 11.21 7.01C11.10 7.05 6.16 7.05 6.07 7.00ZM13.02 6.97C12.60 6.75 12.66 6.10 13.11 5.94C13.25 5.89 14.20 5.89 14.31 5.94C14.68 6.11 14.78 6.56 14.53 6.85C14.38 7.03 14.33 7.04 13.70 7.04L13.15 7.04L13.02 6.97Z"/></svg></span><span class="chip">Claim later</span></div>
       <h3>Pay now. Claim after.</h3>
-      <p>Pay any way, then claim from your FSA or HSA with your itemized receipt.</p>
+      <p>Pay any way, then claim from your FSA or HSA with your itemized receipt.</p></div>
       <div class="ft"><div><span>Extra cost</span><b class="vc">None</b></div><div><span>Reimbursement</span><b class="vc">Your plan decides</b></div></div>
     </div>
   </div>
-</section>
-
-<!-- ring visual -->
-<section class="rg">
-  <div class="rgt">
-    <span class="eb">Ring PRO</span>
-    <h2>Ring PRO is<br>HSA/FSA eligible.</h2>
-    <p class="mu">Pay with your HSA or FSA card at checkout with Flex. Case included, no membership.</p>
-    <a class="btn blue" href="buy.html">Get Ring PRO</a>
-  </div>
-  <div class="rgv"><img src="assets/hsa/ring-mono.jpg" alt="Ring PRO on its charging case"></div>
 </section>
 
 <!-- tools -->
@@ -731,19 +898,39 @@ footer .wm img{width:1280px;height:117px}
 
 <!-- checkout -->
 <section class="ck" id="checkout">
-  <div class="hd c"><h2>How it works</h2><p>Pay for Ring PRO with your HSA or FSA in three steps.</p></div>
-  <div class="vs">
-    <div class="vr">
-      <div class="vt"><span class="eb">Step 1</span><h4>Choose Flex at checkout</h4><p>At checkout, select “Flex | Pay with HSA/FSA”. If you are logged into Shop Pay, please select “checkout as guest”.</p></div>
-      <div class="vp"><img src="assets/hsa/step-1-crop.png" alt=""></div>
-    </div>
-    <div class="vr rev">
-      <div class="vt"><span class="eb">Step 2</span><h4>Pay using your HSA/FSA card</h4><p>Enter your HSA/FSA card details to complete the purchase. If you don’t have your HSA/FSA card, you can enter a credit or debit card. Some items require you to confirm your eligibility through a brief questionnaire.</p></div>
-      <div class="vp"><img src="assets/hsa/step-2-crop.png" alt=""></div>
-    </div>
-    <div class="vr">
-      <div class="vt"><span class="eb">Step 3</span><h4>Get an itemized receipt</h4><p>Flex will email you an itemized receipt. Save this in case your HSA/FSA administrator requires more information.</p></div>
-      <div class="vp"><img src="assets/hsa/step-3-crop.png" alt=""></div>
+  <div class="sk" id="sk">
+    <div class="stick">
+      <div class="lcol">
+      <div class="stx">
+        <div class="vt on"><div class="stl"><span class="eb">Step 1</span><span class="hiw">How it works</span></div><h4>Choose Flex at checkout</h4><p>At checkout, select “Flex | Pay with HSA/FSA”. If you are logged into Shop Pay, please select “checkout as guest”.</p></div>
+        <div class="vt"><div class="stl"><span class="eb">Step 2</span><span class="hiw">How it works</span></div><h4>Pay using your HSA/FSA card</h4><p>Enter your HSA/FSA card details to complete the purchase. If you don’t have your HSA/FSA card, you can enter a credit or debit card. Some items require you to confirm your eligibility through a brief questionnaire.</p></div>
+        <div class="vt"><div class="stl"><span class="eb">Step 3</span><span class="hiw">How it works</span></div><h4>Get an itemized receipt</h4><p>Flex will email you an itemized receipt. Save this in case your HSA/FSA administrator requires more information.</p></div>
+      </div>
+      </div>
+      <div class="vp">
+        <canvas id="vsh" aria-hidden="true"></canvas>
+        <div class="vis on" aria-label="Checkout as a guest">
+          <div class="vbox">
+            <div class="spay"><span>Shop Pay</span></div>
+            <div class="vor"><i></i><span>or</span><i></i></div>
+            <div class="vguest">Checkout as a guest</div>
+          </div>
+          <div class="vcap"><b>1</b><span>If logged in to Shop Pay, check out as a guest.</span></div>
+        </div>
+        <div class="vis" aria-label="Pay with Flex">
+          <div class="vbox">
+            <div class="vopt"><span class="rd"></span><span class="lb">Credit card</span><span class="cards"><u>VISA</u><u>AMEX</u></span></div>
+            <div class="vopt sel"><span class="rd"></span><span class="lb">Flex | Pay with HSA/FSA</span><span class="fx">flex</span></div>
+          </div>
+          <div class="vcap"><b>2</b><span>Select the Flex | Pay with HSA/FSA option.</span></div>
+        </div>
+        <div class="vis" aria-label="Enter card details">
+          <div class="vbox">
+            <div class="vfld"><small>Card Number</small><div><span>1234 1234 1234 1234</span><span class="cards"><u>VISA</u><u>AMEX</u></span></div></div>
+          </div>
+          <div class="vcap"><b>3</b><span>Enter your HSA/FSA card details.</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -751,7 +938,7 @@ footer .wm img{width:1280px;height:117px}
 <!-- tax: warm, two open columns split by a hairline -->
 <section class="pxs">
   <div class="pxl">
-    <span class="eb">Optional illustration</span>
+    
     <p class="sent">At a <span class="sel"><button type="button" id="rate-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Combined tax rate">30%</button><span id="rate-list" role="listbox" hidden><span role="option" data-r="15">15%</span><span role="option" data-r="16">16%</span><span role="option" data-r="17">17%</span><span role="option" data-r="18">18%</span><span role="option" data-r="19">19%</span><span role="option" data-r="20">20%</span><span role="option" data-r="21">21%</span><span role="option" data-r="22">22%</span><span role="option" data-r="23">23%</span><span role="option" data-r="24">24%</span><span role="option" data-r="25">25%</span><span role="option" data-r="26">26%</span><span role="option" data-r="27">27%</span><span role="option" data-r="28">28%</span><span role="option" data-r="29">29%</span><span role="option" data-r="30">30%</span><span role="option" data-r="31">31%</span><span role="option" data-r="32">32%</span><span role="option" data-r="33">33%</span><span role="option" data-r="34">34%</span><span role="option" data-r="35">35%</span><span role="option" data-r="36">36%</span><span role="option" data-r="37">37%</span><span role="option" data-r="38">38%</span><span role="option" data-r="39">39%</span><span role="option" data-r="40">40%</span></span></span> combined tax rate, paying with pre-tax HSA/FSA money could mean about…</p>
     <div class="rngw">
       <div class="rngt"><span>Drag to try another rate</span><b id="rate-v">30%</b></div>
@@ -770,28 +957,40 @@ footer .wm img{width:1280px;height:117px}
 
 <!-- records: inline row, no boxes -->
 <section class="rcd">
-  <h2>Keep the<br>receipts.</h2>
+  <h2>Keep the receipts.</h2>
   <div class="it3">
-    <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg><h3>Itemized receipt.</h3><p>Emailed after purchase. Also in your account.</p></div>
-    <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 13l2 2 3-4"/></svg><h3>Clinician letter.</h3><p>If issued, Flex emails it. File it with the receipt.</p></div>
-    <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v4h4"/></svg><h3>Returning it?</h3><p>Refunds go back where they came from. Already claimed? Tell your plan.</p></div>
+    <div class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" transform="translate(1.78 0.00)" d="M3.19 21.94C2.79 21.83 2.49 21.50 2.41 21.09C2.38 20.92 2.38 4.37 2.41 4.07C2.56 2.76 3.18 2.02 4.37 1.76C4.81 1.67 4.97 1.67 10.41 1.68L15.66 1.68L15.92 1.74C17.12 1.97 17.74 2.59 17.98 3.79C18.02 3.98 18.02 4.59 18.03 12.49C18.03 18.35 18.03 21.02 18.01 21.10C17.86 21.83 17.06 22.18 16.31 21.84C16.24 21.81 15.90 21.60 15.56 21.38C15.21 21.15 14.92 20.97 14.91 20.97C14.90 20.97 14.58 21.17 14.21 21.42C13.81 21.69 13.49 21.89 13.43 21.90C13.26 21.95 13.17 21.91 12.45 21.41C12.04 21.13 11.77 20.95 11.75 20.96C11.73 20.97 11.42 21.18 11.05 21.43C10.34 21.91 10.30 21.93 10.09 21.89C10.04 21.88 9.73 21.69 9.32 21.41L8.63 20.94L8.35 21.14C7.30 21.86 7.26 21.88 7.14 21.89C6.95 21.91 6.89 21.88 6.17 21.40L5.50 20.96L4.93 21.33C4.32 21.73 4.06 21.88 3.83 21.94C3.66 21.98 3.35 21.98 3.19 21.94ZM4.58 19.87C5.29 19.40 5.33 19.38 5.45 19.36C5.60 19.34 5.71 19.39 6.39 19.85C6.74 20.09 7.05 20.29 7.07 20.29C7.10 20.29 7.41 20.09 7.77 19.84C8.49 19.34 8.56 19.31 8.76 19.38C8.82 19.40 9.16 19.61 9.51 19.85C9.86 20.09 10.17 20.29 10.19 20.29C10.21 20.30 10.53 20.10 10.90 19.85C11.52 19.43 11.67 19.35 11.80 19.35C11.91 19.35 12.04 19.43 12.66 19.86C13.04 20.12 13.33 20.30 13.35 20.29C13.37 20.29 13.67 20.08 14.03 19.84C14.70 19.39 14.82 19.33 14.97 19.36C15.08 19.39 15.13 19.41 15.83 19.88C16.19 20.11 16.50 20.30 16.51 20.30C16.55 20.30 16.54 4.51 16.50 4.26C16.40 3.69 16.05 3.32 15.50 3.21C15.22 3.15 5.20 3.15 4.92 3.21C4.38 3.32 4.04 3.66 3.93 4.20C3.88 4.45 3.87 20.32 3.92 20.30C3.93 20.29 4.23 20.10 4.58 19.87ZM6.15 16.95C5.59 16.80 5.61 15.96 6.18 15.84C6.27 15.82 7.04 15.82 8.73 15.82L11.15 15.83L11.27 15.89C11.69 16.10 11.69 16.70 11.27 16.91L11.15 16.97L8.71 16.98C6.77 16.98 6.24 16.98 6.15 16.95ZM13.16 16.96C12.70 16.85 12.57 16.23 12.94 15.95C13.08 15.84 13.21 15.82 13.67 15.82C14.16 15.82 14.30 15.84 14.44 15.95C14.78 16.21 14.72 16.76 14.33 16.93C14.22 16.98 13.31 17.00 13.16 16.96ZM6.10 13.61C5.63 13.44 5.62 12.73 6.09 12.54C6.20 12.49 11.03 12.48 11.19 12.52C11.30 12.56 11.46 12.70 11.53 12.82C11.68 13.11 11.51 13.52 11.19 13.62C11.05 13.66 6.22 13.66 6.10 13.61ZM13.09 13.61C12.63 13.44 12.59 12.78 13.03 12.56C13.15 12.50 13.16 12.50 13.69 12.50C14.22 12.50 14.24 12.50 14.36 12.56C14.75 12.76 14.78 13.33 14.40 13.56L14.28 13.63L13.73 13.64C13.31 13.64 13.16 13.64 13.09 13.61ZM6.09 10.34C6.04 10.32 5.95 10.26 5.89 10.21C5.63 9.94 5.70 9.48 6.05 9.30L6.14 9.24L8.60 9.24C10.44 9.23 11.08 9.24 11.16 9.26C11.70 9.41 11.71 10.20 11.17 10.35C11.01 10.40 6.21 10.38 6.09 10.34ZM13.14 10.36C12.61 10.19 12.59 9.45 13.12 9.27C13.23 9.23 14.10 9.22 14.26 9.26C14.41 9.30 14.58 9.46 14.63 9.61C14.74 9.92 14.60 10.23 14.29 10.34C14.18 10.38 13.26 10.39 13.14 10.36ZM6.07 7.00C5.64 6.81 5.62 6.18 6.05 5.97L6.17 5.90L8.64 5.90C11.36 5.90 11.21 5.90 11.39 6.06C11.70 6.34 11.60 6.86 11.21 7.01C11.10 7.05 6.16 7.05 6.07 7.00ZM13.02 6.97C12.60 6.75 12.66 6.10 13.11 5.94C13.25 5.89 14.20 5.89 14.31 5.94C14.68 6.11 14.78 6.56 14.53 6.85C14.38 7.03 14.33 7.04 13.70 7.04L13.15 7.04L13.02 6.97Z"/></svg><h3>Itemized receipt.</h3><p>Emailed after purchase. Also in your account.</p></div>
+    <div class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" transform="translate(1.48 0.00)" d="M4.88 22.26C3.50 22.10 2.75 21.40 2.51 20.05C2.44 19.69 2.44 4.34 2.51 3.98C2.75 2.66 3.48 1.95 4.79 1.78C5.23 1.72 10.62 1.74 10.90 1.80C11.50 1.93 11.85 2.14 12.36 2.64C12.78 3.06 17.63 8.01 17.79 8.18C18.19 8.62 18.40 9.03 18.50 9.59C18.55 9.91 18.56 19.61 18.51 19.97C18.32 21.13 17.75 21.83 16.75 22.13C16.27 22.28 16.67 22.27 10.61 22.27C7.56 22.27 4.98 22.27 4.88 22.26ZM16.10 20.66C16.54 20.51 16.81 20.23 16.95 19.77C16.99 19.63 16.99 19.39 17.00 15.14L17.01 10.65L14.07 10.64C10.77 10.63 10.99 10.65 10.58 10.45C10.09 10.22 9.83 9.79 9.77 9.11C9.75 8.98 9.74 7.65 9.74 6.08L9.74 3.29L7.46 3.29C5.29 3.29 5.18 3.29 5.00 3.34C4.47 3.47 4.15 3.81 4.04 4.33C3.98 4.59 3.98 19.43 4.04 19.69C4.12 20.10 4.35 20.41 4.69 20.57C5.04 20.74 4.65 20.73 10.56 20.73L15.91 20.72L16.10 20.66ZM6.62 17.80C6.59 17.79 6.50 17.75 6.43 17.71C6.02 17.47 6.10 16.83 6.55 16.68C6.65 16.64 7.07 16.64 10.40 16.64L14.15 16.64L14.27 16.70C14.75 16.92 14.70 17.63 14.20 17.78C14.09 17.81 13.57 17.82 10.38 17.81C8.35 17.81 6.66 17.80 6.62 17.80ZM6.55 14.43C6.03 14.25 6.04 13.47 6.57 13.33C6.74 13.28 14.10 13.29 14.24 13.34C14.75 13.52 14.72 14.29 14.19 14.44C14.10 14.47 13.50 14.48 10.38 14.48C6.82 14.48 6.68 14.48 6.55 14.43ZM16.68 9.18C16.68 9.17 15.44 7.91 13.94 6.37L11.20 3.58L11.20 6.15C11.19 8.00 11.20 8.76 11.22 8.85C11.25 9.02 11.36 9.14 11.51 9.17C11.64 9.20 16.69 9.21 16.68 9.18Z"/></svg><h3>Clinician letter.</h3><p>If issued, Flex emails it. File it with the receipt.</p></div>
+    <div class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" transform="translate(0.00 0.86)" d="M11.92 20.47C11.67 20.40 11.45 20.22 11.33 19.98C11.23 19.77 11.22 19.42 11.33 19.21C11.41 19.02 11.57 18.86 11.75 18.78L11.90 18.71L13.54 18.70C15.36 18.68 15.50 18.67 16.22 18.48C18.39 17.92 19.64 16.28 19.65 13.99C19.65 11.55 18.18 9.91 15.64 9.52C15.10 9.44 14.63 9.43 11.01 9.43C7.82 9.42 7.26 9.42 6.33 9.38C5.74 9.35 5.26 9.33 5.26 9.33C5.26 9.33 5.68 9.70 6.21 10.15C7.49 11.25 10.10 13.78 10.19 14.02C10.26 14.20 10.26 14.52 10.20 14.69C10.02 15.23 9.34 15.43 8.86 15.08C8.79 15.03 7.39 13.67 5.74 12.04C2.33 8.68 2.57 8.95 2.58 8.53C2.58 8.28 2.62 8.15 2.77 7.98C2.84 7.90 6.68 4.11 8.41 2.41C8.95 1.88 9.03 1.83 9.40 1.83C9.95 1.83 10.26 2.17 10.24 2.74C10.23 3.12 10.28 3.06 8.62 4.68C7.38 5.88 7.01 6.23 6.21 6.91C5.30 7.70 5.27 7.72 5.36 7.73C5.40 7.74 5.97 7.71 6.62 7.68C8.19 7.61 14.84 7.62 15.43 7.69C17.78 7.99 19.36 8.86 20.42 10.45C21.60 12.21 21.77 15.08 20.81 17.09C19.89 19.00 18.17 20.11 15.61 20.43C15.27 20.48 12.07 20.51 11.92 20.47Z"/></svg><h3>Returning it?</h3><p>Refunds go back where they came from. Already claimed? Tell your plan.</p></div>
+  </div>
+</section>
+
+<!-- shop eligible products -->
+<section class="shp">
+  <h2>Shop HSA/FSA<br>eligible products</h2>
+  <div class="pgrid">
+    <a class="pcd" href="buy.html"><div class="pim"><img src="assets/hsa/prod/r-pro.png" alt="Ring PRO"></div><div class="pin"><div class="pr1"><b>Ring PRO</b><span class="ex">Explore <i>›</i></span></div><div class="pr2">$479 <span>Taxes excl.</span></div></div></a>
+    <a class="pcd" href="#"><div class="pim"><img src="assets/hsa/prod/m1.png" alt="M1"></div><div class="pin"><div class="pr1"><b>M1</b><span class="ex">Explore <i>›</i></span></div><div class="pr2">Starting at $249 <span>Taxes excl.</span></div></div></a>
+    <a class="pcd" href="#"><div class="pim"><img src="assets/hsa/prod/home-1.png" alt="Home"></div><div class="pin"><div class="pr1"><b>Home</b><span class="ex">Explore <i>›</i></span></div><div class="pr2">$549 <span>Taxes excl.</span></div></div></a>
+    <a class="pcd" href="#"><div class="pim"><img src="assets/hsa/prod/photon.png" alt="Photon"></div><div class="pin"><div class="pr1"><b>Photon</b><span class="ex">Explore <i>›</i></span></div><div class="pr2">$249 <span>Taxes excl.</span></div></div></a>
+    <a class="pcd" href="#"><div class="pim"><img src="assets/hsa/prod/voyager-2.png" alt="Voyager Ring Charger"></div><div class="pin"><div class="pr1"><b>Voyager Ring Charger</b><span class="ex">Explore <i>›</i></span></div><div class="pr2">$45 <span>Taxes excl.</span></div></div></a>
+    <a class="pcd" href="#"><div class="pim"><img src="assets/hsa/prod/cardio.png" alt="Cardio Adaptability"></div><div class="pin"><div class="pr1"><b>Cardio Adaptability</b><span class="ex">Explore <i>›</i></span></div><div class="pr2">1 Year at $24 <span>Taxes excl.</span></div></div></a>
+    <a class="pcd" href="#"><div class="pim"><img src="assets/hsa/prod/cno-pro.png" alt="Cycle & Ovulation Pro"></div><div class="pin"><div class="pr1"><b>Cycle & Ovulation Pro</b><span class="ex">Explore <i>›</i></span></div><div class="pr2">1 Year at $39.99 <span>Taxes excl.</span></div></div></a>
   </div>
 </section>
 
 <!-- faq: the one dark section -->
 <section class="fq">
-  <div class="hd"><span class="eb">FAQ</span><h2>Fair questions.</h2></div>
+  <div class="hd"><span class="eb">FAQ</span><h2>Still got questions?</h2></div>
   <div class="list">
-    <details open><summary>Can I use my HSA or FSA card?</summary><p>Yes. Ring PRO is SIGIS-listed, so most cards approve it at checkout. Choose Flex and pay.</p></details>
-    <details><summary>Do I need a doctor’s letter?</summary><p>Usually not. If your plan asks, Flex can connect you to a clinician, who decides.</p></details>
-    <details><summary>Card declined?</summary><p>Check the message or ask your card administrator. Or pay another way and claim later.</p></details>
-    <details><summary>Can I split the payment?</summary><p>Yes. Eligible items on HSA/FSA, the rest on a regular card. One order.</p></details>
-    <details><summary>Do add-ons count?</summary><p>Coverage and memberships generally don’t. Some PowerPlugs may, if you qualify.</p></details>
-    <details><summary>When does my FSA expire?</summary><p>Usually at plan-year end, often Dec 31. Some plans allow a grace period or carryover.</p></details>
-    <details><summary>Does my HSA expire?</summary><p>No. It rolls over.</p></details>
-    <details><summary>New plan year. Full FSA amount?</summary><p>Generally yes, from day one. HSA funds arrive as deposited.</p></details>
-    <details><summary>Buying for someone else?</summary><p>Generally only you, your spouse and dependents. The same rules apply.</p></details>
-    <details><summary>Is this tax advice?</summary><p>No. Your plan and your tax pro have the final word.</p></details>
+    <details open><summary>Can I claim for PowerPlugs such as Cardio Adaptability?</summary><p>Yes — Cardio Adaptability - 1 Year PowerPlug is eligible for HSA/FSA reimbursement.</p></details>
+    <details><summary>Do I need a Letter of Medical Necessity (LMN)?</summary><p>No, Ultrahuman Ring AIR, Cardio Adaptability - 1 Year PowerPlug and the Voyager Ring Charger are “always eligible” products – and don’t require a Letter of Medical Necessity (LMN). Pay via Flex—you’ll receive an itemized receipt from the payment processor. You can also use the invoice included in your order confirmation email, which serves as an itemized receipt.</p></details>
+    <details><summary>Can I purchase other Ultrahuman products with HSA/FSA?</summary><p>You can purchase the Voyager Ring Charger and Cardio Adaptability - 1 Year PowerPlug as part of your HSA/FSA funds.</p></details>
+    <details><summary>Can I make a non-HSA/FSA payment and still claim the benefits?</summary><p>If you’ve already made a purchase via a payment method that is not “Flex” then you can still use your funds but will need an itemized receipt for reimbursement. Your order confirmation email includes an invoice that serves as an itemized receipt.</p></details>
+    <details><summary>I keep being pushed to Shop Pay and can’t see Flex as a payment option.</summary><p>On the Checkout page, choose ‘Checkout as Guest’ option and you should see a full suite of payment options, including Flex. Or try the process in an incognito browser window.</p></details>
+    <details><summary>Why was my HSA/HSA card rejected?</summary><p>Check if there are sufficient funds in the account to complete the purchase – this is the most common issue. Also, ensure that all card details are correct and up to date.</p></details>
+    <details><summary>I have HSA/FSA but don’t have a card, can I still pay?</summary><p>Yes, you can buy your Ultrahuman Ring AIR and its add-ons and get a reimbursement. Your order confirmation email includes an invoice that serves as an itemized receipt.</p></details>
+    <details><summary>Who is the HSA/FSA partner of Ultrahuman?</summary><p>Flex has partnered with Ultrahuman for HSA/FSA card purchases.</p></details>
   </div>
   <p class="disc">Ring PRO is on the SIGIS eligible product list, so most HSA/FSA cards approve it at checkout. Keep your itemized receipt; your plan may ask for it. Ultrahuman does not provide tax advice.</p>
 </section>
@@ -828,7 +1027,75 @@ footer .wm img{width:1280px;height:117px}
   var hh=document.querySelector('.hh'),him=hh.querySelector('.bg img'),htx=hh.querySelector('.txt');
   function place(){var H=hh.offsetHeight,w=hh.offsetWidth,ih=him.naturalHeight?w*him.naturalHeight/him.naturalWidth:w*.572,tb=htx.offsetTop+htx.offsetHeight*1+(htx.getBoundingClientRect?0:0);var T=tb+75-.38*ih;T=Math.max(T,0);if(T+ih<H)T=H-ih;him.style.top=T+'px'}
   him.addEventListener('load',place);
-  function fit(){var z=Math.min(1,document.documentElement.clientWidth/1600);page.style.zoom=z;hh.style.height=Math.max(740,innerHeight/z)+'px';place()}
+    var sk=document.getElementById('sk'),spT=0,spC=0,spRun=false,spL=0;
+  function sTarget(){
+    var r=sk.getBoundingClientRect(),span=r.height-innerHeight;
+    return span>0?Math.min(1,Math.max(0,-r.top/span)):0;
+  }
+  function sRender(p){
+    var vt=sk.querySelectorAll('.stx .vt'),im=sk.querySelectorAll('.vp .vis'),x=p*3;
+    for(var i=0;i<3;i++){
+      var c=i+.5,d=x-c;
+      if(i===0&&x<c)d=0;
+      if(i===2&&x>c)d=0;
+      var w=Math.min(1,Math.max(0,(.68-Math.abs(d))/.36));
+      var dir=d>0?-1:1;
+      vt[i].style.opacity=w;
+      vt[i].style.transform='translateY('+(dir*(1-w)*26)+'px)';
+      vt[i].style.pointerEvents=w>.5?'auto':'none';
+      im[i].style.opacity=w;
+      im[i].style.transform='translate(-50%,calc(-50% + '+(dir*(1-w)*34)+'px))';
+    }
+  }
+  function sLoop(){
+    var now=performance.now(),dt=Math.min(100,spL?now-spL:16);spL=now;
+    spT=sTarget();
+    spC+=(spT-spC)*(1-Math.exp(-dt/130));
+    if(Math.abs(spT-spC)<.0004)spC=spT;
+    sRender(spC);
+    if(spC!==spT)requestAnimationFrame(sLoop);else{spRun=false;spL=0}
+  }
+  function stp(){
+    if(!sk)return;
+    if(!spRun){spRun=true;requestAnimationFrame(sLoop)}
+  }
+  /* slow dark silky gradient shader */
+  (function(){
+    var cv=document.getElementById('vsh');if(!cv)return;
+    var gl=cv.getContext('webgl',{antialias:false,alpha:false});if(!gl)return;
+    var vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+    var fs='precision mediump float;uniform vec2 r;uniform float t;'+
+    'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}'+
+    'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}'+
+    'void main(){vec2 uv=gl_FragCoord.xy/r;float a=r.x/r.y;float s=t*.16;'+
+    'float hy=.54+.03*sin(s*.8)+.012*sin(s*1.7);float dy=uv.y-hy;float v;float hl=exp(-abs(dy)*55.);'+
+    'if(dy>0.){float k=dy;float c=(uv.x-.05+.09*sin(s*.7)+.04*sin(s*1.3))/pow(k+.05,.62);'+
+    'float st=n(vec2(c*2.4+s*.5,k*1.2-s*.3))*.6+n(vec2(c*5.5-s*.4,k*2.))*.4;'+
+    'float fan=smoothstep(-.2,1.,uv.x+.5*k)*exp(-k*1.1);'+
+    'v=st*.8*exp(-k*.9)+fan*.8*st;}'+
+    'else{float k=-dy;vec2 p=vec2(uv.x*1.1+s*.45,k*3.2);float st=n(vec2(p.x*.9,p.y*4.))*.6+n(vec2(p.x*2.2+3.,p.y*9.))*.4;'+
+    'v=st*exp(-k*1.2)*(.75+.5*smoothstep(.0,1.,uv.x));}'+
+    'v=clamp(v+hl*.55,0.,1.);'+
+    'vec3 c=mix(vec3(.030,.040,.056),vec3(.20,.25,.32),smoothstep(0.,.5,v));'+
+    'c=mix(c,vec3(.66,.66,.62),smoothstep(.5,1.,v)*.85);'+
+    'c*=.88;c+=(h(floor(gl_FragCoord.xy))-.5)*.014;'+
+    'gl_FragColor=vec4(c,1.);}';
+    function sh(t,src){var o=gl.createShader(t);gl.shaderSource(o,src);gl.compileShader(o);return o}
+    var pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pr);
+    if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return;
+    gl.useProgram(pr);var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+    var loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+    var ur=gl.getUniformLocation(pr,'r'),ut=gl.getUniformLocation(pr,'t');
+    var vis=true,t0=performance.now(),reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function size(){var w=Math.max(2,Math.round(cv.clientWidth*(window.devicePixelRatio||1)*.6)),hh=Math.max(2,Math.round(cv.clientHeight*(window.devicePixelRatio||1)*.6));if(cv.width!==w||cv.height!==hh){cv.width=w;cv.height=hh;gl.viewport(0,0,w,hh)}}
+    function draw(){size();gl.uniform2f(ur,cv.width,cv.height);gl.uniform1f(ut,reduce?3:(performance.now()-t0)/1000);gl.drawArrays(gl.TRIANGLE_STRIP,0,4)}
+    function loop(){if(vis)draw();requestAnimationFrame(loop)}
+    if('IntersectionObserver' in window)new IntersectionObserver(function(e){vis=e[0].isIntersecting}).observe(cv);
+    draw();loop();
+  })();
+  addEventListener('scroll',stp,{passive:true});
+  if(sk){spT=spC=sTarget();sRender(spC)}
+  function fit(){var z=Math.min(1,document.documentElement.clientWidth/1600);page.style.zoom=z;hh.style.height=Math.max(740,innerHeight/z)+'px';page.style.setProperty('--vh',(innerHeight/z)+'px');place();stp()}
   fit();addEventListener('resize',fit);
 
   var $=function(i){return document.getElementById(i)};
