@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ring PRO Homepage Redesign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Geist:wght@400;500&family=Geist+Mono:wght@400;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#112baf;--ink:#000;--mute:rgba(0,0,0,.6);--line:rgba(0,0,0,.16);--W:1600px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff;color:#000;font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:none}
+a{color:inherit;text-decoration:none}
+.a{position:absolute}
+#page{width:var(--W);margin:0 auto;position:relative;transform-origin:top left}
+section{position:relative;width:1600px;overflow:hidden}
+.mono{font-family:'JetBrains Mono',monospace}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;height:43px;width:144px;border-radius:50px;font-size:13px;letter-spacing:-.104px;line-height:24px;white-space:nowrap;cursor:pointer;transition:transform .15s,opacity .15s}
+.btn:hover{opacity:.88}.btn:active{transform:scale(.98)}
+.btn.blue{background:var(--blue);color:#fff}
+.btn.ghost{border:1px solid var(--line);color:#000;height:41px}
+.btn.ghost.dk{border-color:rgba(255,255,255,.16);color:#fff}
+.btn.black{background:#000;color:#fff;height:44px;width:168px}
+.btn.white{background:#fff;color:#000;height:41px}
+.btnrow{display:flex;gap:12px;align-items:flex-start}
+/* top */
+.ann{height:66px;border-bottom:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;font-size:12px;letter-spacing:-.24px;line-height:24px}
+.ann u{text-decoration-thickness:1px;text-underline-offset:2px;text-decoration-color:rgba(0,0,0,.64);margin-left:3px}
+.nav{position:relative;height:74px}
+.nav .t{position:absolute;top:18px;height:40px;display:flex;align-items:center;font-size:13px;letter-spacing:-.26px;white-space:nowrap}
+.promo{position:relative;margin:0 10px;height:560px;border-radius:16px;overflow:hidden;background:#c4c4c4;display:grid;grid-template-columns:1fr 1fr 1fr}
+.promo .p{position:relative;overflow:hidden}
+.promo .p img{width:100%;height:100%;object-fit:cover}
+.promo .p::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.2)}
+.promo .copy{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:1200px;display:flex;flex-direction:column;align-items:center;gap:24px;color:#fff;text-align:center;z-index:2}
+.promo .copy h2{font-family:'Anton','Dharma Gothic M',sans-serif;font-weight:400;font-size:84px;line-height:1.2;text-transform:uppercase;letter-spacing:.5px;mix-blend-mode:lighten}
+.promo .copy p{font-size:16px;letter-spacing:-.6px;line-height:1.1}
+/* hero */
+.hero{height:893px;margin:0 10px;width:1580px;border-radius:16px 16px 0 0}
+.hero .bg{position:absolute;left:50%;bottom:0;width:1586px;height:964px;transform:translateX(-50%);overflow:hidden}
+.hero .bg img{position:absolute;height:99.94%;left:-98.75%;top:.07%;width:299.25%}
+.hero .txt{position:absolute;left:100px;top:calc(50% - .5px);transform:translateY(-50%);display:flex;flex-direction:column;gap:24px}
+.hero h1{font-weight:400;display:flex;flex-direction:column;gap:16px}
+.hero h1 .e{font-size:24px;line-height:1.2;text-transform:uppercase}
+.hero h1 .h{font-size:56px;line-height:1.2;letter-spacing:-2px;width:440px}
+.hero h1 .s{font-size:16px;letter-spacing:-.6px;line-height:1.6}
+/* tiles */
+.tile{position:absolute;overflow:hidden;background:#f9f9f9}
+.tile.g{background:#ececec}
+.tile img{position:absolute;object-fit:cover}
+.mid{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center}
+.mid h2{font-size:40px;font-weight:400;line-height:1.2;letter-spacing:-2.5px;width:560px}
+.mid p{font-size:16px;line-height:1.6;letter-spacing:-.6px;color:var(--mute);white-space:nowrap}
+/* battery */
+.bat .row{position:absolute;left:50%;top:145px;transform:translateX(-50%);display:flex;gap:120px;align-items:center;text-align:center;white-space:nowrap}
+.bat .row .l{font-size:32px;line-height:1.6;text-transform:uppercase;opacity:.5;width:204px}
+.bat .row .l:last-child{width:auto}
+.bat .row .n{font-size:88px;font-weight:500;line-height:1.2;letter-spacing:-6px}
+/* beyond measure */
+.pbm{background:#000;height:1760px;color:#fff}
+.pbm .hd{position:absolute;top:160px;left:0;width:1600px;text-align:center}
+.pbm .hd h2{font-size:40px;font-weight:400;line-height:48px;letter-spacing:-1px}
+.pbm .hd p{font-size:16px;line-height:1.6;letter-spacing:-.6px;color:rgba(255,255,255,.6);margin-top:24px}
+.tabs{position:absolute;top:369px;left:50%;transform:translateX(-50%);display:flex}
+.tabs button{all:unset;cursor:pointer;width:164px;height:43px;border-radius:50px;border:1px solid transparent;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:-.104px;color:rgba(255,255,255,.6);margin-right:-8px;box-sizing:border-box;transition:background .25s,color .25s}
+.tabs button.on{background:rgba(255,255,255,.12);color:#fff}
+.track{position:absolute;top:452px;left:0;display:flex;gap:40px;transition:transform .7s cubic-bezier(.22,.8,.2,1)}
+.card{width:996px;flex:none;display:flex;flex-direction:column;gap:24px;opacity:.5;transition:opacity .5s}
+.card.on{opacity:1}
+.card .vis{position:relative;height:622px;border-radius:12px;background:#1a1a1a;overflow:hidden}
+.card .vis>img.bgi{position:absolute;object-fit:cover}
+.card h3{font-weight:400;font-size:24px;line-height:1.2;letter-spacing:-1px}
+.card p{font-size:16px;line-height:1.4;letter-spacing:-.6px;color:rgba(255,255,255,.6);max-width:720px;margin-top:12px}
+.plus{position:absolute;right:40px;bottom:40px;width:48px;height:48px;border-radius:24px;background:rgba(255,255,255,.1);display:grid;place-items:center}
+.plus img{width:20px;height:20px}
+.glass{position:absolute;border-radius:16px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(255,255,255,.04);box-shadow:inset 0 1px 2px rgba(255,255,255,.1);color:#fff;overflow:hidden}
+.glass .k{font-family:'JetBrains Mono',monospace;text-transform:uppercase}
+.dots{position:absolute;top:1261px;left:50%;transform:translateX(-50%);display:flex;gap:8px;align-items:center}
+.dots i{width:6px;height:6px;border-radius:8px;background:rgba(255,255,255,.2);transition:all .3s;cursor:pointer;display:block}
+.dots i.on{width:25px;background:#fff}
+/* product sections */
+.prod{padding:160px 80px;display:flex;flex-direction:column;gap:80px;width:1600px;overflow:visible}
+.prod.dk{background:#000;color:#fff}
+.prod.lt{background:#fff;color:#000}
+.prod .t1{font-size:40px;line-height:1.2;letter-spacing:-1px;font-weight:400}
+.prod.dk .t1 span{color:rgba(255,255,255,.6)}.prod.lt .t1 span{color:rgba(0,0,0,.4)}
+.pcols{display:flex;gap:16px;align-items:flex-start}
+.pleft{width:712px;display:flex;flex-direction:column;gap:32px;position:sticky;top:60px}
+.pleft .vis{height:520px;border-radius:16px;overflow:hidden;position:relative}
+.pleft .bar{display:flex;align-items:center;justify-content:space-between}
+.pleft .bar b{font-weight:400;font-size:28px;letter-spacing:-1.12px;line-height:1.2}
+.pright{display:flex;flex-direction:column;gap:16px;width:712px}
+.pbox{border-radius:16px;overflow:hidden;position:relative;width:712px}
+.dk .pbox{background:rgba(255,255,255,.1)}.lt .pbox{background:rgba(0,0,0,.06)}
+.pbox.h520{height:520px}
+.lead{position:absolute;left:48px;top:48px;width:616px;font-size:28px;line-height:1.6;letter-spacing:-1px}
+.lt .lead{font-size:26px}
+.feat{padding:48px;display:flex;flex-direction:column;gap:48px}
+.feat .eb{font-family:'JetBrains Mono',monospace;font-size:16px;letter-spacing:.64px;text-transform:uppercase;line-height:1.2}
+.dk .feat .eb{color:rgba(255,255,255,.6)}.lt .feat .eb{color:rgba(0,0,0,.6);font-size:13px;letter-spacing:.52px}
+.feat .list{display:flex;flex-direction:column;gap:40px;width:616px}
+.feat .it{display:flex;gap:30px;align-items:center}
+.feat .ic{width:32px;height:32px;position:relative;flex:none}
+.feat .ic img{position:absolute}
+.feat .it b{display:block;font-weight:500;font-size:22px;letter-spacing:-.88px;line-height:normal}
+.feat .it span{display:block;font-size:16px;line-height:1.4;letter-spacing:-.16px;margin-top:12px;width:540px}
+.lt .feat .it span{font-size:14px;letter-spacing:-.14px;margin-top:6px}
+.lt .feat .it b+span{margin-top:6px}
+.dk .feat .it span{color:rgba(255,255,255,.6)}.lt .feat .it span{color:rgba(0,0,0,.6)}
+.feat hr{border:0;height:1px;width:616px}
+.dk .feat hr{background:rgba(255,255,255,.14)}.lt .feat hr{background:rgba(0,0,0,.12)}
+.big{position:absolute;left:156px;top:80px;width:400px;text-align:center}
+.big .u{font-size:20px;letter-spacing:-.4px;color:rgba(255,255,255,.5);line-height:1.2}
+.big .n{display:flex;gap:24px;justify-content:center;font-size:88px;letter-spacing:-1px;line-height:1.2;margin-top:32px}
+.big .c{font-size:24px;letter-spacing:-1px;line-height:1.4;margin-top:32px}
+/* video */
+.vid{height:1026px;background:#fff}
+.vid .c{position:absolute;left:50%;top:160px;transform:translateX(-50%);display:flex;flex-direction:column;gap:24px;align-items:center}
+.vid h2{font-size:40px;font-weight:400;letter-spacing:-1px;line-height:1.2;white-space:nowrap}
+.vid p{font-size:16px;line-height:1.6;letter-spacing:-.6px;color:var(--mute);text-align:center;width:658px}
+.vid .stores{display:flex;gap:8px}
+.vid .stores .btn{gap:10px;height:41px}
+.vid .poster{position:absolute;left:50%;bottom:160px;transform:translateX(-50%);width:800px;height:450px;border-radius:16px;overflow:hidden}
+.vid .poster img{width:100%;height:100%;object-fit:cover}
+.vid .play{position:absolute;right:calc(50% - 400px + 32px);bottom:176px;padding:8px;border-radius:48px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(0,0,0,.08);cursor:pointer;width:64px;height:64px}
+/* globe */
+.hum{height:640px;background:#000;overflow:hidden}
+.hum>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%}
+.hum .sc{position:absolute;inset:0;background:radial-gradient(ellipse 48% 75% at 50% 50%,rgba(0,0,0,.72) 0%,rgba(0,0,0,.5) 55%,rgba(0,0,0,.15) 100%),linear-gradient(180deg,rgba(0,0,0,1.000) 0.0%,rgba(0,0,0,0.793) 4.2%,rgba(0,0,0,0.612) 8.4%,rgba(0,0,0,0.456) 12.6%,rgba(0,0,0,0.325) 16.8%,rgba(0,0,0,0.218) 21.0%,rgba(0,0,0,0.133) 25.2%,rgba(0,0,0,0.071) 29.4%,rgba(0,0,0,0.029) 33.6%,rgba(0,0,0,0.006) 37.8%,rgba(0,0,0,0.000) 42.0%,rgba(0,0,0,0.000) 58.0%,rgba(0,0,0,0.006) 62.2%,rgba(0,0,0,0.029) 66.4%,rgba(0,0,0,0.071) 70.6%,rgba(0,0,0,0.133) 74.8%,rgba(0,0,0,0.218) 79.0%,rgba(0,0,0,0.325) 83.2%,rgba(0,0,0,0.456) 87.4%,rgba(0,0,0,0.612) 91.6%,rgba(0,0,0,0.793) 95.8%,rgba(0,0,0,1.000) 100.0%),linear-gradient(90deg,rgba(0,0,0,1.000) 0.0%,rgba(0,0,0,0.793) 3.4%,rgba(0,0,0,0.612) 6.8%,rgba(0,0,0,0.456) 10.2%,rgba(0,0,0,0.325) 13.6%,rgba(0,0,0,0.218) 17.0%,rgba(0,0,0,0.133) 20.4%,rgba(0,0,0,0.071) 23.8%,rgba(0,0,0,0.029) 27.2%,rgba(0,0,0,0.006) 30.6%,rgba(0,0,0,0.000) 34.0%,rgba(0,0,0,0.000) 66.0%,rgba(0,0,0,0.006) 69.4%,rgba(0,0,0,0.029) 72.8%,rgba(0,0,0,0.071) 76.2%,rgba(0,0,0,0.133) 79.6%,rgba(0,0,0,0.218) 83.0%,rgba(0,0,0,0.325) 86.4%,rgba(0,0,0,0.456) 89.8%,rgba(0,0,0,0.612) 93.2%,rgba(0,0,0,0.793) 96.6%,rgba(0,0,0,1.000) 100.0%)}
+.hum .tx{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:640px;display:flex;flex-direction:column;gap:24px;color:#fff;align-items:center;text-align:center}
+.hum .e{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.hum h2{font-size:56px;font-weight:400;letter-spacing:-2.4px;line-height:1.1}
+.hum p{font-size:16px;line-height:1.6;letter-spacing:-.6px;color:rgba(255,255,255,.85);width:480px}
+.hum .row{display:flex;gap:8px}
+.hum .btn.wh{background:#fff;color:#000}
+.hum .btn.ln{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+.globe{height:820px;background:#fff}
+.globe .gw{position:absolute;left:112px;top:6px;width:858px;height:808px;background:#fff;overflow:hidden}
+.globe .gw img{position:absolute;left:-10px;top:2.75px;width:835px;height:761px;object-fit:cover}
+.globe .gw .v{position:absolute;left:-33px;top:-152px;width:1012px;height:942px;filter:blur(42px);background:radial-gradient(ellipse 554px 516px at 482px 426px,rgba(255,255,255,0) 64.8%,#fff 100%)}
+.globe .gc{position:absolute;left:calc(50% + 131px);top:calc(50% - 23px);transform:translate(-50%,-50%);padding:20px;border-radius:16px;border:.5px solid #fff;background:rgba(255,255,255,.16);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;flex-direction:column;gap:20px;white-space:nowrap}
+.globe .gc .e{font-family:'JetBrains Mono',monospace;font-size:10px;line-height:1.1;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.globe .gc .n{font-size:20px;color:#fff;letter-spacing:-1px;line-height:1.4}
+.globe .gc .s{font-size:13px;color:rgba(255,255,255,.9);letter-spacing:-.4px;margin-top:10px;line-height:1.1}
+.globe .copy{position:absolute;left:970px;top:220px;width:540px;display:flex;flex-direction:column;gap:24px}
+.globe .copy h2{font-size:40px;font-weight:400;line-height:1.4;letter-spacing:-2px}
+.globe .copy p{font-size:16px;line-height:1.6;letter-spacing:-.6px;color:var(--mute);width:484px}
+.globe .copy .btn{width:auto;padding:0 25px;align-self:flex-start;height:43px}
+.globe .stat{position:absolute;left:970px;top:523px}
+.globe .stat b{display:block;font-size:40px;font-weight:400;line-height:48px;letter-spacing:-1px}
+.globe .stat span{display:block;font-size:15px;line-height:17px;letter-spacing:-.6px;color:var(--mute);margin-top:12px}
+/* partners */
+.partners{background:#fff;height:313px;border-top:1px solid rgba(0,0,0,.1);margin:0 88px;width:1424px;display:flex;flex-direction:column;align-items:center;padding-top:104px;gap:8px}
+.partners p{font-size:18px;line-height:1.2;color:var(--mute);text-transform:uppercase}
+.partners img{width:998px;height:75px;opacity:.7;object-fit:fill}
+/* footer */
+footer{background:#fafafa;width:1600px;padding:40px 80px 0;position:relative;overflow:hidden;font-family:'Inter',sans-serif}
+footer .g{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(0,0,0,.1);height:535.5px}
+footer .col{border-right:1px solid rgba(0,0,0,.06);padding:44px 29px 0 28px}
+footer .col:first-child{padding-left:0}footer .col:last-child{border-right:0}
+footer h4{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(0,0,0,.3);line-height:13px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:13px;margin-top:20px}
+footer ul.g16{gap:16px}
+footer li{font-size:13px;letter-spacing:-.15px;color:rgba(0,0,0,.7);line-height:19.5px;white-space:nowrap}
+footer li .new{display:inline-block;margin-left:14px;background:rgba(0,0,0,.1);border-radius:3px;padding:2px 6px;font-size:8px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;line-height:10px;vertical-align:1px}
+footer .sub{border-top:1px solid rgba(0,0,0,.05);margin-top:21px;padding-top:21px}
+footer .sub ul{margin-top:20px}
+footer .hsa{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(0,0,0,.3);border-radius:8px;padding:8px;margin-top:20px}
+footer .c3{display:grid;grid-template-columns:repeat(3,1fr);height:161px;border-bottom:1px solid rgba(0,0,0,.1)}
+footer .c3>div{padding:28px 28px 0;border-right:1px solid rgba(0,0,0,.06)}
+footer .c3>div:first-child{padding-left:0}footer .c3>div:last-child{border-right:0}
+footer .c3 h4{font-size:10px;line-height:12px}
+footer .c3 .l{font-size:13px;color:rgba(0,0,0,.7);line-height:15.5px;margin-top:14px;display:flex;flex-direction:column;gap:8px}
+footer .app{display:flex;gap:8px;margin-top:14px}
+footer .app a{border:1px solid rgba(0,0,0,.08);border-radius:8px;height:36.5px;padding:1px 15px;display:flex;flex-direction:column;justify-content:center}
+footer .app small{font-size:7px;color:rgba(0,0,0,.7);line-height:8.5px}
+footer .app b{font-size:10px;font-weight:500;color:#111;line-height:12px}
+footer .legal{height:87px;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;padding-top:20px;font-size:12px;color:rgba(0,0,0,.3);line-height:17px}
+footer .wm{height:220px;padding:44px 96px 0;overflow:hidden}
+footer .wm img{width:1280px;height:117px}
+/* ---- v2 additions ---- */
+.hero2{height:893px;margin:0 10px;width:1580px;border-radius:16px 16px 0 0;overflow:hidden}
+.hero2 .bg{position:absolute;left:50%;bottom:.56px;width:1770px;height:1075px;transform:translateX(-50%);overflow:hidden}
+.hero2 .bg img{position:absolute;height:99.94%;left:-98.75%;top:.07%;width:299.25%}
+.hero2 .txt{position:absolute;left:110px;top:calc(50% + 151px);transform:translateY(-50%);display:flex;flex-direction:column;gap:32px}
+.hero2 .brow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.hero2 .vrf{display:inline-flex;align-items:center;gap:10px;height:34px;padding:0 6px 0 12px;border-radius:40px;background:rgba(255,255,255,.1);box-shadow:0 2px 8.1px rgba(0,0,0,.1);font-size:13px;letter-spacing:-.3px;transition:background .2s}
+.hero2 .vrf:hover{background:rgba(255,255,255,.18)}
+.hero2 .vrf .al{opacity:.75}
+.hero2 .vrf .lgs{display:inline-flex;align-items:center;gap:10px;height:26px;padding:0 12px;border-radius:30px;background:#fff}
+.hero2 .vrf .lgs i{width:1px;height:12px;background:rgba(0,0,0,.15)}
+.hero2 .vrf .idme{height:11px;width:auto;display:block}
+.hero2 .vrf .govx{height:16px;width:auto;display:block;border-radius:2px}
+.hero2 .badge{display:inline-flex;align-self:flex-start;gap:8px;align-items:center;padding:2px 10px;border-radius:40px;background:rgba(255,255,255,.1);box-shadow:0 2px 8.1px rgba(0,0,0,.1);font-size:14px;line-height:1.6;letter-spacing:-.6px}
+.hero2 .chk{position:relative;display:block;width:13px;height:18px;flex:none}
+.hero2 .chk img{position:absolute;left:.38px;top:2.23px;width:12.62px;height:13.83px}
+.hero2 h1{font-weight:400;font-size:56px;line-height:1.2;letter-spacing:-2px;width:420px}
+.hero2 .sub{font-size:16px;line-height:1.6;letter-spacing:-.6px;width:366px}
+.hero2 .acts{display:flex;flex-direction:column;gap:12px}
+.hero2 .note{font-size:14px;line-height:1.6;letter-spacing:-.6px;white-space:pre}
+.hero2 .note i{font-style:normal;color:rgba(0,0,0,.3)}
+.hero2 .ben{position:absolute;left:1042px;top:723.5px;display:flex;gap:32px;align-items:center;white-space:nowrap}
+.hero2 .ben b{display:block;font-weight:500;font-size:16px;letter-spacing:-.64px}
+.hero2 .ben span{display:block;font-size:14px;line-height:1.4;letter-spacing:-.14px;color:rgba(0,0,0,.6);margin-top:8px}
+.hero2 .ben i{width:1px;height:48px;background:rgba(0,0,0,.14);display:block}
+/* stats + press */
+.stp{height:1576px;background:#fff}
+.stp .rule{position:absolute;left:161px;width:1277px;height:1px;background:rgba(0,0,0,.1)}
+.stp .st{position:absolute;top:133px}
+.stp .st b{display:block;font-weight:400;font-size:40px;line-height:1;letter-spacing:-3px}
+.stp .st span{display:block;font-size:16px;line-height:1.3;letter-spacing:-.4px;color:rgba(0,0,0,.4);margin-top:8px}
+.stp .vd{position:absolute;top:133px;width:1px;height:69px;background:rgba(0,0,0,.1)}
+.stp .eb{position:absolute;left:88px;top:490px}
+.stp .eb p{font-size:20px;line-height:1.2;text-transform:uppercase;color:rgba(0,0,0,.6)}
+.stp .eb h2{font-weight:400;font-size:48px;line-height:1.2;letter-spacing:-1px;margin-top:16px}
+.stp .cards{position:absolute;left:88px;top:647px;width:1424px}
+.stp .row{display:flex;width:1424px}
+.stp .q{flex:1;height:360px;padding:40px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(0,0,0,.1);margin-left:-1px}
+.stp .q:first-child{margin-left:0}
+.stp .row+.row .q{margin-top:-1px}
+.stp .q .av{width:48px;height:48px;border-radius:50%;background:#d9d9d9}
+.stp .q h4{font-weight:400;font-size:24px;line-height:1;letter-spacing:-.96px;margin-top:16px}
+.stp .q p{font-size:16px;line-height:1.3;letter-spacing:-.4px;color:rgba(0,0,0,.4);margin-top:16px;max-width:450px}
+.stp .q a{font-size:16px;line-height:1.5;letter-spacing:-.3px}
+.stp .row:first-child .q:first-child{border-top-left-radius:16px}.stp .row:first-child .q:last-child{border-top-right-radius:16px}
+.stp .row+.row .q:first-child{border-bottom-left-radius:16px}.stp .row+.row .q:last-child{border-bottom-right-radius:16px}
+/* buy panel */
+.sci{background:#000;height:202px;margin:-1px 0;position:relative}
+.sci .sc10{position:absolute;left:80px;top:20px;width:1440px;height:120px;border-radius:16px;overflow:hidden;background:#07104a;color:#fff;display:flex;align-items:center;gap:24px;padding:0 28px}
+.sci .sc10 canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+.sci .sc10::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(3,6,30,.9),rgba(3,6,30,.62) 38%,rgba(3,6,30,.12) 75%,rgba(3,6,30,0));pointer-events:none}
+.sci .sc10>*:not(canvas){position:relative;z-index:2}
+.sci .sc10 .eb{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.sci .sc10 .tt{font-size:28px;letter-spacing:-1px;line-height:1.2;margin-top:6px}
+.sci .sc10 .grow{flex:1}
+.sci .sc10 .sbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:43px;padding:0 24px;border-radius:50px;background:#fff;color:#000;font-size:13px;letter-spacing:-.104px;white-space:nowrap;transition:transform .2s}
+.sci .sc10 .sbtn:hover{transform:translateY(-1px)}
+.buyp{background:#000;color:#fff;height:1731px;padding:160px 80px}
+.buyp .wrap{display:flex;gap:16px;align-items:flex-start}
+.buyp .lc{width:712px;flex:none;display:flex;flex-direction:column;gap:32px;align-items:center;position:sticky;top:60px}
+.buyp .shot{width:712px;height:520px;border-radius:16px;background:#101010;overflow:hidden;position:relative}
+.buyp .shot img{position:absolute;left:96px;top:12px;width:520px}
+.buyp .cap{position:absolute;left:155px;top:402px;padding:16px;border-radius:20px;backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);background:rgba(255,255,255,.04);font-size:20px;line-height:1.6;letter-spacing:-1px;text-align:center;white-space:nowrap}
+.buyp .thumbs{display:flex;gap:12px;width:712px;padding-left:38px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
+.buyp .thumbs i{display:block;width:96px;height:72px;border-radius:12px;background:linear-gradient(180deg,#1b1b1b,#101010);flex:none;opacity:.9;cursor:pointer}
+.buyp .thumbs i:nth-child(1){outline:1px solid rgba(255,255,255,.3)}
+.buyp .rc{width:712px;display:flex;flex-direction:column;gap:16px}
+.buyp .bx{background:rgba(255,255,255,.1);border-radius:16px;padding:46px 48px;position:relative}
+.buyp .eyb{font-family:'JetBrains Mono',monospace;font-size:16px;letter-spacing:.64px;text-transform:uppercase;color:rgba(255,255,255,.6);line-height:1.2}
+.buyp .price{font-size:48px;line-height:1.6;letter-spacing:-1px;margin-top:8px}
+.buyp .price small{font-size:24px}
+.buyp .note{font-size:16px;line-height:1.4;letter-spacing:-.16px;color:rgba(255,255,255,.6);margin-top:8px}
+.buyp .li{display:flex;gap:30px;align-items:center;font-size:16px;letter-spacing:-.64px;line-height:normal;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.buyp .li:last-child{border-bottom:0}
+.buyp .li img{width:24px;height:24px;flex:none}
+.buyp .li .ln{flex:1;display:flex;flex-direction:column;gap:12px}
+.buyp .li .ln>div{display:flex;justify-content:space-between}
+.buyp .li .ln em{font-style:normal;color:rgba(255,255,255,.5)}
+.buyp .li .ln span{font-size:16px;line-height:1.4;letter-spacing:-.16px;color:rgba(255,255,255,.6)}
+.buyp .lst{margin-top:48px;display:flex;flex-direction:column}
+.buyp .bigbtn{display:flex;height:56px;margin-top:48px}
+.buyp .bigbtn a{flex:1;height:56px;border-radius:50px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:16px;letter-spacing:-.128px}
+.buyp .tr{display:flex;justify-content:space-between;margin-top:24px;font-size:16px;letter-spacing:-.64px}
+.buyp .tr span{display:flex;gap:8px;align-items:center}
+.buyp .tr img{width:20px;height:20px}
+.buyp .opt h3{font-weight:400;font-size:32px;line-height:1.6;letter-spacing:-1px;margin-top:8px}
+.buyp .opt .lst{margin-top:24px}
+.buyp .opt .li{padding:12px 0}
+.buyp .sb{display:flex;justify-content:space-between;align-items:center;padding:16px 50px;width:712px}
+.buyp .sb b{display:block;font-weight:500;font-size:16px;letter-spacing:-.64px}
+.buyp .sb span{display:block;font-size:14px;line-height:1.4;letter-spacing:-.14px;color:rgba(255,255,255,.6);margin-top:8px}
+.buyp .sb i{width:1px;height:48px;background:rgba(255,255,255,.14);display:block}
+/* sizing */
+.siz{height:1194px;background:#fff}
+.hd2{position:absolute;left:50%;transform:translateX(-50%);top:161px;width:616px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.hd2 h2{font-weight:400;font-size:40px;line-height:48px;letter-spacing:-1px}
+.hd2 p{font-size:16px;line-height:1.6;letter-spacing:-.6px;color:var(--mute);margin-top:16px}
+.seg{margin-top:42px;background:rgba(0,0,0,.07);border-radius:50px;padding:4px;display:flex}
+.seg button{all:unset;cursor:pointer;width:164px;height:43px;border-radius:50px;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:-.104px;color:rgba(0,0,0,.6);margin-right:-8px;transition:background .2s,color .2s;box-sizing:border-box}
+.seg button:last-child{margin-right:0}
+.seg button.on{background:#fff;color:#000}
+.cols3{position:absolute;left:92px;top:392px;width:1424px;display:flex;justify-content:space-between}
+.col3{width:464px;display:flex;flex-direction:column;gap:16px}
+.col3 .im{height:420px;border-radius:24px;background:rgba(223,223,223,.4);overflow:hidden;position:relative}
+.col3 .im img{position:absolute;object-fit:cover}
+.col3 .m{display:flex;flex-direction:column;gap:12px}
+.col3 .n{display:flex;gap:12px;align-items:center}
+.col3 .n b{width:24px;padding:4px;border-radius:6px;background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12px;line-height:1;text-align:center}
+.col3 .n img{width:368px;height:2px}
+.col3 .m .k{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:16px;line-height:1.2;text-transform:uppercase}
+.col3 .m h3{font-weight:400;font-size:24px;line-height:1.2;letter-spacing:-1px}
+.col3 .m p{font-size:16px;line-height:1.6;letter-spacing:-.6px;color:var(--mute)}
+/* pay */
+.pay{height:1194px;background:#fff}
+.pc{position:absolute;border-radius:24px;overflow:hidden;background:rgba(223,223,223,.4)}
+.pc .tx{position:absolute;left:24px;width:416px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.pc .tx h3{font-weight:400;font-size:20px;letter-spacing:-.8px;line-height:normal}
+.pc .tx p{font-size:16px;line-height:1.4;letter-spacing:-.16px;color:var(--mute)}
+.pc .tx .pill{display:inline-flex;align-items:center;justify-content:center;width:144px;height:41px;border-radius:50px;font-size:13px;letter-spacing:-.104px;background:rgba(0,0,0,.1);color:#000}
+.pc.dark .tx h3,.pc.dark .tx p{color:#fff}.pc.dark .tx .pill{background:rgba(255,255,255,.1);color:#fff}
+.pc .logo{position:absolute;top:125px;width:110px;height:110px;border-radius:61px;display:grid;place-items:center;overflow:hidden}
+.pc .logo img{width:82.5px;height:82.5px;object-fit:cover;border-radius:55px}
+.fan{position:absolute;inset:0;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 82%);mask-image:linear-gradient(180deg,#000 55%,transparent 82%)}
+.fan div{position:absolute;width:131.8px;height:164.8px;border-radius:10.4px;overflow:hidden;background:#4c4c4c}
+.fan div img{width:100%;height:100%;object-fit:cover}
+.cfl{position:absolute;left:0;right:0;top:0;height:320px;perspective:900px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%)}
+.cfl div{position:absolute;left:50%;top:34px;width:170px;height:230px;margin-left:-85px;border-radius:14px;overflow:hidden;background:#4c4c4c;box-shadow:0 20px 40px -22px rgba(0,0,0,.45)}
+.cfl div img{width:100%;height:100%;object-fit:cover}
+.gold{position:absolute;left:921px;top:38px;width:462px;height:281px;border-radius:18.6px;border:1.3px solid #fff;background:linear-gradient(112.6deg,#8a6b35 6%,#b8975a 26%,#e6d3a0 42%,#f2e4be 48%,#cbaa68 60%,#a1803f 78%,#b99654 95%);box-shadow:inset 0 0 20px rgba(60,40,10,.16),inset 0 .9px 0 rgba(255,250,232,.75),inset .8px 0 0 rgba(255,244,214,.28);-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent 100%);mask-image:linear-gradient(180deg,#000 72%,transparent 100%);overflow:hidden}
+.gold::after{content:"";position:absolute;inset:0;background:linear-gradient(117deg,transparent 34%,rgba(255,248,232,.17) 50%,transparent 66%),linear-gradient(180deg,rgba(255,255,255,.22),transparent 45%)}
+.gold .t{position:absolute;left:30px;top:53px;width:141px;z-index:2;text-transform:uppercase;color:rgba(78,56,18,.34)}
+.gold .t p{font-family:'Anton',sans-serif;font-style:italic;font-size:31px;line-height:.9;letter-spacing:-.6px;text-shadow:0 .8px .8px rgba(255,250,240,.4)}
+.gold .t small{display:block;font-family:'Geist Mono',monospace;font-weight:500;font-size:10.8px;line-height:14.9px;letter-spacing:-.39px;margin-top:6px}
+</style>
+</head>
+<body>
+<div id="page">
+
+<!-- announcement + nav -->
+<div class="ann"><span>Introducing GLP-1 Led Longevity Program in Bangalore India.</span><u>Learn more</u></div>
+<div class="nav">
+  <a class="t" style="left:40px;width:32px;height:32px;top:22px" href="#" aria-label="Menu"><svg width="32" height="32" viewBox="0 0 32 32"><path d="M2 13h28M2 19h28" stroke="#000" stroke-width="2"/></svg></a>
+  <a class="t" style="left:104px" href="compare.html">Ultrahuman Ring</a>
+  <a class="t" style="left:233px" href="#">Advanced Markers</a>
+  <a class="t" style="left:372px" href="#">Performance Lab</a>
+  <a class="t" style="left:502px" href="buy.html">Shop</a>
+  <a class="t" style="left:50%;margin-left:-89px;top:22px;gap:8px" href="home.html"><img src="figma/68979.svg" width="32" height="32" alt=""><img src="figma/b2adc.svg" width="161" height="14" alt="Ultrahuman"></a>
+  <div class="t" style="left:1242px;gap:48px;top:18px">
+    <span style="display:flex;gap:6px;align-items:center" class="mono"><i style="width:24px;height:24px;border-radius:12px;background:#f1f1f1;display:block"></i><b style="font-weight:600;font-size:13px;text-transform:uppercase">in</b></span>
+    <a href="buy.html"><img src="figma/7df20.svg" width="32" height="32" alt="Cart"></a>
+    <a class="btn blue" href="buy.html">Pre-order now</a>
+  </div>
+</div>
+
+<div style="height:8px"></div>
+<!-- hero -->
+<section class="hero2">
+  <div class="bg"><img src="figma/fd8cb.jpg" alt=""></div>
+  <div class="txt">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="brow"><span class="badge"><span class="chk"><img src="figma/2cc78.svg" alt=""></span>HSA/FSA Eligible</span><a class="vrf" href="#heroes" title="Verified pricing for military, first responders, healthcare workers and teachers"><span class="al">Verify with</span><span class="lgs"><img class="idme" src="assets/logos/idme.png" alt="ID.me"><i></i><img class="govx" src="assets/logos/govx.png" alt="GovX"></span></a></div>
+      <h1>Health that looks good on you.</h1>
+      <p class="sub">Sleep, recovery and heart insights in a titanium ring. Get up to 15 days battery life.</p>
+    </div>
+    <div class="acts">
+      <div class="btnrow"><a class="btn blue" href="buy.html">Buy Ring PRO</a><a class="btn ghost" href="compare.html">Explore features</a></div>
+      <p class="note">For $479 (case included)  <i>•</i>  No mandatory subscription</p>
+    </div>
+  </div>
+  <div class="ben">
+    <div><b>Free Sizing kit</b><span>Get within 2 days</span></div><i></i>
+    <div><b>30 day</b><span>Free returns</span></div><i></i>
+    <div><b>1 year warranty</b><span>With UltrahumanX</span></div>
+  </div>
+</section>
+<!-- stats + press -->
+<section class="stp">
+  <div class="rule" style="top:85px"></div>
+  <div class="st" style="left:88px"><b>15 days</b><span>Per charge</span></div><i class="vd" style="left:330px"></i>
+  <div class="st" style="left:452px"><b>45 days</b><span>With the case</span></div><i class="vd" style="left:713px"></i>
+  <div class="st" style="left:833px"><b>250 days</b><span>Of data, on the Ring</span></div><i class="vd" style="left:1105px"></i>
+  <div class="st" style="left:1225px"><b>132 mn+</b><span>Nights tracked</span></div>
+  <div class="rule" style="top:250px"></div>
+  <div class="eb"><p>In the press</p><h2>Has a nice Ring to it</h2></div>
+  <div class="cards">
+    <div class="row"><div class="q"><div><div class="av"></div><h4>The Ultrahuman Ring Pro delivers a great hardware and software experience to make it one of the best smart rings.</h4><p>The Ultrahuman Ring Pro delivers a great hardware and software experience to make it one of the best smart rings.</p></div><a href="https://www.trustedreviews.com/reviews/ultrahuman-ring-pro">Read story</a></div><div class="q"><div><div class="av"></div><h4>The Ultrahuman Ring Pro delivers a great hardware and software experience to make it one of the best smart rings.</h4><p>The Ultrahuman Ring Pro delivers a great hardware and software experience to make it one of the best smart rings.</p></div><a href="https://www.trustedreviews.com/reviews/ultrahuman-ring-pro">Read story</a></div></div>
+    <div class="row"><div class="q"><div><div class="av"></div><h4>The Ultrahuman Ring Pro delivers a great hardware and software experience to make it one of the best smart rings.</h4><p>The Ultrahuman Ring Pro delivers a great hardware and software experience to make it one of the best smart rings.</p></div><a href="https://www.trustedreviews.com/reviews/ultrahuman-ring-pro">Read story</a></div><div class="q"><div><div class="av"></div><h4>The Ultrahuman Ring Pro delivers a great hardware and software experience to make it one of the best smart rings.</h4><p>The Ultrahuman Ring Pro delivers a great hardware and software experience to make it one of the best smart rings.</p></div><a href="https://www.trustedreviews.com/reviews/ultrahuman-ring-pro">Read story</a></div><div class="q"><div><div class="av"></div><h4>The Ultrahuman Ring Pro delivers a great hardware and software experience to make it one of the best smart rings.</h4><p>The Ultrahuman Ring Pro delivers a great hardware and software experience to make it one of the best smart rings.</p></div><a href="https://www.trustedreviews.com/reviews/ultrahuman-ring-pro">Read story</a></div></div>
+  </div>
+</section>
+<!-- 4 battery -->
+<section class="bat" style="height:900px;background:#fff">
+  <img src="figma/7158f.jpg" alt="" class="a" style="width:1606px;height:1204.5px;left:calc(50% - 811px);top:-112px">
+  <img src="figma/05046.svg" alt="" class="a" style="width:1612px;height:183px;left:calc(50% - 814px);top:352px">
+  <div class="row"><p class="l">get up to</p><p class="n">15 Days</p><p class="l">battery life</p></div>
+</section>
+
+<!-- 5 PRO beyond measure -->
+<section class="pbm" id="pbm">
+  <div class="hd"><h2>PRO beyond measure</h2><p>Every signal the ring measures, and what each one tells you about the day ahead.</p></div>
+  <div class="tabs" id="tabs">
+    <button class="on" data-i="1">Sleep</button><button data-i="3">Recovery</button><button data-i="0">Activity</button><button data-i="4">Women’s Health</button><button data-i="2">AI Intelligence</button>
+  </div>
+  <div class="track" id="track">
+    <!-- 0 Movement -->
+    <div class="card"><div class="vis">
+      <img class="bgi" src="figma/a1f04.jpg" alt="" style="width:1114px;height:1383px;left:-118px;top:calc(50% - 755px)">
+      <i class="a" style="inset:0;background:linear-gradient(270deg,rgba(0,0,0,.2) 40%,rgba(0,0,0,0) 52%)"></i>
+      <div class="glass" style="left:546px;top:302px;width:386px;height:240px">
+        <div class="a" style="left:24px;top:24px;width:338px;font-weight:500;font-size:15px;letter-spacing:-1px;line-height:20px">Steps Today<div style="border-top:2px solid rgba(212,212,212,.2);margin-top:12px"></div></div>
+        <div class="a k" style="left:24px;top:72px;font-size:24px;font-weight:500;letter-spacing:-.3px;line-height:1.2">9,958</div>
+        <div class="a k" style="left:103px;top:79px;font-size:12px;color:rgba(255,255,255,.7)">/10000</div>
+        <div class="a" style="left:38px;top:107px;width:309px;height:109px;overflow:hidden"><img src="figma/44345.svg" alt="" style="position:absolute;left:0;top:0;width:324px;height:82px"></div>
+        <div class="a k" style="left:33px;right:33px;top:204px;display:flex;justify-content:space-between;font-size:8px;font-weight:500"><span>12 AM</span><span>6 AM</span><span>12 PM</span><span>6 PM</span><span>12 AM</span></div>
+      </div>
+      <div class="plus"><img src="figma/b26af.svg" alt=""></div>
+    </div><div><h3>Movement, all day</h3><p>Movement Index is built to optimize daily movement, not just workouts. By closely tracking steps, workouts, calories, and non-exercise activity</p></div></div>
+    <!-- 1 Sleep -->
+    <div class="card on"><div class="vis">
+      <img class="bgi" src="figma/6fd33.jpg" alt="" style="width:995px;height:1782px;left:-.5px;top:calc(50% - 1051px)">
+      <div class="glass" style="left:88px;top:88px;width:530px;height:264px;border-radius:16px 16px 0 0;padding:24px;backdrop-filter:blur(16px)">
+        <div class="k" style="font-size:13px;font-weight:500;line-height:20px">Sleep Cycles • 6</div>
+        <img src="figma/af868.svg" alt="" style="width:418px;height:20px;margin-top:14px">
+        <div class="k" style="font-size:13px;font-weight:500;line-height:20px;margin-top:40px">Movements</div>
+        <img src="figma/d36d5.svg" alt="" style="width:413px;height:24px;margin-top:14px">
+      </div>
+      <div class="plus"><img src="figma/b26af.svg" alt=""></div>
+    </div><div><h3>Your sleep, in stages</h3><p>The Sleep Index breaks your sleep down to what actually matters – how long you sleep, how well you recover, and how deeply your body resets.</p></div></div>
+    <!-- 2 Workout -->
+    <div class="card"><div class="vis">
+      <img class="bgi" src="figma/1a0db.jpg" alt="" style="width:1116px;height:1385px;left:calc(50% - 617px);top:calc(50% + 192px - 692px)">
+      <i class="a" style="inset:0;background:linear-gradient(262.5deg,rgba(0,0,0,.2) 19%,rgba(0,0,0,0) 55%)"></i>
+      <div class="glass" style="left:481px;top:154px;width:451px;height:108px;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;background:linear-gradient(90deg,rgba(255,255,255,.1),rgba(153,153,153,.1));backdrop-filter:blur(12px)">
+        <div style="display:flex;gap:24px;align-items:center"><img src="figma/a8e43.svg" width="32" height="32" alt=""><div><div style="font-size:20px;letter-spacing:-.65px;line-height:32px">Are you working out?</div><div class="k" style="font-size:16px;font-weight:500;line-height:19px;margin-top:3px;white-space:nowrap">170 BPM &nbsp;•&nbsp; +1,869 steps</div></div></div>
+      </div>
+      <div class="glass" style="left:614px;top:460px;width:auto;height:auto;background:none;box-shadow:none;backdrop-filter:none;border-radius:0;overflow:visible"><div class="k" style="font-size:12px;font-weight:500;white-space:nowrap">Zone 4 &nbsp;•&nbsp; threshold zone</div></div>
+      <img class="a" src="figma/dc221.svg" alt="" style="left:425px;top:392px;width:290px;height:96px;display:none">
+    </div><div><h3>Lock in with workout mode</h3><p>How hard you went, what it cost you, and when you are ready to go again.</p></div></div>
+    <!-- 3 Recovery -->
+    <div class="card"><div class="vis">
+      <img class="bgi" src="figma/60a82.jpg" alt="" style="width:1100px;height:1366px;left:-52px;top:calc(50% + 40px - 683px)">
+      <div class="glass" style="left:58px;top:56px;width:386px;height:240px;background:rgba(255,255,255,0);backdrop-filter:blur(10px)">
+        <div class="k" style="position:absolute;left:24px;top:22px;font-family:'Geist Mono',monospace;font-size:32px;line-height:1.2">54</div>
+        <div class="k" style="position:absolute;left:24px;top:67px;font-size:12px;letter-spacing:.4px">Avg Heart Rate</div>
+        <div class="k" style="position:absolute;left:68px;top:38px;font-size:12px;font-weight:500;color:rgba(255,255,255,.8)">bpm</div>
+        <img src="figma/021dd.svg" alt="" style="position:absolute;left:24px;top:98px;width:338px;height:112px;object-fit:fill">
+        <div class="k" style="position:absolute;left:348px;top:60px;font-size:11px;font-weight:500">68</div>
+        <div class="k" style="position:absolute;left:348px;top:127px;font-size:11px;font-weight:500">58</div>
+        <div class="k" style="position:absolute;left:348px;top:194px;font-size:11px;font-weight:500">47</div>
+        <div style="position:absolute;left:189px;top:113px;width:6px;height:84px;filter:blur(2px);background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(255,255,255,0))"></div>
+        <div style="position:absolute;left:191px;top:93px;transform:translateX(-50%);font-size:10px;letter-spacing:-.2px;white-space:nowrap">Lowest HR Zone</div>
+      </div>
+      <div class="plus"><img src="figma/b26af.svg" alt=""></div>
+    </div><div><h3>Recovery, tuned to your body</h3><p>Recovery adapts to your body in real time, reading when you're ready to perform and when recovery is non-negotiable.</p></div></div>
+    <!-- 4 Cycles -->
+    <div class="card"><div class="vis">
+      <img class="bgi" src="figma/efef6.jpg" alt="" style="width:2027px;height:2517px;left:calc(50% + 136px - 1013px);top:calc(50% - 68px - 1258px)">
+      <div class="glass" style="left:88px;top:191px;width:386px;height:240px;backdrop-filter:blur(25px);background:rgba(255,255,255,.04)">
+        <div class="a" style="left:24px;top:24px;width:48px;height:48px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(153,153,153,.05));display:grid;place-items:center"><img src="figma/cf329.svg" width="26" height="26" alt=""></div>
+        <div class="a" style="left:calc(50% - 17px);top:calc(50% - 72px);transform:translate(-50%,-50%)"><div style="font-weight:500;font-size:18px;letter-spacing:-.5px;line-height:1.4;white-space:nowrap">High fertility</div><div class="k" style="opacity:.5;font-size:13px;font-weight:500;line-height:1.4;white-space:nowrap">Ovulation phase • Day 14</div></div>
+        <div class="a k" style="left:24px;top:83px;border:.4px solid rgba(255,255,255,.2);border-radius:24px;padding:8px 16px;display:flex;gap:8px;align-items:center;font-size:13px;font-weight:500;opacity:.9;line-height:1.4">99°F</div>
+        <div class="a k" style="left:115px;top:83px;height:36px;border:.4px solid rgba(255,255,255,.2);border-radius:24px;padding:8px 16px;display:flex;gap:8px;align-items:center;font-size:13px;font-weight:500;line-height:1.4;white-space:nowrap;opacity:.9"><img src="figma/03ac8.svg" width="7" height="9" alt="">false start detected</div>
+        <div class="a" style="left:24px;top:140px;width:338px;border-top:2px solid rgba(212,212,212,.2)"></div>
+        <div class="a" style="left:24px;top:160px;font-weight:500;font-size:16px;letter-spacing:-.5px;line-height:1.4">In Fertile Window</div>
+        <div class="a k" style="left:239px;top:160px;width:123px;display:flex;gap:8px;justify-content:flex-end;align-items:center;font-size:13px;font-weight:500;opacity:.9;white-space:nowrap"><img src="figma/dac70.svg" width="14" height="14" alt="">1 Aug - 7 Aug</div>
+      </div>
+      <div class="plus"><img src="figma/b26af.svg" alt=""></div>
+    </div><div><h3>Every phase, tracked</h3><p>From cycle tracking, prediction of ovulation and logging symptoms to confirmation of ovulation, unique patterns called Cycle Flags™, and pregnancy insights</p></div></div>
+  </div>
+  <div class="dots" id="dots"><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- science banner -->
+<section class="sci" id="science">
+  <a class="sc10" href="#" aria-label="Explore the science">
+    <canvas aria-hidden="true"></canvas>
+    <div><div class="eb">Built on published research</div><div class="tt">Tested against reference standards.</div></div>
+    <div class="grow"></div>
+    <span class="sbtn">Explore the science <span>→</span></span>
+  </a>
+</section>
+
+<!-- buy panel -->
+<section class="buyp" style="overflow:visible">
+  <div class="wrap">
+    <div class="lc">
+      <div class="shot"><img src="figma/prod-pro.png" alt="Ring PRO"><div class="cap">The most powerful Ultrahuman Ring, yet - the<br>Ring PRO adds more intelligence</div></div>
+      <div class="thumbs"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="rc">
+      <div class="bx" style="height:831px">
+        <div class="eyb">what’s included</div>
+        <div class="price">$479 <small>(PRO Smart charger included)</small></div>
+        <div class="note">Core insights included. No membership needed.</div>
+        <div class="lst">
+          <div class="li"><img src="figma/48259.svg" alt="">Titanium Ring PRO, sizes 5–14</div><div class="li"><img src="figma/102da.svg" alt="">PRO charging case, up to 45 days combined</div><div class="li"><img src="figma/48259.svg" alt="">Sleep, Recovery, Movement, Workouts</div><div class="li"><img src="figma/19dd9.svg" alt="">Cycle and temperature trends</div><div class="li"><img src="figma/19dd9.svg" alt="">Bio-intelligence - Jade AI, standard</div><div class="li"><img src="figma/19dd9.svg" alt="">Sizing kit, 30-day returns, 1-year warranty</div>
+        </div>
+        <div class="bigbtn"><a href="buy.html">Buy Ring PRO</a></div>
+        <div class="tr"><span><img src="figma/923a2.svg" alt="">One-time purchase</span><span><img src="figma/058f1.svg" alt="">HSA/FSA eligible</span><span><img src="figma/923a2.svg" alt="">Buy now pay later available</span></div>
+      </div>
+      <div class="bx opt" style="height:467px">
+        <div class="eyb">Optional</div>
+        <h3>Want more? Add it later.</h3>
+        <div class="lst">
+          <div class="li"><img src="figma/88df2.svg" alt=""><div class="ln"><div><span style="font-size:16px;color:#fff;letter-spacing:-.64px">Ultrahuman Max</span><em>$9.99/mo · $99.99/yr</em></div><span>Every PowerPlug, Jade Pro, coverage</span></div></div>
+          <div class="li"><img src="figma/102da.svg" alt="" style="padding:5px 0"><div class="ln"><div><span style="font-size:16px;color:#fff;letter-spacing:-.64px">Single PowerPlugs</span><em>$9.99/mo · $99.99/yr</em></div><span>Pick only the ones you want</span></div></div>
+          <div class="li"><img src="figma/48259.svg" alt=""><div class="ln"><div><span style="font-size:16px;color:#fff;letter-spacing:-.64px">UltrahumanX coverage</span><em>$9.99/mo · $99.99/yr</em></div><span>Accidents happen. Replacements, fast.</span></div></div>
+        </div>
+      </div>
+      <div class="sb">
+        <div><b>Free Sizing kit</b><span>Get within 2 days</span></div><i></i>
+        <div><b>30 day</b><span>Free returns</span></div><i></i>
+        <div><b>1 year warranty</b><span>With UltrahumanX</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- fit and sizing kit -->
+<section class="siz">
+  <div class="hd2"><h2>PRO beyond measure</h2><p>Every signal the ring measures, and what each one tells you about the day ahead.</p>
+    <div class="seg" id="seg"><button class="on">I know my Ring size</button><button>Send the free kit</button></div></div>
+  <div class="cols3">
+    <div class="col3"><div class="im"><img src="figma/bf8ef.jpg" alt="" style="left:0;top:0;width:597px;height:741px"></div><div class="m"><div class="n"><b>1</b><img src="figma/1a202.svg" alt=""></div><div class="k">Today</div><h3>Order</h3><p>Finish and size</p></div></div><div class="col3"><div class="im"><img src="figma/99800.jpg" alt="" style="left:50%;transform:translateX(-50%);top:-45px;width:584px;height:773px"></div><div class="m"><div class="n"><b>1</b><img src="figma/1a202.svg" alt=""></div><div class="k">Ships by Oct 30</div><h3>Ships</h3><p>Tracking by email and SMS</p></div></div><div class="col3"><div class="im"><img src="figma/d3553.jpg" alt="" style="left:calc(50% - 43.5px);transform:translateX(-50%);top:-8px;width:619px;height:769px"></div><div class="m"><div class="n"><b>1</b><img src="figma/1a202.svg" alt=""></div><div class="k">Est. Nov 2</div><h3>Arrives</h3><p>30-day returns start</p></div></div>
+  </div>
+</section>
+<!-- pay your way -->
+<section class="pay">
+  <div class="hd2"><h2>Pay your way.</h2><p>HSA/FSA card, 4 interest-free payments, or ID.me / GovX pricing.</p></div>
+  <div class="pc dark" style="left:92px;top:292px;width:464px;height:480px">
+    <img src="figma/bf8ef.jpg" alt="" style="position:absolute;left:0;top:0;width:597px;height:741px;object-fit:cover">
+    <i class="a" style="inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 54.6%,rgba(0,0,0,.6) 74.4%)"></i>
+    <div class="tx" style="top:351px"><h3>HSA/FSA Eligible</h3><p>Health dollars, put to work.</p><a class="pill" href="hsa-fsa.html">How it works</a></div>
+  </div>
+  <div class="pc" style="left:568px;top:292px;width:464px;height:480px">
+    <div class="logo" style="left:77px;background:rgba(178,252,227,.2)"><img src="figma/4b456.png" alt=""></div>
+    <div class="logo" style="left:177px;background:rgba(255,180,201,.2)"><img src="figma/012a1.png" alt=""></div>
+    <div class="logo" style="left:277px;background:rgba(84,51,235,.2)"><img src="figma/a8189.png" alt=""></div>
+    <div class="tx" style="top:351px"><h3>Buy now Pay later</h3><p>Interest free. Klarna or Shop Pay integration.</p><a class="pill" href="buy.html">View options</a></div>
+  </div>
+  <div class="pc" style="left:1052px;top:292px;width:464px;height:480px">
+    <div class="fan">
+      <div style="left:-79.6px;top:118px;transform:rotate(-30deg) translate(30.4px,0);left:-29px;top:130px"><img src="figma/heroes/responder.jpg" alt=""></div>
+      <div style="left:62px;top:73px;transform:rotate(-15deg)"><img src="figma/heroes/healthcare.jpg" alt=""></div>
+      <div style="left:333px;top:73px;transform:rotate(15deg)"><img src="figma/heroes/teacher.jpg" alt=""></div>
+      <div style="left:392px;top:130px;transform:rotate(30deg)"><img src="figma/heroes/veteran.jpg" alt=""></div>
+      <div style="left:164px;top:38px;z-index:2"><img src="figma/heroes/military.jpg" alt=""></div>
+    </div>
+    <div class="tx" style="top:329px"><h3>Special pricing for Heroes of the world</h3><p>Military, first responders, healthcare workers, teachers. Verify with ID.me or GovX.</p><a class="pill" href="hsa-fsa.html">View options</a></div>
+  </div>
+  <div class="pc" style="left:92px;top:788px;width:1424px;height:288px">
+    <div class="tx" style="left:164px;top:102px"><h3>Gifting? You give it. They size it.</h3><p>Interest free. Klarna or Shop Pay integration.</p><a class="pill" href="gift.html">Gift now</a></div>
+    <div class="gold" style="left:829px;top:38px"><div class="t"><p>performance lab</p><small>festive edition</small></div></div>
+  </div>
+</section>
+<!-- 8 app video -->
+<section class="vid">
+  <div class="c">
+    <h2>Ultrahuman experience, reimagined.</h2>
+    <p>Built to make every insight clearer, every recommendation and decision more meaningful.</p>
+    <div class="stores"><a class="btn ghost" href="#"><img src="figma/49169.svg" width="16" height="16" alt="">App Store</a><a class="btn ghost" href="#"><img src="figma/35e0d.svg" width="14" height="14" alt="">Play Store</a></div>
+  </div>
+  <div class="poster"><img src="figma/video-poster.png" alt=""></div>
+  <div class="play"><img src="figma/dbbee.svg" width="48" height="48" alt="Play"></div>
+</section>
+
+<!-- 9 globe -->
+<section class="globe">
+  <div class="gw"><img src="figma/22fd4.png" alt=""><div class="v"></div>
+    <div class="gc"><div class="e">Average Sleep Score</div><div><div class="n">78</div><div class="s">Czechia</div></div></div></div>
+  <div class="copy"><h2>The world's sleep, on a<br>single system.</h2><p>Millions of nights of sleep, trusted by users across the world. Experience the Ultrahuman Ring in person near you.</p><a class="btn ghost" href="#">Find a store</a></div>
+  <div class="stat"><b>116,701,050</b><span>Nights of sleep tracked</span></div>
+</section>
+
+<!-- 9b talk to human -->
+<section class="hum" id="help">
+  <img src="gift/talk.jpg" alt="">
+  <div class="sc"></div>
+  <div class="tx">
+    <span class="e">Ask an expert</span>
+    <h2>Talk to a human.</h2>
+    <p>Unsure about sizing, features or which ring is right for you? Talk it through with an Ultrahuman expert. It takes ten minutes.</p>
+    <div class="row"><a class="btn wh" href="#">Book a call</a><a class="btn ln" href="#">Chat now</a></div>
+  </div>
+</section>
+
+<!-- 10 partners -->
+<div class="partners"><p>science partners</p><img src="figma/cfcbd.png" alt="Science partners"></div>
+
+<!-- footer -->
+<footer>
+  <div class="g">
+    <div class="col">
+      <h4>Smart rings</h4>
+      <ul><li>Ultrahuman Ring PRO <span class="new">New</span></li><li>Ultrahuman Ring AIR</li><li>Diesel Ultrahuman Ring</li><li>Ultrahuman Ring Rare</li></ul>
+      <div class="sub" style="margin-top:57px"><h4>Health Monitoring</h4><ul><li>Ultrahuman M1 CGM</li><li>Ultrahuman Home</li><li>Ultrahuman Blood Vision</li><li>Powerplugs</li><li>Women’s Health</li><li>Ultrahuman Vision Dashboard</li></ul></div>
+    </div>
+    <div class="col"><h4>Resources</h4><ul class="g16"><li>OGDb - Open Glucose Database</li><li>Ultrahuman Blog</li><li><a href="hsa-fsa.html">Special Pricing - Military, Student &amp; More</a></li><li><a href="hsa-fsa.html">HSA/FSA</a></li><li>Science</li><li>Ultra Work</li><li>Ultrahuman X Clue</li><li>3D Print Ring Sizes</li><li>Blood Vision Cloud</li><li>Ring Sizing</li><li>Annual Return</li></ul></div>
+    <div class="col">
+      <h4>Company</h4><ul><li>About Us</li><li>Press &amp; News</li><li>Brand Kit</li><li>Careers</li></ul>
+      <div class="sub" style="margin-top:57px"><h4>Business</h4><ul><li>Partnerships</li><li>For Creators</li></ul></div>
+    </div>
+    <div class="col"><h4>Legal</h4><ul><li>R1 Terms of Sale</li><li>M1 Terms of Sale</li><li>Privacy Policy</li><li>Terms of Use</li></ul>
+      <div class="hsa"><img src="figma/10ad1.svg" width="20" height="27" alt=""><img src="figma/97b0b.svg" width="59" height="26" alt="HSA FSA"></div></div>
+  </div>
+  <div class="c3">
+    <div><h4>Contact</h4><div class="l"><span>support@ultrahuman.com</span><span>1800-102-8693</span></div></div>
+    <div><h4>Follow Us</h4><div style="margin-top:14px"><img src="figma/1ef01.svg" width="187" height="16" alt="Social"></div></div>
+    <div><h4>Download App</h4><div class="app"><a href="#"><small>GET IT ON</small><b>Google Play</b></a><a href="#"><small>Download on the</small><b>App Store</b></a></div></div>
+  </div>
+  <div class="legal">© 2020-2025 Ultrahuman Healthcare Pvt Ltd. All rights reserved. ISO27001, GDPR, and HIPAA compliant.</div>
+  <div class="wm"><img src="figma/a4b63.svg" alt="ULTRAHUMAN"></div>
+</footer>
+
+</div>
+<script>
+(function(){
+  var page=document.getElementById('page');
+  function fit(){
+    var s=Math.min(1,document.documentElement.clientWidth/1600);
+    page.style.zoom=s;
+  }
+  fit();addEventListener('resize',fit);
+
+  /* science banner: plasma filaments shader */
+  (function(){
+    var cv=document.querySelector('.sc10 canvas');if(!cv)return;
+    var gl=cv.getContext('webgl',{antialias:false,alpha:false});if(!gl)return;
+    var vs='attribute vec2 p;varying vec2 uv;void main(){uv=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
+    var fs='precision highp float;varying vec2 uv;uniform float uT;uniform vec2 uR;'+
+    'float h(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}'+
+    'float n(vec2 p){vec2 i=floor(p),f=fract(p),u=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),u.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),u.x),u.y);}'+
+    'float fbm(vec2 p){float v=0.,a=.5;mat2 r=mat2(.8,.6,-.6,.8);for(int i=0;i<5;i++){v+=a*n(p);p=r*p*2.03+vec2(1.7,9.2);a*=.5;}return v;}'+
+    'void main(){float asp=uR.x/uR.y;float t=uT*.09;vec2 p=(uv-.5)*vec2(asp,1.)*1.35;'+
+    'vec2 q=vec2(fbm(p+vec2(0.,t)),fbm(p+vec2(5.2,1.3)-vec2(t,0.)));'+
+    'vec2 r=vec2(fbm(p+2.2*q+vec2(1.7,9.2)+vec2(.5*t,0.)),fbm(p+2.2*q+vec2(8.3,2.8)-vec2(0.,.4*t)));'+
+    'float f=fbm(p+2.2*r);float rg=1.-abs(2.*f-1.);float v1=pow(clamp(rg,0.,1.),12.);float rg2=1.-abs(2.*r.x-1.);float v2=pow(clamp(rg2,0.,1.),16.);'+
+    'float fb=n(p*vec2(26.,7.)+r*9.);float fb2=n(p*vec2(60.,14.)+q*6.);float body=smoothstep(.15,.85,f);'+
+    'vec3 deep=vec3(.02,.05,.26),mid=vec3(.07,.17,.69),light=vec3(.74,.86,1.);'+
+    'vec3 c=mix(deep,mid,body);c+=mid*(fb-.5)*.16*body;c+=light*(v1*.95+v2*.4);c+=light*(fb2-.5)*.06*(v1+v2);'+
+    'gl_FragColor=vec4(clamp(c,0.,1.),1.);}';
+    function sh(t,src){var s=gl.createShader(t);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){console.error(gl.getShaderInfoLog(s));return null}return s}
+    var a=sh(gl.VERTEX_SHADER,vs),b=sh(gl.FRAGMENT_SHADER,fs);if(!a||!b)return;
+    var pr=gl.createProgram();gl.attachShader(pr,a);gl.attachShader(pr,b);gl.linkProgram(pr);gl.useProgram(pr);
+    var buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);
+    var loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+    var uT=gl.getUniformLocation(pr,'uT'),uR=gl.getUniformLocation(pr,'uR');
+    var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches,t0=performance.now(),vis=true;
+    if('IntersectionObserver' in window)new IntersectionObserver(function(e){vis=e[0].isIntersecting;if(vis&&!rm)requestAnimationFrame(frame)}).observe(cv);
+    function size(){var d=Math.min(2,window.devicePixelRatio||1),w=Math.max(2,Math.round(cv.clientWidth*d)),h=Math.max(2,Math.round(cv.clientHeight*d));if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}gl.viewport(0,0,cv.width,cv.height)}
+    function frame(now){if(!vis)return;size();gl.uniform1f(uT,rm?6:(now-t0)*.001+6);gl.uniform2f(uR,cv.width,cv.height);gl.drawArrays(gl.TRIANGLES,0,6);if(!rm)requestAnimationFrame(frame)}
+    requestAnimationFrame(frame);
+  })();
+
+  var track=document.getElementById('track'),cards=[].slice.call(track.children),
+      tabs=[].slice.call(document.querySelectorAll('#tabs button')),dots=[].slice.call(document.querySelectorAll('#dots i'));
+  function go(i){
+    track.style.transform='translateX('+(-i*1036)+'px)';
+    cards.forEach(function(c,k){c.classList.toggle('on',k===i)});
+    tabs.forEach(function(t){t.classList.toggle('on',+t.dataset.i===i)});
+    dots.forEach(function(d,k){d.classList.toggle('on',k===i)});
+  }
+  track.style.left='302px';
+  tabs.forEach(function(t){t.addEventListener('click',function(){go(+t.dataset.i)})});
+  dots.forEach(function(d,k){d.addEventListener('click',function(){go(k)})});
+  cards.forEach(function(c,k){c.addEventListener('click',function(){go(k)})});
+  go(1);
+  var sg=document.querySelectorAll('#seg button');sg.forEach(function(b){b.addEventListener('click',function(){sg.forEach(function(x){x.classList.toggle('on',x===b)})})});
+})();
+</script>
+</body>
+</html>

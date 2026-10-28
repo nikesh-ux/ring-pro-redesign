@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Gift Ring PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="uh.css">
+<style>
+/* Gift page: sand hero card (as homepage), configurator with live summary, cutoffs, outcomes, reassurance. */
+.hero{padding:10px 10px 0}
+.hero-card{position:relative;border-radius:22px;overflow:hidden;background:var(--sand) url(assets/video-posters_max-wide_first-frame.webp) center 62%/cover no-repeat;min-height:600px;display:grid;align-items:center}
+.hero-card::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(217,207,189,.94) 0%,rgba(217,207,189,.78) 36%,rgba(217,207,189,0) 60%);pointer-events:none}
+.hero-copy{position:relative;z-index:2;padding:56px clamp(24px,7vw,120px);max-width:660px;display:grid;gap:18px;color:var(--sand-ink)}
+.hero-copy .eyebrow{color:#5b5141}
+.hero h1{font-size:clamp(38px,5.2vw,66px);letter-spacing:-.035em;color:#111}
+.hero .sub{font-size:clamp(16px,1.5vw,19px);color:#3b3426;max-width:42ch}
+.price-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.price-row .p{font-size:30px;font-weight:600;letter-spacing:-.02em;color:#111}
+.price-row .inc{font-size:15px;color:#3b3426}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.sec-link{font-size:14.5px;color:#111;text-underline-offset:3px}
+.hero .chip{background:rgba(255,255,255,.6)}
+.hero-mimg{display:none}
+@media (max-width:760px){
+  .hero{padding:0}
+  .hero-card{border-radius:0;background:var(--sand);min-height:0;align-items:start}
+  .hero-card::after{display:none}
+  .hero-copy{padding:22px 16px 6px;gap:12px}
+  .hero h1{font-size:34px}
+  .hero .sub{font-size:15.5px}
+  .price-row .p{font-size:24px}
+  .cta-row .btn-blue{width:100%;height:52px}
+  .cta-row .sec-link{width:100%;text-align:center}
+  .chip{white-space:normal}
+  .hero-mimg{display:block;position:relative;z-index:2;height:280px;background:url(assets/video-posters_max_first-frame.webp) center 60%/cover no-repeat}
+}
+
+/* configurator */
+.cfg{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:20px;align-items:start}
+.steps{display:grid;gap:14px}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--r-card);padding:24px;display:grid;gap:16px;min-width:0}
+.step-h{display:flex;gap:12px;align-items:baseline}
+.step-h .n{font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:.06em}
+.step-h h3{font-size:21px;letter-spacing:-.015em}
+.field{display:grid;gap:6px;min-width:0}
+.field label,.lbl{font-size:14px;font-weight:500}
+.field .hint{font-size:13px;color:var(--muted)}
+.inp{height:48px;border:1px solid #d6d3ce;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;background:#fff;color:var(--ink);width:100%;min-width:0}
+textarea.inp{height:auto;min-height:104px;padding:12px 14px;resize:vertical;line-height:1.45}
+.inp:focus{outline:2px solid var(--blue-hi);outline-offset:1px;border-color:transparent}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:var(--r-pill);padding:9px 14px;font-size:14px;cursor:pointer;background:#fff}
+.seg input{accent-color:var(--blue);margin:0}
+.seg label:has(input:checked){border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.seg label:has(input:disabled){opacity:.45;cursor:not-allowed}
+.opts{display:grid;gap:10px}
+.opt{position:relative;display:grid;grid-template-columns:22px 1fr auto;gap:4px 12px;border:1px solid var(--line);border-radius:16px;padding:16px;cursor:pointer;background:#fff;align-items:start}
+.opt input{margin:3px 0 0;accent-color:var(--blue);width:18px;height:18px}
+.opt b{font-weight:500;font-size:16px}
+.opt p{grid-column:2/4;font-size:14px;color:var(--muted)}
+.opt .tag{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:3px 7px;background:var(--mist);color:var(--ink-2);white-space:nowrap;align-self:center}
+.opt .tag.rec{background:var(--ok-soft);color:var(--ok)}
+.opt:has(input:checked){border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.sizepick{display:none;grid-column:2/4;margin-top:8px}
+.opt:has(input:checked) .sizepick{display:grid}
+.sw{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.2);flex:none}
+.counter{font-size:12.5px;color:var(--muted);justify-self:end;font-variant-numeric:tabular-nums}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:14px}
+.check input{margin-top:3px;accent-color:var(--blue);width:16px;height:16px;flex:none}
+[hidden]{display:none!important}
+
+.sum{position:sticky;top:76px;background:var(--mist);border-radius:var(--r-card);padding:24px;display:grid;gap:16px;min-width:0}
+.sum-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.sum-h h3{font-size:22px}
+.sum-h .p{font-size:22px;font-weight:600}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:14px;margin:0}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0;text-align:right;min-width:0;overflow-wrap:anywhere}
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.tl li{display:grid;grid-template-columns:22px 1fr auto;gap:12px;align-items:start;padding-bottom:16px;position:relative}
+.tl li::before{content:"";position:absolute;left:10px;top:20px;bottom:0;width:1.5px;background:var(--line)}
+.tl li:last-child{padding-bottom:0}
+.tl li:last-child::before{display:none}
+.tl .d{width:21px;height:21px;border-radius:50%;border:1.5px solid var(--ink);background:#fff;display:grid;place-items:center;font-size:11px;font-family:var(--f-mono)}
+.tl b{font-weight:500;display:block;font-size:15px}
+.tl span{font-size:13px;color:var(--muted)}
+.tl em{font-style:normal;font-family:var(--f-mono);font-size:12px;color:var(--ink);background:#fff;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.orderby{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:12px 14px;font-size:14px}
+.orderby b{font-family:var(--f-mono);font-size:13px;font-weight:500}
+.orderby.late{background:var(--warn-soft);color:var(--warn)}
+.sum .btn{width:100%}
+@media (max-width:980px){.cfg{grid-template-columns:1fr}.sum{position:static}}
+@media (max-width:520px){.row2{grid-template-columns:1fr}.step{padding:20px 16px}.sum{padding:20px 16px}}
+
+/* cutoffs */
+.cut{border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;background:#fff}
+.cut table{width:100%;border-collapse:collapse;font-size:15px}
+.cut th,.cut td{text-align:left;padding:16px 20px;border-bottom:1px solid var(--line);vertical-align:top}
+.cut thead th{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:400;background:var(--mist)}
+.cut tbody tr:last-child td,.cut tbody tr:last-child th{border-bottom:0}
+.cut tbody th{font-weight:500}
+.cut tbody th small,.cut td small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-top:2px}
+.cut .date{font-family:var(--f-mono);font-size:14px;white-space:nowrap}
+.cut .date i{font-style:normal;font-size:11px;color:var(--muted);margin-left:4px}
+.late-note{margin-top:14px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--blue-soft);border-radius:14px;padding:16px 18px;font-size:15px}
+@media (max-width:760px){
+  .cut thead{display:none}
+  .cut tr{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:16px;border-bottom:1px solid var(--line)}
+  .cut tbody tr:last-child{border-bottom:0}
+  .cut th,.cut td{padding:0;border:0}
+  .cut td.what{grid-column:1/3}
+  .cut td.ring{grid-column:1/3;font-size:13.5px;color:var(--muted)}
+  .cut tbody th{grid-column:1}
+  .cut td.date{grid-column:2;grid-row:1;text-align:right}
+}
+
+/* outcomes */
+.gets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.get{border-radius:var(--r-card);overflow:hidden;background:#fff;border:1px solid var(--line);display:grid;grid-template-rows:auto 1fr}
+.get img{aspect-ratio:16/11;object-fit:cover;width:100%}
+.get div{padding:18px 20px 22px;display:grid;gap:6px;align-content:start}
+.get h3{font-size:20px}
+.get p{color:var(--muted);font-size:14.5px}
+.get .tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+@media (max-width:860px){.gets{grid-template-columns:1fr}}
+
+/* reassurance */
+.rs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.r{background:var(--night-3);border:1px solid var(--night-line);border-radius:var(--r-card);padding:22px;display:grid;gap:8px;align-content:start}
+.r svg{width:22px;height:22px;color:#7bd8db}
+.r h3{font-size:18px;letter-spacing:-.015em}
+.r p{font-size:14px;color:#a3a3a3}
+.r .prop{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;color:#ffb38f;text-transform:uppercase}
+@media (max-width:980px){.rs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.rs{grid-template-columns:1fr}}
+
+.final{text-align:center;display:grid;gap:16px;justify-items:center}
+.final h2{font-size:clamp(32px,5vw,60px)}
+</style>
+</head>
+<body>
+
+<div class="mock-bar"><b>Design proposal · not live</b><span>Ultrahuman US /us/gift, holiday gift flow v1 (Oct 23 2026)</span><span class="sp"></span><a href="plan.html">← Plan &amp; rationale</a><a href="home.html">Homepage</a><a href="hsa-fsa.html">HSA/FSA page</a><a href="buy.html">Buy flow</a><a href="compare.html">Compare</a></div>
+
+<!-- Announcement -->
+<div class="anno">
+  <div class="ann" role="region" aria-label="Announcement"><b>Giving Ring PRO?</b><span>They pick the size.</span><span aria-hidden="true">·</span><a href="#cutoffs">Order-by dates</a></div>
+  <div class="pin"><b>T-GIFT · ANNOUNCEMENT</b>From Nov 1 the bar points gift-intent traffic here. Cutoff dates are honest urgency: they change on real dates, not a fake countdown.</div>
+</div>
+
+<!-- Nav -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <nav class="nav-l" aria-label="Primary">
+      <span class="burger" aria-hidden="true"></span>
+      <a href="home.html">Ring PRO</a>
+      <a href="home.html#how">How it works</a>
+      <a href="compare.html">Compare</a>
+      <a href="#build">Gift</a>
+      <a class="hl" href="hsa-fsa.html">HSA/FSA <i>PAY</i></a>
+      <a href="gift-cards.html">Gift cards</a>
+    </nav>
+    <a class="logo" href="home.html" aria-label="Ultrahuman home"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 5h7l3 5 3-5h7l-6 9 3 5h-6l-1-2-1 2H5l3-5z"/></svg>ULTRAHUMAN</a>
+    <div class="nav-r">
+      <a class="hide-m" href="#faq">Gift FAQ</a>
+      <span class="flag hide-m">🇺🇸 US</span>
+      <a href="#" aria-label="Cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></a>
+      <a class="btn btn-blue btn-sm" href="#build">Build your gift</a>
+    </div>
+  </div>
+</header>
+
+<!-- 1. Hero -->
+<section class="hero anno" id="top">
+  <div class="hero-card">
+    <div class="hero-copy">
+      <span class="eyebrow">Holiday gift · Ring PRO</span>
+      <h1>Gift it. They size it.</h1>
+      <p class="sub">They confirm size before it ships. No membership.</p>
+      <div class="price-row"><span class="p num">$479</span><span class="inc">Case included. No membership.</span></div>
+      <div class="cta-row">
+        <a class="btn btn-blue" href="#build">Build your gift</a>
+        <a class="sec-link" href="#cutoffs">Order-by dates</a>
+      </div>
+      <div class="chips" aria-label="Gift benefits">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.5"/></svg>They pick the size</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 8l9 6 9-6"/></svg>Gift message</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v4h4"/></svg>Returns till Jan 31 (proposed)</span>
+      </div>
+    </div>
+    <div class="hero-mimg" role="img" aria-label="Ring PRO resting on its PRO charging case"></div>
+  </div>
+  <div class="pin"><b>T-GIFT · HERO</b>A ring is hard to gift secretly in the right size. This page removes the guess: the buyer pays, the recipient sizes. Headline and CTA are Codex's /us/gift copy. “Returns extended to Jan 31” is a proposed holiday policy and must be confirmed before launch. The included case is stated plainly, not as a new bonus.</div>
+</section>
+
+<!-- 2. Configurator -->
+<section class="sec anno" id="build">
+  <div class="wrap">
+    <div class="sec-h"><span class="eyebrow">Build your gift</span><h2>Four steps. Done.</h2><p>Dates first. Then you pay.</p></div>
+    <div class="cfg">
+      <form class="steps" id="gift" onsubmit="return false" novalidate>
+
+        <fieldset class="step" style="margin:0">
+          <legend class="step-h" style="padding:0;float:left;width:100%"><span class="n">01</span><h3>Who it’s for</h3></legend>
+          <div class="field" style="clear:both">
+            <label for="g-name">Their first name</label>
+            <input class="inp" id="g-name" name="name" type="text" autocomplete="off" placeholder="e.g. Sam" maxlength="40">
+          </div>
+          <div class="field">
+            <span class="lbl" id="g-contact-l">How do they find out?</span>
+            <div class="seg" role="radiogroup" aria-labelledby="g-contact-l">
+              <label><input type="radio" name="contact" id="g-contact-email" value="email" checked>We email them</label>
+              <label><input type="radio" name="contact" id="g-contact-self" value="self">I’ll hand it over</label>
+            </div>
+          </div>
+          <div class="field" id="g-email-wrap">
+            <label for="g-email">Their email <span class="muted" style="font-weight:400">(optional)</span></label>
+            <input class="inp" id="g-email" name="email" type="email" autocomplete="off" placeholder="name@example.com">
+            <span class="hint">Nothing sends before your date.</span>
+          </div>
+        </fieldset>
+
+        <fieldset class="step" style="margin:0">
+          <legend class="step-h" style="padding:0;float:left;width:100%"><span class="n">02</span><h3>How they get it</h3></legend>
+          <div class="opts" style="clear:both">
+            <label class="opt" for="p-box">
+              <input type="radio" name="path" id="p-box" value="box" checked>
+              <b>Gift box + sizing kit</b><span class="tag rec">Most flexible</span>
+              <p>They unwrap the kit, wear a sample 24 hours, then the ring ships.</p>
+            </label>
+            <label class="opt" for="p-digital">
+              <input type="radio" name="path" id="p-digital" value="digital">
+              <b>Digital gift</b><span class="tag">Instant</span>
+              <p>We email them on your date. The kit follows.</p>
+            </label>
+            <label class="opt" for="p-known">
+              <input type="radio" name="path" id="p-known" value="known">
+              <b>I know their size</b><span class="tag">Fastest ring</span>
+              <p>Ships ready to wrap. Only if they wear Ultrahuman or used a kit.</p>
+              <span class="sizepick field">
+                <label for="g-size">Their Ultrahuman size</label>
+                <select class="inp" id="g-size" name="size">
+                  <option value="">Choose size</option>
+                  <option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option>
+                </select>
+                <span class="hint">Not jewelry sizes. Ring AIR sizes match.</span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="step" style="margin:0">
+          <legend class="step-h" style="padding:0;float:left;width:100%"><span class="n">03</span><h3>Finish</h3></legend>
+          <div class="seg" role="radiogroup" aria-label="Finish" style="clear:both">
+            <label><input type="radio" name="finish" id="f-choose" value="Let them choose" checked>Let them choose</label>
+            <label><input type="radio" name="finish" id="f-gold" value="Bionic Gold"><span class="sw" style="background:#cfae72"></span>Bionic Gold</label>
+            <label><input type="radio" name="finish" id="f-silver" value="Space Silver"><span class="sw" style="background:#d4d6d8"></span>Space Silver</label>
+            <label><input type="radio" name="finish" id="f-black" value="Aster Black"><span class="sw" style="background:#1d1d1f"></span>Aster Black</label>
+            <label><input type="radio" name="finish" id="f-ti" value="Raw Titanium"><span class="sw" style="background:#9a958c"></span>Raw Titanium</label>
+          </div>
+          <p class="hint muted" id="g-finish-hint" style="font-size:13px">They pick at sizing. Same price, every finish.</p>
+        </fieldset>
+
+        <fieldset class="step" style="margin:0">
+          <legend class="step-h" style="padding:0;float:left;width:100%"><span class="n">04</span><h3>Message and date</h3></legend>
+          <div class="field" style="clear:both">
+            <label for="g-msg">Gift message</label>
+            <textarea class="inp" id="g-msg" name="msg" maxlength="200" aria-describedby="g-count" placeholder="Happy holidays. Here’s to better sleep."></textarea>
+            <span class="counter" id="g-count" aria-live="polite">0 / 200</span>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="g-date" id="g-date-l">Gift day</label>
+              <input class="inp" id="g-date" name="date" type="date" min="2026-10-23" max="2027-01-31" value="2026-12-24">
+            </div>
+            <div class="field" style="align-content:end">
+              <label class="check" for="g-hide"><input type="checkbox" id="g-hide" checked>Hide price on receipt</label>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+
+      <aside class="sum" aria-label="Gift summary" aria-live="polite">
+        <div class="sum-h"><h3 id="s-title">Gift for them</h3><span class="p num">$479</span></div>
+        <dl class="kv">
+          <dt>Gift</dt><dd>Ring PRO + case</dd>
+          <dt>Delivery</dt><dd id="s-path">Gift box + sizing kit</dd>
+          <dt>Size</dt><dd id="s-size">They size it</dd>
+          <dt>Finish</dt><dd id="s-finish">They choose</dd>
+          <dt>Receipt</dt><dd id="s-receipt">Price hidden</dd>
+        </dl>
+        <ol class="tl" id="s-tl"></ol>
+        <div class="orderby" id="s-orderby"><span id="s-ob-l">Order by</span><b id="s-ob">Dec 16</b></div>
+        <button class="btn btn-blue" type="button" id="s-cta">Add gift to bag · $479</button>
+        <p class="fine">Est. from Oct 23. Tax and shipping at checkout.</p>
+      </aside>
+    </div>
+  </div>
+  <div class="pin"><b>T-GIFT-PATH · CONFIGURATOR</b>50–60% of US Ring PRO buyers already choose the sizing kit, so it is the default path. The kit adds ~7 days (Sep: 17 vs 10 days order→ship), so every path shows dates and an order-by date before payment. Finish defaults to “let them choose” (Codex: recipient picks size and preferably finish).</div>
+</section>
+
+<!-- 3. Cutoffs -->
+<section class="sec mist anno" id="cutoffs">
+  <div class="wrap">
+    <div class="sec-h"><span class="eyebrow">Holiday order-by dates</span><h2>Beat Dec 24.</h2><p>The kit adds a step, so order earlier.</p></div>
+    <div class="cut">
+      <table>
+        <thead><tr><th scope="col">Gift option</th><th scope="col">Arrives by Dec 24</th><th scope="col">Order by</th><th scope="col">Ring on</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">I know their size</th><td class="what">Ring PRO in its case</td><td class="date">Dec 15<i>est.</i></td><td class="ring">By Dec 24</td></tr>
+          <tr><th scope="row">Gift box with sizing kit<small>Opened on the day</small></th><td class="what">Box, kit and your card</td><td class="date">Dec 16<i>est.</i></td><td class="ring">~8 days after opening</td></tr>
+          <tr><th scope="row">Gift box with sizing kit<small>Ring by Dec 24</small></th><td class="what">Box, given early (by Dec 16)</td><td class="date">Dec 8<i>est.</i></td><td class="ring">By Dec 24</td></tr>
+          <tr><th scope="row">Digital gift</th><td class="what">Gift email, on your date</td><td class="date">Dec 24</td><td class="ring">~12 days after opening</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="late-note"><span><b style="font-weight:500">Cutting it close?</b> Go digital. It lands instantly.</span><a class="btn btn-dark btn-sm" href="#build" id="late-digital">Switch to digital</a></div>
+    <p class="fine" style="margin-top:12px">Contiguous US. Est. dates pending carrier holiday calendars.</p>
+  </div>
+  <div class="pin"><b>T-GIFT-CUTOFF</b>“ETA too long” drove 62% of full refunds in launch cohorts. Gift buyers are the least tolerant of a missed date, so cutoffs are explicit per path, including the earlier kit date. Ops must own and update these dates daily from Dec 1.</div>
+</section>
+
+<!-- 4. What they'll get -->
+<section class="sec anno" id="gets">
+  <div class="wrap">
+    <div class="sec-h"><span class="eyebrow">What they’ll get</span><h2>Better mornings, explained.</h2><p>Baseline in two weeks. Clear answers every morning after.</p></div>
+    <div class="gets">
+      <article class="get"><img src="assets/pro-measures_v2_full_sleep.webp" alt="Sleep stages shown over a sleeping person" loading="lazy"><div><span class="tag">Sleep</span><h3>See how they really slept.</h3><p>Stages, timing and a trend that shows if nights improve.</p></div></article>
+      <article class="get"><img src="assets/pro-measures_v2_full_workout.webp" alt="Workout heart rate shown during training" loading="lazy"><div><span class="tag">Training</span><h3>Push or rest. Know which.</h3><p>HRV, heart rate and load in one morning read.</p></div></article>
+      <article class="get"><img src="assets/pro-measures_v2_full_cycles.webp" alt="Cycle phase shown in the Ultrahuman app" loading="lazy"><div><span class="tag">Cycle</span><h3>Every phase, tracked.</h3><p>Cycle and skin temperature trends, included.</p></div></article>
+    </div>
+    <p class="fine" style="margin-top:16px">App screens illustrative. Ring PRO is a wellness device, not a medical device.</p>
+  </div>
+  <div class="pin b"><b>OUTCOMES, NOT SPECS</b>Gift buyers are often not the user. Three plain outcomes the giver can picture for someone else. No invented testimonials; reviews module stays on PDP until verified PRO reviews exist.</div>
+</section>
+
+<!-- 5. Reassurance -->
+<section class="sec dark anno" id="policy">
+  <div class="wrap">
+    <div class="sec-h"><span class="eyebrow" style="color:#7a7a7a">If plans change</span><h2>Keep it. Swap it. Return it.</h2><p>Gifts get opened late. We planned for that.</p></div>
+    <div class="rs">
+      <div class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v4h4"/></svg><span class="prop">Proposed</span><h3>Returns till Jan 31.</h3><p>Nov 1–Dec 24 orders: until Jan 31 or 30 days after delivery, whichever is later.</p></div>
+      <div class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="prop">Proposed</span><h3>Never sized? Refunded.</h3><p>No size within 60 days of the gift date? Full refund to you. They keep the kit.</p></div>
+      <div class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></svg><h3>The price stays secret.</h3><p>Receipts and emails show the gift, not the price.</p></div>
+      <div class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12.5l4.2 4L19 7"/></svg><h3>No membership.</h3><p>Sleep, recovery, workout and cycle tracking, all included.</p></div>
+    </div>
+  </div>
+  <div class="pin"><b>POLICY DECISIONS TO CONFIRM</b>Jan 31 returns and the 60-day unredeemed-gift refund are proposals, not current policy. Finance and CX must confirm both before launch (Codex: “actual holiday-return terms; unredeemed-gift handling”). About 8% of kit orders appear to sit waiting for a size today.</div>
+</section>
+
+<!-- 6. FAQ -->
+<section class="sec-tight anno" id="faq">
+  <div class="wrap" style="max-width:900px">
+    <div class="sec-h"><span class="eyebrow">Gift questions</span><h2 style="font-size:clamp(28px,3.6vw,44px)">Fair questions.</h2></div>
+    <div class="faq">
+      <details open><summary>Between sizes?</summary><p>The kit has every size, 5–14. They wear one 24 hours, overnight too. Torn? A specialist helps by chat or video.</p></details>
+      <details><summary>They already own one?</summary><p>Ring AIR sizes match, so they confirm instantly. Don’t want two? They decline and you’re refunded.</p></details>
+      <details><summary>HSA/FSA for a gift?</summary><p>HSA and FSA funds generally cover only you, your spouse and dependents. Eligibility depends on your circumstances, so a gift for anyone else usually won’t qualify. <a href="hsa-fsa.html">See the HSA/FSA page</a>.</p></details>
+      <details><summary>Will they see what I paid?</summary><p>Not a cent. They see the gift, never the price. Refunds stay with you.</p></details>
+      <details><summary>Second thoughts on the message?</summary><p>Edit it or the date until the email sends or the box ships.</p></details>
+      <details><summary>What do they need?</summary><p>An iPhone or Android and the free Ultrahuman app. That’s it.</p></details>
+    </div>
+  </div>
+  <div class="pin"><b>FAQ · HSA CAREFUL WORDING</b>Gift-season search includes “fsa eligible gifts” (HSA/FSA research §7). We answer honestly instead of implying a gift qualifies. “Decline the gift” refund depends on the unredeemed-gift policy above.</div>
+</section>
+
+<!-- 7. Final CTA -->
+<section class="sec mist anno">
+  <div class="wrap final">
+    <span class="eyebrow">Ring PRO gift</span>
+    <h2>You gift it. They fit it.</h2>
+    <p class="muted">$479 · Case included · No membership · They pick the size</p>
+    <a class="btn btn-blue" href="#build">Build your gift · $479</a>
+  </div>
+  <div class="pin"><b>T-GIFT · MEASUREMENT</b>Adobe: US online holiday spend $257.8B (+6.8%) in 2025. Codex hypothesis: 10–20% lift within gift-intent traffic. Launch Nov 1 with a 10% holdout vs the standard buy page. Primary metric: delivered-and-kept gifts, not orders. Also track exchanges, unredeemed gifts and cost.</div>
+</section>
+
+<footer class="foot">
+  <div class="wrap foot-g">
+    <div><h5>Ring</h5><ul><li><a href="home.html">Ring PRO</a></li><li><a href="#">Ring sizing</a></li><li><a href="compare.html">Compare rings</a></li><li><a href="gift.html">Gift Ring PRO</a></li><li><a href="#">Accessories</a></li></ul></div>
+    <div><h5>Ways to buy</h5><ul><li><a href="hsa-fsa.html">HSA/FSA</a></li><li><a href="#">Workplace benefits</a></li><li><a href="home.html#heroes">Heroes pricing (ID.me, GovX)</a></li><li><a href="gift-cards.html">Gift cards</a></li></ul></div>
+    <div><h5>Help</h5><ul><li><a href="#cutoffs">Holiday delivery dates</a></li><li><a href="#policy">Gift returns</a></li><li><a href="#">Warranty</a></li><li><a href="#">Support</a></li></ul></div>
+    <div><h5>More from Ultrahuman</h5><ul><li><a href="#">M2 Live</a></li><li><a href="#">Blood Vision</a></li><li><a href="#">Home</a></li><li><a href="#">Science &amp; Pulsomics</a></li></ul></div>
+  </div>
+  <div class="wrap fine" style="margin-top:28px">Holiday return and unredeemed-gift terms shown on this page are proposals pending approval. HSA/FSA: eligibility is determined by your plan administrator and isn’t guaranteed.</div>
+</footer>
+
+<div class="mbar" id="mbar" aria-hidden="true"><div class="p"><b class="num">$479</b><span>Case included · They pick the size</span></div><a class="btn btn-blue" href="#build">Build your gift · $479</a></div>
+<button class="notes-toggle" id="notes" aria-pressed="false"><span class="dot"></span>Show evidence &amp; dependencies</button>
+
+<script>
+(function(){
+  var t=document.getElementById('notes');
+  try{ if(localStorage.getItem('uh-notes')==='1'){document.body.classList.add('show-notes');t.setAttribute('aria-pressed','true');t.lastChild.textContent='Hide evidence & dependencies';} }catch(e){}
+  t.addEventListener('click',function(){
+    var on=document.body.classList.toggle('show-notes');
+    t.setAttribute('aria-pressed',on);t.lastChild.textContent=on?'Hide evidence & dependencies':'Show evidence & dependencies';
+    try{localStorage.setItem('uh-notes',on?'1':'0')}catch(e){}
+  });
+
+  // ---- gift configurator (mock estimates; live ETAs replace these constants) ----
+  var TODAY=new Date(2026,9,23);
+  var D={known:9,box:8,kitTransit:4,ringAfterConfirm:7};
+  var M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function add(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x}
+  function fmt(d){return M[d.getMonth()]+' '+d.getDate()}
+  function parse(v){var p=(v||'').split('-');return p.length===3?new Date(+p[0],+p[1]-1,+p[2]):add(TODAY,7)}
+  function $(id){return document.getElementById(id)}
+  function val(n){var e=document.querySelector('input[name="'+n+'"]:checked');return e?e.value:''}
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function li(i,b,s,e){return '<li><span class="d">'+i+'</span><div><b>'+b+'</b><span>'+s+'</span></div><em>'+e+'</em></li>'}
+
+  function render(){
+    var path=val('path'),contact=val('contact'),finish=val('finish');
+    var name=$('g-name').value.trim(),who=name?esc(name):'They';
+    var date=parse($('g-date').value),rows=[],ob,obLabel='Order by';
+    var self=$('g-contact-self');
+    // digital gift requires email
+    if(path==='digital'){self.disabled=true;if(contact==='self'){$('g-contact-email').checked=true;contact='email'}}else{self.disabled=false}
+    $('g-email-wrap').hidden=(contact==='self');
+    $('g-email-wrap').querySelector('label span').textContent=path==='digital'?'(required)':'(optional)';
+    $('g-date-l').textContent=path==='digital'?'Send the email on':'Gift day';
+    $('g-finish-hint').textContent=finish==='Let them choose'?'They pick at sizing. Same price, every finish.':'You picked '+finish+'. They can still switch at sizing.';
+    if(path==='known'){$('g-finish-hint').textContent=finish==='Let them choose'?'Pick a finish. It ships ready to wrap.':'Ships in '+finish+'.'}
+
+    if(path==='box'){
+      ob=add(date,-D.box);
+      rows.push(li(1,'You order','Box, kit and your card','Today'));
+      rows.push(li(2,'Box arrives with you','Ready to wrap. Ring comes later.','Est. '+fmt(add(TODAY,7))));
+      rows.push(li(3,who+' open'+(name?'s':'')+' it','Sample on for 24 hours, then size','On '+fmt(date)));
+      rows.push(li(4,'Ring PRO reaches '+(name?who:'them'),'At their address','Est. '+fmt(add(date,1+D.ringAfterConfirm))));
+    }else if(path==='digital'){
+      ob=date;obLabel='Order by (sends that day)';
+      rows.push(li(1,'You order','Nothing sends before your date','Today'));
+      rows.push(li(2,'Email reaches '+(name?who:'them'),'Your message and a claim link','On '+fmt(date)));
+      rows.push(li(3,'Sizing kit arrives','At their address','Est. '+fmt(add(date,D.kitTransit))));
+      rows.push(li(4,'Ring PRO arrives','About a week after sizing','Est. '+fmt(add(date,D.kitTransit+1+D.ringAfterConfirm))));
+    }else{
+      ob=add(date,-D.known);
+      rows.push(li(1,'You order','Size '+($('g-size').value||'not chosen yet'),'Today'));
+      rows.push(li(2,'Ring PRO arrives with you','In its case, ready to wrap','Est. '+fmt(add(TODAY,7))));
+      rows.push(li(3,'You give it','Returns till Jan 31 (proposed)','On '+fmt(date)));
+    }
+    $('s-tl').innerHTML=rows.join('');
+    var late=ob<TODAY;
+    $('s-orderby').classList.toggle('late',late);
+    $('s-ob-l').textContent=late?'Too late for this date. Go digital.':obLabel;
+    $('s-ob').textContent=late?'':fmt(ob);
+    $('s-title').textContent=name?'Gift for '+name:'Gift for them';
+    $('s-path').textContent={box:'Gift box + sizing kit',digital:'Digital gift',known:'Ready to give'}[path];
+    $('s-size').textContent=path==='known'?($('g-size').value?'Size '+$('g-size').value:'Choose a size'):'They size it';
+    $('s-finish').textContent=finish==='Let them choose'?(path==='known'?'Choose a finish':'They choose'):finish;
+    $('s-receipt').textContent=$('g-hide').checked?'Price hidden':'Price shown';
+    var ok=!late&&!(path==='known'&&(!$('g-size').value||finish==='Let them choose'));
+    $('s-cta').disabled=!ok;$('s-cta').style.opacity=ok?'':'.45';
+    $('s-cta').textContent=ok?'Add gift to bag · $479':(path==='known'?'Pick size and finish':'Add gift to bag · $479');
+  }
+  $('gift').addEventListener('input',render);
+  $('gift').addEventListener('change',render);
+  $('g-msg').addEventListener('input',function(){$('g-count').textContent=this.value.length+' / 200'});
+  $('late-digital').addEventListener('click',function(){$('p-digital').checked=true;render()});
+  render();
+
+  // sticky bar hides while hero CTA or configurator is in view
+  var bar=document.getElementById('mbar'),seen={};
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){seen[e.target.id||'cta']=e.isIntersecting});var hide=seen.cta||seen.build;bar.style.transform=hide?'translateY(110%)':'none';bar.setAttribute('aria-hidden',hide?'true':'false');});
+    io.observe(document.querySelector('.hero .btn-blue'));io.observe(document.getElementById('build'));
+    bar.style.transition='transform .25s ease';
+  }
+})();
+</script>
+</body>
+</html>

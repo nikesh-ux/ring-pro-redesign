@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sizing Interactions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#112baf;--mute:rgba(0,0,0,.6);--line:rgba(0,0,0,.1);--bg:#efefef;--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:#000;font-family:'Geist',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+#page{width:1600px;margin:0 auto;padding:0 80px 120px}
+.top{padding:96px 0 40px;display:flex;justify-content:space-between;align-items:flex-end}
+.top h1{font-weight:400;font-size:56px;letter-spacing:-2px;line-height:1.1}
+.top p{max-width:600px;font-size:16px;line-height:1.6;letter-spacing:-.4px;color:var(--mute)}
+.notes{background:#fff;border-radius:16px;padding:28px 36px;margin-bottom:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.notes h4{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+.notes p{font-size:14px;line-height:1.5;letter-spacing:-.2px;color:var(--mute)}
+.idea{margin-bottom:64px}
+.meta{display:flex;gap:24px;align-items:baseline;margin-bottom:16px}
+.meta .n{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mute)}
+.meta h2{font-weight:400;font-size:24px;letter-spacing:-.8px}
+.meta p{font-size:14px;color:var(--mute);letter-spacing:-.2px;margin-left:auto;max-width:700px;text-align:right;line-height:1.5}
+.ctx{background:#fff;border-radius:16px;padding:80px 64px 88px;position:relative;overflow:hidden}
+.h2{font-weight:400;font-size:40px;letter-spacing:-1px;line-height:1.2;text-align:center}
+.sub{font-size:16px;line-height:1.6;letter-spacing:-.6px;color:var(--mute);text-align:center;margin-top:12px}
+.hd{margin-bottom:36px}
+.c{display:flex;justify-content:center}
+.mono{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.5px}
+
+/* ===== 5-option segmented toggle ===== */
+.seg{position:relative;display:inline-flex;background:rgba(0,0,0,.07);border-radius:50px;padding:4px}
+.seg .thumb{position:absolute;top:4px;left:0;height:calc(100% - 8px);border-radius:50px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.1),0 6px 14px -6px rgba(0,0,0,.18);transition:transform .45s var(--ease),width .45s var(--ease);pointer-events:none}
+.seg button{all:unset;position:relative;z-index:1;cursor:pointer;height:38px;padding:0 20px;border-radius:50px;font-size:13px;letter-spacing:-.1px;color:rgba(0,0,0,.55);display:flex;align-items:center;gap:6px;transition:color .25s;white-space:nowrap}
+.seg button:hover{color:#000}
+.seg button[aria-selected="true"]{color:#000}
+.seg button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.seg button .k{font-family:'JetBrains Mono',monospace;font-size:10px;opacity:.4}
+
+/* ===== shared entrance ===== */
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes roll{from{opacity:0;transform:translateY(60%)}to{opacity:1;transform:none}}
+.in{animation:rise .55s var(--ease) both;animation-delay:calc(var(--i,0)*70ms)}
+.out{opacity:0;transform:translateY(-6px);transition:opacity .16s,transform .16s}
+.roll{display:inline-block;animation:roll .45s var(--ease) both;animation-delay:calc(var(--i,0)*70ms + 80ms)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:43px;padding:0 24px;border-radius:50px;font-size:13px;letter-spacing:-.104px;white-space:nowrap;cursor:pointer;transition:transform .2s var(--ease),background .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:scale(.97)}
+.btn.b{background:var(--blue);color:#fff}.btn.b:hover{box-shadow:0 8px 20px -8px rgba(17,43,175,.7)}
+.btn.blk{background:#000;color:#fff}
+.btn .ar{display:inline-block;transition:transform .25s var(--ease)}
+.btn:hover .ar{transform:translateX(4px)}
+
+/* ===== A. thumbnail cards ===== */
+.cc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative}
+.cc .k{display:flex;gap:20px;align-items:center;padding:16px;border-radius:20px;background:#f6f6f6;position:relative;overflow:hidden;cursor:pointer;transition:transform .35s var(--ease),background .3s,box-shadow .35s}
+.cc .k::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.cc .k:hover,.cc .k.act{transform:translateY(-4px);background:#f1f1f1;box-shadow:0 18px 30px -18px rgba(0,0,0,.25)}
+.cc .k:hover::after,.cc .k.act::after{transform:scaleX(1)}
+.cc .img{width:120px;height:120px;border-radius:14px;overflow:hidden;position:relative;flex:none;background:#ddd}
+.cc .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease),opacity .4s}
+.cc .k:hover .img img,.cc .k.act .img img{transform:scale(1.12)}
+.cc .num{position:absolute;left:8px;top:8px;width:22px;height:22px;border-radius:7px;background:rgba(255,255,255,.9);font-family:'JetBrains Mono',monospace;font-size:11px;display:grid;place-items:center;font-weight:500;transition:background .3s,color .3s}
+.cc .k:hover .num,.cc .k.act .num{background:var(--blue);color:#fff}
+.step em{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:6px;overflow:hidden}
+.step b{display:block;font-weight:400;font-size:20px;letter-spacing:-.7px}
+.step span.d{display:block;font-size:14px;color:var(--mute);letter-spacing:-.2px;margin-top:4px;line-height:1.4}
+.track{position:absolute;left:0;right:0;top:-22px;height:2px;pointer-events:none;--g1:#112baf;--g2:#4a63e8;--g3:#8b7bff}
+.track .rail{position:absolute;inset:0;border-radius:2px;background:linear-gradient(90deg,transparent,rgba(17,43,175,.28) 12%,rgba(74,99,232,.28) 50%,rgba(139,123,255,.28) 88%,transparent);opacity:0;animation:fadein .9s .1s var(--ease) forwards}
+.track .rail::after{content:"";position:absolute;left:4%;right:4%;top:-8px;height:18px;background:radial-gradient(60% 100% at 50% 50%,rgba(74,99,232,.16),transparent 70%);filter:blur(6px)}
+.track .beam{position:absolute;top:0;height:2px;left:0;width:0;border-radius:3px;opacity:0;background:linear-gradient(90deg,transparent,var(--g1) 18%,var(--g2) 50%,var(--g3) 82%,transparent);transition:left .85s var(--ease),width .85s var(--ease),opacity .5s}
+.track .beam::before{content:"";position:absolute;left:8%;right:8%;top:-5px;height:12px;background:linear-gradient(90deg,transparent,var(--g1) 20%,var(--g2) 50%,var(--g3) 80%,transparent);filter:blur(7px);opacity:.32}
+.track .beam.on{opacity:1}
+@keyframes fadein{to{opacity:1}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.cc .k::after{display:none}
+.cc .k .glow{position:absolute;left:0;right:0;top:0;height:70px;background:linear-gradient(180deg,rgba(74,99,232,.13),transparent);opacity:0;transition:opacity .5s;pointer-events:none}
+.cc .k:hover .glow,.cc .k.act .glow{opacity:1}
+
+.cc{grid-template-columns:repeat(var(--n,3),1fr)}
+.cc.five .k{flex-direction:column;align-items:stretch;gap:14px;padding:14px}
+.cc.five .img{width:100%;height:112px}
+.cc.five .step b{font-size:18px}
+.cc .k.new::before{content:"NEW STEP";position:absolute;right:12px;top:12px;z-index:2;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.6px;background:var(--blue);color:#fff;padding:3px 7px;border-radius:20px}
+.hgt{transition:height .55s var(--ease)}
+.hgt.anim{overflow:hidden}
+#Awrap{padding:40px 28px 0;margin:0 -28px}
+/* ===== B. pill strip ===== */
+.strip-wrap{max-width:1312px;margin:0 auto;position:relative;padding-bottom:84px}
+.strip{display:flex;align-items:center;gap:10px;background:#f6f6f6;border-radius:100px;padding:14px 14px 14px 28px}
+.strip .lead{font-size:16px;letter-spacing:-.5px;font-weight:500;white-space:nowrap}
+.strip .vd{width:1px;height:24px;background:var(--line)}
+.pillstep{position:relative}
+.pillstep button{all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;font-size:14px;letter-spacing:-.2px;padding:8px 10px;border-radius:40px;transition:background .25s}
+.pillstep button:hover,.pillstep button.act{background:#fff}
+.pillstep button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.pillstep.new i::after{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--blue);margin-left:6px;vertical-align:1px}
+.pillstep button:hover i::after,.pillstep button.act i::after{background:#fff}
+.pillstep i{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:11px;padding:4px 10px;border-radius:30px;background:#fff;text-transform:uppercase;letter-spacing:.4px;transition:background .25s,color .25s;overflow:hidden;display:inline-block}
+.pillstep button:hover i,.pillstep button.act i{background:var(--blue);color:#fff}
+.arrow{position:relative;width:22px;height:12px;flex:none}
+.arrow::before{content:"";position:absolute;left:0;right:5px;top:5px;height:1.5px;background:rgba(0,0,0,.25);transform-origin:left;animation:grow .6s var(--ease) both;animation-delay:calc(var(--i,0)*120ms + 150ms)}
+.arrow::after{content:"";position:absolute;right:1px;top:2.5px;width:6px;height:6px;border-top:1.5px solid rgba(0,0,0,.25);border-right:1.5px solid rgba(0,0,0,.25);transform:rotate(45deg);opacity:0;animation:rise .4s both;animation-delay:calc(var(--i,0)*120ms + 600ms)}
+.tip{position:absolute;left:50%;top:calc(100% + 18px);transform:translate(-50%,6px);width:250px;background:#000;color:#fff;border-radius:16px;padding:14px 16px;font-size:13px;line-height:1.45;letter-spacing:-.2px;opacity:0;pointer-events:none;transition:opacity .25s,transform .35s var(--ease);z-index:3}
+.tip::before{content:"";position:absolute;left:50%;top:-5px;width:10px;height:10px;background:#000;transform:translateX(-50%) rotate(45deg)}
+.tip b{display:block;font-weight:500;font-size:14px;margin-bottom:2px}
+.pillstep:hover .tip,.pillstep:focus-within .tip{opacity:1;transform:translate(-50%,0)}
+.strip .grow{flex:1}
+.strip .prog{position:absolute;left:32px;right:32px;bottom:-1px;height:2px;border-radius:2px;background:transparent;overflow:hidden}
+.strip-sub{margin-top:20px;text-align:center;font-size:14px;color:var(--mute);letter-spacing:-.2px}
+
+/* ===== C. spec table ===== */
+.lst{max-width:900px;margin:0 auto}
+.lst .r{position:relative;display:grid;grid-template-columns:48px 1fr 190px 24px;gap:20px;align-items:baseline;padding:28px 12px;border-top:1px solid var(--line);cursor:pointer;transition:padding .4s var(--ease)}
+.lst .r:last-child{border-bottom:1px solid var(--line)}
+.lst .r::before{content:"";position:absolute;inset:0;background:#f6f6f6;opacity:0;transform:scaleY(.6);transform-origin:center;border-radius:12px;transition:opacity .3s,transform .4s var(--ease);z-index:0}
+.lst .r>*{position:relative;z-index:1}
+.lst .r:hover::before,.lst .r.open::before{opacity:1;transform:none}
+.lst .r:hover{padding-left:24px;padding-right:24px}
+.lst .r em{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute);transition:color .3s}
+.lst .r:hover em,.lst .r.open em{color:var(--blue)}
+.lst .r b{font-weight:400;font-size:24px;letter-spacing:-.9px;display:block}
+.lst .r .t{overflow:hidden}
+.lst .r .more{display:block;color:var(--mute);font-size:15px;letter-spacing:-.3px;line-height:1.5;max-height:0;opacity:0;transition:max-height .5s var(--ease),opacity .4s,margin .4s;margin-top:0}
+.lst .r:hover .more,.lst .r.open .more{max-height:60px;opacity:1;margin-top:6px}
+.lst .r .dt{text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.5px;text-transform:uppercase;overflow:hidden;height:16px}
+.lst .r .go{opacity:0;transform:translateX(-8px);transition:opacity .3s,transform .4s var(--ease);color:var(--blue)}
+.lst .r:hover .go,.lst .r.open .go{opacity:1;transform:none}
+.lst .r .tick{position:absolute;left:0;top:-1px;height:1px;width:100%;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease);z-index:2}
+.lst .r:hover .tick,.lst .r.open .tick{transform:scaleX(1)}
+
+.cta-row{display:flex;gap:10px;justify-content:center;margin-top:36px}
+.foot{font-size:13px;color:var(--mute);line-height:1.6;max-width:820px;margin-top:8px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="page">
+  <div class="top">
+    <h1>Sizing section<br>— 3 directions, 2 paths</h1>
+    <p>Your picks (thumbnail cards, pill strip, spec table) with micro-interactions. The toggle has two paths: “I know my Ring size” keeps 3 steps, “Send the free kit” becomes 5 (two added: size, then return the sizing kit).</p>
+  </div>
+
+  <div class="notes">
+    <div><h4>2 paths, 3 or 5 steps</h4><p>Sliding toggle between “I know my Ring size” (3 steps) and “Send the free kit” (5 steps: Order, Size, Return kit, Ships, Arrives). Arrow keys supported.</p></div>
+    <div><h4>Steps grow smoothly</h4><p>Going from 3 to 5 steps animates the container height instead of jumping. Old steps fade up and out, new ones rise in with a stagger, the two new steps land last.</p></div>
+    <div><h4>Dates roll, not blink</h4><p>Date chips and labels slide in from below like a departures board, so a changed date is noticed without being loud.</p></div>
+    <div><h4>Calm by default</h4><p>Motion is short (150–550ms), one easing curve, and fully disabled under “reduce motion”.</p></div>
+  </div>
+
+  <!-- A -->
+  <div class="idea">
+    <div class="meta"><span class="n">A</span><h2>Thumbnail cards</h2><p>3 steps, or 5 in the kit path (cards switch to a compact column layout). Hover: card lifts, photo slowly zooms, number badge turns blue, a progress line draws. Switching a path cross-fades the photos and re-staggers the cards. A line draws across the top on load.</p></div>
+    <div class="ctx" id="ctxA">
+      <div class="hd"><div class="h2">Get it your way.</div><div class="sub">Know your size, or let us send a free kit first.</div></div>
+      <div class="c" style="margin-bottom:44px"><div class="seg" data-seg="A"></div></div>
+      <div class="hgt" id="Awrap"><div class="cc" id="A"><div class="track"><span class="rail"></span><span class="beam"></span></div></div></div>
+      <div class="cta-row"><a class="btn b" href="buy.html" id="ctaA">Buy Ring PRO <span class="ar">→</span></a></div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div class="idea">
+    <div class="meta"><span class="n">B</span><h2>Pill strip</h2><p>Arrows draw themselves in sequence. Hover or focus a step to open a tooltip with the detail and the pill fills blue. The first label and CTA update with the path.</p></div>
+    <div class="ctx" id="ctxB">
+      <div class="hd"><div class="h2">Get it your way.</div></div>
+      <div class="c" style="margin-bottom:44px"><div class="seg" data-seg="B"></div></div>
+      <div class="strip-wrap" id="Bwrap">
+        <div class="strip" id="B"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="idea">
+    <div class="meta"><span class="n">C</span><h2>Spec table</h2><p>Rows light up on hover: a blue rule draws across, the row pads inwards, the detail line unfolds and an arrow slides in. Dates roll in when you change path. Click a row to pin it open.</p></div>
+    <div class="ctx" id="ctxC">
+      <div class="hd"><div class="h2">Order to doorstep.</div></div>
+      <div class="c" style="margin-bottom:44px"><div class="seg" data-seg="C"></div></div>
+      <div class="hgt" id="Cwrap"><div class="lst" id="C"></div></div>
+      <div class="cta-row"><a class="btn blk" href="buy.html" id="ctaC">Buy Ring PRO <span class="ar">→</span></a></div>
+    </div>
+  </div>
+
+  <p class="foot">Copy for each path is built from lines already used on the site: “Gifting? You give it. They size it.”, “HSA/FSA card, 4 interest-free payments”, “Free sizing kit, get within 2 days”, “Tracking by email and SMS”, “30-day returns”. Dates are the current estimates from the design (ship by Oct 30, est. Nov 2).</p>
+</div>
+
+<script>
+var PATHS=[
+ {id:'size',label:'I know my Ring size',cta:'Buy Ring PRO',href:'buy.html',lead:'Free sizing kit',
+  steps:[
+   {short:'Today',when:'Today',t:'Order',d:'Finish and size',more:'Pick a finish and a size from 5–14.',img:'bf8ef',pos:'30% 40%'},
+   {short:'Oct 30',when:'Ships by Oct 30',t:'Ships',d:'Tracking by email and SMS',more:'We text and email you at every step.',img:'99800',pos:'50% 50%'},
+   {short:'Nov 2',when:'Est. Nov 2',t:'Arrives',d:'30-day returns start',more:'Not right? Send it back within 30 days.',img:'d3553',pos:'50% 70%'}]},
+ {id:'kit',label:'Send the free kit',cta:'Order with free kit',href:'buy.html',lead:'Free kit',
+  steps:[
+   {short:'Today',when:'Today',t:'Order',d:'Finish, and a free sizing kit',more:'Choose your finish. The sizing kit is free.',img:'bf8ef',pos:'30% 40%'},
+   {short:'2 days',when:'Within 2 days',t:'Size',d:'Try the kit, find your size',more:'Wear each size for a day, then tell us the one that fits.',img:'1a0db',pos:'50% 50%',isNew:1},
+   {short:'Free label',when:'Free label',t:'Return kit',d:'Send the sizing kit back',more:'Prepaid label included. Pop it in the post.',img:'60a82',pos:'50% 45%',isNew:1},
+   {short:'After kit',when:'After sizing',t:'Ships',d:'Tracking by email and SMS',more:'Your ring ships in the size you picked.',img:'99800',pos:'50% 50%'},
+   {short:'Then',when:'A few days later',t:'Arrives',d:'30-day returns start',more:'Not right? Send it back within 30 days.',img:'d3553',pos:'50% 70%'}]}
+];
+var state={A:0,B:0,C:0};
+var $=function(s,r){return (r||document).querySelector(s)};
+function stagger(nodes){nodes.forEach(function(n,i){n.style.setProperty('--i',i)})}
+
+/* ---------- toggle ---------- */
+function buildSeg(el,key){
+  el.setAttribute('role','tablist');
+  var thumb=document.createElement('span');thumb.className='thumb';el.appendChild(thumb);
+  PATHS.forEach(function(p,i){
+    var b=document.createElement('button');b.setAttribute('role','tab');b.dataset.i=i;
+    b.innerHTML=p.label+'<span class="k">'+(i+1)+'</span>';
+    b.addEventListener('click',function(){select(key,i)});
+    el.appendChild(b);
+  });
+  el.addEventListener('keydown',function(e){
+    var i=state[key],n=PATHS.length;
+    if(e.key==='ArrowRight'){i=(i+1)%n}else if(e.key==='ArrowLeft'){i=(i-1+n)%n}else if(e.key==='Home'){i=0}else if(e.key==='End'){i=n-1}else return;
+    e.preventDefault();select(key,i);el.querySelectorAll('button')[i].focus();
+  });
+}
+function moveThumb(key){
+  var el=$('[data-seg="'+key+'"]'),btns=el.querySelectorAll('button'),b=btns[state[key]],th=$('.thumb',el);
+  btns.forEach(function(x,i){x.setAttribute('aria-selected',i===state[key]);x.tabIndex=i===state[key]?0:-1});
+  th.style.width=b.offsetWidth+'px';th.style.transform='translateX('+b.offsetLeft+'px)';
+}
+
+/* height-animating swap helper */
+function swap(root,wrap,first,fill,outSel){
+  if(first){fill();return}
+  var h0=wrap.offsetHeight;wrap.classList.add('anim');wrap.style.height=h0+'px';
+  [].slice.call(root.querySelectorAll(outSel)).forEach(function(c){c.classList.add('out')});
+  setTimeout(function(){
+    fill();
+    wrap.style.height='auto';var h1=wrap.offsetHeight;wrap.style.height=h0+'px';wrap.offsetHeight;
+    wrap.style.height=h1+'px';
+    setTimeout(function(){wrap.style.height='';wrap.classList.remove('anim')},600);
+  },170);
+}
+/* ---------- A ---------- */
+function renderA(first){
+  var root=$('#A'),wrap=$('#Awrap'),p=PATHS[state.A];
+  function fill(){
+    root.querySelectorAll('.k').forEach(function(n){n.remove()});
+    root.style.setProperty('--n',p.steps.length);
+    root.classList.toggle('five',p.steps.length>3);
+    p.steps.forEach(function(s,i){
+      var k=document.createElement('div');k.className='k in'+(s.isNew?' new':'');
+      k.innerHTML='<div class="img"><img src="figma/'+s.img+'.jpg" alt="" style="object-position:'+s.pos+'"><span class="num">'+(i+1)+'</span></div><div class="step"><em><span class="roll">'+s.when+'</span></em><b>'+s.t+'</b><span class="d">'+s.d+'</span></div>';
+      root.appendChild(k);
+    });
+    var ks=[].slice.call(root.querySelectorAll('.k'));stagger(ks);stagger([].slice.call(root.querySelectorAll('.roll')));
+    var c=$('#ctaA');c.firstChild.textContent=p.cta+' ';c.href=p.href;
+    var beam=$('.beam',root),ks2=[].slice.call(root.querySelectorAll('.k'));
+    ks2.forEach(function(k){var g=document.createElement('span');g.className='glow';k.insertBefore(g,k.firstChild)});
+    function place(i){var k=ks2[i];if(!k)return;beam.style.left=k.offsetLeft+'px';beam.style.width=k.offsetWidth+'px';beam.classList.add('on')}
+    var k0=ks2[0];beam.classList.remove('on');beam.style.transition='none';beam.style.left=(k0.offsetLeft+k0.offsetWidth*.4)+'px';beam.style.width=(k0.offsetWidth*.2)+'px';beam.offsetWidth;beam.style.transition='';
+    setTimeout(function(){place(0)},first?450:300);
+    ks2.forEach(function(k,i){
+      k.addEventListener('mouseenter',function(){place(i)});
+      k.addEventListener('mouseleave',function(){place(0)});
+    });
+  }
+  swap(root,wrap,first,fill,'.k');
+}
+
+/* ---------- B ---------- */
+function renderB(first){
+  var root=$('#B'),wrap=$('#Bwrap'),p=PATHS[state.B];
+  function fill(){
+    var html='<div class="lead in" style="--i:0">'+p.lead+'</div><div class="vd"></div>';
+    p.steps.forEach(function(s,i){
+      html+='<div class="pillstep in'+(s.isNew?' new':'')+'" style="--i:'+(i+1)+'"><button type="button"><i><span class="roll" style="--i:'+i+'">'+s.short+'</span></i>'+s.t+'</button><div class="tip" role="tooltip"><b>'+s.d+'</b>'+s.more+'</div></div>';
+      if(i<p.steps.length-1)html+='<span class="arrow" style="--i:'+i+'"></span>';
+    });
+    html+='<div class="grow"></div><a class="btn blk in" style="--i:'+(p.steps.length+1)+'" href="'+p.href+'">'+p.cta+' <span class="ar">→</span></a>';
+    root.innerHTML=html;
+    root.querySelectorAll('.pillstep button').forEach(function(b){
+      b.addEventListener('click',function(){var was=b.classList.contains('act');root.querySelectorAll('button').forEach(function(x){x.classList.remove('act')});if(!was)b.classList.add('act')});
+    });
+  }
+  if(first){fill();return}
+  [].slice.call(root.children).forEach(function(c){c.classList.add('out')});
+  setTimeout(fill,170);
+}
+
+/* ---------- C ---------- */
+function renderC(first){
+  var root=$('#C'),wrap=$('#Cwrap'),p=PATHS[state.C];
+  function fill(){
+    var html='';
+    p.steps.forEach(function(s,i){
+      html+='<div class="r in" style="--i:'+i+'" tabindex="0"><span class="tick"></span><em>0'+(i+1)+'</em><div class="t"><b>'+s.t+(s.isNew?' <small style="font-family:JetBrains Mono,monospace;font-size:9px;letter-spacing:.6px;background:var(--blue);color:#fff;padding:3px 7px;border-radius:20px;vertical-align:6px;margin-left:6px">NEW</small>':'')+'</b><span class="d" style="color:var(--mute);font-size:15px;letter-spacing:-.3px">'+s.d+'</span><span class="more">'+s.more+'</span></div><div class="dt"><span class="roll" style="--i:'+i+'">'+s.when+'</span></div><span class="go">→</span></div>';
+    });
+    root.innerHTML=html;
+    root.querySelectorAll('.r').forEach(function(r){
+      r.addEventListener('click',function(){var o=r.classList.contains('open');root.querySelectorAll('.r').forEach(function(x){x.classList.remove('open')});if(!o)r.classList.add('open')});
+      r.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();r.click()}});
+    });
+    var c=$('#ctaC');c.firstChild.textContent=p.cta+' ';c.href=p.href;
+  }
+  swap(root,wrap,first,fill,'.r');
+}
+
+var R={A:renderA,B:renderB,C:renderC};
+function select(key,i){if(state[key]===i)return;state[key]=i;moveThumb(key);R[key](false)}
+['A','B','C'].forEach(function(k){buildSeg($('[data-seg="'+k+'"]'),k)});
+function init(){['A','B','C'].forEach(function(k){moveThumb(k);R[k](true)})}
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(init);
+addEventListener('resize',function(){['A','B','C'].forEach(moveThumb)});
+function fit(){document.getElementById('page').style.zoom=Math.min(1,document.documentElement.clientWidth/1600);['A','B','C'].forEach(moveThumb)}
+fit();addEventListener('resize',fit);
+</script>
+</body>
+</html>

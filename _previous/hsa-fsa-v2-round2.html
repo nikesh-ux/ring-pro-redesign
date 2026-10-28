@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ring PRO HSA/FSA Page · V2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Geist:wght@400;500&family=Geist+Mono:wght@400;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#112baf;--ink:#000;--mute:rgba(0,0,0,.6);--line:rgba(0,0,0,.16);--W:1600px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff;color:#000;font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:none}
+a{color:inherit;text-decoration:none}
+.a{position:absolute}
+#page{width:var(--W);margin:0 auto;position:relative;transform-origin:top left}
+section{position:relative;width:1600px;overflow:hidden}
+.mono{font-family:'JetBrains Mono',monospace}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;height:43px;width:144px;border-radius:50px;font-size:13px;letter-spacing:-.104px;line-height:24px;white-space:nowrap;cursor:pointer;transition:transform .15s,opacity .15s}
+.btn:hover{opacity:.88}.btn:active{transform:scale(.98)}
+.btn.blue{background:var(--blue);color:#fff}
+.btn.ghost{border:1px solid var(--line);color:#000;height:41px}
+.btn.ghost.dk{border-color:rgba(255,255,255,.16);color:#fff}
+.btn.black{background:#000;color:#fff;height:44px;width:168px}
+.btn.white{background:#fff;color:#000;height:41px}
+.btnrow{display:flex;gap:12px;align-items:flex-start}
+/* top */
+.ann{height:66px;border-bottom:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;font-size:12px;letter-spacing:-.24px;line-height:24px}
+.ann u{text-decoration-thickness:1px;text-underline-offset:2px;text-decoration-color:rgba(0,0,0,.64);margin-left:3px}
+.nav{position:relative;height:74px}
+.nav .t{position:absolute;top:18px;height:40px;display:flex;align-items:center;font-size:13px;letter-spacing:-.26px;white-space:nowrap}
+.promo{position:relative;margin:0 10px;height:560px;border-radius:16px;overflow:hidden;background:#c4c4c4;display:grid;grid-template-columns:1fr 1fr 1fr}
+.promo .p{position:relative;overflow:hidden}
+.promo .p img{width:100%;height:100%;object-fit:cover}
+.promo .p::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.2)}
+.promo .copy{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:1200px;display:flex;flex-direction:column;align-items:center;gap:24px;color:#fff;text-align:center;z-index:2}
+.promo .copy h2{font-family:'Anton','Dharma Gothic M',sans-serif;font-weight:400;font-size:84px;line-height:1.2;text-transform:uppercase;letter-spacing:.5px;mix-blend-mode:lighten}
+.promo .copy p{font-size:16px;letter-spacing:-.6px;line-height:1.1}
+/* HSA/FSA page */
+.eb{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.mu{color:var(--mute)}
+.fine{font-size:13px;line-height:1.5;color:var(--mute)}
+.big{font-size:64px;letter-spacing:-2.5px;line-height:1;font-weight:400;display:block}
+.hd{display:flex;flex-direction:column;gap:20px}
+.hd h2{font-size:56px;font-weight:400;line-height:1.05;letter-spacing:-2.5px}
+.hd p{font-size:16px;letter-spacing:-.4px;color:var(--mute)}
+.hd.c{align-items:center;text-align:center}
+section.hh,section.fd,section.tw,section.tl,section.ck,section.tx,section.rc,section.fq{width:1600px}
+
+/* transparent nav */
+.tnav{position:absolute;left:0;right:0;top:0;height:92px;z-index:20;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 80px;background:linear-gradient(180deg,rgba(0,0,0,.55),transparent);color:#fff;font-family:'Inter',sans-serif}
+.tnav .lg img{filter:invert(1);display:block}
+.tnav .ln{display:flex;gap:40px;font-size:13px;letter-spacing:-.1px}
+.tnav .ln a{color:rgba(255,255,255,.7);transition:color .15s}
+.tnav .ln a:hover,.tnav .ln a.on{color:#fff}
+.tnav .ln i{font-style:normal;margin-right:8px}
+.tnav .cta{justify-self:end;display:inline-flex;align-items:center;height:36px;padding:0 22px;border-radius:48px;background:#1539f5;color:#fff;font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase}
+/* hero */
+.hh{height:100vh;min-height:740px;margin:0;width:1600px;border-radius:0;background:#050506;color:#fff}
+.hh .bg{position:absolute;inset:0;overflow:hidden}
+.hh .bg img{position:absolute;left:0;top:200px;width:100%;height:auto;}
+.hh .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#050506 0,rgba(5,5,6,.85) 14%,rgba(5,5,6,.2) 42%,rgba(5,5,6,.35) 100%),rgba(0,0,0,.18),radial-gradient(ellipse 55% 40% at 50% 28%,rgba(0,0,0,.45),transparent 80%)}
+.hh .txt{position:absolute;left:50%;top:150px;transform:translateX(-50%);width:1100px;display:flex;flex-direction:column;gap:26px;align-items:center;text-align:center;z-index:2}
+.hh h1{font-size:76px;font-weight:400;line-height:1.04;letter-spacing:-3.4px;width:1100px}
+.hh .sub{font-size:18px;line-height:1.5;letter-spacing:-.5px;color:rgba(255,255,255,.72);width:760px}
+.hh .note{font-size:13px;color:rgba(255,255,255,.6)}.hh .note i{font-style:normal;margin:0 6px}
+.hh .btn.ghost{border-color:rgba(255,255,255,.3);color:#fff}
+.hh .btn.blue{background:#fff;color:#000;height:48px;width:auto;padding:0 28px;font-size:15px}
+.hh .elig{font-size:14px;letter-spacing:-.3px;color:rgba(255,255,255,.75)}
+.badge{display:inline-flex;align-self:center;color:#fff;gap:8px;align-items:center;padding:2px 10px;border-radius:40px;background:rgba(255,255,255,.12);box-shadow:0 2px 8.1px rgba(0,0,0,.25);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:14px;line-height:1.6;letter-spacing:-.6px}
+.badge .chk{position:relative;display:block;width:13px;height:18px;flex:none}
+.badge .chk img{position:absolute;left:.38px;top:2.23px;width:12.62px;height:13.83px;filter:invert(1)}
+/* route finder */
+.fd{padding:120px 80px;background:#fff;display:flex;flex-direction:column;gap:64px}
+.fd .grid{display:grid;grid-template-columns:1fr 680px;gap:16px;align-items:stretch}
+.fd .qs{background:#f6f6f5;border-radius:32px;padding:56px;display:flex;flex-direction:column;justify-content:center;gap:44px}
+.fd .qs .sep{height:1px;background:rgba(0,0,0,.1)}
+fieldset{border:0;min-width:0}
+legend{font-size:26px;letter-spacing:-1px;margin-bottom:20px;padding:0}
+.opts{display:flex;flex-wrap:wrap;gap:10px}
+.opts label{position:relative}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts span{display:inline-flex;align-items:center;height:52px;padding:0 30px;font-size:16px;border-radius:50px;border:1px solid var(--line);background:#fff;font-size:15px;letter-spacing:-.2px;cursor:pointer;transition:background .15s,color .15s}
+.opts input:checked+span{background:#000;color:#fff;border-color:#000}
+.opts input:focus-visible+span{outline:2px solid var(--blue);outline-offset:2px}
+.hint{font-size:13px;color:var(--mute);margin-top:12px}
+.res{position:relative;width:680px;height:auto;border-radius:32px;background:#f4f4f5;padding:8px;display:flex;flex-direction:column;box-shadow:0 40px 70px -40px rgba(0,0,0,.28),0 0 0 1px rgba(0,0,0,.04)}
+.res .pnl{background:#fff;border-radius:26px 26px 22px 22px;padding:44px 48px 24px;display:flex;flex-direction:column;gap:18px;box-shadow:0 1px 0 rgba(0,0,0,.06),0 10px 24px -18px rgba(0,0,0,.2)}
+.res .hrow{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.res .k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.res .cnt{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(0,0,0,.55);padding:8px 14px;border-radius:50px;background:#f4f4f5;white-space:nowrap;flex:none}
+.res h3{font-size:42px;font-weight:400;letter-spacing:-1.8px;line-height:1.06;color:#000}
+.res p{font-size:16px;line-height:1.5;color:rgba(0,0,0,.45);letter-spacing:-.3px}
+.res #r-p{min-height:48px;margin-bottom:22px}
+.res ol{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;counter-reset:r}
+.res li{counter-increment:r;display:flex;align-items:center;gap:18px;padding:20px 0;border-top:1px solid rgba(0,0,0,.07);font-size:16px;letter-spacing:-.3px;color:#000}
+.res li::before{content:counter(r);flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;background:#f4f4f5;color:rgba(0,0,0,.6)}
+.res .drw{padding:30px 40px 32px;display:flex;flex-direction:column;gap:26px}
+.res .need{min-height:42px;font-size:14px;line-height:1.5;color:rgba(0,0,0,.55);letter-spacing:-.2px}
+.res .need .eb{display:block;margin-bottom:10px;font-size:11px}
+.res .btn{width:100%;height:56px;font-size:16px;letter-spacing:-.3px}
+
+/* three ways */
+.tw{padding:120px 80px;background:#000;color:#fff;display:flex;flex-direction:column;gap:64px}
+.tw .hd p,.tw .eb{color:rgba(255,255,255,.55)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.w{background:#121212;border:1px solid #232323;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:14px}
+.w .wt{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}
+.w .ic{width:56px;height:56px;border-radius:50%;background:#1f1f1f;display:grid;place-items:center;color:#fff}
+.w .ic svg{width:26px;height:26px}
+.w .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);padding:8px 14px;border-radius:50px;background:#1f1f1f}
+.w h3,.d h3{font-size:34px;font-weight:400;letter-spacing:-1.4px;line-height:1.08}
+.w p{font-size:16px;line-height:1.5;color:rgba(255,255,255,.6);letter-spacing:-.3px;min-height:72px}
+.facts{list-style:none;margin:22px 0 0;display:flex;flex-direction:column;gap:8px}
+.facts li{display:flex;justify-content:space-between;align-items:center;gap:16px;background:#1a1a1a;border-radius:14px;padding:16px 20px;font-size:15px}
+.facts span{color:rgba(255,255,255,.5)}
+.facts b{font-weight:500;font-size:17px;letter-spacing:-.4px;color:#fff}
+.w.feat .ic{background:var(--blue);color:#fff}
+.w.feat .tag{background:var(--blue);color:#fff}
+
+/* tax */
+.tx{height:640px;background:#fff}
+.tx .l{position:absolute;left:100px;top:120px;width:620px;display:flex;flex-direction:column;gap:16px}
+.tx h2{font-size:56px;font-weight:400;letter-spacing:-2.5px;line-height:1.05}
+.tx input[type=range]{width:100%;accent-color:var(--blue);margin-top:10px}
+.ticks{display:flex;justify-content:space-between;font-size:12px;color:var(--mute);font-family:'JetBrains Mono',monospace}
+.tx .o{position:absolute;left:820px;top:100px;width:680px;height:440px;border-radius:16px;background:#f6f6f5;padding:44px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.tx .o .big{font-size:96px;letter-spacing:-4px;color:var(--blue)}
+
+.tx2 .tool{min-height:480px}
+.tk{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute);margin-top:-2px}
+.tx2 .tool .fine{margin-top:auto}
+/* records */
+.rc{padding:120px 80px;background:#f6f6f5;display:flex;flex-direction:column;gap:64px}
+.d{background:#fff;border-radius:16px;padding:36px;display:flex;flex-direction:column;gap:14px;min-height:300px}
+.d svg{width:36px;height:36px;margin-bottom:auto}
+.d p{font-size:16px;color:var(--mute);line-height:1.5;letter-spacing:-.3px}
+/* faq */
+.fq{padding:120px 80px 140px;background:#fff;display:grid;grid-template-columns:460px 1fr;column-gap:80px}
+.fq .list{border-top:1px solid var(--line)}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:24px 0;font-size:22px;letter-spacing:-.8px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:28px;font-weight:300;color:var(--mute)}
+details[open] summary::after{content:"–"}
+details p{padding:0 60px 26px 0;font-size:16px;line-height:1.6;color:var(--mute);letter-spacing:-.3px}
+.disc{grid-column:2;margin-top:36px;font-size:13px;line-height:1.6;color:var(--mute);max-width:760px}
+
+/* footer */
+footer{background:#fafafa;width:1600px;padding:40px 80px 0;position:relative;overflow:hidden;font-family:'Inter',sans-serif}
+footer .g{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(0,0,0,.1);height:535.5px}
+footer .col{border-right:1px solid rgba(0,0,0,.06);padding:44px 29px 0 28px}
+footer .col:first-child{padding-left:0}footer .col:last-child{border-right:0}
+footer h4{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(0,0,0,.3);line-height:13px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:13px;margin-top:20px}
+footer ul.g16{gap:16px}
+footer li{font-size:13px;letter-spacing:-.15px;color:rgba(0,0,0,.7);line-height:19.5px;white-space:nowrap}
+footer li .new{display:inline-block;margin-left:14px;background:rgba(0,0,0,.1);border-radius:3px;padding:2px 6px;font-size:8px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;line-height:10px;vertical-align:1px}
+footer .sub{border-top:1px solid rgba(0,0,0,.05);margin-top:21px;padding-top:21px}
+footer .sub ul{margin-top:20px}
+footer .hsa{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(0,0,0,.3);border-radius:8px;padding:8px;margin-top:20px}
+footer .c3{display:grid;grid-template-columns:repeat(3,1fr);height:161px;border-bottom:1px solid rgba(0,0,0,.1)}
+footer .c3>div{padding:28px 28px 0;border-right:1px solid rgba(0,0,0,.06)}
+footer .c3>div:first-child{padding-left:0}footer .c3>div:last-child{border-right:0}
+footer .c3 h4{font-size:10px;line-height:12px}
+footer .c3 .l{font-size:13px;color:rgba(0,0,0,.7);line-height:15.5px;margin-top:14px;display:flex;flex-direction:column;gap:8px}
+footer .app{display:flex;gap:8px;margin-top:14px}
+footer .app a{border:1px solid rgba(0,0,0,.08);border-radius:8px;height:36.5px;padding:1px 15px;display:flex;flex-direction:column;justify-content:center}
+footer .app small{font-size:7px;color:rgba(0,0,0,.7);line-height:8.5px}
+footer .app b{font-size:10px;font-weight:500;color:#111;line-height:12px}
+footer .legal{height:87px;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;padding-top:20px;font-size:12px;color:rgba(0,0,0,.3);line-height:17px}
+footer .wm{height:220px;padding:44px 96px 0;overflow:hidden}
+footer .wm img{width:1280px;height:117px}
+/* ---- v2 additions ---- */
+.hero2{height:893px;margin:0 10px;width:1580px;border-radius:16px 16px 0 0;overflow:hidden}
+.hero2 .bg{position:absolute;left:50%;bottom:.56px;width:1770px;height:1075px;transform:translateX(-50%);overflow:hidden}
+.hero2 .bg img{position:absolute;height:99.94%;left:-98.75%;top:.07%;width:299.25%}
+.hero2 .txt{position:absolute;left:110px;top:calc(50% + 151px);transform:translateY(-50%);display:flex;flex-direction:column;gap:32px}
+.hero2 .brow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.hero2 .vrf{display:inline-flex;align-items:center;gap:10px;height:34px;padding:0 6px 0 12px;border-radius:40px;background:rgba(255,255,255,.1);box-shadow:0 2px 8.1px rgba(0,0,0,.1);font-size:13px;letter-spacing:-.3px;transition:background .2s}
+.hero2 .vrf:hover{background:rgba(255,255,255,.18)}
+.hero2 .vrf .al{opacity:.75}
+.hero2 .vrf .lgs{display:inline-flex;align-items:center;gap:10px;height:26px;padding:0 12px;border-radius:30px;background:#fff}
+.hero2 .vrf .lgs i{width:1px;height:12px;background:rgba(0,0,0,.15)}
+.hero2 .vrf .idme{height:11px;width:auto;display:block}
+.hero2 .vrf .govx{height:16px;width:auto;display:block;border-radius:2px}
+.hero2 .badge{display:inline-flex;align-self:center;color:#fff;gap:8px;align-items:center;padding:2px 10px;border-radius:40px;background:rgba(255,255,255,.1);box-shadow:0 2px 8.1px rgba(0,0,0,.1);font-size:14px;line-height:1.6;letter-spacing:-.6px}
+.hero2 .chk{position:relative;display:block;width:13px;height:18px;flex:none}
+.hero2 .chk img{position:absolute;left:.38px;top:2.23px;width:12.62px;height:13.83px;filter:invert(1)}
+.hero2 h1{font-weight:400;font-size:56px;line-height:1.2;letter-spacing:-2px;width:420px}
+.hero2 .sub{font-size:16px;line-height:1.6;letter-spacing:-.6px;width:366px}
+.hero2 .acts{display:flex;flex-direction:column;gap:12px}
+.hero2 .note{font-size:14px;line-height:1.6;letter-spacing:-.6px;white-space:pre}
+.hero2 .note i{font-style:normal;color:rgba(0,0,0,.3)}
+.hero2 .ben{position:absolute;left:1042px;top:723.5px;display:flex;gap:32px;align-items:center;white-space:nowrap}
+.hero2 .ben b{display:block;font-weight:500;font-size:16px;letter-spacing:-.64px}
+.hero2 .ben span{display:block;font-size:14px;line-height:1.4;letter-spacing:-.14px;color:rgba(0,0,0,.6);margin-top:8px}
+.hero2 .ben i{width:1px;height:48px;background:rgba(0,0,0,.14);display:block}
+/* stats + press */
+.stp{height:1576px;background:#fff}
+.stp .rule{position:absolute;left:161px;width:1277px;height:1px;background:rgba(0,0,0,.1)}
+.stp .st{position:absolute;top:133px}
+.stp .st b{display:block;font-weight:400;font-size:40px;line-height:1;letter-spacing:-3px}
+.stp .st span{display:block;font-size:16px;line-height:1.3;letter-spacing:-.4px;color:rgba(0,0,0,.4);margin-top:8px}
+.stp .vd{position:absolute;top:133px;width:1px;height:69px;background:rgba(0,0,0,.1)}
+.stp .eb{position:absolute;left:88px;top:490px}
+.stp .eb p{font-size:20px;line-height:1.2;text-transform:uppercase;color:rgba(0,0,0,.6)}
+.stp .eb h2{font-weight:400;font-size:48px;line-height:1.2;letter-spacing:-1px;margin-top:16px}
+.stp .cards{position:absolute;left:88px;top:647px;width:1424px}
+.stp .row{display:flex;width:1424px}
+.stp .q{flex:1;height:360px;padding:40px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(0,0,0,.1);margin-left:-1px}
+.stp .q:first-child{margin-left:0}
+.stp .row+.row .q{margin-top:-1px}
+.stp .q .av{width:48px;height:48px;border-radius:50%;background:#d9d9d9}
+.stp .q h4{font-weight:400;font-size:24px;line-height:1;letter-spacing:-.96px;margin-top:16px}
+.stp .q p{font-size:16px;line-height:1.3;letter-spacing:-.4px;color:rgba(0,0,0,.4);margin-top:16px;max-width:450px}
+.stp .q a{font-size:16px;line-height:1.5;letter-spacing:-.3px}
+.stp .row:first-child .q:first-child{border-top-left-radius:16px}.stp .row:first-child .q:last-child{border-top-right-radius:16px}
+.stp .row+.row .q:first-child{border-bottom-left-radius:16px}.stp .row+.row .q:last-child{border-bottom-right-radius:16px}
+/* buy panel */
+.sci{background:#000;height:202px;margin:-1px 0;position:relative}
+.sci .sc10{position:absolute;left:80px;top:20px;width:1440px;height:120px;border-radius:16px;overflow:hidden;background:#07104a;color:#fff;display:flex;align-items:center;gap:24px;padding:0 28px}
+.sci .sc10 canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+.sci .sc10::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(3,6,30,.9),rgba(3,6,30,.62) 38%,rgba(3,6,30,.12) 75%,rgba(3,6,30,0));pointer-events:none}
+.sci .sc10>*:not(canvas){position:relative;z-index:2}
+.sci .sc10 .eb{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.sci .sc10 .tt{font-size:28px;letter-spacing:-1px;line-height:1.2;margin-top:6px}
+.sci .sc10 .grow{flex:1}
+.sci .sc10 .sbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:43px;padding:0 24px;border-radius:50px;background:#fff;color:#000;font-size:13px;letter-spacing:-.104px;white-space:nowrap;transition:transform .2s}
+.sci .sc10 .sbtn:hover{transform:translateY(-1px)}
+.buyp{background:#000;color:#fff;height:1731px;padding:160px 80px}
+.buyp .wrap{display:flex;gap:16px;align-items:flex-start}
+.buyp .lc{width:712px;flex:none;display:flex;flex-direction:column;gap:32px;align-items:center;position:sticky;top:60px}
+.buyp .shot{width:712px;height:520px;border-radius:16px;background:#101010;overflow:hidden;position:relative}
+.buyp .shot img{position:absolute;left:96px;top:12px;width:520px}
+.buyp .cap{position:absolute;left:155px;top:402px;padding:16px;border-radius:20px;backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);background:rgba(255,255,255,.04);font-size:20px;line-height:1.6;letter-spacing:-1px;text-align:center;white-space:nowrap}
+.buyp .thumbs{display:flex;gap:12px;width:712px;padding-left:38px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
+.buyp .thumbs i{display:block;width:96px;height:72px;border-radius:12px;background:linear-gradient(180deg,#1b1b1b,#101010);flex:none;opacity:.9;cursor:pointer}
+.buyp .thumbs i:nth-child(1){outline:1px solid rgba(255,255,255,.3)}
+.buyp .rc{width:712px;display:flex;flex-direction:column;gap:16px}
+.buyp .bx{background:rgba(255,255,255,.1);border-radius:16px;padding:46px 48px;position:relative}
+.buyp .eyb{font-family:'JetBrains Mono',monospace;font-size:16px;letter-spacing:.64px;text-transform:uppercase;color:rgba(255,255,255,.6);line-height:1.2}
+.buyp .price{font-size:48px;line-height:1.6;letter-spacing:-1px;margin-top:8px}
+.buyp .price small{font-size:24px}
+.buyp .note{font-size:16px;line-height:1.4;letter-spacing:-.16px;color:rgba(255,255,255,.6);margin-top:8px}
+.buyp .li{display:flex;gap:30px;align-items:center;font-size:16px;letter-spacing:-.64px;line-height:normal;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.buyp .li:last-child{border-bottom:0}
+.buyp .li img{width:24px;height:24px;flex:none}
+.buyp .li .ln{flex:1;display:flex;flex-direction:column;gap:12px}
+.buyp .li .ln>div{display:flex;justify-content:space-between}
+.buyp .li .ln em{font-style:normal;color:rgba(255,255,255,.5)}
+.buyp .li .ln span{font-size:16px;line-height:1.4;letter-spacing:-.16px;color:rgba(255,255,255,.6)}
+.buyp .lst{margin-top:48px;display:flex;flex-direction:column}
+.buyp .bigbtn{display:flex;height:56px;margin-top:48px}
+.buyp .bigbtn a{flex:1;height:56px;border-radius:50px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:16px;letter-spacing:-.128px}
+.buyp .tr{display:flex;justify-content:space-between;margin-top:24px;font-size:16px;letter-spacing:-.64px}
+.buyp .tr span{display:flex;gap:8px;align-items:center}
+.buyp .tr img{width:20px;height:20px}
+.buyp .opt h3{font-weight:400;font-size:32px;line-height:1.6;letter-spacing:-1px;margin-top:8px}
+.buyp .opt .lst{margin-top:24px}
+.buyp .opt .li{padding:12px 0}
+.buyp .sb{display:flex;justify-content:space-between;align-items:center;padding:16px 50px;width:712px}
+.buyp .sb b{display:block;font-weight:500;font-size:16px;letter-spacing:-.64px}
+.buyp .sb span{display:block;font-size:14px;line-height:1.4;letter-spacing:-.14px;color:rgba(255,255,255,.6);margin-top:8px}
+.buyp .sb i{width:1px;height:48px;background:rgba(255,255,255,.14);display:block}
+/* sizing */
+.siz{height:1194px;background:#fff}
+.hd2{position:absolute;left:50%;transform:translateX(-50%);top:161px;width:616px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.hd2 h2{font-weight:400;font-size:40px;line-height:48px;letter-spacing:-1px}
+.hd2 p{font-size:16px;line-height:1.6;letter-spacing:-.6px;color:var(--mute);margin-top:16px}
+.seg{margin-top:42px;background:rgba(0,0,0,.07);border-radius:50px;padding:4px;display:flex}
+.seg button{all:unset;cursor:pointer;width:164px;height:43px;border-radius:50px;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:-.104px;color:rgba(0,0,0,.6);margin-right:-8px;transition:background .2s,color .2s;box-sizing:border-box}
+.seg button:last-child{margin-right:0}
+.seg button.on{background:#fff;color:#000}
+.cols3{position:absolute;left:92px;top:392px;width:1424px;display:flex;justify-content:space-between}
+.col3{width:464px;display:flex;flex-direction:column;gap:16px}
+.col3 .im{height:420px;border-radius:24px;background:rgba(223,223,223,.4);overflow:hidden;position:relative}
+.col3 .im img{position:absolute;object-fit:cover}
+.col3 .m{display:flex;flex-direction:column;gap:12px}
+.col3 .n{display:flex;gap:12px;align-items:center}
+.col3 .n b{width:24px;padding:4px;border-radius:6px;background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12px;line-height:1;text-align:center}
+.col3 .n img{width:368px;height:2px}
+.col3 .m .k{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:16px;line-height:1.2;text-transform:uppercase}
+.col3 .m h3{font-weight:400;font-size:24px;line-height:1.2;letter-spacing:-1px}
+.col3 .m p{font-size:16px;line-height:1.6;letter-spacing:-.6px;color:var(--mute)}
+/* pay */
+.pay{height:1194px;background:#fff}
+.pc{position:absolute;border-radius:24px;overflow:hidden;background:rgba(223,223,223,.4)}
+.pc .tx{position:absolute;left:24px;width:416px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.pc .tx h3{font-weight:400;font-size:20px;letter-spacing:-.8px;line-height:normal}
+.pc .tx p{font-size:16px;line-height:1.4;letter-spacing:-.16px;color:var(--mute)}
+.pc .tx .pill{display:inline-flex;align-items:center;justify-content:center;width:144px;height:41px;border-radius:50px;font-size:13px;letter-spacing:-.104px;background:rgba(0,0,0,.1);color:#000}
+.pc.dark .tx h3,.pc.dark .tx p{color:#fff}.pc.dark .tx .pill{background:rgba(255,255,255,.1);color:#fff}
+.pc .logo{position:absolute;top:125px;width:110px;height:110px;border-radius:61px;display:grid;place-items:center;overflow:hidden}
+.pc .logo img{width:82.5px;height:82.5px;object-fit:cover;border-radius:55px}
+.fan{position:absolute;inset:0;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 82%);mask-image:linear-gradient(180deg,#000 55%,transparent 82%)}
+.fan div{position:absolute;width:131.8px;height:164.8px;border-radius:10.4px;overflow:hidden;background:#4c4c4c}
+.fan div img{width:100%;height:100%;object-fit:cover}
+.cfl{position:absolute;left:0;right:0;top:0;height:320px;perspective:900px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%)}
+.cfl div{position:absolute;left:50%;top:34px;width:170px;height:230px;margin-left:-85px;border-radius:14px;overflow:hidden;background:#4c4c4c;box-shadow:0 20px 40px -22px rgba(0,0,0,.45)}
+.cfl div img{width:100%;height:100%;object-fit:cover}
+.gold{position:absolute;left:921px;top:38px;width:462px;height:281px;border-radius:18.6px;border:1.3px solid #fff;background:linear-gradient(112.6deg,#8a6b35 6%,#b8975a 26%,#e6d3a0 42%,#f2e4be 48%,#cbaa68 60%,#a1803f 78%,#b99654 95%);box-shadow:inset 0 0 20px rgba(60,40,10,.16),inset 0 .9px 0 rgba(255,250,232,.75),inset .8px 0 0 rgba(255,244,214,.28);-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent 100%);mask-image:linear-gradient(180deg,#000 72%,transparent 100%);overflow:hidden}
+.gold::after{content:"";position:absolute;inset:0;background:linear-gradient(117deg,transparent 34%,rgba(255,248,232,.17) 50%,transparent 66%),linear-gradient(180deg,rgba(255,255,255,.22),transparent 45%)}
+.gold .t{position:absolute;left:30px;top:53px;width:141px;z-index:2;text-transform:uppercase;color:rgba(78,56,18,.34)}
+.gold .t p{font-family:'Anton',sans-serif;font-style:italic;font-size:31px;line-height:.9;letter-spacing:-.6px;text-shadow:0 .8px .8px rgba(255,250,240,.4)}
+.gold .t small{display:block;font-family:'Geist Mono',monospace;font-weight:500;font-size:10.8px;line-height:14.9px;letter-spacing:-.39px;margin-top:6px}
+
+/* tools */
+.tl{overflow-anchor:none;padding:120px 80px;background:#fff;display:flex;flex-direction:column;gap:64px}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tool{background:#f6f6f5;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:20px;min-height:760px}
+.tool h3{font-size:32px;font-weight:400;letter-spacing:-1.3px}
+.inrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f{display:flex;flex-direction:column;gap:6px}
+.f label{font-size:13px;color:var(--mute)}
+.f input,.f select{height:48px;border:1px solid var(--line);border-radius:12px;padding:0 14px;font:inherit;font-size:15px;background:#fff;color:#000;width:100%;-webkit-appearance:none;appearance:none;outline:0}
+.f select{padding-right:44px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center}
+.f input:focus,.f select:focus{border-color:#000}
+.meter{height:10px;border-radius:5px;background:#e5e5e3;overflow:hidden;display:flex}
+.meter i{display:block;height:100%;transition:width .25s}
+.split{display:flex;flex-direction:column;gap:10px;background:#fff;border-radius:12px;padding:18px 20px}
+.split .r{display:flex;justify-content:space-between;font-size:15px}
+.split .r span{display:inline-flex;align-items:center;gap:8px}
+.split .t{border-top:1px solid var(--line);padding-top:10px}
+.dot{width:10px;height:10px;border-radius:3px;display:inline-block}
+.cal{background:#fff;border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:12px;min-height:300px;overflow-anchor:none}
+.cal .big{font-size:52px}
+.tl2{display:flex;flex-direction:column;gap:8px;font-size:14px}
+.tl2 div{display:flex;justify-content:space-between;gap:12px}
+.tl2 a{text-decoration:underline;text-underline-offset:3px}
+.warn{border-top:1px solid var(--line);padding-top:14px;font-size:12.5px;line-height:1.55;color:var(--mute)}
+
+/* tools v2 */
+.lr{display:flex;justify-content:space-between;align-items:baseline}
+.lr b{font-weight:500;font-size:16px;letter-spacing:-.3px}
+.f input[type=range]{-webkit-appearance:none;appearance:none;display:block;width:100%;height:24px;padding:0;margin:8px 0 0;border:0;border-radius:0;background:transparent;cursor:pointer;--p:50%}
+.f input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(90deg,#000 var(--p),#d9d9dc var(--p))}
+.f input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:#d9d9dc}
+.f input[type=range]::-moz-range-progress{height:4px;border-radius:2px;background:#000}
+.f input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;margin-top:-9px;border-radius:50%;background:#fff;border:0;box-shadow:0 0 0 1px rgba(0,0,0,.15),0 2px 6px rgba(0,0,0,.15)}
+.f input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:0;box-shadow:0 0 0 1px rgba(0,0,0,.15),0 2px 6px rgba(0,0,0,.15)}
+.f input[type=range]:focus-visible{outline:2px solid var(--blue);outline-offset:4px;border-radius:12px}
+.tool .fine{min-height:64px}
+.rb{margin-top:auto;background:#fff;border-radius:16px;padding:30px 30px 26px;display:flex;flex-direction:column;min-height:283px}
+.hero{display:flex;align-items:baseline;gap:14px;margin-bottom:26px}
+.hero b{font-weight:400;font-size:60px;letter-spacing:-3px;line-height:1}
+.hero span{font-size:16px;color:var(--mute);letter-spacing:-.3px}
+.st3{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:end;gap:10px}
+.st3 em{font-style:normal;font-size:22px;color:#c4c4c8;padding-bottom:5px}
+.st3.dv em{width:1px;height:42px;background:#e5e5e7;padding:0;align-self:end}
+.sc span{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mute);white-space:nowrap}
+.sc b{display:block;margin-top:8px;font-weight:400;font-size:26px;letter-spacing:-1px;line-height:1;white-space:nowrap}
+.cap{margin-top:auto;padding-top:18px;font-size:14px;line-height:1.5;color:var(--mute);min-height:42px}
+.cap b{font-weight:500;color:#000}
+@keyframes mo{from{opacity:.2;filter:blur(7px);transform:translateY(5px)}to{opacity:1;filter:blur(0);transform:none}}
+.mo{animation:mo .32s cubic-bezier(.2,.7,.2,1)}
+@media (prefers-reduced-motion:reduce){.mo{animation:none}}
+.bar2.open i{width:100%!important;background:linear-gradient(90deg,var(--blue) 0,var(--blue) 35%,rgba(17,43,175,0) 100%)}
+.bar2.open u{display:none}
+.bar2.open{background:transparent}
+.bar2{position:relative;height:8px;border-radius:4px;background:#e6e6e8;margin-top:22px}
+.bar2 i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:4px;background:var(--blue);transition:width .45s cubic-bezier(.2,.7,.2,1)}
+.bar2 u{position:absolute;top:-4px;bottom:-4px;width:2px;background:#000;border-radius:1px;transform:translateX(-1px)}
+.rw{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:15px 0;border-top:1px solid rgba(0,0,0,.07);font-size:15px}
+.rb .rw:first-of-type{border-top:0}
+.rw span{display:inline-flex;align-items:center;gap:10px;color:var(--mute)}
+.rw b{font-weight:500;font-size:16px;letter-spacing:-.3px;color:#000;text-align:right}
+.rw.t span{color:#000}
+.rw.t b{font-size:18px}
+.rw a{text-decoration:underline;text-underline-offset:3px}
+#c-tl .rw:first-child{border-top:0}
+#c-warn a{text-decoration:underline;text-underline-offset:3px;color:#000}
+
+
+/* ===================== V2: fewer boxes, one dark section ===================== */
+html,body{overflow-x:clip}
+section{overflow:visible}
+.hh{overflow:hidden}
+.hh h1{font-size:84px;letter-spacing:-3.8px;line-height:1.04;width:1200px}
+.hh .txt{width:1200px}
+.hcta{display:inline-flex;align-items:center;height:40px;padding:0 26px;border-radius:20px;background:#fff;color:#000;font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:opacity .15s}
+.hcta:hover{opacity:.88}
+.mu{color:rgba(0,0,0,.6)}
+
+/* finder */
+.fd2{padding:140px 80px;background:#fff;display:grid;grid-template-columns:1fr 680px;gap:96px;align-items:start}
+.fd2 .fl{display:flex;flex-direction:column;gap:20px;padding-top:8px}
+.fd2 h2{font-size:64px;font-weight:400;letter-spacing:-3px;line-height:1.02}
+.fd2 .qb{border-top:1px solid rgba(0,0,0,.12);padding-top:30px;margin-top:14px}
+.fd2 .qb+.qb{margin-top:18px}
+.ql{font-size:26px;letter-spacing:-1px;margin-bottom:20px}
+.res{position:relative;width:680px;height:auto}
+
+/* three ways */
+.w3{padding:140px 80px;background:#f5f5f5}
+.w3 .wh{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:80px}
+.w3 h2{font-size:64px;font-weight:400;letter-spacing:-3px;line-height:1.02}
+.w3 .wh p{max-width:340px;font-size:17px;line-height:1.5;color:rgba(0,0,0,.6);letter-spacing:-.3px}
+.w3 .c3x{display:grid;grid-template-columns:repeat(3,1fr)}
+.w3 .c{border-top:1px solid rgba(0,0,0,.2);padding:30px 44px 0 0;display:flex;flex-direction:column;gap:16px}
+.w3 .c+.c{padding-left:44px;border-left:1px solid rgba(0,0,0,.12)}
+.w3 .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}
+.w3 .num{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:rgba(0,0,0,.45)}
+.w3 .tg{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);display:inline-flex;align-items:center;gap:8px}
+.w3 .tg i{width:7px;height:7px;border-radius:50%;background:var(--blue);display:inline-block}
+.w3 .tg.g{color:rgba(0,0,0,.5)}
+.w3 h3{font-size:38px;font-weight:400;letter-spacing:-1.6px;line-height:1.06}
+.w3 p{font-size:17px;line-height:1.55;color:rgba(0,0,0,.6);letter-spacing:-.3px;min-height:80px}
+.w3 .ft{margin-top:22px}
+.w3 .ft div{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-top:1px solid rgba(0,0,0,.1);font-size:15px}
+.w3 .ft span{color:rgba(0,0,0,.5)}
+.w3 .ft b{font-weight:500;font-size:17px;letter-spacing:-.4px}
+
+
+
+/* tax */
+.px{padding:140px 80px;background:#f5f5f5;display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.px .pa{padding-right:90px;border-right:1px solid rgba(0,0,0,.14);display:flex;flex-direction:column;gap:20px}
+.px .pb{padding-left:90px;display:flex;flex-direction:column;gap:14px;justify-content:flex-start}
+.px h2{font-size:64px;font-weight:400;letter-spacing:-3px;line-height:1.02}
+.px .rt{display:flex;align-items:baseline;gap:14px;margin-top:34px}
+.px .rt b{font-weight:400;font-size:84px;letter-spacing:-4px;line-height:1}
+.px .rt span{font-size:16px;color:rgba(0,0,0,.6)}
+.px .big2{font-weight:400;font-size:132px;letter-spacing:-6.5px;line-height:1;color:var(--blue);margin-top:10px}
+.px .bar2{background:#dcdcdc;margin-top:30px}
+.px .cap{margin-top:16px;font-size:15px;color:rgba(0,0,0,.6);min-height:0}
+.px .pb .fine{margin-top:auto;font-size:13px;color:rgba(0,0,0,.5)}
+
+/* records */
+.rcd{padding:140px 80px;background:#fff;display:grid;grid-template-columns:460px 1fr;gap:80px;align-items:start}
+.rcd h2{font-size:64px;font-weight:400;letter-spacing:-3px;line-height:1.02}
+.rcd .it3{display:grid;grid-template-columns:repeat(3,1fr)}
+.rcd .it{padding:0 36px;border-left:1px solid rgba(0,0,0,.14);display:flex;flex-direction:column;gap:14px}
+.rcd .it:first-child{padding-left:0;border-left:0}
+.rcd .it svg{width:34px;height:34px;margin-bottom:34px}
+.rcd .it h3{font-size:28px;font-weight:400;letter-spacing:-1.1px}
+.rcd .it p{font-size:16px;line-height:1.55;color:rgba(0,0,0,.6);letter-spacing:-.3px}
+
+/* faq (dark) */
+.fq{background:#000;color:#fff}
+.fq .hd h2{color:#fff;font-size:64px;letter-spacing:-3px;line-height:1.02}
+.fq .hd .eb{color:rgba(255,255,255,.5)}
+.fq .list{border-top-color:#262626}
+.fq details{border-bottom-color:#262626}
+.fq summary{color:#fff}
+.fq summary::after{color:rgba(255,255,255,.55)}
+.fq details p{color:rgba(255,255,255,.6)}
+.fq .disc{color:rgba(255,255,255,.45)}
+
+/* ===== V2 round 2: V1 structure, greyscale sections, no sticky ===== */
+.rg{padding:140px 80px;background:#fff;display:grid;grid-template-columns:1fr 760px;gap:96px;align-items:center}
+.rg .rgt{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.rg h2{font-size:64px;font-weight:400;letter-spacing:-3px;line-height:1.02}
+.rg .rgt p{font-size:18px;line-height:1.55;letter-spacing:-.4px;max-width:440px}
+.rg .btn{margin-top:10px;width:auto;padding:0 28px;height:46px}
+.rg .rgv{border-radius:32px;overflow:hidden;height:520px;background:#e6e6e6}
+.rg .rgv img{width:100%;height:100%;object-fit:cover;object-position:center 75%}
+.tlx{background:#f5f5f5}
+.tlx .tool{background:#fff}
+.tlx .rb{background:#f5f5f5}
+.tlx .bar2{background:#dcdcdc}
+.tlx .f input,.tlx .f select{border-color:#e4e4e4}
+.hz{padding:150px 80px 160px;background:#fff;display:flex;flex-direction:column;gap:110px}
+.hz .zs{display:flex;flex-direction:column;gap:130px}
+.zr{display:grid;grid-template-columns:1fr 1.12fr;gap:96px;align-items:center}
+.zr.rev{grid-template-columns:1.12fr 1fr}
+.zr.rev .zt{order:2;padding:0 40px 0 0}
+.zt{display:flex;flex-direction:column;gap:24px;padding:0 0 0 40px}
+.zp{align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,0,0,.18);border-radius:20px;padding:8px 16px;color:rgba(0,0,0,.65)}
+.zt h4{font-size:52px;font-weight:400;letter-spacing:-2.3px;line-height:1.06;max-width:560px}
+.zt p{font-size:20px;line-height:1.55;letter-spacing:-.4px;color:rgba(0,0,0,.6);max-width:500px}
+.zv{background:#f5f5f5;border-radius:40px;height:560px;display:grid;place-items:center;overflow:hidden}
+.zv img{width:86%;border-radius:22px;border:1px solid #e6e6e6;box-shadow:0 30px 60px -30px rgba(0,0,0,.25);background:#fff}
+</style>
+</head>
+<body>
+<div id="page">
+
+<!-- transparent nav -->
+<div class="tnav">
+  <a class="lg" href="home.html" aria-label="Ultrahuman"><img src="figma/68979.svg" width="30" height="30" alt=""></a>
+  <nav class="ln">
+    <a href="compare.html">Ultrahuman Ring</a>
+    <a href="#">Advanced Markers</a>
+    <a href="#">Performance Lab</a>
+    <a href="buy.html">Shop</a>
+    <a href="hsa-fsa.html" class="on"><i>•</i>HSA/FSA</a>
+  </nav>
+  <a class="cta" href="buy.html">Pre-order now</a>
+</div>
+
+<!-- hero -->
+<section class="hh">
+  <div class="bg"><img src="assets/hsa/hero-dark-baked.jpg" alt=""></div>
+  <div class="txt">
+    <p class="elig">HSA/FSA-eligible · Powered by Flex</p>
+    <h1>Pay with your<br>HSA or FSA.</h1>
+    <a class="hcta" href="buy.html">Shop now</a>
+  </div>
+</section>
+
+<!-- route finder: unboxed questions, one boxed result -->
+<section class="fd2" id="finder">
+  <div class="fl">
+    <h2>Two questions.<br>Your route.</h2>
+    <p class="mu">Answers stay on this page. Nothing is stored.</p>
+    <div class="qb">
+      <p class="ql">Which account?</p>
+      <div class="opts">
+        <label><input type="radio" name="acct" value="hsa" checked><span>HSA</span></label>
+        <label><input type="radio" name="acct" value="fsa"><span>Health FSA</span></label>
+        <label><input type="radio" name="acct" value="unsure"><span>Not sure</span></label>
+      </div>
+      <p class="hint">Check your benefits card.</p>
+    </div>
+    <div class="qb" id="q-card">
+      <p class="ql">Got your HSA/FSA card?</p>
+      <div class="opts">
+        <label><input type="radio" name="card" value="card" checked><span>Yes, pay with it</span></label>
+        <label><input type="radio" name="card" value="later"><span>No, I’ll claim later</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="res" id="result" aria-live="polite">
+    <div class="pnl">
+      <div class="hrow"><h3 id="r-h"></h3><span class="cnt" id="r-cnt"></span></div>
+      <p id="r-p"></p>
+      <ol id="r-steps"></ol>
+    </div>
+    <div class="drw">
+      <p class="need" id="r-need"></p>
+      <a class="btn blue" href="buy.html" id="r-cta">Choose your Ring PRO</a>
+    </div>
+  </div>
+</section>
+
+<!-- three ways: warm, columns with hairlines, no boxes -->
+<section class="w3">
+  <div class="wh"><h2>Card first.<br>Backup ready.</h2><p>Three ways to pay. Most people stop at the first one.</p></div>
+  <div class="c3x">
+    <div class="c">
+      <div class="top"><span class="num">01</span><span class="tg"><i></i>Most people</span></div>
+      <h3>Use your card.</h3>
+      <p>SIGIS-listed, so it goes through at checkout. Choose Flex, pay, done.</p>
+      <div class="ft"><div><span>Time</span><b>~2 minutes</b></div><div><span>Letter</span><b>Usually not needed</b></div></div>
+    </div>
+    <div class="c">
+      <div class="top"><span class="num">02</span><span class="tg g">If your plan asks</span></div>
+      <h3>Get a letter.</h3>
+      <p>Declined, or your plan wants proof? Flex connects you to a clinician. A letter only if appropriate.</p>
+      <div class="ft"><div><span>Decided by</span><b>A clinician</b></div><div><span>Extra cost</span><b>Shown upfront</b></div></div>
+    </div>
+    <div class="c">
+      <div class="top"><span class="num">03</span><span class="tg g">Claim later</span></div>
+      <h3>Pay now. Claim after.</h3>
+      <p>Pay any way, then claim from your FSA or HSA with your itemized receipt.</p>
+      <div class="ft"><div><span>Extra cost</span><b>None</b></div><div><span>Reimbursement</span><b>Your plan decides</b></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ring visual -->
+<section class="rg">
+  <div class="rgt">
+    <span class="eb">Ring PRO</span>
+    <h2>Case included.<br>No membership.</h2>
+    <p class="mu">Free sizing kit, 30-day returns and the same Ring PRO your HSA or FSA covers at checkout.</p>
+    <a class="btn blue" href="buy.html">Get Ring PRO</a>
+  </div>
+  <div class="rgv"><img src="assets/hsa/ring-mono.jpg" alt="Ring PRO on its charging case"></div>
+</section>
+
+<!-- tools: two cards on grey -->
+<section class="tl tlx" id="tools">
+  <div class="hd c"><span class="eb">Plan it</span><h2>Split it. Time it.</h2></div>
+  <div class="cols2">
+    <div class="tool">
+      <h3>Use what you’ve got.</h3>
+      <p class="mu">Part balance, part card. Add-ons go on the card automatically.</p>
+      <div class="f"><div class="lr"><label for="bal">Your HSA/FSA balance</label><b id="bal-v">$300</b></div><input id="bal" type="range" min="0" max="600" step="10" value="300"></div>
+      <div class="f"><label for="addon">Add-ons in cart</label><select id="addon"><option value="0">None</option><option value="36">UltrahumanX 1 yr ($36)</option><option value="99.99">Ultrahuman Max 1 yr ($99.99)</option></select></div>
+      <div class="rb" aria-live="polite">
+        <div class="hero"><b id="s-hero">$179</b><span id="s-hl">to pay on a regular card</span></div>
+        <div class="st3 dv">
+          <div class="sc"><span><i class="dot" style="background:var(--blue)"></i>On HSA/FSA card</span><b id="s1" style="color:var(--blue)">$300</b></div>
+          <em></em>
+          <div class="sc"><span>Add-ons</span><b id="s4">None</b></div>
+          <em></em>
+          <div class="sc"><span>Total</span><b id="s3">$479</b></div>
+        </div>
+        <div class="bar2"><i id="m1"></i></div>
+        <p class="cap" id="s-sum"></p>
+      </div>
+      <p class="fine">Partial-balance payment depends on Flex confirming it for single items. Otherwise, see payment methods at checkout.</p>
+    </div>
+    <div class="tool">
+      <h3>Beat the deadline.</h3>
+      <p class="mu" id="c-sub">Tell us when your plan year ends. We’ll work back from there.</p>
+      <div class="inrow" id="pin">
+        <div class="f"><label for="ptype">Account</label><select id="ptype"><option value="fsa">Health FSA</option><option value="hsa">HSA</option></select></div>
+        <div class="f" id="f-pend"><label for="pend">Plan year ends</label><select id="pend"><option value="2026-12-31">Dec 31, 2026</option><option value="2027-03-15">Mar 15, 2027 (grace period)</option><option value="2027-06-30">Jun 30, 2027</option></select></div>
+      </div>
+      <div class="f"><label for="psize">Sizing</label><select id="psize"><option value="kit">I need the free sizing kit</option><option value="know">I know my Ultrahuman size</option></select></div>
+      <div class="rb" aria-live="polite">
+        <div class="hero"><b id="c-days">54</b><span id="c-dl">days left to order</span></div>
+        <div class="st3" id="c-st">
+          <div class="sc"><span>Today</span><b id="c-a">Oct 28</b></div>
+          <em>→</em>
+          <div class="sc"><span id="c-bl">Order by</span><b id="c-b" style="color:var(--blue)">Dec 21</b></div>
+          <em>→</em>
+          <div class="sc"><span id="c-cl">Plan year ends</span><b id="c-c">Dec 31</b></div>
+        </div>
+        <div class="bar2" id="c-bar"><i id="c-fill"></i><u id="c-tick"></u></div>
+        <p class="cap" id="c-sum"></p>
+      </div>
+      <p class="fine" id="c-warn"></p>
+    </div>
+  </div>
+</section>
+
+<!-- how it works: light zig-zag -->
+<section class="hz" id="checkout">
+  <div class="hd c"><span class="eb">At checkout</span><h2>How it works</h2><p>Pay with your HSA or FSA in three steps.</p></div>
+  <div class="zs">
+    <div class="zr">
+      <div class="zt"><span class="zp">Step 1</span><h4>Choose Flex at checkout</h4><p>At checkout, select “Flex | Pay with HSA/FSA”. If you are logged into Shop Pay, please select “checkout as guest”.</p></div>
+      <div class="zv"><img src="assets/hsa/step-1-light.png" alt=""></div>
+    </div>
+    <div class="zr rev">
+      <div class="zt"><span class="zp">Step 2</span><h4>Pay using your HSA/FSA card</h4><p>Enter your HSA/FSA card details to complete the purchase. If you don’t have your HSA/FSA card, you can enter a credit or debit card. Some items require you to confirm your eligibility through a brief questionnaire.</p></div>
+      <div class="zv"><img src="assets/hsa/step-2-light.png" alt=""></div>
+    </div>
+    <div class="zr">
+      <div class="zt"><span class="zp">Step 3</span><h4>Get an itemized receipt</h4><p>Flex will email you an itemized receipt. Save this in case your HSA/FSA administrator requires more information.</p></div>
+      <div class="zv"><img src="assets/hsa/step-3-light.png" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- tax: warm, two open columns split by a hairline -->
+<section class="px">
+  <div class="pa">
+    <span class="eb">Optional illustration</span>
+    <h2>Pre-tax,<br>illustrated.</h2>
+    <p class="mu">HSA/FSA money usually goes in before tax. Pick a rate and see an example.</p>
+    <div class="rt"><b id="rate-v">30%</b><span>assumed combined tax rate</span></div>
+    <div class="f"><label for="rate" style="position:absolute;left:-9999px">Assumed combined tax rate</label><input id="rate" type="range" min="15" max="40" step="1" value="30"></div>
+    <div class="tk"><span>15%</span><span>20%</span><span>25%</span><span>30%</span><span>35%</span><span>40%</span></div>
+  </div>
+  <div class="pb" aria-live="polite">
+    <span class="eb">Potential tax benefit</span>
+    <b class="big2" id="benefit">$143.70</b>
+    <p class="mu">on a $479 Ring PRO purchase</p>
+    <div class="bar2"><i id="tx-fill"></i></div>
+    <p class="cap">Your purchase price stays <b>$479</b>. The benefit comes from paying with pre-tax dollars.</p>
+    <p class="fine">Illustration only. Depends on your taxes. CA and NJ tax HSA contributions. Not tax advice.</p>
+  </div>
+</section>
+
+<!-- records: inline row, no boxes -->
+<section class="rcd">
+  <h2>Keep the<br>receipts.</h2>
+  <div class="it3">
+    <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg><h3>Itemized receipt.</h3><p>Emailed after purchase. Also in your account.</p></div>
+    <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 13l2 2 3-4"/></svg><h3>Clinician letter.</h3><p>If issued, Flex emails it. File it with the receipt.</p></div>
+    <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v4h4"/></svg><h3>Returning it?</h3><p>Refunds go back where they came from. Already claimed? Tell your plan.</p></div>
+  </div>
+</section>
+
+<!-- faq: the one dark section -->
+<section class="fq">
+  <div class="hd"><span class="eb">FAQ</span><h2>Fair questions.</h2></div>
+  <div class="list">
+    <details open><summary>Can I use my HSA or FSA card?</summary><p>Yes. Ring PRO is SIGIS-listed, so most cards approve it at checkout. Choose Flex and pay.</p></details>
+    <details><summary>Do I need a doctor’s letter?</summary><p>Usually not. If your plan asks, Flex can connect you to a clinician, who decides.</p></details>
+    <details><summary>Card declined?</summary><p>Check the message or ask your card administrator. Or pay another way and claim later.</p></details>
+    <details><summary>Can I split the payment?</summary><p>Yes. Eligible items on HSA/FSA, the rest on a regular card. One order.</p></details>
+    <details><summary>Do add-ons count?</summary><p>Coverage and memberships generally don’t. Some PowerPlugs may, if you qualify.</p></details>
+    <details><summary>When does my FSA expire?</summary><p>Usually at plan-year end, often Dec 31. Some plans allow a grace period or carryover.</p></details>
+    <details><summary>Does my HSA expire?</summary><p>No. It rolls over.</p></details>
+    <details><summary>New plan year. Full FSA amount?</summary><p>Generally yes, from day one. HSA funds arrive as deposited.</p></details>
+    <details><summary>Buying for someone else?</summary><p>Generally only you, your spouse and dependents. The same rules apply.</p></details>
+    <details><summary>Is this tax advice?</summary><p>No. Your plan and your tax pro have the final word.</p></details>
+  </div>
+  <p class="disc">Ring PRO is on the SIGIS eligible product list, so most HSA/FSA cards approve it at checkout. Keep your itemized receipt; your plan may ask for it. Ultrahuman does not provide tax advice.</p>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="g">
+    <div class="col">
+      <h4>Smart rings</h4>
+      <ul><li>Ultrahuman Ring PRO <span class="new">New</span></li><li>Ultrahuman Ring AIR</li><li>Diesel Ultrahuman Ring</li><li>Ultrahuman Ring Rare</li></ul>
+      <div class="sub" style="margin-top:57px"><h4>Health Monitoring</h4><ul><li>Ultrahuman M1 CGM</li><li>Ultrahuman Home</li><li>Ultrahuman Blood Vision</li><li>Powerplugs</li><li>Women’s Health</li><li>Ultrahuman Vision Dashboard</li></ul></div>
+    </div>
+    <div class="col"><h4>Resources</h4><ul class="g16"><li>OGDb - Open Glucose Database</li><li>Ultrahuman Blog</li><li><a href="hsa-fsa.html">Special Pricing - Military, Student &amp; More</a></li><li><a href="hsa-fsa.html">HSA/FSA</a></li><li>Science</li><li>Ultra Work</li><li>Ultrahuman X Clue</li><li>3D Print Ring Sizes</li><li>Blood Vision Cloud</li><li>Ring Sizing</li><li>Annual Return</li></ul></div>
+    <div class="col">
+      <h4>Company</h4><ul><li>About Us</li><li>Press &amp; News</li><li>Brand Kit</li><li>Careers</li></ul>
+      <div class="sub" style="margin-top:57px"><h4>Business</h4><ul><li>Partnerships</li><li>For Creators</li></ul></div>
+    </div>
+    <div class="col"><h4>Legal</h4><ul><li>R1 Terms of Sale</li><li>M1 Terms of Sale</li><li>Privacy Policy</li><li>Terms of Use</li></ul>
+      <div class="hsa"><img src="figma/10ad1.svg" width="20" height="27" alt=""><img src="figma/97b0b.svg" width="59" height="26" alt="HSA FSA"></div></div>
+  </div>
+  <div class="c3">
+    <div><h4>Contact</h4><div class="l"><span>support@ultrahuman.com</span><span>1800-102-8693</span></div></div>
+    <div><h4>Follow Us</h4><div style="margin-top:14px"><img src="figma/1ef01.svg" width="187" height="16" alt="Social"></div></div>
+    <div><h4>Download App</h4><div class="app"><a href="#"><small>GET IT ON</small><b>Google Play</b></a><a href="#"><small>Download on the</small><b>App Store</b></a></div></div>
+  </div>
+  <div class="legal">© 2020-2025 Ultrahuman Healthcare Pvt Ltd. All rights reserved. ISO27001, GDPR, and HIPAA compliant.</div>
+  <div class="wm"><img src="figma/a4b63.svg" alt="ULTRAHUMAN"></div>
+</footer>
+
+</div>
+<script>
+(function(){
+  var page=document.getElementById('page');
+  var hh=document.querySelector('.hh'),him=hh.querySelector('.bg img'),htx=hh.querySelector('.txt');
+  function place(){var H=hh.offsetHeight,w=hh.offsetWidth,ih=him.naturalHeight?w*him.naturalHeight/him.naturalWidth:w*.572,tb=htx.offsetTop+htx.offsetHeight*1+(htx.getBoundingClientRect?0:0);var T=tb+75-.38*ih;T=Math.max(T,0);if(T+ih<H)T=H-ih;him.style.top=T+'px'}
+  him.addEventListener('load',place);
+  function fit(){var z=Math.min(1,document.documentElement.clientWidth/1600);page.style.zoom=z;hh.style.height=Math.max(740,innerHeight/z)+'px';place()}
+  fit();addEventListener('resize',fit);
+
+  var $=function(i){return document.getElementById(i)};
+  var money=function(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',')};
+  var PRICE=479;
+
+  /* route finder */
+  var ROUTES={
+    card:{h:'Pay with your card. Done.',p:'Ring PRO is SIGIS-listed, so most HSA/FSA cards approve it at checkout. A clinician reviews only if your plan asks.',
+      s:['Add Ring PRO to your cart.','At checkout choose “Flex | Pay with HSA/FSA”.','Complete the short assessment if your plan requires it.','Pay with your HSA/FSA card. Keep your receipt and any letter.'],
+      n:'You’ll need: your HSA/FSA card · about 5 minutes · the assessment fee, if any (shown before you pay)',c:'Choose your Ring PRO'},
+    later:{h:'Pay now. Claim after.',p:'Pay with any card, then submit your itemized receipt to your plan. Reimbursement is up to your plan.',
+      s:['Add Ring PRO to your cart.','Pay with any card at checkout.','Open your itemized receipt email.','Submit it to your HSA/FSA administrator.'],
+      n:'You’ll need: your plan’s claim form or app · your itemized receipt',c:'Choose your Ring PRO'},
+    lsa:{h:'Your employer’s rules apply.',p:'Wellness stipends (LSAs) follow your employer’s policy, not HSA/FSA rules. Pay with any card and submit your receipt.',
+      s:['Check your stipend policy.','Pay with any card at checkout.','Submit the itemized receipt.','Ask us for the paperwork checklist if you need it.'],
+      n:'You’ll need: your employer’s stipend policy · your itemized receipt',c:'Choose your Ring PRO'},
+    unsure:{h:'Check your benefits card.',p:'If you have a card labelled HSA or FSA, you’re set. If not, your employer’s benefits site will say which account you have.',
+      s:['Look for HSA or FSA on your benefits card.','No card? Check your benefits portal.','Still unsure? Pay now and claim later with your receipt.','Come back and pick your route.'],
+      n:'You’ll need: your benefits card or portal login',c:'Choose your Ring PRO'}
+  };
+  function route(){
+    var a=document.querySelector('input[name=acct]:checked').value;
+    var c=document.querySelector('input[name=card]:checked').value;
+    var qc=$('q-card');
+    var showCard=(a==='hsa'||a==='fsa');
+    qc.style.opacity=showCard?1:.35;qc.style.pointerEvents=showCard?'':'none';
+    var k=showCard?c:a;var r=ROUTES[k];
+    $('r-h').textContent=r.h;$('r-cnt').textContent=r.s.length+' steps';$('r-p').textContent=r.p;
+    $('r-steps').innerHTML=r.s.map(function(x){return '<li>'+x+'</li>'}).join('');
+    $('r-need').innerHTML='<span class="eb">You’ll need</span>'+r.n.replace('You’ll need: ','');$('r-cta').textContent=r.c;
+  }
+  [].forEach.call(document.querySelectorAll('input[name=acct],input[name=card]'),function(i){i.addEventListener('change',route)});
+  route();
+
+  /* split payment */
+  function m0(n){return '$'+(Math.abs(n-Math.round(n))<.005?String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,','):n.toFixed(2))}
+  function split(){
+    var bal=Math.max(0,parseFloat($('bal').value)||0);
+    var add=parseFloat($('addon').value)||0;
+    var total=PRICE+add;
+    var card=Math.min(bal,total);
+    var rest=total-card;
+    $('bal-v').textContent='$'+Math.round(bal);$('bal').style.setProperty('--p',(bal/600*100)+'%');
+    $('s1').textContent=m0(card);$('s3').textContent=m0(total);$('s4').textContent=add?m0(add):'None';
+    $('m1').style.width=(card/total*100)+'%';
+    $('s-hero').textContent=m0(rest);$('s-hl').textContent=rest>0?'to pay on a regular card':'left to pay. Your HSA/FSA card covers it all';
+    $('s-sum').innerHTML='Blue is what your HSA/FSA card covers. Tax and shipping are added at checkout.';
+  }
+  ['bal','addon'].forEach(function(i){$(i).addEventListener('input',split)});split();
+
+  /* plan calendar */
+  var DAY=864e5;
+  function fmt(d){return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
+  function fmts(d){return d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}
+  function cal(){
+    var hsa=$('ptype').value==='hsa',kit=$('psize').value==='kit';
+    $('c-sub').textContent=hsa?'HSAs roll over, so there’s no deadline to plan around.':'Tell us when your plan year ends. We’ll work back from there.';$('f-pend').style.display=hsa?'none':'';$('pin').style.gridTemplateColumns=hsa?'1fr':'';
+    var today=new Date();today.setHours(0,0,0,0);
+    var lead=kit?10:5;
+    var end=new Date($('pend').value+'T00:00:00');
+    var days=Math.round((end-today)/DAY);
+    var orderBy=new Date(end-lead*DAY);
+    var bar=$('c-bar');bar.classList.toggle('open',hsa);
+    var allow='Allow <b>'+lead+' days</b> for '+(kit?'the sizing kit and delivery':'delivery')+'.';
+    $('c-a').textContent=fmts(today);
+    if(hsa){
+      bar.style.display='';$('c-st').style.visibility='hidden';$('c-fill').style.width='100%';
+      $('c-days').textContent='No deadline';$('c-dl').textContent='order any time';
+      $('c-sum').innerHTML='An HSA keeps your money year after year, so there is no rush. Order when you are ready.';
+      $('c-warn').textContent='HSA money rolls over every year. Keep your receipts for your tax records.';
+      return;
+    }
+    bar.style.display='';$('c-st').style.visibility='';
+    var P=days>0?Math.min(100,Math.max(0,(days-lead)/days*100)):0;
+    $('c-fill').style.width=P+'%';$('c-tick').style.left=P+'%';
+    $('c-bl').textContent='Order by';$('c-cl').textContent='Plan year ends';$('c-b').textContent=days>lead?fmts(orderBy):'Now';$('c-c').textContent=fmts(end);
+    var left=Math.max(days-lead,0);
+    $('c-days').textContent=days<=0?'Over':(left>0?String(left):'Now');$('c-dl').textContent=days<=0?'this plan year has ended':(left>0?'days left to order':'order now to make it in time');
+    $('c-sum').innerHTML=days<=0?'Check your plan for a grace period.':'Your plan year ends in <b>'+days+' days</b>. '+allow;
+    $('c-warn').innerHTML='Confirm your plan’s expense-incurred deadline and its separate claim-submission deadline before ordering. New plan year in January? Your full health FSA election is generally available from day one.';
+  }
+  ['ptype','pend','psize'].forEach(function(i){$(i).addEventListener('change',cal)});cal();
+
+
+  /* numbers morph (soft blur-fade) instead of ticking */
+  (function(){
+    var ids=['benefit','rate-v','s-hero','s-hl','s1','s3','s4','bal-v','c-days','c-dl','c-a','c-b','c-bl','c-c','c-cl'];
+    ids.forEach(function(id){
+      var el=$(id);if(!el)return;var last=el.textContent;
+      new MutationObserver(function(){
+        var t=el.textContent;if(t===last)return;last=t;
+        el.classList.remove('mo');void el.offsetWidth;el.classList.add('mo');
+      }).observe(el,{childList:true,characterData:true,subtree:true});
+    });
+  })();
+
+  /* tax illustration */
+  function tax(){
+    var r=+$('rate').value;
+    $('rate-v').textContent=r+'%';$('rate').style.setProperty('--p',((r-15)/25*100)+'%');
+    $('benefit').textContent=money(PRICE*r/100);
+    $('tx-fill').style.width=r+'%';
+  }
+  $('rate').addEventListener('input',tax);tax();
+
+  /* how it works: swap the sticky stage with scroll */
+  (function(){
+    var st=[].slice.call(document.querySelectorAll('.hw .stpx')),im=[].slice.call(document.querySelectorAll('.hw .stg img'));
+    if(!st.length)return;
+    function upd(){var mid=innerHeight*.5,best=0,bd=1e9;st.forEach(function(s,i){var r=s.getBoundingClientRect(),d=Math.abs(r.top+r.height/2-mid);if(d<bd){bd=d;best=i}});
+      st.forEach(function(s,i){s.classList.toggle('on',i===best)});im.forEach(function(m,i){m.classList.toggle('on',i===best)})}
+    addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+  })();
+})();
+
+</script>
+</body>
+</html>

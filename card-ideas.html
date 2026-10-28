@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Heroes card · 10 image ideas</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#112BAF;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff;color:#000;font-family:'Geist',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.page{max-width:1560px;margin:0 auto;padding:56px 24px 120px}
+.top{display:flex;flex-direction:column;gap:12px;margin-bottom:48px;max-width:760px}
+.eb{font:500 11px 'JetBrains Mono',monospace;letter-spacing:.8px;text-transform:uppercase;color:rgba(0,0,0,.5)}
+h1.t{font-weight:400;font-size:40px;letter-spacing:-1.4px;line-height:1.1}
+.top p{font-size:16px;color:rgba(0,0,0,.6);line-height:1.5;letter-spacing:-.3px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(464px,1fr));gap:56px 32px;justify-items:center}
+.item{width:464px}
+.meta{display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.meta .n{font:500 11px 'JetBrains Mono',monospace;color:rgba(0,0,0,.45)}
+.meta h2{font-weight:400;font-size:18px;letter-spacing:-.5px}
+.meta p{flex-basis:100%;font-size:13px;line-height:1.45;color:rgba(0,0,0,.55);letter-spacing:-.1px}
+/* the card */
+.card{width:464px;height:480px;border-radius:24px;background:#f0f0f0;position:relative;overflow:hidden}
+.card .art{position:absolute;left:0;right:0;top:0;height:320px}
+.card .cp{position:absolute;left:24px;right:24px;top:329px}
+.card h3{font-weight:400;font-size:20px;letter-spacing:-.5px;line-height:26px;color:#000}
+.card p{font-size:15px;line-height:22px;letter-spacing:-.3px;color:rgba(0,0,0,.55);margin-top:8px}
+.card .b{display:inline-flex;align-items:center;justify-content:center;height:41px;padding:0 34px;border-radius:50px;background:rgba(0,0,0,.1);font-size:14px;letter-spacing:-.2px;margin-top:14px;transition:background .2s}
+.card .b:hover{background:rgba(0,0,0,.16)}
+.ph{position:absolute;background-size:cover;background-position:center;border-radius:14px;overflow:hidden}
+.lab{position:absolute;left:10px;bottom:9px;z-index:2;font:500 10px 'JetBrains Mono',monospace;letter-spacing:.5px;color:#fff;text-transform:uppercase}
+.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.35));pointer-events:none}
+/* 1 fan */
+.c1 .art{-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent),linear-gradient(180deg,#000 70%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent),linear-gradient(180deg,#000 70%,transparent);mask-composite:intersect}
+.c1 .ph{left:50%;top:28px;width:150px;height:200px;margin-left:-75px;transition:transform .7s var(--ease)}
+/* 2 deck */
+.c2 .ph{left:50%;top:30px;width:190px;height:250px;margin-left:-95px;transition:transform .8s var(--ease)}
+/* 3 coverflow */
+.c3 .art{perspective:900px}
+.c3 .ph{left:50%;top:34px;width:170px;height:230px;margin-left:-85px;transition:transform .9s var(--ease),opacity .9s}
+/* 4 arches */
+.c4 .ph{border-radius:999px 999px 14px 14px;bottom:auto;top:auto}
+/* 5 filmstrip */
+.c5 .art{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.c5 .strip{position:absolute;top:24px;left:0;display:flex;gap:14px;width:max-content;transform:rotate(-4deg) translateX(-40px);animation:mq 30s linear infinite}
+.c5 .strip .ph{position:relative;width:170px;height:240px;flex:none}
+@keyframes mq{to{transform:rotate(-4deg) translateX(calc(-50% - 40px))}}
+/* 6 single + chips */
+.c6 .ph{left:24px;right:24px;top:24px;height:272px;border-radius:18px;opacity:0;transition:opacity .9s}
+.c6 .ph.on{opacity:1}
+.c6 .chips{position:absolute;left:36px;bottom:40px;display:flex;gap:6px;z-index:3;flex-wrap:wrap;width:380px}
+.c6 .chip{padding:6px 12px;border-radius:30px;background:rgba(255,255,255,.28);backdrop-filter:blur(8px);color:#fff;font-size:12px;letter-spacing:-.1px;cursor:pointer;transition:background .3s}
+.c6 .chip.on{background:#fff;color:#000}
+/* 7 swipe stack */
+.c7 .ph{left:50%;top:26px;width:230px;height:270px;margin-left:-115px;transition:transform .7s var(--ease),opacity .7s}
+/* 8 slivers */
+.c8 .sl{position:absolute;left:24px;right:24px;top:24px;height:272px;display:flex;gap:8px}
+.c8 .sl .ph{position:relative;flex:1;border-radius:16px;transition:flex .7s var(--ease);cursor:pointer}
+.c8 .sl .ph.on{flex:4}
+/* 9 polaroids */
+.c9 .ph{border-radius:6px;background-color:#fff;padding:8px 8px 34px;box-shadow:0 14px 28px -16px rgba(0,0,0,.45);transition:transform .7s var(--ease)}
+.c9 .ph i{position:absolute;inset:8px 8px 34px 8px;background-size:cover;background-position:center;border-radius:2px}
+.c9 .ph::after{display:none}
+.c9 .ph span{position:absolute;left:0;right:0;bottom:9px;text-align:center;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.4px;color:#000}
+/* 10 wheel */
+.c10 .art{overflow:hidden}
+.c10 .wh{position:absolute;left:50%;top:620px;width:0;height:0}
+.c10 .wh .ph{width:112px;height:152px;margin:-76px 0 0 -56px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <span class="eb">Homepage · Heroes of the world card</span>
+    <h1 class="t">10 image ideas for the Heroes card</h1>
+    <p>Same card, same size (464 × 480), same copy. Only the image area changes. Ideas keep the tilted, fading photo feel of the current card and try other ways of showing several people in one small space. Photos are from our existing set.</p>
+  </div>
+  <div class="grid" id="g"></div>
+</div>
+<script>
+var IM={mil:'figma/f67c5.png',hc:'figma/518c4.png',tab:'figma/8483c.png',forest:'figma/60a82.jpg',swim:'figma/7608c.jpg',run:'figma/8c5d9.jpg',read:'figma/efef6.jpg',climb:'figma/305f8.jpg'};
+var ROLES=[['mil','Military'],['hc','Healthcare'],['tab','Teachers'],['forest','First responders'],['run','Athletes'],['read','Educators']];
+function ph(k,extra,lab){return '<div class="ph" style="background-image:url('+IM[k]+');'+(extra||'')+'">'+(lab?'<span class="lab">'+lab+'</span>':'')+'</div>'}
+var COPY='<div class="cp"><h3>Special pricing for Heroes of the world</h3><p>Military, first responders, healthcare workers, teachers. Verify with ID.me or GovX.</p><a class="b" href="#">View options</a></div>';
+var ideas=[
+{t:'Fan arc, tighter',d:'Closest to today. Five photos on an arc, fading at the edges. Tuned for the card: smaller tiles, less skew, and they shift slightly with the cursor.',cl:'c1',art:function(){var o=['mil','hc','tab','forest','run'],h='';for(var i=0;i<5;i++)h+=ph(o[i],'');return h},js:function(c){var t=c.querySelectorAll('.ph');function lay(off){t.forEach(function(e,i){var k=i-2+off,a=Math.abs(k);e.style.transform='translateX('+(k*128)+'px) translateY('+(a*a*12)+'px) rotate('+(k*7)+'deg) skewY('+(k*-4)+'deg) scale('+(1-a*.08)+')';e.style.zIndex=10-Math.round(a)})}lay(0);c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect();lay(((e.clientX-r.left)/r.width-.5)*-.7)});c.addEventListener('mouseleave',function(){lay(0)})}},
+{t:'Fanning deck',d:'Four photos stacked like a hand of cards. Hover and they spread so each person is visible. Calm at rest.',cl:'c2',art:function(){return ['mil','hc','tab','forest'].map(function(k){return ph(k)}).join('')},js:function(c){var t=c.querySelectorAll('.ph');function lay(f){t.forEach(function(e,i){e.style.transform='translateX('+((i-1.5)*(f?78:10))+'px) translateY('+(Math.abs(i-1.5)*(f?10:3))+'px) rotate('+((i-1.5)*(f?10:3))+'deg)';e.style.zIndex=i})}lay(0);c.addEventListener('mouseenter',function(){lay(1)});c.addEventListener('mouseleave',function(){lay(0)})}},
+{t:'Mini coverflow',d:'A 3D coverflow with the active photo in front. Moves on every 2.5 seconds and on click.',cl:'c3',art:function(){return ['mil','hc','tab','forest','run'].map(function(k,i){return ph(k)}).join('')},js:function(c){var t=[].slice.call(c.querySelectorAll('.ph')),cur=2;function lay(){t.forEach(function(e,i){var d=i-cur,a=Math.abs(d);e.style.transform='translateX('+(d*120)+'px) translateZ('+(-a*110)+'px) rotateY('+(d===0?0:(d>0?-50:50))+'deg)';e.style.zIndex=10-a;e.style.opacity=a>2?0:1-a*.2})}lay();t.forEach(function(e,i){e.addEventListener('click',function(){cur=i;lay()})});setInterval(function(){cur=(cur+1)%t.length;lay()},2500)}},
+{t:'Arch windows',d:'Three arch-topped photos of different heights, like windows. Soft, architectural, and leaves breathing room above the copy.',cl:'c4',art:function(){var d=[['mil',26,92,132,208],['hc',166,40,132,244],['tab',306,86,132,200]],h='';d.forEach(function(x){h+=ph(x[0],'left:'+x[1]+'px;top:'+x[2]+'px;width:'+x[3]+'px;height:'+x[4]+'px;')});return h}},
+{t:'Filmstrip',d:'One strip of tall photos tilted a few degrees and drifting slowly sideways, fading at both ends.',cl:'c5',art:function(){var o=['mil','hc','tab','forest','run','read'],h='<div class="strip">';for(var r=0;r<2;r++)o.forEach(function(k){h+=ph(k)});return h+'</div>'}},
+{t:'One photo, role chips',d:'A single large photo with role chips on it (Military, Healthcare…). Tap a chip and the photo cross-fades. Also auto-cycles.',cl:'c6',art:function(){var h='';ROLES.slice(0,4).forEach(function(r,i){h+=ph(r[0],'',null).replace('class="ph"','class="ph'+(i===0?' on':'')+'"')});h+='<div class="chips">';ROLES.slice(0,4).forEach(function(r,i){h+='<span class="chip'+(i===0?' on':'')+'">'+r[1]+'</span>'});return h+'</div>'},js:function(c){var p=[].slice.call(c.querySelectorAll('.ph')),ch=[].slice.call(c.querySelectorAll('.chip')),cur=0;function go(i){cur=i;p.forEach(function(e,k){e.classList.toggle('on',k===i)});ch.forEach(function(e,k){e.classList.toggle('on',k===i)})}ch.forEach(function(e,i){e.addEventListener('click',function(){go(i)})});setInterval(function(){go((cur+1)%p.length)},3200)}},
+{t:'Swipe stack',d:'A pile of photos where the top one swipes away every few seconds to reveal the next, like a deck of profiles.',cl:'c7',art:function(){return ['mil','hc','tab','forest','run'].map(function(k){return ph(k)}).join('')},js:function(c){var p=[].slice.call(c.querySelectorAll('.ph')),top=0,n=p.length;function lay(){p.forEach(function(e,i){var d=(i-top+n)%n;e.style.zIndex=n-d;if(d===0){e.style.transform='none';e.style.opacity=1}else if(d<4){e.style.transform='translateY('+(d*10)+'px) scale('+(1-d*.05)+') rotate('+((d%2?1:-1)*d*2)+'deg)';e.style.opacity=1}else{e.style.opacity=0}})}lay();setInterval(function(){var e=p[top];e.style.transition='transform .6s var(--ease),opacity .6s';e.style.transform='translateX(280px) rotate(14deg)';e.style.opacity=0;setTimeout(function(){top=(top+1)%n;lay()},520)},3000)}},
+{t:'Hover slivers',d:'Four tall slivers that stretch when hovered, with the role name on each. A small accordion that invites a touch.',cl:'c8',art:function(){var h='<div class="sl">';ROLES.slice(0,4).forEach(function(r,i){h+='<div class="ph'+(i===0?' on':'')+'" style="background-image:url('+IM[r[0]]+')"><span class="lab">'+r[1]+'</span></div>'});return h+'</div>'},js:function(c){var p=c.querySelectorAll('.sl .ph');p.forEach(function(e){e.addEventListener('mouseenter',function(){p.forEach(function(q){q.classList.remove('on')});e.classList.add('on')})})}},
+{t:'Polaroid scatter',d:'Three prints with white borders and a role under each, scattered at slight angles. Warmer and more human; straighten on hover.',cl:'c9',art:function(){var d=[['mil','Military',22,62,-7],['hc','Healthcare',162,28,3],['tab','Teachers',290,70,8]],h='';d.forEach(function(x){h+='<div class="ph" data-r="'+x[4]+'" style="left:'+x[2]+'px;top:'+x[3]+'px;width:150px;height:210px;transform:rotate('+x[4]+'deg)"><i style="background-image:url('+IM[x[0]]+')"></i><span>'+x[1]+'</span></div>'});return h},js:function(c){var t=c.querySelectorAll('.ph');c.addEventListener('mouseenter',function(){t.forEach(function(e){e.style.transform='rotate(0deg) translateY(-6px)'})});c.addEventListener('mouseleave',function(){t.forEach(function(e){e.style.transform='rotate('+e.dataset.r+'deg)'})})}},
+{t:'Mini wheel',d:'Photos ride a big circle whose top peeks into the card. It turns slowly, so the people keep changing without any controls.',cl:'c10',art:function(){var h='<div class="wh">';['mil','hc','tab','forest','run','read','climb','swim','mil','hc','tab','forest','run','read'].forEach(function(k){h+=ph(k)});return h+'</div>'},js:function(c){var w=c.querySelector('.wh'),t=[].slice.call(w.children),a0=0,R=300;function fr(){a0+=.0012;t.forEach(function(e,i){var a=a0+i/t.length*Math.PI*2-Math.PI/2;e.style.transform='translate('+(Math.cos(a)*R)+'px,'+(Math.sin(a)*R)+'px) rotate('+(a*180/Math.PI+90)+'deg)'});requestAnimationFrame(fr)}w.style.top='460px';fr()}}
+];
+var g=document.getElementById('g');
+ideas.forEach(function(o,i){var d=document.createElement('div');d.className='item';d.innerHTML='<div class="meta"><span class="n">'+String(i+1).padStart(2,'0')+'</span><h2>'+o.t+'</h2><p>'+o.d+'</p></div><div class="card '+o.cl+'"><div class="art">'+o.art()+'</div>'+COPY+'</div>';g.appendChild(d);if(o.js)o.js(d.querySelector('.card'))});
+</script>
+</body>
+</html>

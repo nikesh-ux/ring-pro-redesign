@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ring PRO Buy Flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="uh.css">
+<style>
+/* Buy page: sticky gallery left (~55%), configurator right. One decision per block, one upgrades panel, one live total. */
+.buy{display:grid;grid-template-columns:minmax(0,55fr) minmax(0,45fr);gap:clamp(24px,4vw,56px);align-items:start;padding-top:16px;padding-bottom:56px}
+.gal{position:sticky;top:76px;display:grid;gap:10px}
+.gal-main{position:relative;border-radius:22px;overflow:hidden;background:var(--sand);aspect-ratio:1/1}
+.gal-main img{width:100%;height:100%;object-fit:cover}
+.gal-tag{position:absolute;left:16px;top:16px;display:flex;gap:8px;flex-wrap:wrap}
+.gal-tag span{font-size:12.5px;background:rgba(255,255,255,.82);backdrop-filter:blur(8px);border-radius:var(--r-pill);padding:6px 11px}
+.thumbs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.thumbs button{padding:0;border:1.5px solid transparent;border-radius:12px;overflow:hidden;background:var(--mist);cursor:pointer;aspect-ratio:1/1}
+.thumbs button img{width:100%;height:100%;object-fit:cover}
+.thumbs button[aria-pressed="true"]{border-color:var(--ink)}
+
+.cfg{display:grid;gap:0;min-width:0}
+.blk{padding-block:22px;border-bottom:1px solid var(--line)}
+.blk:first-child{padding-top:8px}
+.blk-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}
+.blk-h h2{font-size:19px;letter-spacing:-.015em}
+.blk-h .sel{font-size:14px;color:var(--muted)}
+.blk-h .step{font-family:var(--f-mono);font-size:11px;color:var(--faint);letter-spacing:.06em;margin-right:8px}
+
+.title h1{font-size:clamp(36px,4vw,52px);letter-spacing:-.035em}
+.title .inc{font-size:16px;color:var(--ink-2);margin-top:6px}
+.pr{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:14px}
+.pr b{font-size:30px;font-weight:600;letter-spacing:-.02em}
+.pr span{font-size:15px;color:var(--ink-2)}
+.hsa-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px;margin-top:10px}
+.hsa-line b{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;background:#111;color:#fff;border-radius:5px;padding:3px 6px;font-weight:500}
+.hsa-line a{text-underline-offset:3px}
+.title .chips{margin-top:14px}
+.title .chip{background:var(--mist);border-color:transparent}
+
+/* swatches */
+.sw{display:flex;gap:14px;flex-wrap:wrap;border:0;padding:0;margin:0}
+.sw label{display:grid;justify-items:center;gap:6px;cursor:pointer;font-size:12.5px;color:var(--muted);width:72px;text-align:center;line-height:1.25}
+.sw input{position:absolute;opacity:0;width:1px;height:1px}
+.sw .dot{width:46px;height:46px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12);outline:2px solid transparent;outline-offset:3px;transition:outline-color .15s}
+.sw input:checked+.dot{outline-color:var(--ink)}
+.sw input:checked~span{color:var(--ink)}
+.sw input:focus-visible+.dot{outline-color:var(--blue-hi)}
+.d-gold{background:linear-gradient(135deg,#f3dc9a,#b8913d 55%,#e9cf86)}
+.d-silver{background:linear-gradient(135deg,#f4f4f4,#a9a9ad 55%,#e3e3e5)}
+.d-black{background:linear-gradient(135deg,#5a5a5c,#141414 55%,#3a3a3c)}
+.d-raw{background:linear-gradient(135deg,#d8d6d2,#8d8a85 55%,#c9c6c0)}
+
+/* radio cards */
+.opts{display:grid;gap:10px;border:0;padding:0;margin:0}
+.rc{position:relative;display:block;border:1.5px solid var(--line);border-radius:16px;padding:16px 16px 16px 48px;cursor:pointer;background:#fff}
+.rc:hover{border-color:#c9c6c0}
+.rc>input{position:absolute;left:16px;top:18px;width:18px;height:18px;margin:0;accent-color:var(--ink)}
+.rc:has(>input:checked){border-color:var(--ink)}
+.rc .t{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.rc .t b{font-weight:500;font-size:15.5px}
+.rc .t em{font-style:normal;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;background:var(--ok-soft);color:var(--ok);border-radius:5px;padding:2px 6px}
+.rc .t i{font-style:normal;font-size:14px;color:var(--muted)}
+.rc .d{display:block;font-size:13.5px;color:var(--muted);margin-top:3px}
+.rc>label{display:block;cursor:pointer}
+.rc>label::after{content:"";position:absolute;inset:0;border-radius:16px}
+.rc .sizes,.rc .mtl{position:relative;z-index:2}
+.rc .mtl{pointer-events:none}
+.mtl{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.mtl li{font-size:12.5px;line-height:1.35;background:var(--mist);border-radius:10px;padding:9px 10px;display:grid;gap:2px}
+.mtl li span{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);letter-spacing:.04em}
+.sizes{margin-top:12px;display:none}
+.rc:has(>input:checked) .sizes{display:block}
+.sz{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;border:0;padding:0;margin:0}
+.sz legend{font-size:13px;color:var(--muted);margin-bottom:8px;padding:0}
+.sz label{position:relative}
+.sz input{position:absolute;opacity:0;width:1px;height:1px}
+.sz span{display:grid;place-items:center;height:40px;border:1px solid var(--line);border-radius:10px;font-size:14.5px;font-variant-numeric:tabular-nums;cursor:pointer;background:#fff}
+.sz input:checked+span{background:var(--ink);color:#fff;border-color:var(--ink)}
+.sz input:focus-visible+span{outline:2px solid var(--blue-hi);outline-offset:2px}
+.sz-err{display:none;color:#b42318;font-size:13px;margin-top:8px}
+.sz-err.on{display:block}
+.sizes .fine{margin-top:8px}
+.cancel{display:flex;gap:10px;align-items:flex-start;margin-top:12px;font-size:13.5px;background:var(--mist);border-radius:12px;padding:12px 14px}
+.cancel svg{width:17px;height:17px;flex:none;margin-top:2px}
+
+/* delivery */
+.eta{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.eta svg{width:22px;height:22px;flex:none;margin-top:1px}
+.eta b{font-weight:500}
+.eta small{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+
+/* (removed) */
+.ti{display:grid;gap:10px}
+.ti label{font-size:14px}
+.sel-wrap{position:relative}
+.sel-wrap select{appearance:none;-webkit-appearance:none;width:100%;height:46px;border:1px solid var(--line);border-radius:12px;padding:0 40px 0 14px;font:inherit;font-size:15px;background:#fff;color:var(--ink);cursor:pointer}
+.sel-wrap::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.ti-out{display:none;font-size:14px;background:var(--ok-soft);color:#0b5a2d;border-radius:12px;padding:11px 14px}
+.ti-out.on{display:block}
+.ti-out small{display:block;font-size:12.5px;color:#2f6b47;margin-top:2px}
+
+/* upgrades */
+.up{border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.up>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px}
+.up>summary::-webkit-details-marker{display:none}
+.up>summary b{font-weight:500;font-size:15.5px}
+.up>summary span{font-size:13.5px;color:var(--muted)}
+.up>summary::after{content:"+";font-size:22px;font-weight:300;line-height:1;color:var(--muted)}
+.up[open]>summary::after{content:"–"}
+.up-in{padding:0 18px 8px;display:grid}
+.ui{display:grid;grid-template-columns:22px 1fr;gap:4px 12px;padding-block:14px;border-top:1px solid var(--line)}
+.ui>input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--ink)}
+.ui .h{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline}
+.ui .h label{font-weight:500;cursor:pointer}
+.ui .h span{font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ui p{font-size:13.5px;color:var(--muted);grid-column:2}
+.rec{font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;background:var(--warn-soft);color:var(--warn);border-radius:5px;padding:2px 6px;margin-left:6px;vertical-align:2px}
+.seg{grid-column:2;display:inline-flex;border:1px solid var(--line);border-radius:var(--r-pill);padding:3px;gap:2px;width:max-content;max-width:100%;margin-top:6px}
+.seg label{position:relative}
+.seg input{position:absolute;opacity:0;width:1px;height:1px}
+.seg span{display:block;border-radius:var(--r-pill);padding:6px 12px;font-size:13px;cursor:pointer;white-space:nowrap}
+.seg input:checked+span{background:var(--ink);color:#fff}
+.seg input:focus-visible+span{outline:2px solid var(--blue-hi);outline-offset:2px}
+.seg input:disabled+span{opacity:.4;cursor:not-allowed}
+.ui.off{opacity:.55}
+.ui .incl-note{display:none;grid-column:2;font-size:12.5px;color:var(--ok)}
+.ui.off .incl-note{display:block}
+
+/* summary */
+.sum{background:var(--mist);border-radius:18px;padding:20px}
+.sum h2{font-size:19px;margin-bottom:12px}
+.sl{display:grid;grid-template-columns:1fr auto;gap:4px 16px;font-size:14.5px;padding-block:7px}
+.sl span:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sl small{grid-column:1/-1;font-size:12.5px;color:var(--muted)}
+.sl.cr span:last-child{color:var(--ok)}
+.sl.hidden{display:none}
+.tot{display:grid;grid-template-columns:1fr auto;gap:2px 16px;border-top:1px solid #dcd9d4;margin-top:8px;padding-top:12px}
+.tot b{font-size:18px;font-weight:600}
+.tot b:last-of-type{text-align:right;font-variant-numeric:tabular-nums}
+.tot small{grid-column:1/-1;font-size:12.5px;color:var(--muted)}
+
+/* payments */
+.pm{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.pm span{font-size:12.5px;border:1px solid var(--line);border-radius:8px;padding:5px 9px;background:#fff}
+.pay-l{display:grid;gap:8px;font-size:14px}
+.pay-l p{display:flex;gap:9px;align-items:flex-start}
+.pay-l svg{width:16px;height:16px;flex:none;margin-top:3px}
+
+/* sticky CTA in config column */
+.ctabar{position:sticky;bottom:0;z-index:5;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);padding:14px 0 16px;border-top:1px solid var(--line);display:grid;gap:8px}
+.ctabar .btn{width:100%;height:54px;font-size:16px}
+.ctabar .fine{text-align:center}
+
+/* below the fold */
+.box{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.bx{border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.bx .im{aspect-ratio:4/3;background:var(--night)}
+.bx .im img{width:100%;height:100%;object-fit:cover}
+.bx .im.cable{display:grid;place-items:center;background:var(--mist)}
+.bx .im.cable svg{width:46%;color:var(--ink-2)}
+.bx div:last-child{padding:16px 18px;display:grid;gap:4px;align-content:start}
+.bx b{font-weight:500}
+.bx span{font-size:14px;color:var(--muted)}
+.spec{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;background:var(--blue);color:#fff;border-radius:var(--r-card);padding:26px 28px}
+.spec h2{font-size:clamp(22px,2.6vw,30px)}
+.spec p{color:#d5dbff;margin-top:6px;max-width:56ch}
+.spec .cta-row{display:flex;gap:10px;flex-wrap:wrap}
+.spec .btn{background:#fff;color:var(--blue)}
+.spec .btn-line-inv{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.info{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.info .card{display:grid;gap:8px;align-content:start}
+.info h3{font-size:18px}
+.info p{font-size:14.5px;color:var(--muted)}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-family:var(--f-mono);letter-spacing:.02em;color:var(--ok)}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+
+@media (max-width:980px){
+  .buy{grid-template-columns:1fr;gap:20px;padding-top:0}
+  .gal{position:static}
+  .gal-main{aspect-ratio:4/3;border-radius:0;margin-inline:calc(var(--gutter) * -1)}
+  .thumbs{grid-template-columns:repeat(5,64px)}
+  .box,.info{grid-template-columns:1fr}
+  .bx{grid-template-columns:120px 1fr;grid-template-rows:none}
+  .bx .im{aspect-ratio:auto;min-height:100px}
+}
+@media (max-width:760px){
+  .ctabar{position:static;border-top:0;padding-top:4px}
+  .mtl{grid-template-columns:1fr}
+  .title h1{font-size:34px}
+  .pr b{font-size:26px}
+  .spec{padding:22px 20px}
+}
+@media (max-width:420px){.sw label{width:64px}.sw{gap:10px}}
+</style>
+</head>
+<body>
+
+<div class="mock-bar"><b>Design proposal · not live</b><span>Ultrahuman US Ring PRO buy page, conversion redesign v1 (Oct 23 2026)</span><span class="sp"></span><a href="plan.html">← Plan &amp; rationale</a><a href="home.html">Homepage</a><a href="hsa-fsa.html">HSA/FSA page</a><a href="compare.html">Compare</a><a href="gift.html">Gift</a></div>
+
+<!-- Announcement -->
+<div class="ann" role="region" aria-label="Announcement"><b>Health looks good on you.</b><span aria-hidden="true">·</span><span>Free sizing kit</span><span aria-hidden="true">·</span><a href="#delivery">Delivery dates</a></div>
+
+<!-- Nav -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <nav class="nav-l" aria-label="Primary">
+      <span class="burger" aria-hidden="true"></span>
+      <a href="home.html">Ring PRO</a>
+      <a href="home.html#how">How it works</a>
+      <a href="compare.html">Compare</a>
+      <a href="home.html#press">Reviews</a>
+      <a class="hl" href="hsa-fsa.html">HSA/FSA <i>PAY</i></a>
+      <a href="gift-cards.html">Gift cards</a>
+    </nav>
+    <a class="logo" href="home.html" aria-label="Ultrahuman home"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 5h7l3 5 3-5h7l-6 9 3 5h-6l-1-2-1 2H5l3-5z"/></svg>ULTRAHUMAN</a>
+    <div class="nav-r">
+      <a class="hide-m" href="#help">Talk to an expert</a>
+      <span class="flag hide-m">🇺🇸 US</span>
+      <a href="#" aria-label="Cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<main>
+<form class="wrap buy" id="buy" action="#" novalidate onsubmit="return false">
+
+  <!-- Gallery -->
+  <div class="gal anno" aria-label="Ring PRO images">
+    <div class="gal-main">
+      <img id="galImg" src="assets/video-posters_max_first-frame.webp" alt="Ring PRO resting on top of its PRO charging case" width="1600" height="1066">
+      <div class="gal-tag"><span id="galFinish">Bionic Gold</span><span>Up to 15 days a charge</span></div>
+    </div>
+    <div class="thumbs" role="group" aria-label="Choose image">
+      <button type="button" aria-pressed="true" data-src="assets/video-posters_max_first-frame.webp" data-alt="Ring PRO resting on top of its PRO charging case"><img src="assets/video-posters_max_first-frame.webp" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" data-src="assets/form-factors_ring-pro-poster.webp" data-alt="PRO charging case open, with Ring PRO inside"><img src="assets/form-factors_ring-pro-poster.webp" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" data-src="assets/navbar_v3_PRO.webp" data-alt="Ring PRO on a black background"><img src="assets/navbar_v3_PRO.webp" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" data-src="assets/video-posters_ring-pro_first-frame.webp" data-alt="Close-up of the Ring PRO titanium band"><img src="assets/video-posters_ring-pro_first-frame.webp" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" data-src="assets/battery_ring-full.webp" data-alt="Ring PRO inner surface and sensors"><img src="assets/battery_ring-full.webp" alt="" loading="lazy"></button>
+    </div>
+    <p class="fine">One finish shown.</p>
+    <div class="pin l"><b>GALLERY</b>Gallery holds still while the configurator scrolls, so the product stays visible during every decision. Live page carries “HSA/FSA Eligible” as an unqualified badge on the image. Removed here per the benefits-eligibility guardrail; HSA/FSA moves to one qualified line under the price.</div>
+  </div>
+
+  <!-- Configurator -->
+  <div class="cfg">
+
+    <!-- 1. Title + price -->
+    <section class="blk title anno" aria-labelledby="t-h">
+      <h1 id="t-h">Ring PRO</h1>
+      <p class="inc">Case included. No membership.</p>
+      <div class="pr"><b class="num">$479</b><span>or 4 interest-free payments of <span class="num">$119.75</span></span></div>
+      <p class="hsa-line"><b>HSA/FSA</b><span>Pay with your HSA/FSA card ·</span> <a href="hsa-fsa.html">How it works</a></p>
+      <div class="chips">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.5"/></svg>Free sizing kit</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v4h4"/></svg>30-day returns</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg>1-year warranty</span>
+      </div>
+      <div class="pin"><b>T6 · PRICE LINE</b>Live: “$479 or $120/mo ±, Klarna/Affirm”. Pay-in-4 is four payments, not monthly, so “/mo” reads like a subscription (176 sessions clicked it). Affirm has had ~0 orders since May, so it is dropped. HSA/FSA via Flex paid for 14.6% of orders: one qualified line, no tax-adjusted price.</div>
+    </section>
+
+    <!-- 2. Finish -->
+    <section class="blk anno" aria-labelledby="f-h">
+      <div class="blk-h"><h2 id="f-h"><span class="step">01</span>Finish.</h2><span class="sel" id="finishName" aria-live="polite">Bionic Gold</span></div>
+      <fieldset class="sw">
+        <legend class="fine" style="margin-bottom:12px;padding:0">Every finish, $479.</legend>
+        <label for="fin-gold"><input type="radio" name="finish" id="fin-gold" value="Bionic Gold" checked><i class="dot d-gold"></i><span>Bionic Gold</span></label>
+        <label for="fin-silver"><input type="radio" name="finish" id="fin-silver" value="Space Silver"><i class="dot d-silver"></i><span>Space Silver</span></label>
+        <label for="fin-black"><input type="radio" name="finish" id="fin-black" value="Aster Black"><i class="dot d-black"></i><span>Aster Black</span></label>
+        <label for="fin-raw"><input type="radio" name="finish" id="fin-raw" value="Raw Titanium"><i class="dot d-raw"></i><span>Raw Titanium</span></label>
+      </fieldset>
+      <div class="pin"><b>T4 · NO GATING</b>Live copy: “Select a color to unlock size selection.” Size is greyed out until a finish is picked. 8,419 buy-page sessions, only 1,458 touched the size selector. Finish is now pre-selected and never blocks size. Named finishes replace unlabeled dots.</div>
+    </section>
+
+    <!-- 3. Size -->
+    <section class="blk anno" aria-labelledby="s-h">
+      <div class="blk-h"><h2 id="s-h"><span class="step">02</span>Size.</h2><span class="sel">Sizes 5–14</span></div>
+      <fieldset class="opts">
+        <legend class="fine" style="margin-bottom:10px;padding:0">Fit, your way.</legend>
+        <div class="rc">
+          <input type="radio" name="fit" id="fit-kit" value="kit" checked>
+          <label for="fit-kit"><span class="t"><b>Free sizing kit first</b><em>RECOMMENDED</em></span>
+          <span class="d">New to Ultrahuman? Size at home.</span></label>
+          <ol class="mtl" aria-label="Sizing kit timeline">
+            <li><span>EST. WED OCT 28</span>Kit lands. Wear a sizer 24 hours.</li>
+            <li><span>YOU CHOOSE</span>Confirm in one tap.</li>
+            <li><span>~5 DAYS LATER</span>Your ring ships.</li>
+          </ol>
+        </div>
+        <div class="rc">
+          <input type="radio" name="fit" id="fit-know" value="know" aria-controls="sizesBox">
+          <label for="fit-know"><span class="t"><b>I know my Ultrahuman size</b><i>Ships fastest</i></span>
+          <span class="d">Same as your Ring AIR or a past kit.</span></label>
+          <div class="sizes" id="sizesBox">
+            <fieldset class="sz" id="sizeSet">
+              <legend>Your size</legend>
+              <label for="sz5"><input type="radio" name="size" id="sz5" value="5"><span>5</span></label>
+              <label for="sz6"><input type="radio" name="size" id="sz6" value="6"><span>6</span></label>
+              <label for="sz7"><input type="radio" name="size" id="sz7" value="7"><span>7</span></label>
+              <label for="sz8"><input type="radio" name="size" id="sz8" value="8"><span>8</span></label>
+              <label for="sz9"><input type="radio" name="size" id="sz9" value="9"><span>9</span></label>
+              <label for="sz10"><input type="radio" name="size" id="sz10" value="10"><span>10</span></label>
+              <label for="sz11"><input type="radio" name="size" id="sz11" value="11"><span>11</span></label>
+              <label for="sz12"><input type="radio" name="size" id="sz12" value="12"><span>12</span></label>
+              <label for="sz13"><input type="radio" name="size" id="sz13" value="13"><span>13</span></label>
+              <label for="sz14"><input type="radio" name="size" id="sz14" value="14"><span>14</span></label>
+            </fieldset>
+            <span class="sz-err" id="szErr" role="alert">Pick a size, or go with the free kit.</span>
+            <span class="fine" style="display:block">May differ from US ring sizes. No half sizes.</span>
+          </div>
+        </div>
+      </fieldset>
+      <div class="cancel" id="cancelNote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><b style="font-weight:500">Cold feet?</b> <a href="#">Cancellation terms</a> <span class="muted">(Proposed: full refund before you confirm size. Pending approval.)</span></span></div>
+      <div class="pin"><b>T4 · TWO EXPLICIT PATHS</b>“I know my ring size” is the top buy-page click (1,264 sessions), yet sizes sit behind the kit card. 50–60% of orders use the kit, which adds ~7 days (Sep: 17 vs 10 days to ship). Cancellation line REQUIRES A POLICY CHANGE: today’s FAQ restricts cancelling once the kit ships.</div>
+    </section>
+
+    <!-- 4. Delivery -->
+    <section class="blk anno" aria-labelledby="d-h">
+      <div class="blk-h"><h2 id="d-h"><span class="step">03</span>Delivery.</h2><span class="sel">US addresses</span></div>
+      <div class="eta" aria-live="polite">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17.5" cy="17.5" r="1.6"/></svg>
+        <div><b id="etaMain">Kit by Wed, Oct 28 · ring ~5 days after you confirm</b><small id="etaSub">Most US ZIPs · Free standard shipping</small></div>
+      </div>
+      <div class="pin"><b>T3 · LIVE ETA</b>“ETA too long” drove 62% of full refunds in launch cohorts. The date changes with the fit choice, so kit buyers see the extra step before paying, not after. Placeholder dates; production reads carrier ETAs by ZIP. Live page only says “Ships by October 24”.</div>
+    </section>
+
+    <!-- 6. Optional upgrades -->
+    <section class="blk anno" aria-labelledby="up-h">
+      <div class="blk-h"><h2 id="up-h"><span class="step">04</span>Extras. Optional.</h2><span class="sel">Nothing pre-ticked</span></div>
+      <details class="up" id="upPanel">
+        <summary><span><b>Coverage and premium features</b><br><span id="upCount">Your ring works without them</span></span></summary>
+        <div class="up-in">
+          <div class="ui" id="ui-max">
+            <input type="checkbox" id="add-max" data-k="max">
+            <div class="h"><label for="add-max">Ultrahuman Max<span class="rec">RECURRING</span></label><span id="maxPrice">$9.99/mo</span></div>
+            <p>PowerPlugs, Jade Pro, UltrahumanX. One membership.</p>
+            <div class="seg" role="radiogroup" aria-label="Max billing">
+              <label for="max-mo"><input type="radio" name="maxBill" id="max-mo" value="mo" checked disabled><span>$9.99 / month</span></label>
+              <label for="max-yr"><input type="radio" name="maxBill" id="max-yr" value="yr" disabled><span>$99.99 / year</span></label>
+            </div>
+          </div>
+          <div class="ui" id="ui-uhx">
+            <input type="checkbox" id="add-uhx" data-k="uhx">
+            <div class="h"><label for="add-uhx">UltrahumanX coverage</label><span id="uhxPrice">$36</span></div>
+            <p>Damage, express replacement, priority support. 2 years adds theft and loss.</p>
+            <div class="seg" role="radiogroup" aria-label="Coverage length">
+              <label for="uhx-1"><input type="radio" name="uhxTerm" id="uhx-1" value="1" checked disabled><span>1 year · $36</span></label>
+              <label for="uhx-2"><input type="radio" name="uhxTerm" id="uhx-2" value="2" disabled><span>2 years · $54</span></label>
+            </div>
+            <span class="incl-note">Included in Ultrahuman Max</span>
+          </div>
+          <div class="ui" id="ui-pp">
+            <input type="checkbox" id="add-pp" data-k="pp">
+            <div class="h"><label for="add-pp">Cardio Adaptability PowerPlug<span class="rec">RECURRING</span></label><span>$24/yr</span></div>
+            <p>Heart response to training and recovery.</p>
+            <span class="incl-note">Included in Ultrahuman Max</span>
+          </div>
+          <p class="fine" style="padding-block:4px 10px">Or add them later in the app.</p>
+        </div>
+      </details>
+      <div class="pin"><b>T4 · ONE UPGRADES PANEL</b>Live flow asks three times: 751 sessions declined theft &amp; loss, 603 declined heart monitoring, 476 declined cycle tracking. One collapsed panel, nothing pre-ticked. Attach today (UHX 46%, PowerPlug 39%) must be audited for defaults before reading it as willingness to pay. Live Max badge says both “75% savings” and “Save 17%”.</div>
+    </section>
+
+    <!-- 7. Summary -->
+    <section class="blk anno" aria-labelledby="sum-h" style="border-bottom:0">
+      <div class="sum">
+        <h2 id="sum-h">Your order.</h2>
+        <div class="sl"><span>Ring PRO · <span id="sumFinish">Bionic Gold</span> · <span id="sumSize">size via kit</span></span><span>$479.00</span></div>
+        <div class="sl"><span>PRO charging case</span><span>Included</span></div>
+        <div class="sl" id="sl-kit"><span>Sizing kit</span><span>Free</span></div>
+        <div class="sl hidden" id="sl-max"><span id="sl-max-l">Ultrahuman Max · monthly</span><span id="sl-max-v">$9.99</span><small id="sl-max-s">Renews $9.99/mo. Cancel anytime in app.</small></div>
+        <div class="sl hidden" id="sl-uhx"><span id="sl-uhx-l">UltrahumanX · 1 year</span><span id="sl-uhx-v">$36.00</span></div>
+        <div class="sl hidden" id="sl-pp"><span>Cardio Adaptability</span><span>$24.00</span><small>Renews yearly at $24.</small></div>
+        <div class="sl"><span>Shipping</span><span>Free standard shipping</span></div>
+        <div class="tot"><b>Due today</b><b id="total" class="num">$479.00</b><small>Tax at checkout</small></div>
+      </div>
+      <div class="pin"><b>T1 · TOTAL + SHIPPING (ARM B)</b>Funnel today: 8,419 buy-page sessions → 976 add to cart → 656 checkout clicks. Every line is visible before checkout, recurring items say so. “Free standard shipping” is test arm B: every D2C order is charged $10–17 today (avg $11.34). Arm A keeps the charge but shows it here.</div>
+    </section>
+
+    <!-- 8. Payment -->
+    <section class="blk anno" aria-labelledby="p-h" style="border-bottom:0;padding-top:4px">
+      <div class="blk-h"><h2 id="p-h">Pay your way.</h2></div>
+      <div class="pm" aria-label="Accepted payment methods"><span>Card</span><span>Apple Pay</span><span>Google Pay</span><span>Shop Pay</span><span>PayPal</span><span>Klarna</span><span>Flex HSA/FSA</span></div>
+      <div class="pay-l">
+        <p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg><span>4 interest-free payments of <b id="pi4" class="num" style="font-weight:500">$119.75</b> with Klarna. Approval required.</span></p>
+        <p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M12 9v6M9 12h6"/></svg><span>HSA/FSA? Pick “Flex | Pay with HSA/FSA”. On Shop Pay, choose “Pay another way”. <a href="hsa-fsa.html">How it works</a></span></p>
+      </div>
+      <div class="pin"><b>T6 · PAYMENT ROUTES</b>Flex carried 14.6% of orders, yet the live FAQ admits Shop Pay hides it (“choose Checkout as Guest”). One sentence fixes the route. VERIFY that “Pay another way” surfaces Flex after the June 2026 Flex announcement. Affirm removed (~0 orders since May). USDC stays at checkout only.</div>
+    </section>
+
+    <!-- 9. CTA -->
+    <div class="ctabar anno" id="ctaWrap">
+      <button type="submit" class="btn btn-blue" id="cta">Check out · <span id="ctaPrice" class="num">$479</span></button>
+      <p class="fine" id="ctaNote">Kit first. Ring ships once you confirm size.</p>
+      <div class="pin b"><b>ONE CTA, LIVE TOTAL</b>Live page uses “Choose color”, then “Add to cart”, then a cart “Checkout”. One button, one label, carrying the exact amount due today. Sticky within the column on desktop; on mobile the bottom bar mirrors it.</div>
+    </div>
+
+  </div>
+</form>
+
+<!-- What's in the box -->
+<section class="sec-tight anno" id="box">
+  <div class="wrap">
+    <div class="sec-h"><span class="eyebrow">What’s in the box</span><h2 style="font-size:clamp(26px,3.2vw,40px)">Day one, sorted.</h2></div>
+    <div class="box">
+      <div class="bx"><div class="im"><img src="assets/navbar_v3_PRO.webp" alt="Ring PRO" loading="lazy"></div><div><b>Ultrahuman Ring PRO</b><span>Titanium. Sizes 5–14. Up to 15 days a charge (Chill mode).</span></div></div>
+      <div class="bx"><div class="im"><img src="assets/form-factors_ring-pro-poster.webp" alt="PRO charging case, open" loading="lazy"></div><div><b>PRO charging case</b><span>Up to 45 days combined. Find-my-case speaker.</span></div></div>
+      <div class="bx"><div class="im cable" aria-hidden="true"><svg viewBox="0 0 120 60" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="4" y="22" width="22" height="16" rx="4"/><rect x="94" y="22" width="22" height="16" rx="4"/><path d="M26 30c20 0 20-18 34-18s14 36 34 18"/></svg></div><div><b>USB-C to USB-C cable</b><span>1 m. Any USB-C adapter.</span></div></div>
+    </div>
+  </div>
+  <div class="pin"><b>IN THE BOX</b>Same three items as the live page, with what each one does. Removes the separate “PRO Charger: Gold Case FREE” step, which reads like a choice but isn’t one.</div>
+</section>
+
+<!-- Specialist -->
+<section class="sec-tight anno" id="help" style="padding-top:0">
+  <div class="wrap">
+    <div class="spec">
+      <div><span class="eyebrow" style="color:#b8c2ff">Talk to a specialist</span><h2 style="margin-top:8px">Questions? Ask a human.</h2><p>Fit check and a ready-to-buy cart.</p></div>
+      <div class="cta-row"><a class="btn" href="#">Book a 10-min call</a><a class="btn btn-line-inv" href="#">Chat now</a></div>
+    </div>
+  </div>
+  <div class="pin"><b>T8 · EXPERT INVITE</b>Advisor-sourced sessions converted at 35.5% (92 of 259). Selection-biased, so randomize the invite and compare all invited vs control visitors.</div>
+</section>
+
+<!-- FAQ -->
+<section class="sec-tight anno" id="faq" style="padding-top:0">
+  <div class="wrap" style="max-width:900px">
+    <div class="sec-h"><span class="eyebrow">Before you check out</span><h2 style="font-size:clamp(26px,3.2vw,40px)">Fair questions.</h2></div>
+    <div class="faq">
+      <details open><summary>How does the sizing kit work?</summary><p>Wear a sizer 24 hours, tap to confirm. Ring ships ~5 days later. Already wear Ultrahuman? Same size.</p></details>
+      <details><summary>Cold feet after ordering?</summary><p>Check your fit’s cancellation terms. After delivery, 30-day returns. (Proposed: full refund before size confirmation, pending approval.)</p></details>
+      <details><summary>Returns?</summary><p>30 days from delivery. Free return shipping.</p></details>
+      <details><summary>Can I pay with my HSA or FSA?</summary><p>Yes. Ring PRO is SIGIS-listed. Choose Flex at checkout and pay with your card. Keep the receipt. <a href="hsa-fsa.html">How it works</a>.</p></details>
+      <details><summary>Membership required?</summary><p>No. Sleep, recovery, movement, workout and cycle tracking included. Max and PowerPlugs optional.</p></details>
+    </div>
+  </div>
+  <div class="pin"><b>FAQ AT THE POINT OF PAYMENT</b>Five questions only, in the order buyers hit them on this page. The cancellation answer depends on the policy change flagged above. Subscription confusion appeared in 2,044 CX sessions in 90 days.</div>
+</section>
+
+<!-- Delivery / returns / availability -->
+<section class="sec-tight mist anno" id="delivery">
+  <div class="wrap">
+    <div class="info">
+      <div class="card"><h3>Delivery.</h3><p>Free US shipping. Sized: ~3 days. Kit: ~5 days after you confirm.</p></div>
+      <div class="card"><h3>Returns &amp; warranty.</h3><p>30 days, free return shipping. 1-year warranty.</p></div>
+      <div class="card"><h3>US availability.</h3><span class="status"><i aria-hidden="true"></i>Available to order in the US</span><p>Dates shown before you pay. Updated Oct 23 2026.</p></div>
+    </div>
+  </div>
+  <div class="pin"><b>DATED STATUS</b>Availability is a dated, Legal-owned statement (Codex guardrail). No litigation mention, no “buy before it’s gone” urgency.</div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-g">
+    <div><h5>Ring</h5><ul><li><a href="home.html">Ring PRO</a></li><li><a href="#">Ring sizing</a></li><li><a href="compare.html">Compare rings</a></li><li><a href="gift.html">Gift Ring PRO</a></li><li><a href="#">Accessories</a></li></ul></div>
+    <div><h5>Ways to buy</h5><ul><li><a href="hsa-fsa.html">HSA/FSA</a></li><li><a href="#">Workplace benefits</a></li><li><a href="home.html#heroes">Heroes pricing (ID.me, GovX)</a></li><li><a href="gift-cards.html">Gift cards</a></li></ul></div>
+    <div><h5>Help</h5><ul><li><a href="#delivery">Delivery &amp; returns</a></li><li><a href="#">Warranty</a></li><li><a href="#help">Talk to an expert</a></li><li><a href="#">Support</a></li></ul></div>
+    <div><h5>More from Ultrahuman</h5><ul><li><a href="#">M2 Live</a></li><li><a href="#">Blood Vision</a></li><li><a href="#">Home</a></li><li><a href="#">Science &amp; Pulsomics</a></li></ul></div>
+  </div>
+  <div class="wrap fine" style="margin-top:28px">Dates are illustrative. HSA/FSA eligibility is set by your plan administrator, not guaranteed.</div>
+</footer>
+
+<div class="mbar" id="mbar" aria-hidden="true"><div class="p"><b class="num" id="mTotal">$479.00</b><span id="mSub">Due today · Free shipping</span></div><a class="btn btn-blue" href="#ctaWrap" id="mCta" tabindex="-1">Checkout</a></div>
+<button class="notes-toggle" id="notes" aria-pressed="false"><span class="dot"></span>Show evidence &amp; dependencies</button>
+
+<script>
+(function(){
+  var t=document.getElementById('notes');
+  try{ if(localStorage.getItem('uh-notes')==='1'){document.body.classList.add('show-notes');t.setAttribute('aria-pressed','true');t.lastChild.textContent='Hide evidence & dependencies';} }catch(e){}
+  t.addEventListener('click',function(){
+    var on=document.body.classList.toggle('show-notes');
+    t.setAttribute('aria-pressed',on);t.lastChild.textContent=on?'Hide evidence & dependencies':'Show evidence & dependencies';
+    try{localStorage.setItem('uh-notes',on?'1':'0')}catch(e){}
+  });
+
+  var $=function(id){return document.getElementById(id)};
+  var form=$('buy');
+  function money(n){return '$'+n.toFixed(2)}
+  function short(n){return n%1===0?'$'+n:'$'+n.toFixed(2)}
+
+  // gallery
+  var thumbs=[].slice.call(document.querySelectorAll('.thumbs button'));
+  thumbs.forEach(function(b,i){b.setAttribute('aria-label','Image '+(i+1)+': '+b.dataset.alt);b.addEventListener('click',function(){thumbs.forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');$('galImg').src=b.dataset.src;$('galImg').alt=b.dataset.alt;});});
+
+  // upgrade sub-options enable with their checkbox
+  function syncSeg(cb,name){document.querySelectorAll('input[name="'+name+'"]').forEach(function(r){r.disabled=!cb.checked||cb.disabled});}
+
+  function update(){
+    var fin=form.querySelector('input[name=finish]:checked').value;
+    var fit=form.querySelector('input[name=fit]:checked').value;
+    var szEl=form.querySelector('input[name=size]:checked');
+    $('finishName').textContent=fin;$('galFinish').textContent=fin;$('sumFinish').textContent=fin;
+
+    // fit + delivery
+    var kit=fit==='kit';
+    $('sl-kit').classList.toggle('hidden',!kit);
+    $('cancelNote').style.display=kit?'flex':'none';
+    $('sumSize').textContent=kit?'size via kit':(szEl?'size '+szEl.value:'choose size');
+    $('etaMain').textContent=kit?'Kit by Wed, Oct 28 · ring ~5 days after you confirm':'Arrives by Fri, Oct 30';
+    $('ctaNote').textContent=kit?'Kit first. Ring ships once you confirm size.':(szEl?'Size '+szEl.value+' ships by Tue, Oct 27.':'Pick your size above.');
+    if(szEl)$('szErr').classList.remove('on');
+
+    // upgrades
+    var max=$('add-max'),uhx=$('add-uhx'),pp=$('add-pp');
+    var inMax=max.checked;
+    [['ui-uhx',uhx],['ui-pp',pp]].forEach(function(p){var row=$(p[0]);row.classList.toggle('off',inMax);p[1].disabled=inMax;if(inMax)p[1].checked=false;});
+    syncSeg(max,'maxBill');syncSeg(uhx,'uhxTerm');
+    var total=479,n=0;
+    var mb=form.querySelector('input[name=maxBill]:checked').value;
+    $('maxPrice').textContent=mb==='yr'?'$99.99/yr':'$9.99/mo';
+    $('sl-max').classList.toggle('hidden',!inMax);
+    if(inMax){n++;var mv=mb==='yr'?99.99:9.99;total+=mv;$('sl-max-l').textContent='Ultrahuman Max · '+(mb==='yr'?'yearly':'monthly');$('sl-max-v').textContent=money(mv);$('sl-max-s').textContent=mb==='yr'?'Renews $99.99/yr. Cancel anytime in app.':'Renews $9.99/mo. Cancel anytime in app.';}
+    var term=form.querySelector('input[name=uhxTerm]:checked').value;
+    $('uhxPrice').textContent=term==='2'?'$54':'$36';
+    $('sl-uhx').classList.toggle('hidden',!uhx.checked);
+    if(uhx.checked){n++;var uv=term==='2'?54:36;total+=uv;$('sl-uhx-l').textContent='UltrahumanX · '+term+(term==='2'?' years':' year');$('sl-uhx-v').textContent=money(uv);}
+    $('sl-pp').classList.toggle('hidden',!pp.checked);
+    if(pp.checked){n++;total+=24;}
+    $('upCount').textContent=n?n+' added':'Your ring works without them';
+
+
+    // totals
+    total=Math.round(total*100)/100;
+    $('total').textContent=money(total);$('mTotal').textContent=money(total);
+    $('ctaPrice').textContent=short(total);
+    $('pi4').textContent=money(total/4);
+    $('mSub').textContent=(kit?'Free sizing kit':'Size '+(szEl?szEl.value:'not set'))+' · Free shipping';
+  }
+  form.addEventListener('change',update);
+  update();
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var fit=form.querySelector('input[name=fit]:checked').value;
+    if(fit==='know'&&!form.querySelector('input[name=size]:checked')){$('szErr').classList.add('on');$('sz5').focus();return;}
+    $('cta').textContent='Mock: would go to checkout';
+    setTimeout(function(){$('cta').innerHTML='Check out · <span id="ctaPrice" class="num"></span>';update();},1600);
+  });
+
+  // mobile bar: hide while the main CTA is visible
+  var bar=$('mbar'),cta=$('cta');
+  $('mCta').addEventListener('click',function(e){e.preventDefault();cta.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});cta.focus({preventScroll:true});});
+  if('IntersectionObserver' in window){new IntersectionObserver(function(e){var hide=e[0].isIntersecting;bar.style.transform=hide?'translateY(110%)':'none';}).observe(cta);bar.style.transition='transform .25s ease';}
+})();
+</script>
+</body>
+</html>

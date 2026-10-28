@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ring PRO US Conversion Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column (~1080px) of numbered decision sections; UH ink + #112BAF blue, benefits green as the only second hue. */
+:root{
+  --bg:#ffffff; --bg-2:#f5f5f4; --fg:#0b0b0c; --muted:#66645f; --line:#e6e4e1;
+  --blue:#112baf; --blue-soft:#e9ecfb; --green:#0f7a3d; --green-soft:#e5f4ea;
+  --amber:#9a5b00; --amber-soft:#fdf1dc; --red:#a3261b; --red-soft:#fbe9e7;
+  --bar:#112baf; --bar-hi:#0f7a3d; --grid:#ecebe8;
+  --f-sans:"Geist","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c0c0d; --bg-2:#161618; --fg:#f2f1ee; --muted:#a3a19c; --line:#2a2a2d;
+  --blue:#8fa0ff; --blue-soft:#1b2150; --green:#5fd394; --green-soft:#12301f;
+  --amber:#f0b45c; --amber-soft:#33250f; --red:#ff8b7d; --red-soft:#3a1714;
+  --bar:#8fa0ff; --bar-hi:#5fd394; --grid:#232326; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c0c0d; --bg-2:#161618; --fg:#f2f1ee; --muted:#a3a19c; --line:#2a2a2d;
+  --blue:#8fa0ff; --blue-soft:#1b2150; --green:#5fd394; --green-soft:#12301f;
+  --amber:#f0b45c; --amber-soft:#33250f; --red:#ff8b7d; --red-soft:#3a1714;
+  --bar:#8fa0ff; --bar-hi:#5fd394; --grid:#232326; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.page{max-width:1120px;margin-inline:auto;padding-inline:clamp(16px,4vw,48px);padding-block:40px 96px}
+h1,h2,h3{margin:0;font-weight:500;letter-spacing:-.025em;line-height:1.08;text-wrap:balance}
+p{margin:0}
+a{color:var(--blue);text-underline-offset:3px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.num{font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.fine{font-size:12.5px;color:var(--muted)}
+section{padding-top:72px;display:grid;gap:22px}
+section>*{min-width:0}
+.tw table.dt{min-width:640px}
+.sh{display:grid;grid-template-columns:56px 1fr;gap:4px 16px;align-items:baseline}
+.sh .n{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+.sh h2{font-size:clamp(26px,3.4vw,38px)}
+.sh p{grid-column:2;color:var(--muted);max-width:70ch;overflow-wrap:anywhere;min-width:0}
+.sh>*{min-width:0}
+@media (max-width:640px){.sh{grid-template-columns:1fr}.sh p{grid-column:1}}
+
+/* masthead */
+.mast{display:grid;gap:18px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.mast h1{font-size:clamp(38px,6vw,72px);letter-spacing:-.04em}
+.mast .lede{font-size:clamp(17px,1.8vw,21px);max-width:62ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13.5px;color:var(--muted)}
+.jump{display:flex;flex-wrap:wrap;gap:8px}
+.jump a{font-size:13.5px;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--fg)}
+.jump a.p{background:var(--blue);border-color:var(--blue);color:#fff}
+
+/* shift cards */
+.shifts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.shift{border:1px solid var(--line);border-radius:18px;padding:22px;display:grid;gap:8px;align-content:start}
+.shift .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;color:var(--blue);text-transform:uppercase}
+.shift h3{font-size:20px}
+.shift p{font-size:14.5px;color:var(--muted)}
+@media (max-width:860px){.shifts{grid-template-columns:1fr}}
+
+/* before/after */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ba figure{margin:0;display:grid;gap:8px}
+.ba .pair{display:grid;grid-template-columns:1fr 104px;gap:8px;align-items:start}
+.ba img{width:100%;border-radius:12px;border:1px solid var(--line);display:block}
+.ba figcaption{font-size:13.5px}
+.ba figcaption b{font-weight:500}
+@media (max-width:760px){.ba{grid-template-columns:1fr}}
+
+/* data tiles */
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.tile{background:var(--bg);padding:20px;display:grid;gap:6px;align-content:start;min-width:0}
+.tile b{font-size:30px;font-weight:500;letter-spacing:-.03em}
+.tile span{font-size:13.5px}
+.tile small{font-size:12px;color:var(--muted)}
+@media (max-width:860px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* callout */
+.call{border-radius:18px;padding:22px 24px;display:grid;gap:8px}
+.call.g{background:var(--green-soft)}
+.call.a{background:var(--amber-soft)}
+.call.b{background:var(--blue-soft)}
+.call h3{font-size:19px}
+.call blockquote{margin:0;font-size:17px;line-height:1.45;border-left:3px solid var(--green);padding-left:14px}
+
+/* chart */
+.chart{border:1px solid var(--line);border-radius:18px;padding:22px;display:grid;gap:12px}
+.chart-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.chart-h h3{font-size:18px}
+.tabs{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px}
+.tabs button{border:0;background:transparent;color:var(--fg);font:inherit;font-size:13px;border-radius:999px;padding:5px 12px;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.svgwrap{position:relative}
+.svgwrap svg{width:100%;height:auto;display:block;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--fg);color:var(--bg);font-size:12.5px;padding:7px 10px;border-radius:8px;white-space:nowrap;transform:translate(-50%,-110%);opacity:0;transition:opacity .12s}
+table.dt{width:100%;border-collapse:collapse;font-size:14px}
+table.dt th,table.dt td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.dt th{font-weight:500;color:var(--muted);font-size:12.5px;font-family:var(--f-mono);letter-spacing:.03em;text-transform:uppercase}
+table.dt td.r,table.dt th.r{text-align:right;font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+.tw table.dt tr:last-child td{border-bottom:0}
+
+/* lists */
+.rank{display:grid;gap:0;border-top:1px solid var(--line)}
+.rank li{list-style:none;display:grid;grid-template-columns:36px 1fr auto;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);align-items:start}
+.rank{margin:0;padding:0}
+.rank .i{font-family:var(--f-mono);font-size:13px;color:var(--muted);padding-top:2px}
+.rank b{font-weight:500}
+.rank p{font-size:14.5px;color:var(--muted);margin-top:2px}
+.pill{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;border-radius:6px;padding:3px 7px;white-space:nowrap}
+.pill.h{background:var(--green-soft);color:var(--green)}
+.pill.m{background:var(--blue-soft);color:var(--blue)}
+.pill.p0{background:var(--red-soft);color:var(--red)}
+.pill.o{background:var(--amber-soft);color:var(--amber)}
+
+/* debate */
+.deb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.deb>div{border:1px solid var(--line);border-radius:18px;padding:20px;display:grid;gap:10px;align-content:start}
+.deb h3{font-size:17px}
+.deb ul{margin:0;padding-left:18px;display:grid;gap:7px;font-size:14px}
+@media (max-width:860px){.deb{grid-template-columns:1fr}}
+
+/* designs */
+.designs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.dz{border:1px solid var(--line);border-radius:18px;overflow:hidden;display:grid;text-decoration:none;color:var(--fg);background:var(--bg)}
+.dz:hover{border-color:var(--blue)}
+.dz .shot{display:grid;grid-template-columns:1fr 92px;gap:6px;background:var(--bg-2);padding:10px}
+.dz .shot img{width:100%;border-radius:8px;display:block}
+.dz .body{padding:16px 18px 18px;display:grid;gap:6px}
+.dz .body h3{font-size:19px}
+.dz .body p{font-size:14px;color:var(--muted)}
+.dz .go{font-size:14px;color:var(--blue)}
+.dz.wide{grid-column:1/-1}
+.dz.wide .shot{grid-template-columns:1fr 150px}
+@media (max-width:760px){.designs{grid-template-columns:1fr}.dz.wide .shot{grid-template-columns:1fr 92px}}
+
+/* timeline */
+.cal{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.cal>div{border-radius:14px;background:var(--bg-2);padding:16px;display:grid;gap:6px;align-content:start}
+.cal .w{font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.cal b{font-weight:500;font-size:15px}
+.cal p{font-size:13.5px;color:var(--muted)}
+.cal>div.hot{background:var(--green-soft)}
+@media (max-width:860px){.cal{grid-template-columns:1fr}}
+.files{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 24px;font-size:14px}
+.files code{font-family:var(--f-mono);font-size:12.5px}
+@media (max-width:640px){.files{grid-template-columns:1fr}}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6px}
+</style>
+</head>
+<body>
+
+<main class="page">
+  <header class="mast">
+    <span class="eyebrow">Ultrahuman US · Ring PRO · Oct 23 2026</span>
+    <h1>Ring PRO US conversion plan</h1>
+    <p class="lede">The homepage asks people to admire a $479 ring without telling them what it costs, what’s included, how sizing works or that HSA/FSA is an option. This plan fixes that and rebuilds HSA/FSA around the IRS guidance published on Sept 23. It comes with five redesigned pages, built on the live site’s design.</p>
+    <div class="meta"><span>Research: 5 agents, 6 reports</span><span>Internal data: uh-data (read-only)</span><span>Debated with Codex (gpt-6-astra), 2 rounds</span></div>
+    <div class="jump"><a class="p" href="home.html">Open homepage redesign</a><a href="hsa-fsa.html">HSA/FSA page</a><a href="buy.html">Buy flow</a><a href="compare.html">Compare</a><a href="gift.html">Gift</a><a href="gift-cards.html">Gift cards</a><a href="#tests">Test plan</a></div>
+  </header>
+
+  <section id="summary">
+    <div class="sh"><span class="n">01</span><h2>Three shifts</h2><p>Each one changes what we build, not just what we say.</p></div>
+    <div class="shifts">
+      <div class="shift"><span class="k">From admire → decide</span><h3>Answer cost, inclusion and fit on the first screen</h3><p>“Health looks good on you.”, $479 with the case included, “no membership required”, free sizing kit, 30-day returns. Today’s hero says “Power Moves” and shows no price.</p></div>
+      <div class="shift"><span class="k">From badge → route</span><h3>Make HSA/FSA a guided payment route</h3><p>It already pays for ~15% of US Ring PRO orders. After IRS Q&amp;A-15, the win is a clear, compliant path to pay and document, not a bigger savings claim.</p></div>
+      <div class="shift"><span class="k">From promise → certainty</span><h3>Show dates, terms and what happens next</h3><p>Long ETAs caused 62% of launch-cohort full refunds. Delivery dates per fit path, cancellation terms and a dated US-availability answer go on the page.</p></div>
+    </div>
+    <div class="ba">
+      <figure><div class="pair"><img src="shots/live_d.webp" alt="Live US homepage hero: Power Moves, no price" loading="lazy"><img src="shots/live_m.webp" alt="Live US homepage on mobile with cookie panel covering the product" loading="lazy"></div><figcaption><b>Live today.</b> <span class="muted">No price, no HSA/FSA, no returns or sizing info. On mobile the cookie panel covers the product.</span></figcaption></figure>
+      <figure><div class="pair"><img src="shots/home_d.webp" alt="Redesigned homepage hero with price and reassurance" loading="lazy"><img src="shots/home_m.webp" alt="Redesigned mobile hero with CTA in first screen" loading="lazy"></div><figcaption><b>Proposed.</b> <span class="muted">Same design language. Price, inclusion, reassurance and the HSA/FSA route all fit in the first screen.</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section id="data">
+    <div class="sh"><span class="n">02</span><h2>What our own data says</h2><p>Read-only pulls from Redshift and CX-AI, Oct 23 2026. Funnel instrumentation is partial, so treat these as directional, not a reconciled CVR.</p></div>
+    <div class="tiles">
+      <div class="tile"><b class="num">~540</b><span>US web Ring PRO orders a month</span><small>Jul–Sep 2026; Oct pacing ~1,100</small></div>
+      <div class="tile"><b class="num">14.6%</b><span>of orders paid with HSA/FSA (Flex)</span><small>16–18% in Jun–Sep; Klarna 2.3%</small></div>
+      <div class="tile"><b class="num">74%</b><span>of US sessions on mobile</span><small>Purchase/session 2.5% mobile, 2.2% desktop</small></div>
+      <div class="tile"><b class="num">50–60%</b><span>of orders use the free sizing kit</span><small>Adds ~7 days to ring delivery</small></div>
+      <div class="tile"><b class="num">62%</b><span>of launch full refunds were “ETA too long”</span><small>Full refunds now 5–9% (immature)</small></div>
+      <div class="tile"><b class="num">$11.34</b><span>avg shipping charged, on every order</span><small>Jun–Sep, 2,259 orders</small></div>
+      <div class="tile"><b class="num">58%</b><span>of orders used a discount code</span><small>~$60 off among discounted orders; Heroes 13%</small></div>
+      <div class="tile"><b class="num">11.6%</b><span>buy-page sessions → add to cart</span><small>8,419 → 976 → 656 checkout clicks</small></div>
+    </div>
+    <p class="fine">Advisor-sourced sessions converted at 35.5% (92 of 259), but they’re self-selected. The plan tests the invitation causally instead of extrapolating. Source: research/04_uh_internal_data.md.</p>
+  </section>
+
+  <section id="hsa">
+    <div class="sh"><span class="n">03</span><h2>HSA/FSA: card first</h2><p>Ring PRO is SIGIS-listed, so HSA/FSA cards approve it at checkout. That makes the card the headline. The IRS rule only shapes the fine print.</p></div>
+    <div class="call g">
+      <span class="eyebrow" style="color:var(--green)">Verified on irs.gov · Q15, added Sept 23 2026</span>
+      <blockquote>A wearable “is a medical expense if the individual purchases and uses the device primarily to assist in the diagnosis, cure, mitigation, treatment, or prevention of a specific disease … A generalized desire to monitor or improve health is not sufficient.” Accessories and software subscriptions follow the same test.</blockquote>
+    </div>
+    <div class="call b">
+      <h3>Ring PRO has SIGIS approval (confirmed by UH, Oct 23)</h3>
+      <p>Most HSA/FSA cards approve it automatically, with no letter. So the copy leads with the true action, “Pay with your HSA/FSA card”, everywhere: nav, hero, buy page, FAQ. The clinician letter is now only a fallback for declines. One caveat: card approval isn’t a tax determination under Q15, so a short “keep your receipt” note stays.</p>
+    </div>
+    <div class="call a">
+      <h3>Still change this week</h3>
+      <p>The live FAQ names Ring AIR, which can’t be sold in the US, and tells Shop Pay users to check out as guest. Avoid “~$335 after tax savings” and “up to” savings claims, which Flex and Truemed prohibit. Law-firm commentary says SIGIS may revisit dual-use wearables after Q15, so someone should own watching the SIGIS list.</p>
+    </div>
+
+    <div class="chart" id="hsachart">
+      <div class="chart-h"><h3>HSA/FSA orders peak in January, not December</h3>
+        <div class="tabs" role="group" aria-label="Chart view"><button aria-pressed="true" data-v="chart">Chart</button><button aria-pressed="false" data-v="table">Table</button></div></div>
+      <p class="fine">US web ring orders paid via Flex, Sika or TrueMed, Ring AIR era. In Nov–Dec HSA/FSA’s <em>share</em> drops to ~11% because Black Friday card volume swamps it, yet January sets the record. One season only. Treat it as a hypothesis to test, not a law.</p>
+      <div class="svgwrap" id="cw"><svg id="csvg" viewBox="0 0 720 260" role="img" aria-label="Bar chart of HSA/FSA ring orders by month, Sep 2024 to Apr 2025. January 2025 is highest at 2,137."></svg><div class="tip" id="tip"></div></div>
+      <div class="tw" id="ctable" hidden><table class="dt"><thead><tr><th>Month</th><th class="r">HSA/FSA orders</th><th class="r">All ring orders</th><th class="r">HSA/FSA share</th></tr></thead><tbody id="ctbody"></tbody></table></div>
+    </div>
+
+    <h3 style="font-size:20px;margin-top:6px">Ranked HSA/FSA mechanisms</h3>
+    <ol class="rank">
+      <li><span class="i">P0</span><div><b>Say “Pay with your HSA/FSA card” everywhere, with a receipt note</b><p>SIGIS approval makes this factual. Remove Ring AIR from the HSA copy. Ask Flex: does single-item partial-balance payment work? Does Shop Pay’s “Pay another way” show Flex on mobile? Own a monthly check of SIGIS status after Q15.</p></div><span class="pill p0">NOW</span></li>
+      <li><span class="i">1</span><div><b>Card-first route through checkout</b><p>HSA/FSA in the top nav and as a hero link, a widget beside add-to-cart, and a step-by-step mobile checkout guide. The live FAQ still tells Shop Pay users to “checkout as guest”.</p></div><span class="pill h">HIGH</span></li>
+      <li><span class="i">2</span><div><b>Decline recovery, not a clinician funnel</b><p>Because the card usually just works, the clinician letter becomes a fallback shown only on a decline or when a plan asks. No health questions on UH pages.</p></div><span class="pill m">MED</span></li>
+      <li><span class="i">3</span><div><b>January “new election” campaign, prepared in December</b><p>“Your new health FSA election may already be available.” FSA only, never sent to HSA-only audiences. The December plan-deadline tool doubles as the reminder opt-in.</p></div><span class="pill h">HIGH</span></li>
+      <li><span class="i">4</span><div><b>Plan-specific deadline tool, not a universal Dec 31 countdown</b><p>Pick your plan end date and fit path to see an order-by date that allows for sizing. ~40% of FSA holders forfeit money, avg $404.</p></div><span class="pill m">MED</span></li>
+      <li><span class="i">5</span><div><b>Reimburse-later documentation packet</b><p>Itemized receipt, any clinician letter and refund-adjustment guidance. FSA claims go through the administrator; HSA holders self-substantiate.</p></div><span class="pill m">MED</span></li>
+      <li><span class="i">6</span><div><b>Employer wellness stipends (LSAs)</b><p>Not §213(d), so Q15 doesn’t apply. Get listed with Forma, Benepass and Compt and offer an invoice packet.</p></div><span class="pill m">MED</span></li>
+      <li><span class="i">7</span><div><b>Savings illustration the shopper controls</b><p>“Illustration at 30%: $143.70 potential tax benefit … your purchase price stays $479.” Lives on the HSA/FSA page only.</p></div><span class="pill o">LOW</span></li>
+      <li><span class="i">8</span><div><b>Balance-sized bundles</b><p>Deprioritized. Add-ons don’t inherit eligibility, and $404 is an average forfeiture, not a shopper’s balance.</p></div><span class="pill o">LOW</span></li>
+    </ol>
+  </section>
+
+  <section id="market">
+    <div class="sh"><span class="n">04</span><h2>What the market teaches</h2><p>Smart rings, plus the wider $250–$2,900 health-tech wallet: Whoop, Apple Watch, Pixel Watch, Eight Sleep, Function, Stelo, Polar, Hatch, Therabody and others.</p></div>
+    <div class="tw"><table class="dt">
+      <thead><tr><th>Product</th><th class="r">Upfront</th><th>Membership</th><th class="r">3-year cost</th><th>Lesson for UH</th></tr></thead>
+      <tbody>
+        <tr><td><b>Ultrahuman Ring PRO</b></td><td class="r">$479</td><td>None required (Max optional $99.99/yr)</td><td class="r">$479 · $779 w/ Max</td><td>Compare core vs core, and show Max honestly</td></tr>
+        <tr><td>Oura Ring 5</td><td class="r">$399–$499</td><td>$5.99/mo · $69.99/yr</td><td class="r">$609–$808</td><td>Press wall, member outcome stat, “Buy with confidence” strip</td></tr>
+        <tr><td>Whoop</td><td class="r">$0</td><td>$199–$359/yr</td><td class="r">$597–$1,077</td><td>HSA/FSA badge in the hero, member-data outcomes</td></tr>
+        <tr><td>Samsung Galaxy Ring</td><td class="r">$399.99</td><td>None</td><td class="r">$400</td><td>$100 trade-in for any ring, naming UH Ring AIR</td></tr>
+        <tr><td>RingConn Gen 3 · Circular 2</td><td class="r">$349</td><td>None</td><td class="r">$349</td><td>Circular’s 3-year cost module; RingConn accepts UH trade-ins</td></tr>
+        <tr><td>Eight Sleep Pod</td><td class="r">$2,899</td><td>$199–$399/yr</td><td class="r">—</td><td>Price + trial + segmented reviews; +70% from single-page checkout</td></tr>
+        <tr><td>Polar Loop</td><td class="r">—</td><td>None</td><td class="r">—</td><td>“No monthly fees. No locked features.” The clearest no-sub copy</td></tr>
+        <tr><td>Apple Watch · Pixel Watch</td><td class="r">$349–$399</td><td>Optional</td><td class="r">—</td><td>Monthly price beside the sticker price; trade-in first in the buy flow</td></tr>
+      </tbody></table></div>
+    <p class="fine">US list prices checked Oct 23 2026. Full tables and sources: research/02, 03 and 05. Ring PRO is the priciest no-subscription ring, so against RingConn and Samsung the case rests on battery (15 vs ~7 days), the included case, 250-day storage and titanium.</p>
+  </section>
+
+  <section id="debate">
+    <div class="sh"><span class="n">05</span><h2>Debate with Codex</h2><p>Two rounds with gpt-6-astra. It made the plan more conservative and more operational. On one point it was wrong, and we checked.</p></div>
+    <div class="deb">
+      <div><span class="eyebrow">Codex changed the plan</span><h3>Adopted</h3><ul>
+        <li>Headline first, economics right under it; no “effective price”.</li>
+        <li>HSA/FSA as a hero link, not a tax-adjusted price. With SIGIS confirmed afterwards, the link now reads “Pay with your HSA/FSA card”.</li>
+        <li>No condition menus as savings routes; UH’s own terms describe a wellness product.</li>
+        <li>Delivery and cancellation certainty is P0; the current FAQ restricts cancellation after the kit ships.</li>
+        <li>One bundled 50/50 journey test. Our original 45–50k sessions per arm was too low.</li>
+        <li>Gift flow where the recipient sizes; one consolidated upgrades panel.</li>
+        <li>Plan-specific deadlines; HSA vs FSA responsibility stated separately.</li>
+      </ul></div>
+      <div><span class="eyebrow">We held</span><h3>Agreed after round 2</h3><ul>
+        <li>HSA/FSA in the top nav and hero; it is ~15% of orders.</li>
+        <li>Compact cost-over-time module on the homepage, with named, dated sources.</li>
+        <li>Pay-in-4 stated as “4 interest-free payments of $119.75”, replacing the live “$120/mo”.</li>
+        <li>Free standard shipping inside the bundled arm, costed in contribution.</li>
+        <li>An evidence layer on every mock, toggled with “Show evidence &amp; dependencies”.</li>
+      </ul></div>
+      <div><span class="eyebrow">Resolved by checking</span><h3>Where Codex was wrong</h3><ul>
+        <li>Round 2 said Q&amp;A-15 couldn’t be verified and asked us to drop the IRS quote. We fetched irs.gov: Q15 is there, added Sept 23 2026, and the quote matches word for word. The quote stays.</li>
+        <li>We kept the partial-balance split tool, gated on Flex confirmation, instead of removing it.</li>
+        <li>Codex insisted “Free return shipping” needs confirming. It’s in the live Ring PRO FAQ; Legal should re-confirm before launch.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section id="designs">
+    <div class="sh"><span class="n">06</span><h2>The designs</h2><p>Built on the live site’s fonts, blue and imagery. Every page has an orange “Show evidence &amp; dependencies” layer with the evidence, hypothesis and dependency for each block. Reviews are left as skeletons: nothing is invented.</p></div>
+    <div class="designs">
+      <a class="dz wide" href="home.html"><div class="shot"><img src="shots/home_d.webp" alt="Homepage redesign, desktop" loading="lazy"><img src="shots/home_m.webp" alt="Homepage redesign, mobile" loading="lazy"></div><div class="body"><span class="eyebrow">Homepage · /us</span><h3>Health looks good on you.</h3><p>Purchase nav with HSA/FSA, price and inclusion in the hero, daily insights, included-vs-optional table, qualified battery, editorial vs verified reviews, two fit paths with dates, cost over time, ways to pay, expert invite, objection FAQ, sticky mobile bar.</p><span class="go">Open homepage →</span></div></a>
+      <a class="dz" href="hsa-fsa.html"><div class="shot"><img src="shots/hsa-fsa_d.webp" alt="HSA/FSA page, desktop" loading="lazy"><img src="shots/hsa-fsa_m.webp" alt="HSA/FSA page, mobile" loading="lazy"></div><div class="body"><span class="eyebrow">New · /us/hsa-fsa</span><h3>Use your HSA or FSA toward Ring PRO</h3><p>Route finder, the IRS rule in plain words, three ways to proceed, payment split, plan-deadline tool, mobile checkout guide, rate-slider illustration, documentation, LSA path, compliant FAQ.</p><span class="go">Open HSA/FSA page →</span></div></a>
+      <a class="dz" href="buy.html"><div class="shot"><img src="shots/buy_d.webp" alt="Buy flow, desktop" loading="lazy"><img src="shots/buy_m.webp" alt="Buy flow, mobile" loading="lazy"></div><div class="body"><span class="eyebrow">Redesign · /us/ring-pro/buy</span><h3>Buy flow</h3><p>Finish no longer gates size, the kit is an explicit fulfillment choice with dates, live ETA, inline trade-in quote, one optional-upgrades panel (nothing preselected), corrected installments, HSA/FSA checkout note.</p><span class="go">Open buy flow →</span></div></a>
+      <a class="dz" href="compare.html"><div class="shot"><img src="shots/compare_d.webp" alt="Compare page, desktop" loading="lazy"><img src="shots/compare_m.webp" alt="Compare page, mobile" loading="lazy"></div><div class="body"><span class="eyebrow">New · /us/compare</span><h3>Pick your ring. Do the math.</h3><p>Ring PRO vs a generic “Other ring” only, no brand names. Cost over time with Max and case toggles, and an honest spec table including when to pick another.</p><span class="go">Open compare →</span></div></a>
+      <a class="dz" href="gift-cards.html"><div class="shot"><img src="shots/gift-cards_d.webp" alt="Gift cards page, desktop" loading="lazy"><img src="shots/gift-cards_m.webp" alt="Gift cards page, mobile" loading="lazy"></div><div class="body"><span class="eyebrow">New · /us/gift-cards</span><h3>Health looks good on them.</h3><p>Digital gift cards in the top nav: amount ($479 “the whole ring”), finish, message, send now or on a date, live card preview. No size or shipping cutoffs.</p><span class="go">Open gift cards →</span></div></a>
+      <a class="dz" href="gift.html"><div class="shot"><img src="shots/gift_d.webp" alt="Gift page, desktop" loading="lazy"><img src="shots/gift_m.webp" alt="Gift page, mobile" loading="lazy"></div><div class="body"><span class="eyebrow">New · /us/gift</span><h3>Give Ring PRO. Let them choose the fit.</h3><p>Gift box with kit, digital gift, or known size. Live order-by dates for Dec 24, plus proposed holiday returns and unredeemed-gift handling.</p><span class="go">Open gift page →</span></div></a>
+    </div>
+  </section>
+
+  <section id="tests">
+    <div class="sh"><span class="n">07</span><h2>How to test it at our traffic</h2><p>The homepage gets ~8.6k US sessions a month. Ten separate A/B tests won’t reach significance before the holidays, so the plan is one journey test.</p></div>
+    <div class="tw"><table class="dt">
+      <thead><tr><th>Baseline purchase rate</th><th class="r">Relative lift</th><th class="r">Visitors per arm</th><th>Readable at our volume?</th></tr></thead>
+      <tbody><tr><td>1.5%</td><td class="r">10%</td><td class="r">~108,000</td><td>No</td></tr><tr><td>2.5%</td><td class="r">10%</td><td class="r">~64,000</td><td>No</td></tr><tr><td>2.5%</td><td class="r">20%</td><td class="r">~16,800</td><td>Site-wide arm, ~6–8 weeks</td></tr><tr><td>2.5%</td><td class="r">30%</td><td class="r">~7,800</td><td>Yes</td></tr></tbody></table></div>
+    <ol class="rank">
+      <li><span class="i">1</span><div><b>Ship the fixes now, untested</b><p>Remove misleading copy (“always eligible”, “$120/mo”, the stale “Pre-order now” banner, Ring AIR dead ends) and fix the cookie panel and chat overlap on mobile.</p></div><span class="pill p0">NOW</span></li>
+      <li><span class="i">2</span><div><b>One 50/50 purchase-journey test</b><p>Control: current homepage + buy page. Variant: new hero, nav, included-vs-optional table, fit paths with dates, consolidated upgrades, free standard shipping. Assign per visitor and keep pricing identical in both arms. If BFCM forces an offer change, stop and call it.</p></div><span class="pill h">PRE-BFCM</span></li>
+      <li><span class="i">3</span><div><b>Cohort experiments outside the A/B</b><p>Randomized expert invitations, sizing-kit follow-up reminders, the gift route for gift-intent traffic, and message-matched creator and “Oura alternative” traffic routed 50/50.</p></div><span class="pill m">PARALLEL</span></li>
+      <li><span class="i">4</span><div><b>Measure what the business keeps</b><p>Net revenue per visitor for the dashboard; contribution per visitor as the ship gate (discounts, refunds, trade-in, shipping subsidy, fees, commissions). Report paid, delivered, activated and kept rings separately.</p></div><span class="pill m">ALWAYS</span></li>
+    </ol>
+    <div class="cal">
+      <div><span class="w">Oct 27 – Nov 7</span><b>Fix &amp; launch test</b><p>P0 copy and policy fixes, Flex answers, journey test live.</p></div>
+      <div><span class="w">Nov 1 – Nov 30</span><b>Open enrollment + BFCM</b><p>One funded offer, gift page live, compare page for conquest search.</p></div>
+      <div><span class="w">Dec 1 – Dec 31</span><b>FSA deadline</b><p>Plan-deadline tool, deadline emails, reminder opt-ins for January.</p></div>
+      <div class="hot"><span class="w">Jan 1 – Jan 31</span><b>New FSA elections</b><p>The biggest HSA/FSA month last cycle. Run a holdout-controlled campaign.</p></div>
+      <div><span class="w">Mar 1 – Mar 15</span><b>Grace period</b><p>Last call for grace-period plans.</p></div>
+    </div>
+  </section>
+
+  <section id="deps">
+    <div class="sh"><span class="n">08</span><h2>Release gates</h2><p>These need an owner before the designs ship. Most are policy and operations, not design.</p></div>
+    <ol class="rank">
+      <li><span class="i">Legal</span><div><b>One approved claims register</b><p>HSA/FSA wording, battery and storage claims, “Built in Plano, Texas” (FTC origin rules), US-availability statement (dated), returns wording, competitor pricing footnotes.</p></div><span class="pill p0">GATE</span></li>
+      <li><span class="i">Flex</span><div><b>Written answers</b><p>Single-item partial balance, Shop Pay “Pay another way”, decline handling and clinician fallback fee. SIGIS status is confirmed; monitor it monthly.</p></div><span class="pill p0">GATE</span></li>
+      <li><span class="i">Ops</span><div><b>Policies the pages depend on</b><p>Cancellation before size confirmation, live ETA per finish and fit path, free standard shipping, holiday returns to Jan 31, unredeemed-gift refunds, competitor-ring trade-in credit.</p></div><span class="pill o">DECIDE</span></li>
+      <li><span class="i">CX</span><div><b>Verified Ring PRO reviews</b><p>Post-delivery collection with dates, counts, critical reviews and responses. Trustpilot is 2.6/5 at company level, and fixing support matters more than any badge.</p></div><span class="pill o">BUILD</span></li>
+      <li><span class="i">Data</span><div><b>A reconciled baseline</b><p>Remove test orders, explain $479–$551 line prices, separate retail sell-in, mature refund cohorts, fix GA4 funnel gaps, and keep health data out of analytics.</p></div><span class="pill o">BUILD</span></li>
+    </ol>
+  </section>
+
+  <section id="files">
+    <div class="sh"><span class="n">09</span><h2>Research files</h2><p>In <code>~/Documents/conversion_optimization_uh/research</code>.</p></div>
+    <div class="files">
+      <span><code>01_hsa_fsa.md</code> · IRS, providers, market size, 27 actions, FAQ</span>
+      <span><code>02_competitors_uh_context.md</code> · UH context, rings, TCO</span>
+      <span><code>03_best_converting_patterns.md</code> · CRO evidence, 30 ideas</span>
+      <span><code>04_uh_internal_data.md</code> · Orders, payments, sizing, refunds, funnel</span>
+      <span><code>05_comparable_products.md</code> · Non-ring health tech teardown</span>
+      <span><code>10 / 12_codex_round*.md</code> · Codex critique, both rounds</span>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  var data=[["Sep 24",430,2609],["Oct 24",785,3849],["Nov 24",1294,12194],["Dec 24",1328,12029],["Jan 25",2137,12187],["Feb 25",953,7900],["Mar 25",1362,10614],["Apr 25",1103,6324]];
+  var svg=document.getElementById('csvg'),tip=document.getElementById('tip'),wrap=document.getElementById('cw');
+  var W=720,H=260,L=44,R=8,T=14,B=30,max=2500,ns='http://www.w3.org/2000/svg';
+  function el(n,a){var e=document.createElementNS(ns,n);for(var k in a)e.setAttribute(k,a[k]);return e}
+  [0,500,1000,1500,2000,2500].forEach(function(v){var y=T+(H-T-B)*(1-v/max);svg.appendChild(el('line',{x1:L,x2:W-R,y1:y,y2:y,stroke:'var(--grid)','stroke-width':1}));var t=el('text',{x:L-8,y:y+4,'text-anchor':'end','font-size':11,fill:'var(--muted)','font-family':'JetBrains Mono, monospace'});t.textContent=v.toLocaleString('en-US');svg.appendChild(t);});
+  var bw=(W-L-R)/data.length,w=Math.min(46,bw*.56);
+  data.forEach(function(d,i){
+    var x=L+bw*i+(bw-w)/2,h=(H-T-B)*d[1]/max,y=H-B-h,hi=d[0]==='Jan 25';
+    var p=el('path',{d:'M'+x+','+(H-B)+'V'+(y+4)+'q0,-4 4,-4h'+(w-8)+'q4,0 4,4V'+(H-B)+'z',fill:hi?'var(--bar-hi)':'var(--bar)',opacity:hi?1:.85});
+    svg.appendChild(p);
+    var lab=el('text',{x:L+bw*i+bw/2,y:H-B+18,'text-anchor':'middle','font-size':11.5,fill:'var(--muted)'});lab.textContent=d[0];svg.appendChild(lab);
+    if(hi){var v=el('text',{x:L+bw*i+bw/2,y:y-8,'text-anchor':'middle','font-size':12.5,'font-weight':600,fill:'var(--fg)'});v.textContent='2,137';svg.appendChild(v);}
+    var hit=el('rect',{x:L+bw*i,y:T,width:bw,height:H-T-B,fill:'transparent'});
+    hit.addEventListener('mouseenter',function(){var r=wrap.getBoundingClientRect(),s=r.width/W;tip.style.left=((L+bw*i+bw/2)*s)+'px';tip.style.top=(y*s)+'px';tip.textContent=d[0]+': '+d[1].toLocaleString('en-US')+' HSA/FSA orders · '+(d[1]/d[2]*100).toFixed(1)+'% of '+d[2].toLocaleString('en-US');tip.style.opacity=1;});
+    hit.addEventListener('mouseleave',function(){tip.style.opacity=0});
+    svg.appendChild(hit);
+  });
+  var tb=document.getElementById('ctbody');
+  tb.innerHTML=data.map(function(d){return '<tr><td>'+d[0]+'</td><td class="r">'+d[1].toLocaleString('en-US')+'</td><td class="r">'+d[2].toLocaleString('en-US')+'</td><td class="r">'+(d[1]/d[2]*100).toFixed(1)+'%</td></tr>'}).join('');
+  document.querySelectorAll('#hsachart .tabs button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#hsachart .tabs button').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');var t=b.dataset.v==='table';document.getElementById('ctable').hidden=!t;wrap.hidden=t;});});
+})();
+</script>
+
+</body>
+</html>

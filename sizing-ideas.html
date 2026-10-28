@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sizing Section Ideas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#112baf;--mute:rgba(0,0,0,.6);--line:rgba(0,0,0,.1);--bg:#efefef}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:#000;font-family:'Geist',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+#page{width:1600px;margin:0 auto;padding:0 80px 120px;transform-origin:top left}
+.top{padding:96px 0 40px;display:flex;justify-content:space-between;align-items:flex-end}
+.top h1{font-weight:400;font-size:56px;letter-spacing:-2px;line-height:1.1}
+.top p{max-width:600px;font-size:16px;line-height:1.6;letter-spacing:-.4px;color:var(--mute)}
+.diag{background:#fff;border-radius:16px;padding:32px 40px;margin-bottom:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.diag h4{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+.diag p{font-size:14px;line-height:1.5;letter-spacing:-.2px;color:var(--mute)}
+.idea{margin-bottom:64px}
+.meta{display:flex;gap:24px;align-items:baseline;margin-bottom:16px}
+.meta .n{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mute)}
+.meta h2{font-weight:400;font-size:24px;letter-spacing:-.8px}
+.meta p{font-size:14px;color:var(--mute);letter-spacing:-.2px;margin-left:auto;max-width:640px;text-align:right;line-height:1.5}
+.ctx{background:#fff;border-radius:16px;padding:80px 64px;position:relative;overflow:hidden}
+.mono{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.5px}
+.h2{font-weight:400;font-size:40px;letter-spacing:-1px;line-height:1.2;text-align:center}
+.sub{font-size:16px;line-height:1.6;letter-spacing:-.6px;color:var(--mute);text-align:center;margin-top:12px}
+.hd{margin-bottom:48px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:43px;padding:0 24px;border-radius:50px;font-size:13px;letter-spacing:-.104px;white-space:nowrap;gap:8px;cursor:pointer}
+.btn.b{background:var(--blue);color:#fff}.btn.k,.btn.blk{background:#000;color:#fff}.btn.g{border:1px solid rgba(0,0,0,.16)}
+.seg{background:rgba(0,0,0,.07);border-radius:50px;padding:4px;display:inline-flex}
+.seg button{all:unset;cursor:pointer;height:36px;padding:0 20px;border-radius:50px;font-size:13px;letter-spacing:-.1px;color:rgba(0,0,0,.6);box-sizing:border-box;display:flex;align-items:center}
+.seg button.on{background:#fff;color:#000;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.c{display:flex;justify-content:center}
+.img{border-radius:20px;overflow:hidden;position:relative;background:#ddd}
+.img img{position:absolute;width:100%;height:100%;object-fit:cover}
+.step b{display:block;font-weight:400;font-size:20px;letter-spacing:-.7px}
+.step span{display:block;font-size:14px;color:var(--mute);letter-spacing:-.2px;margin-top:4px;line-height:1.4}
+.step em{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:6px}
+/* 1 timeline */
+.tl{display:flex;align-items:flex-start;max-width:1000px;margin:0 auto;position:relative}
+.tl .s{flex:1;position:relative;padding-top:28px}
+.tl .s::before{content:"";position:absolute;top:5px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),rgba(17,43,175,.15))}
+.tl .s:last-child::before{right:50%}
+.tl .s i{position:absolute;top:0;left:0;width:12px;height:12px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px #fff}
+/* 2 split */
+.split{display:grid;grid-template-columns:560px 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
+.rows .r{display:flex;align-items:baseline;gap:24px;padding:24px 0;border-top:1px solid var(--line)}
+.rows .r:last-child{border-bottom:1px solid var(--line)}
+.rows .r em{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);width:28px}
+.rows .r .step{flex:1}
+.rows .r .d{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--mute)}
+/* 3 compact cards */
+.cc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cc .k{display:flex;gap:20px;align-items:center;padding:16px;border-radius:20px;background:#f6f6f6}
+.cc .k .img{width:120px;height:120px;border-radius:14px;flex:none}
+/* 4 interactive */
+.panel{max-width:1000px;margin:0 auto;background:#f6f6f6;border-radius:24px;padding:40px;display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:center;min-height:220px}
+.sizes{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.sizes button{all:unset;cursor:pointer;width:48px;height:48px;border-radius:12px;border:1px solid rgba(0,0,0,.14);display:grid;place-items:center;font-size:14px;background:#fff}
+.sizes button.on{background:#000;color:#fff;border-color:#000}
+/* 5 strip */
+.strip{display:flex;align-items:center;gap:20px;background:#f6f6f6;border-radius:100px;padding:16px 16px 16px 32px;max-width:1100px;margin:0 auto}
+.strip .p{display:flex;align-items:center;gap:12px;font-size:14px;letter-spacing:-.2px}
+.strip .p i{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:11px;padding:4px 10px;border-radius:30px;background:#fff;text-transform:uppercase;letter-spacing:.4px}
+.strip .ar{color:rgba(0,0,0,.3)}
+/* 6 size first */
+.sf{max-width:900px;margin:0 auto;text-align:center}
+.sf .sizes{justify-content:center}
+.sf .foot{margin-top:28px;font-size:14px;color:var(--mute);display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.sf .foot span::before{content:"•";margin-right:16px;color:rgba(0,0,0,.25)}
+.sf .foot span:first-child::before{display:none}
+/* 7 big date */
+.bd{display:grid;grid-template-columns:1fr 360px;gap:64px;align-items:center;max-width:1200px;margin:0 auto}
+.bd .big{font-size:120px;letter-spacing:-6px;line-height:1;font-weight:400}
+.bd .big small{display:block;font-size:20px;letter-spacing:-.6px;color:var(--mute);margin-bottom:12px;font-weight:400}
+.dots3{display:flex;gap:10px;margin-top:32px;font-size:13px;color:var(--mute);align-items:center}
+.dots3 i{width:8px;height:8px;border-radius:50%;background:var(--blue);display:block}
+.dots3 i.f{background:rgba(0,0,0,.18)}
+/* 8 list only */
+.lst{max-width:900px;margin:0 auto}
+.lst .r{display:grid;grid-template-columns:48px 1fr 180px;gap:20px;align-items:baseline;padding:28px 0;border-top:1px solid var(--line)}
+.lst .r:last-child{border-bottom:1px solid var(--line)}
+.lst .r em{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute)}
+.lst .r b{font-weight:400;font-size:24px;letter-spacing:-.9px}
+.lst .r span{color:var(--mute);font-size:15px;letter-spacing:-.3px}
+.lst .r .d{text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.5px;text-transform:uppercase}
+/* 9 overlay */
+.ov{height:420px;border-radius:24px;max-width:1312px;margin:0 auto}
+.ov::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,0) 60%)}
+.ov .gl{position:absolute;left:40px;bottom:40px;z-index:2;background:rgba(255,255,255,.14);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:24px 28px;color:#fff;width:420px}
+.ov .gl .row{display:flex;gap:16px;padding:10px 0;border-top:1px solid rgba(255,255,255,.2);font-size:14px;align-items:baseline}
+.ov .gl .row:first-of-type{border-top:0}
+.ov .gl .row b{font-weight:400;flex:1;font-size:16px;letter-spacing:-.4px}
+.ov .gl .row span{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.4px;opacity:.85}
+/* 10 two cards */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:1100px;margin:0 auto}
+.two .k{border-radius:24px;padding:36px;background:#f6f6f6;display:flex;flex-direction:column;gap:12px;min-height:280px}
+.two .k.dk{background:#000;color:#fff}
+.two .k.dk .mute{color:rgba(255,255,255,.6)}
+.two .k .mute{color:var(--mute);font-size:15px;line-height:1.5;letter-spacing:-.3px}
+.two .k h3{font-weight:400;font-size:32px;letter-spacing:-1.2px;line-height:1.1}
+.two .k .eta{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.two .k .eta small{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.5px;text-transform:uppercase;opacity:.7}
+.foot2{font-size:13px;color:var(--mute);line-height:1.6;max-width:760px;margin-top:24px}
+</style>
+</head>
+<body>
+<div id="page">
+  <div class="top">
+    <h1>Sizing section<br>— 10 lighter ideas</h1>
+    <p>Same three facts (order today, ships by Oct 30, arrives Nov 2) and the same two paths (I know my size / send the free kit) — shown with far less weight.</p>
+  </div>
+
+  <div class="diag">
+    <div><h4>What feels like too much</h4><p>Three equal full-height photo cards pull as much attention as the hero. Photos here don’t explain sizing at all.</p></div>
+    <div><h4>Repeated labels</h4><p>Every step says it three times: “TODAY / Order / Finish and size”. Plus a “1” badge on all three steps.</p></div>
+    <div><h4>Wrong heading</h4><p>“PRO beyond measure” is the carousel’s heading, repeated. This section should talk about fit and delivery.</p></div>
+    <div><h4>Dead toggle</h4><p>“I know my size / Send the free kit” looks like a switch but changes nothing. It should drive the content (idea 04, 10).</p></div>
+  </div>
+
+  <!-- 1 -->
+  <div class="idea">
+    <div class="meta"><span class="n">01</span><h2>One-line timeline</h2><p>Drop the photos entirely. A thin progress line with three dots carries the whole story in ~140px of height.</p></div>
+    <div class="ctx">
+      <div class="hd"><div class="h2">Sized right. At your door by Nov 2.</div><div class="sub">Free sizing kit or pick your size, then we ship by Oct 30.</div></div>
+      <div class="tl">
+        <div class="s"><i></i><div class="step"><em>Today</em><b>Order</b><span>Finish and size</span></div></div>
+        <div class="s"><i></i><div class="step"><em>Ships by Oct 30</em><b>Ships</b><span>Tracking by email and SMS</span></div></div>
+        <div class="s"><i></i><div class="step"><em>Est. Nov 2</em><b>Arrives</b><span>30-day returns start</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="idea">
+    <div class="meta"><span class="n">02</span><h2>One photo, three rows</h2><p>Keep a single strong image (the ring on hand) and turn the steps into a quiet ruled list with dates on the right.</p></div>
+    <div class="ctx">
+      <div class="split">
+        <div class="img" style="height:480px"><img src="figma/bf8ef.jpg" alt="" style="object-position:30% 40%"></div>
+        <div>
+          <div style="font-size:40px;letter-spacing:-1px;line-height:1.15;margin-bottom:12px">Sized right,<br>shipped fast.</div>
+          <div class="sub" style="text-align:left;margin:0 0 32px">Free sizing kit, or choose your size now.</div>
+          <div class="rows">
+            <div class="r"><em>01</em><div class="step"><b>Order</b><span>Finish and size</span></div><div class="d">Today</div></div>
+            <div class="r"><em>02</em><div class="step"><b>Ships</b><span>Tracking by email and SMS</span></div><div class="d">By Oct 30</div></div>
+            <div class="r"><em>03</em><div class="step"><b>Arrives</b><span>30-day returns start</span></div><div class="d">Est. Nov 2</div></div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:32px"><a class="btn b" href="buy.html">Choose your size</a><a class="btn g" href="#">Send the free kit</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="idea">
+    <div class="meta"><span class="n">03</span><h2>Thumbnail cards</h2><p>Keep all three photos but shrink them to 120px thumbnails beside the text. Same content, one-third the height.</p></div>
+    <div class="ctx">
+      <div class="hd"><div class="h2">From order to ring in 3 steps.</div></div>
+      <div class="cc">
+        <div class="k"><div class="img"><img src="figma/bf8ef.jpg" alt="" style="object-position:30% 40%"></div><div class="step"><em>Today</em><b>Order</b><span>Finish and size</span></div></div>
+        <div class="k"><div class="img"><img src="figma/99800.jpg" alt=""></div><div class="step"><em>Ships by Oct 30</em><b>Ships</b><span>Tracking by email and SMS</span></div></div>
+        <div class="k"><div class="img"><img src="figma/d3553.jpg" alt="" style="object-position:50% 70%"></div><div class="step"><em>Est. Nov 2</em><b>Arrives</b><span>30-day returns start</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="idea">
+    <div class="meta"><span class="n">04</span><h2>Toggle that works</h2><p>The segmented control swaps one compact panel: pick a size now, or request the kit. Try it. One decision, one CTA.</p></div>
+    <div class="ctx">
+      <div class="hd" style="margin-bottom:32px"><div class="h2">Find your fit.</div><div class="sub">Two ways to get the right size.</div></div>
+      <div class="c" style="margin-bottom:32px"><div class="seg" id="seg4"><button class="on" data-p="know">I know my Ring size</button><button data-p="kit">Send the free kit</button></div></div>
+      <div class="panel" id="panel4">
+        <div id="know"><div class="step"><b>Pick your size</b><span>Sizes 5–14. 30-day returns if it doesn’t fit.</span></div><div class="sizes" id="sz">
+          <button>5</button><button>6</button><button>7</button><button class="on">8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div></div>
+        <div id="kit" style="display:none"><div class="step"><b>We’ll send a free sizing kit</b><span>Arrives within 2 days. Try the sizes on, then order with confidence.</span></div></div>
+        <div style="text-align:right"><div class="mono" style="font-size:12px;color:var(--mute);margin-bottom:8px" id="eta4">Ships by Oct 30 · Est. Nov 2</div><a class="btn b" href="buy.html" id="cta4">Buy Ring PRO</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="idea">
+    <div class="meta"><span class="n">05</span><h2>Inline pill strip</h2><p>The “tiny banner” version: everything in a single pill row. Best if sizing is a minor supporting beat on the page.</p></div>
+    <div class="ctx" style="padding:56px 64px">
+      <div class="strip">
+        <div style="font-size:16px;letter-spacing:-.5px;font-weight:500">Free sizing kit</div>
+        <div class="grow" style="width:1px;height:24px;background:var(--line)"></div>
+        <div class="p"><i>Today</i>Order</div><span class="ar">→</span>
+        <div class="p"><i>Oct 30</i>Ships</div><span class="ar">→</span>
+        <div class="p"><i>Nov 2</i>Arrives</div>
+        <div style="flex:1"></div>
+        <a class="btn blk" href="buy.html">Choose size →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="idea">
+    <div class="meta"><span class="n">06</span><h2>Size first, details as footnote</h2><p>Lead with the action (pick a size). Delivery becomes one line of small print instead of a three-card feature.</p></div>
+    <div class="ctx">
+      <div class="sf">
+        <div class="h2">What’s your Ring size?</div>
+        <div class="sub" style="margin-bottom:32px">Not sure? We’ll send a free kit.</div>
+        <div class="sizes"><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button></div>
+        <div style="display:flex;gap:10px;justify-content:center;margin-top:28px"><a class="btn b" href="buy.html">Buy Ring PRO</a><a class="btn g" href="#">Send the free kit</a></div>
+        <div class="foot"><span>Order today</span><span>Ships by Oct 30, tracked by email and SMS</span><span>Arrives Nov 2</span><span>30-day returns</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="idea">
+    <div class="meta"><span class="n">07</span><h2>The date is the headline</h2><p>People mostly want to know “when”. Make the arrival date the hero, steps become a three-dot footnote, one small photo.</p></div>
+    <div class="ctx">
+      <div class="bd">
+        <div>
+          <div class="big"><small>Order today, get it</small>Nov 2</div>
+          <div class="dots3"><i></i>Order today <i></i>Ships by Oct 30 <i class="f"></i>Arrives Nov 2</div>
+          <div style="display:flex;gap:10px;margin-top:32px"><a class="btn b" href="buy.html">Buy Ring PRO</a><a class="btn g" href="#">Free sizing kit</a></div>
+        </div>
+        <div class="img" style="height:320px"><img src="figma/99800.jpg" alt=""></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="idea">
+    <div class="meta"><span class="n">08</span><h2>Spec-table, no imagery</h2><p>Editorial and calm. Large type, hairlines, dates aligned right. Reads like the specs of a delivery.</p></div>
+    <div class="ctx">
+      <div class="hd" style="margin-bottom:40px"><div class="h2">Order to doorstep.</div></div>
+      <div class="lst">
+        <div class="r"><em>01</em><div><b>Order</b><br><span>Finish and size</span></div><div class="d">Today</div></div>
+        <div class="r"><em>02</em><div><b>Ships</b><br><span>Tracking by email and SMS</span></div><div class="d">By Oct 30</div></div>
+        <div class="r"><em>03</em><div><b>Arrives</b><br><span>30-day returns start</span></div><div class="d">Est. Nov 2</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="idea">
+    <div class="meta"><span class="n">09</span><h2>Wide photo + glass card</h2><p>One cinematic photo with the steps in a frosted card on top. Visual, but one object instead of three.</p></div>
+    <div class="ctx" style="padding:48px 64px">
+      <div class="img ov"><img src="figma/d3553.jpg" alt="" style="object-position:50% 38%">
+        <div class="gl">
+          <div class="mono" style="font-size:11px;opacity:.8;margin-bottom:10px">Free sizing kit · 2-day delivery</div>
+          <div class="row"><b>Order</b><span>Today</span></div>
+          <div class="row"><b>Ships</b><span>By Oct 30</span></div>
+          <div class="row"><b>Arrives</b><span>Est. Nov 2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="idea">
+    <div class="meta"><span class="n">10</span><h2>Two paths, two cards</h2><p>The real choice is “know my size” vs “send the kit”. Make that the section: two clear cards with their own timing, no photos, no separate timeline.</p></div>
+    <div class="ctx">
+      <div class="hd" style="margin-bottom:40px"><div class="h2">Get your size right.</div></div>
+      <div class="two">
+        <div class="k dk"><div class="mono" style="font-size:12px;opacity:.6">I know my Ring size</div><h3>Order now.<br>Arrives Nov 2.</h3><div class="mute">Ships by Oct 30 with tracking by email and SMS. 30-day returns start on arrival.</div><div class="eta"><small>Sizes 5–14</small><a class="btn" style="background:#fff;color:#000" href="buy.html">Buy Ring PRO</a></div></div>
+        <div class="k"><div class="mono" style="font-size:12px;color:var(--mute)">Not sure yet?</div><h3>Free sizing kit.<br>Within 2 days.</h3><div class="mute">Try every size at home, then order with confidence. No charge.</div><div class="eta"><small>Free</small><a class="btn blk" href="#">Send me the kit</a></div></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="foot2">All ideas use the original content: Order (today, finish and size), Ships (by Oct 30, tracking by email and SMS), Arrives (est. Nov 2, 30-day returns start) and the two paths “I know my Ring size” / “Send the free kit”. Sizes 5–14 come from the buy panel. “Within 2 days” comes from the sizing kit benefit in the hero.</p>
+</div>
+<script>
+function fit(){document.getElementById('page').style.zoom=Math.min(1,document.documentElement.clientWidth/1600)}
+fit();addEventListener('resize',fit);
+// idea 4 toggle
+(function(){
+  var seg=document.querySelectorAll('#seg4 button'),know=document.getElementById('know'),kit=document.getElementById('kit'),eta=document.getElementById('eta4'),cta=document.getElementById('cta4');
+  seg.forEach(function(b){b.addEventListener('click',function(){
+    seg.forEach(function(x){x.classList.toggle('on',x===b)});
+    var k=b.dataset.p==='kit';
+    know.style.display=k?'none':'';kit.style.display=k?'':'none';
+    eta.textContent=k?'Free · arrives within 2 days':'Ships by Oct 30 · Est. Nov 2';
+    cta.textContent=k?'Send me the kit':'Buy Ring PRO';
+    cta.className='btn '+(k?'blk':'b');
+  })});
+  document.querySelectorAll('.sizes').forEach(function(g){g.addEventListener('click',function(e){
+    if(e.target.tagName!=='BUTTON')return;
+    g.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===e.target)});
+  })});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ultrahuman Homepage USA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Geist:wght@400;500&family=Geist+Mono:wght@400;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#112baf;--ink:#000;--mute:rgba(0,0,0,.6);--line:rgba(0,0,0,.16);--W:1600px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff;color:#000;font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:none}
+a{color:inherit;text-decoration:none}
+.a{position:absolute}
+#page{width:var(--W);margin:0 auto;position:relative;transform-origin:top left}
+section{position:relative;width:1600px;overflow:hidden}
+.mono{font-family:'JetBrains Mono',monospace}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;height:43px;width:144px;border-radius:50px;font-size:13px;letter-spacing:-.104px;line-height:24px;white-space:nowrap;cursor:pointer;transition:transform .15s,opacity .15s}
+.btn:hover{opacity:.88}.btn:active{transform:scale(.98)}
+.btn.blue{background:var(--blue);color:#fff}
+.btn.ghost{border:1px solid var(--line);color:#000;height:41px}
+.btn.ghost.dk{border-color:rgba(255,255,255,.16);color:#fff}
+.btn.black{background:#000;color:#fff;height:44px;width:168px}
+.btn.white{background:#fff;color:#000;height:41px}
+.btnrow{display:flex;gap:12px;align-items:flex-start}
+/* top */
+.ann{height:66px;border-bottom:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;font-size:12px;letter-spacing:-.24px;line-height:24px}
+.ann u{text-decoration-thickness:1px;text-underline-offset:2px;text-decoration-color:rgba(0,0,0,.64);margin-left:3px}
+.nav{position:relative;height:74px}
+.nav .t{position:absolute;top:18px;height:40px;display:flex;align-items:center;font-size:13px;letter-spacing:-.26px;white-space:nowrap}
+.promo{position:relative;margin:0 10px;height:560px;border-radius:16px;overflow:hidden;background:#c4c4c4;display:grid;grid-template-columns:1fr 1fr 1fr}
+.promo .p{position:relative;overflow:hidden}
+.promo .p img{width:100%;height:100%;object-fit:cover}
+.promo .p::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.2)}
+.promo .copy{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:1200px;display:flex;flex-direction:column;align-items:center;gap:24px;color:#fff;text-align:center;z-index:2}
+.promo .copy h2{font-family:'Anton','Dharma Gothic M',sans-serif;font-weight:400;font-size:84px;line-height:1.2;text-transform:uppercase;letter-spacing:.5px;mix-blend-mode:lighten}
+.promo .copy p{font-size:16px;letter-spacing:-.6px;line-height:1.1}
+/* hero */
+.hero{height:893px;margin:0 10px;width:1580px;border-radius:16px 16px 0 0}
+.hero .bg{position:absolute;left:50%;bottom:0;width:1586px;height:964px;transform:translateX(-50%);overflow:hidden}
+.hero .bg img{position:absolute;height:99.94%;left:-98.75%;top:.07%;width:299.25%}
+.hero .txt{position:absolute;left:100px;top:calc(50% - .5px);transform:translateY(-50%);display:flex;flex-direction:column;gap:24px}
+.hero h1{font-weight:400;display:flex;flex-direction:column;gap:16px}
+.hero h1 .e{font-size:24px;line-height:1.2;text-transform:uppercase}
+.hero h1 .h{font-size:56px;line-height:1.2;letter-spacing:-2px;width:440px}
+.hero h1 .s{font-size:16px;letter-spacing:-.6px;line-height:1.6}
+/* tiles */
+.tile{position:absolute;overflow:hidden;background:#f9f9f9}
+.tile.g{background:#ececec}
+.tile img{position:absolute;object-fit:cover}
+.mid{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center}
+.mid h2{font-size:40px;font-weight:400;line-height:1.2;letter-spacing:-2.5px;width:560px}
+.mid p{font-size:16px;line-height:1.6;letter-spacing:-.6px;color:var(--mute);white-space:nowrap}
+/* battery */
+.bat .row{position:absolute;left:50%;top:145px;transform:translateX(-50%);display:flex;gap:120px;align-items:center;text-align:center;white-space:nowrap}
+.bat .row .l{font-size:32px;line-height:1.6;text-transform:uppercase;opacity:.5;width:204px}
+.bat .row .l:last-child{width:auto}
+.bat .row .n{font-size:88px;font-weight:500;line-height:1.2;letter-spacing:-6px}
+/* beyond measure */
+.pbm{background:#000;height:1427px;color:#fff}
+.pbm .hd{position:absolute;top:160px;left:0;width:1600px;text-align:center}
+.pbm .hd h2{font-size:40px;font-weight:400;line-height:48px;letter-spacing:-1px}
+.pbm .hd p{font-size:16px;line-height:1.6;letter-spacing:-.6px;color:rgba(255,255,255,.6);margin-top:24px}
+.tabs{position:absolute;top:369px;left:50%;transform:translateX(-50%);display:flex}
+.tabs button{all:unset;cursor:pointer;width:164px;height:43px;border-radius:50px;border:1px solid transparent;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:-.104px;color:rgba(255,255,255,.6);margin-right:-8px;box-sizing:border-box;transition:background .25s,color .25s}
+.tabs button.on{background:rgba(255,255,255,.12);color:#fff}
+.track{position:absolute;top:452px;left:0;display:flex;gap:40px;transition:transform .7s cubic-bezier(.22,.8,.2,1)}
+.card{width:996px;flex:none;display:flex;flex-direction:column;gap:24px;opacity:.5;transition:opacity .5s}
+.card.on{opacity:1}
+.card .vis{position:relative;height:622px;border-radius:12px;background:#1a1a1a;overflow:hidden}
+.card .vis>img.bgi{position:absolute;object-fit:cover}
+.card h3{font-weight:400;font-size:24px;line-height:1.2;letter-spacing:-1px}
+.card p{font-size:16px;line-height:1.4;letter-spacing:-.6px;color:rgba(255,255,255,.6);max-width:720px;margin-top:12px}
+.plus{position:absolute;right:40px;bottom:40px;width:48px;height:48px;border-radius:24px;background:rgba(255,255,255,.1);display:grid;place-items:center}
+.plus img{width:20px;height:20px}
+.glass{position:absolute;border-radius:16px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(255,255,255,.04);box-shadow:inset 0 1px 2px rgba(255,255,255,.1);color:#fff;overflow:hidden}
+.glass .k{font-family:'JetBrains Mono',monospace;text-transform:uppercase}
+.dots{position:absolute;bottom:160px;left:50%;transform:translateX(-50%);display:flex;gap:8px;align-items:center}
+.dots i{width:6px;height:6px;border-radius:8px;background:rgba(255,255,255,.2);transition:all .3s;cursor:pointer;display:block}
+.dots i.on{width:25px;background:#fff}
+/* product sections */
+.prod{padding:160px 80px;display:flex;flex-direction:column;gap:80px;width:1600px;overflow:visible}
+.prod.dk{background:#000;color:#fff}
+.prod.lt{background:#fff;color:#000}
+.prod .t1{font-size:40px;line-height:1.2;letter-spacing:-1px;font-weight:400}
+.prod.dk .t1 span{color:rgba(255,255,255,.6)}.prod.lt .t1 span{color:rgba(0,0,0,.4)}
+.pcols{display:flex;gap:16px;align-items:flex-start}
+.pleft{width:712px;display:flex;flex-direction:column;gap:32px;position:sticky;top:60px}
+.pleft .vis{height:520px;border-radius:16px;overflow:hidden;position:relative}
+.pleft .bar{display:flex;align-items:center;justify-content:space-between}
+.pleft .bar b{font-weight:400;font-size:28px;letter-spacing:-1.12px;line-height:1.2}
+.pright{display:flex;flex-direction:column;gap:16px;width:712px}
+.pbox{border-radius:16px;overflow:hidden;position:relative;width:712px}
+.dk .pbox{background:rgba(255,255,255,.1)}.lt .pbox{background:rgba(0,0,0,.06)}
+.pbox.h520{height:520px}
+.lead{position:absolute;left:48px;top:48px;width:616px;font-size:28px;line-height:1.6;letter-spacing:-1px}
+.lt .lead{font-size:26px}
+.feat{padding:48px;display:flex;flex-direction:column;gap:48px}
+.feat .eb{font-family:'JetBrains Mono',monospace;font-size:16px;letter-spacing:.64px;text-transform:uppercase;line-height:1.2}
+.dk .feat .eb{color:rgba(255,255,255,.6)}.lt .feat .eb{color:rgba(0,0,0,.6);font-size:13px;letter-spacing:.52px}
+.feat .list{display:flex;flex-direction:column;gap:40px;width:616px}
+.feat .it{display:flex;gap:30px;align-items:center}
+.feat .ic{width:32px;height:32px;position:relative;flex:none}
+.feat .ic img{position:absolute}
+.feat .it b{display:block;font-weight:500;font-size:22px;letter-spacing:-.88px;line-height:normal}
+.feat .it span{display:block;font-size:16px;line-height:1.4;letter-spacing:-.16px;margin-top:12px;width:540px}
+.lt .feat .it span{font-size:14px;letter-spacing:-.14px;margin-top:6px}
+.lt .feat .it b+span{margin-top:6px}
+.dk .feat .it span{color:rgba(255,255,255,.6)}.lt .feat .it span{color:rgba(0,0,0,.6)}
+.feat hr{border:0;height:1px;width:616px}
+.dk .feat hr{background:rgba(255,255,255,.14)}.lt .feat hr{background:rgba(0,0,0,.12)}
+.big{position:absolute;left:156px;top:80px;width:400px;text-align:center}
+.big .u{font-size:20px;letter-spacing:-.4px;color:rgba(255,255,255,.5);line-height:1.2}
+.big .n{display:flex;gap:24px;justify-content:center;font-size:88px;letter-spacing:-1px;line-height:1.2;margin-top:32px}
+.big .c{font-size:24px;letter-spacing:-1px;line-height:1.4;margin-top:32px}
+/* video */
+.vid{height:1026px;background:#fff}
+.vid .c{position:absolute;left:50%;top:160px;transform:translateX(-50%);display:flex;flex-direction:column;gap:24px;align-items:center}
+.vid h2{font-size:40px;font-weight:400;letter-spacing:-1px;line-height:1.2;white-space:nowrap}
+.vid p{font-size:16px;line-height:1.6;letter-spacing:-.6px;color:var(--mute);text-align:center;width:658px}
+.vid .stores{display:flex;gap:8px}
+.vid .stores .btn{gap:10px;height:41px}
+.vid .poster{position:absolute;left:50%;bottom:160px;transform:translateX(-50%);width:800px;height:450px;border-radius:16px;overflow:hidden}
+.vid .poster img{width:100%;height:100%;object-fit:cover}
+.vid .play{position:absolute;right:calc(50% - 400px + 32px);bottom:176px;padding:8px;border-radius:48px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(0,0,0,.08);cursor:pointer;width:64px;height:64px}
+/* globe */
+.globe{height:820px;background:#fff}
+.globe .gw{position:absolute;left:112px;top:6px;width:858px;height:808px;background:#fff;overflow:hidden}
+.globe .gw img{position:absolute;left:-10px;top:2.75px;width:835px;height:761px;object-fit:cover}
+.globe .gw .v{position:absolute;left:-33px;top:-152px;width:1012px;height:942px;filter:blur(42px);background:radial-gradient(ellipse 554px 516px at 482px 426px,rgba(255,255,255,0) 64.8%,#fff 100%)}
+.globe .gc{position:absolute;left:calc(50% + 131px);top:calc(50% - 23px);transform:translate(-50%,-50%);padding:20px;border-radius:16px;border:.5px solid #fff;background:rgba(255,255,255,.16);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;flex-direction:column;gap:20px;white-space:nowrap}
+.globe .gc .e{font-family:'JetBrains Mono',monospace;font-size:10px;line-height:1.1;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.globe .gc .n{font-size:20px;color:#fff;letter-spacing:-1px;line-height:1.4}
+.globe .gc .s{font-size:13px;color:rgba(255,255,255,.9);letter-spacing:-.4px;margin-top:10px;line-height:1.1}
+.globe .copy{position:absolute;left:970px;top:220px;width:540px;display:flex;flex-direction:column;gap:24px}
+.globe .copy h2{font-size:40px;font-weight:400;line-height:1.4;letter-spacing:-2px}
+.globe .copy p{font-size:16px;line-height:1.6;letter-spacing:-.6px;color:var(--mute);width:484px}
+.globe .copy .btn{width:auto;padding:0 25px;align-self:flex-start;height:43px}
+.globe .stat{position:absolute;left:970px;top:523px}
+.globe .stat b{display:block;font-size:40px;font-weight:400;line-height:48px;letter-spacing:-1px}
+.globe .stat span{display:block;font-size:15px;line-height:17px;letter-spacing:-.6px;color:var(--mute);margin-top:12px}
+/* partners */
+.partners{background:#fff;height:313px;border-top:1px solid rgba(0,0,0,.1);margin:0 88px;width:1424px;display:flex;flex-direction:column;align-items:center;padding-top:104px;gap:8px}
+.partners p{font-size:18px;line-height:1.2;color:var(--mute);text-transform:uppercase}
+.partners img{width:998px;height:75px;opacity:.7;object-fit:fill}
+/* footer */
+footer{background:#fafafa;width:1600px;padding:40px 80px 0;position:relative;overflow:hidden;font-family:'Inter',sans-serif}
+footer .g{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(0,0,0,.1);height:535.5px}
+footer .col{border-right:1px solid rgba(0,0,0,.06);padding:44px 29px 0 28px}
+footer .col:first-child{padding-left:0}footer .col:last-child{border-right:0}
+footer h4{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(0,0,0,.3);line-height:13px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:13px;margin-top:20px}
+footer ul.g16{gap:16px}
+footer li{font-size:13px;letter-spacing:-.15px;color:rgba(0,0,0,.7);line-height:19.5px;white-space:nowrap}
+footer li .new{display:inline-block;margin-left:14px;background:rgba(0,0,0,.1);border-radius:3px;padding:2px 6px;font-size:8px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;line-height:10px;vertical-align:1px}
+footer .sub{border-top:1px solid rgba(0,0,0,.05);margin-top:21px;padding-top:21px}
+footer .sub ul{margin-top:20px}
+footer .hsa{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(0,0,0,.3);border-radius:8px;padding:8px;margin-top:20px}
+footer .c3{display:grid;grid-template-columns:repeat(3,1fr);height:161px;border-bottom:1px solid rgba(0,0,0,.1)}
+footer .c3>div{padding:28px 28px 0;border-right:1px solid rgba(0,0,0,.06)}
+footer .c3>div:first-child{padding-left:0}footer .c3>div:last-child{border-right:0}
+footer .c3 h4{font-size:10px;line-height:12px}
+footer .c3 .l{font-size:13px;color:rgba(0,0,0,.7);line-height:15.5px;margin-top:14px;display:flex;flex-direction:column;gap:8px}
+footer .app{display:flex;gap:8px;margin-top:14px}
+footer .app a{border:1px solid rgba(0,0,0,.08);border-radius:8px;height:36.5px;padding:1px 15px;display:flex;flex-direction:column;justify-content:center}
+footer .app small{font-size:7px;color:rgba(0,0,0,.7);line-height:8.5px}
+footer .app b{font-size:10px;font-weight:500;color:#111;line-height:12px}
+footer .legal{height:87px;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;padding-top:20px;font-size:12px;color:rgba(0,0,0,.3);line-height:17px}
+footer .wm{height:220px;padding:44px 96px 0;overflow:hidden}
+footer .wm img{width:1280px;height:117px}
+</style>
+</head>
+<body>
+<div id="page">
+
+<!-- announcement + nav -->
+<div class="ann"><span>Introducing GLP-1 Led Longevity Program in Bangalore India.</span><u>Learn more</u></div>
+<div class="nav">
+  <a class="t" style="left:40px;width:32px;height:32px;top:22px" href="#" aria-label="Menu"><svg width="32" height="32" viewBox="0 0 32 32"><path d="M2 13h28M2 19h28" stroke="#000" stroke-width="2"/></svg></a>
+  <a class="t" style="left:104px" href="#">Ultrahuman Ring</a>
+  <a class="t" style="left:233px" href="#">Advanced Markers</a>
+  <a class="t" style="left:372px" href="#">Performance Lab</a>
+  <a class="t" style="left:502px" href="#">Shop</a>
+  <a class="t" style="left:50%;margin-left:-89px;top:22px;gap:8px" href="#"><img src="figma/68979.svg" width="32" height="32" alt=""><img src="figma/b2adc.svg" width="161" height="14" alt="Ultrahuman"></a>
+  <div class="t" style="left:1242px;gap:48px;top:18px">
+    <span style="display:flex;gap:6px;align-items:center" class="mono"><i style="width:24px;height:24px;border-radius:12px;background:#f1f1f1;display:block"></i><b style="font-weight:600;font-size:13px;text-transform:uppercase">in</b></span>
+    <img src="figma/7df20.svg" width="32" height="32" alt="Cart">
+    <a class="btn blue" href="buy.html">Pre-order now</a>
+  </div>
+</div>
+
+<!-- promo banner -->
+<div class="promo">
+  <div class="p"><img src="figma/1714b.jpg" alt=""></div>
+  <div class="p"><img src="figma/7352b.jpg" alt=""></div>
+  <div class="p"><img src="figma/eefab.jpg" alt=""></div>
+  <div class="copy"><h2>Exclusive sale</h2><p>Save 20% on Ring AIR. Limited offer until September 4</p><a class="btn white" href="#">Buy now</a></div>
+</div>
+<div style="height:8px"></div>
+
+<!-- 1 hero -->
+<section class="hero">
+  <div class="bg"><img src="figma/fd8cb.jpg" alt=""></div>
+  <div class="txt">
+    <h1><span class="e">Ring PRO</span><span class="h">Power Moves.</span><span class="s">The biggest leap in power and signal, ever.</span></h1>
+    <div class="btnrow"><a class="btn blue" href="buy.html">Pre-order now</a><a class="btn ghost" href="home.html">Explore</a></div>
+  </div>
+</section>
+
+<!-- 2 evidence (scattered) -->
+<section style="height:900px;background:#fff">
+  <div class="mid"><h2>Every reading, built on evidence.</h2><p>The science behind Ultrahuman, explained</p><a class="btn black" href="#">Read the science</a></div>
+  <div class="tile" style="left:1202.8px;top:520.2px;width:182.7px;height:175.6px;opacity:.6;border-radius:11.4px"><img src="figma/460c3.png" alt="" style="width:204px;height:205px;left:calc(50% - 102px);top:calc(50% - 102.5px)"></div>
+  <div class="tile" style="left:76px;top:118.5px;width:182.7px;height:199.8px;opacity:.48;border-radius:11.4px"><img src="figma/d89f5.jpg" alt="" style="width:329px;height:263px;left:-66px;top:-30.5px"></div>
+  <div class="tile" style="left:960.8px;top:44.2px;width:228.4px;height:228.4px;opacity:.48;border-radius:11.4px"><img src="figma/305f8.jpg" alt="" style="width:359px;height:445.7px;left:.2px;top:calc(50% - 310px)"></div>
+  <div class="tile g" style="left:1258px;top:451px;width:256.2px;height:132px;opacity:.48;border-radius:12px"><img src="figma/7608c.jpg" alt="" style="width:383px;height:476px;left:calc(50% - 128px);top:calc(50% - 374px)"><i style="position:absolute;inset:0;background:rgba(0,0,0,.4)"></i></div>
+  <div class="tile g" style="left:211px;top:162px;width:256.2px;height:132px;opacity:.48;border-radius:11.4px"><img src="figma/8c5d9.jpg" alt="" style="width:268px;height:332px;left:-12px;top:calc(50% + 96px - 166px)"></div>
+  <div class="tile g" style="left:259px;bottom:125.7px;width:268.4px;height:171.3px;opacity:.48;border-radius:11.4px"><img src="figma/418ee.jpg" alt="" style="width:268px;height:480px;left:0;top:-209px"></div>
+</section>
+
+<!-- 3 evidence (expanded) -->
+<section style="height:900px;background:#fff">
+  <div class="mid"><h2>Every reading, built on evidence.</h2><p>The science behind Ultrahuman, explained</p><a class="btn black" href="#">Read the science</a></div>
+  <div class="tile" style="left:973px;top:654px;width:256px;height:246px;border-radius:16px"><img src="figma/460c3.png" alt="" style="width:266px;height:268px;left:-5px;top:-11px"></div>
+  <div class="tile" style="left:60px;top:88px;width:256px;height:280px;border-radius:16px"><img src="figma/d89f5.jpg" alt="" style="width:417px;height:334px;left:-80px;top:-27px"></div>
+  <div class="tile" style="left:941px;top:0;width:320px;height:320px;border-radius:16px">
+    <div style="position:absolute;left:-13px;top:0;width:346px;height:369px;overflow:hidden"><img src="figma/df1ad.png" alt="" style="width:357px;height:372px;left:-4px;top:0;object-fit:cover;object-position:bottom"><i style="position:absolute;inset:0;background:linear-gradient(224.6deg,rgba(0,0,0,0) 57.5%,#000 120%)"></i></div>
+    <img src="figma/305f8.jpg" alt="" style="width:359px;height:445.7px;left:0;top:calc(50% - 255.9px)">
+  </div>
+  <div class="tile g" style="left:1182px;top:515px;width:359px;height:185px;border-radius:16px"><img src="figma/7608c.jpg" alt="" style="width:383px;height:476px;left:calc(50% - 179px);top:calc(50% - 344px)"><i style="position:absolute;inset:0;background:rgba(0,0,0,.4)"></i></div>
+  <div class="tile g" style="left:140px;bottom:52px;width:376px;height:285px;border-radius:16px">
+    <img src="figma/418ee.jpg" alt="" style="width:376px;height:674px;left:0;top:-286px">
+    <div style="position:absolute;left:0;top:-11px;width:505px;height:308px;border-radius:16px;overflow:hidden;background:#ececec"><img src="figma/8c5d9.jpg" alt="" style="width:396px;height:492px;left:-12px;top:0"><img src="figma/418ee.jpg" alt="" style="width:376px;height:674px;left:0;top:-234px"></div>
+  </div>
+  <div class="tile g" style="left:447.5px;top:158px;width:359px;height:185px;border-radius:16px"><img src="figma/305f8.jpg" alt="" style="width:359px;height:445.7px;left:0;top:calc(50% - 310px)">
+    <div style="position:absolute;left:calc(50% - 252.5px + 73px);top:-2px;width:505px;height:260px;border-radius:16px;overflow:hidden;background:#ececec"><img src="figma/8c5d9.jpg" alt="" style="width:396px;height:492px;left:-12px;top:0"></div></div>
+</section>
+
+<!-- 4 battery -->
+<section class="bat" style="height:900px;background:#fff">
+  <img src="figma/7158f.jpg" alt="" class="a" style="width:1606px;height:1204.5px;left:calc(50% - 811px);top:-112px">
+  <img src="figma/05046.svg" alt="" class="a" style="width:1612px;height:183px;left:calc(50% - 814px);top:352px">
+  <div class="row"><p class="l">get up to</p><p class="n">15 Days</p><p class="l">battery life</p></div>
+</section>
+
+<!-- 5 PRO beyond measure -->
+<section class="pbm" id="pbm">
+  <div class="hd"><h2>PRO beyond measure</h2><p>Every signal the ring measures, and what each one tells you about the day ahead.</p></div>
+  <div class="tabs" id="tabs">
+    <button class="on" data-i="1">Sleep</button><button data-i="3">Recovery</button><button data-i="0">Activity</button><button data-i="4">Women’s Health</button><button data-i="2">AI Intelligence</button>
+  </div>
+  <div class="track" id="track">
+    <!-- 0 Movement -->
+    <div class="card"><div class="vis">
+      <img class="bgi" src="figma/a1f04.jpg" alt="" style="width:1114px;height:1383px;left:-118px;top:calc(50% - 755px)">
+      <i class="a" style="inset:0;background:linear-gradient(270deg,rgba(0,0,0,.2) 40%,rgba(0,0,0,0) 52%)"></i>
+      <div class="glass" style="left:546px;top:302px;width:386px;height:240px">
+        <div class="a" style="left:24px;top:24px;width:338px;font-weight:500;font-size:15px;letter-spacing:-1px;line-height:20px">Steps Today<div style="border-top:2px solid rgba(212,212,212,.2);margin-top:12px"></div></div>
+        <div class="a k" style="left:24px;top:72px;font-size:24px;font-weight:500;letter-spacing:-.3px;line-height:1.2">9,958</div>
+        <div class="a k" style="left:103px;top:79px;font-size:12px;color:rgba(255,255,255,.7)">/10000</div>
+        <div class="a" style="left:38px;top:107px;width:309px;height:109px;overflow:hidden"><img src="figma/44345.svg" alt="" style="position:absolute;left:0;top:0;width:324px;height:82px"></div>
+        <div class="a k" style="left:33px;right:33px;top:204px;display:flex;justify-content:space-between;font-size:8px;font-weight:500"><span>12 AM</span><span>6 AM</span><span>12 PM</span><span>6 PM</span><span>12 AM</span></div>
+      </div>
+      <div class="plus"><img src="figma/b26af.svg" alt=""></div>
+    </div><div><h3>Movement, all day</h3><p>Movement Index is built to optimize daily movement, not just workouts. By closely tracking steps, workouts, calories, and non-exercise activity</p></div></div>
+    <!-- 1 Sleep -->
+    <div class="card on"><div class="vis">
+      <img class="bgi" src="figma/6fd33.jpg" alt="" style="width:995px;height:1782px;left:-.5px;top:calc(50% - 1051px)">
+      <div class="glass" style="left:88px;top:88px;width:530px;height:264px;border-radius:16px 16px 0 0;padding:24px;backdrop-filter:blur(16px)">
+        <div class="k" style="font-size:13px;font-weight:500;line-height:20px">Sleep Cycles • 6</div>
+        <img src="figma/af868.svg" alt="" style="width:418px;height:20px;margin-top:14px">
+        <div class="k" style="font-size:13px;font-weight:500;line-height:20px;margin-top:40px">Movements</div>
+        <img src="figma/d36d5.svg" alt="" style="width:413px;height:24px;margin-top:14px">
+      </div>
+      <div class="plus"><img src="figma/b26af.svg" alt=""></div>
+    </div><div><h3>Your sleep, in stages</h3><p>The Sleep Index breaks your sleep down to what actually matters – how long you sleep, how well you recover, and how deeply your body resets.</p></div></div>
+    <!-- 2 Workout -->
+    <div class="card"><div class="vis">
+      <img class="bgi" src="figma/1a0db.jpg" alt="" style="width:1116px;height:1385px;left:calc(50% - 617px);top:calc(50% + 192px - 692px)">
+      <i class="a" style="inset:0;background:linear-gradient(262.5deg,rgba(0,0,0,.2) 19%,rgba(0,0,0,0) 55%)"></i>
+      <div class="glass" style="left:481px;top:154px;width:451px;height:108px;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;background:linear-gradient(90deg,rgba(255,255,255,.1),rgba(153,153,153,.1));backdrop-filter:blur(12px)">
+        <div style="display:flex;gap:24px;align-items:center"><img src="figma/a8e43.svg" width="32" height="32" alt=""><div><div style="font-size:20px;letter-spacing:-.65px;line-height:32px">Are you working out?</div><div class="k" style="font-size:16px;font-weight:500;line-height:19px;margin-top:3px;white-space:nowrap">170 BPM &nbsp;•&nbsp; +1,869 steps</div></div></div>
+      </div>
+      <div class="glass" style="left:614px;top:460px;width:auto;height:auto;background:none;box-shadow:none;backdrop-filter:none;border-radius:0;overflow:visible"><div class="k" style="font-size:12px;font-weight:500;white-space:nowrap">Zone 4 &nbsp;•&nbsp; threshold zone</div></div>
+      <img class="a" src="figma/dc221.svg" alt="" style="left:425px;top:392px;width:290px;height:96px;display:none">
+    </div><div><h3>Lock in with workout mode</h3><p>How hard you went, what it cost you, and when you are ready to go again.</p></div></div>
+    <!-- 3 Recovery -->
+    <div class="card"><div class="vis">
+      <img class="bgi" src="figma/60a82.jpg" alt="" style="width:1100px;height:1366px;left:-52px;top:calc(50% + 40px - 683px)">
+      <div class="glass" style="left:58px;top:56px;width:386px;height:240px;background:rgba(255,255,255,0);backdrop-filter:blur(10px)">
+        <div class="k" style="position:absolute;left:24px;top:22px;font-family:'Geist Mono',monospace;font-size:32px;line-height:1.2">54</div>
+        <div class="k" style="position:absolute;left:24px;top:67px;font-size:12px;letter-spacing:.4px">Avg Heart Rate</div>
+        <div class="k" style="position:absolute;left:68px;top:38px;font-size:12px;font-weight:500;color:rgba(255,255,255,.8)">bpm</div>
+        <img src="figma/021dd.svg" alt="" style="position:absolute;left:24px;top:98px;width:338px;height:112px;object-fit:fill">
+        <div class="k" style="position:absolute;left:348px;top:60px;font-size:11px;font-weight:500">68</div>
+        <div class="k" style="position:absolute;left:348px;top:127px;font-size:11px;font-weight:500">58</div>
+        <div class="k" style="position:absolute;left:348px;top:194px;font-size:11px;font-weight:500">47</div>
+        <div style="position:absolute;left:189px;top:113px;width:6px;height:84px;filter:blur(2px);background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(255,255,255,0))"></div>
+        <div style="position:absolute;left:191px;top:93px;transform:translateX(-50%);font-size:10px;letter-spacing:-.2px;white-space:nowrap">Lowest HR Zone</div>
+      </div>
+      <div class="plus"><img src="figma/b26af.svg" alt=""></div>
+    </div><div><h3>Recovery, tuned to your body</h3><p>Recovery adapts to your body in real time, reading when you're ready to perform and when recovery is non-negotiable.</p></div></div>
+    <!-- 4 Cycles -->
+    <div class="card"><div class="vis">
+      <img class="bgi" src="figma/efef6.jpg" alt="" style="width:2027px;height:2517px;left:calc(50% + 136px - 1013px);top:calc(50% - 68px - 1258px)">
+      <div class="glass" style="left:88px;top:191px;width:386px;height:240px;backdrop-filter:blur(25px);background:rgba(255,255,255,.04)">
+        <div class="a" style="left:24px;top:24px;width:48px;height:48px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(153,153,153,.05));display:grid;place-items:center"><img src="figma/cf329.svg" width="26" height="26" alt=""></div>
+        <div class="a" style="left:calc(50% - 17px);top:calc(50% - 72px);transform:translate(-50%,-50%)"><div style="font-weight:500;font-size:18px;letter-spacing:-.5px;line-height:1.4;white-space:nowrap">High fertility</div><div class="k" style="opacity:.5;font-size:13px;font-weight:500;line-height:1.4;white-space:nowrap">Ovulation phase • Day 14</div></div>
+        <div class="a k" style="left:24px;top:83px;border:.4px solid rgba(255,255,255,.2);border-radius:24px;padding:8px 16px;display:flex;gap:8px;align-items:center;font-size:13px;font-weight:500;opacity:.9;line-height:1.4">99°F</div>
+        <div class="a k" style="left:115px;top:83px;height:36px;border:.4px solid rgba(255,255,255,.2);border-radius:24px;padding:8px 16px;display:flex;gap:8px;align-items:center;font-size:13px;font-weight:500;line-height:1.4;white-space:nowrap;opacity:.9"><img src="figma/03ac8.svg" width="7" height="9" alt="">false start detected</div>
+        <div class="a" style="left:24px;top:140px;width:338px;border-top:2px solid rgba(212,212,212,.2)"></div>
+        <div class="a" style="left:24px;top:160px;font-weight:500;font-size:16px;letter-spacing:-.5px;line-height:1.4">In Fertile Window</div>
+        <div class="a k" style="left:239px;top:160px;width:123px;display:flex;gap:8px;justify-content:flex-end;align-items:center;font-size:13px;font-weight:500;opacity:.9;white-space:nowrap"><img src="figma/dac70.svg" width="14" height="14" alt="">1 Aug - 7 Aug</div>
+      </div>
+      <div class="plus"><img src="figma/b26af.svg" alt=""></div>
+    </div><div><h3>Every phase, tracked</h3><p>From cycle tracking, prediction of ovulation and logging symptoms to confirmation of ovulation, unique patterns called Cycle Flags™, and pregnancy insights</p></div></div>
+  </div>
+  <div class="dots" id="dots"><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 6 Ring PRO -->
+<section class="prod dk">
+  <div class="t1">Ring PRO<br><span>More power to you</span></div>
+  <div class="pcols">
+    <div class="pleft">
+      <div class="vis" style="background:#101010"><img src="figma/prod-pro.png" alt="Ring PRO" style="position:absolute;left:96px;top:32px;width:520px"></div>
+      <div class="bar"><b>Ring PRO</b><div class="btnrow"><a class="btn blue" href="buy.html">Pre-order now</a><a class="btn ghost dk" href="home.html">Explore</a></div></div>
+    </div>
+    <div class="pright">
+      <div class="pbox h520"><p class="lead">The most powerful Ultrahuman Ring, yet - the Ring PRO adds more intelligence and more power for your every adventure.</p></div>
+      <div class="pbox h520">
+        <div class="big"><div class="u">UP TO</div><div class="n"><span>45</span><span>Days</span></div><div class="c">Combined Battery Life with the<br>PRO Charger</div></div>
+        <img class="a" src="figma/fda50.svg" alt="" style="width:643px;height:249px;left:34px;top:calc(50% + 107.5px - 120.5px)">
+        <img class="a" src="figma/d3056.svg" alt="" style="width:450px;height:168px;left:131px;top:calc(50% + 80px - 84px)">
+      </div>
+      <div class="pbox feat">
+        <div class="eb">a closer look at ring pro</div>
+        <div class="list">
+          <div class="it"><div class="ic"><img src="figma/74be3.svg" alt="" style="inset:0;width:32px;height:32px"></div><div><b>Up To 15 days battery life</b><span>Designed to help you power through every adventure, with 15 days of battery life on a single charge.</span></div></div>
+          <hr>
+          <div class="it"><div class="ic"><img src="figma/7a632.svg" alt="" style="left:6px;top:9px;width:20px;height:13.5px"></div><div><b>Up To 250 days on-ring storage</b><span>Keeps your data safeguarded with up to 250 days of on-ring storage.</span></div></div>
+          <hr>
+          <div class="it"><div class="ic"><img src="figma/aab7b.svg" alt="" style="inset:0;width:32px;height:32px"></div><div><b>Fighter jet-grade titanium</b><span>Features fighter jet-grade titanium that's engineered for long-term durability.</span></div></div>
+          <hr>
+          <div class="it"><div class="ic"><img src="figma/d69bd.svg" alt="" style="inset:0;width:32px;height:32px"></div><div><b>Improved Heart-Rate Sensing</b><span>Redesigned PPG with improved signal quality during sleep and recovery.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 Ring AIR -->
+<section class="prod lt">
+  <div class="t1">Ring AIR<br><span>Compact powerhouse of health tracking</span></div>
+  <div class="pcols">
+    <div class="pleft">
+      <div class="vis" style="background:linear-gradient(rgba(0,0,0,.08),rgba(0,0,0,.08)),linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.08)),#fff"><img src="figma/prod-air.png" alt="Ring AIR" style="position:absolute;inset:0;width:712px;height:520px"></div>
+      <div class="bar"><b>Ring AIR</b><div class="btnrow"><a class="btn blue" href="buy.html">Pre-order now</a><a class="btn ghost" href="home.html">Explore</a></div></div>
+    </div>
+    <div class="pright">
+      <div class="pbox h520"><p class="lead">The lightest Ultrahuman Ring, yet - the Ring AIR brings the future of uninterrupted health tracking with an incredibly compact form.</p></div>
+      <div class="pbox h520" style="background:none">
+        <img src="figma/45537.svg" alt="" class="a" style="inset:0;width:712px;height:520px">
+        <div class="a" style="left:156px;top:159px;width:400px;text-align:center">
+          <div style="font-size:20px;letter-spacing:-.4px;color:rgba(0,0,0,.9);line-height:1.2">AS LIGHT AS</div>
+          <div style="font-size:136px;letter-spacing:-1px;line-height:1.2;margin-top:10px">2.4</div>
+          <div style="font-size:24px;letter-spacing:-1px;line-height:1.4;margin-top:-10px">grams</div>
+        </div>
+      </div>
+      <div class="pbox feat">
+        <div class="eb">a closer look at ring air</div>
+        <div class="list">
+          <div class="it"><div class="ic"><img src="figma/b3646.svg" alt="" style="inset:0;width:32px;height:32px"></div><div><b>11x Lighter</b><span>Compared to typical smartwatches, at 2.4g light and 2.4mm sleek.</span></div></div>
+          <hr>
+          <div class="it"><div class="ic"><img src="figma/7b828.svg" alt="" style="inset:0;width:32px;height:32px"></div><div><b>Up To 6 Days</b><span>4-6 days battery life so you can explore the uncharted, uninterrupted</span></div></div>
+          <hr>
+          <div class="it"><div class="ic"><img src="figma/3c59a.svg" alt="" style="left:4px;top:7px;width:24px;height:20px"><i style="position:absolute;left:1px;top:15px;width:30px;height:2px;background:#000;transform:rotate(-45deg)"></i></div><div><b>No Mandatory Subscription</b><span>Precision health tracking and core features without recurring monthly charges.</span></div></div>
+          <hr>
+          <div class="it"><div class="ic"><img src="figma/39a7d.svg" alt="" style="left:2.5px;top:-.1px;width:27.5px;height:35.5px"></div><div><b>Ultimate Comfort</b><span>Precision casted with a hypoallergenic smooth inner shell, curates an unmatched comfort level.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 app video -->
+<section class="vid">
+  <div class="c">
+    <h2>Ultrahuman experience, reimagined.</h2>
+    <p>Built to make every insight clearer, every recommendation and decision more meaningful.</p>
+    <div class="stores"><a class="btn ghost" href="#"><img src="figma/49169.svg" width="16" height="16" alt="">App Store</a><a class="btn ghost" href="#"><img src="figma/35e0d.svg" width="14" height="14" alt="">Play Store</a></div>
+  </div>
+  <div class="poster"><img src="figma/video-poster.png" alt=""></div>
+  <div class="play"><img src="figma/dbbee.svg" width="48" height="48" alt="Play"></div>
+</section>
+
+<!-- 9 globe -->
+<section class="globe">
+  <div class="gw"><img src="figma/22fd4.png" alt=""><div class="v"></div>
+    <div class="gc"><div class="e">Average Sleep Score</div><div><div class="n">78</div><div class="s">Czechia</div></div></div></div>
+  <div class="copy"><h2>The world's sleep, on a<br>single system.</h2><p>Millions of nights of sleep, trusted by users across the world. Experience the Ultrahuman Ring in person near you.</p><a class="btn ghost" href="#">Find a store</a></div>
+  <div class="stat"><b>116,701,050</b><span>Nights of sleep tracked</span></div>
+</section>
+
+<!-- 10 partners -->
+<div class="partners"><p>science partners</p><img src="figma/cfcbd.png" alt="Science partners"></div>
+
+<!-- footer -->
+<footer>
+  <div class="g">
+    <div class="col">
+      <h4>Smart rings</h4>
+      <ul><li>Ultrahuman Ring PRO <span class="new">New</span></li><li>Ultrahuman Ring AIR</li><li>Diesel Ultrahuman Ring</li><li>Ultrahuman Ring Rare</li></ul>
+      <div class="sub" style="margin-top:57px"><h4>Health Monitoring</h4><ul><li>Ultrahuman M1 CGM</li><li>Ultrahuman Home</li><li>Ultrahuman Blood Vision</li><li>Powerplugs</li><li>Women’s Health</li><li>Ultrahuman Vision Dashboard</li></ul></div>
+    </div>
+    <div class="col"><h4>Resources</h4><ul class="g16"><li>OGDb - Open Glucose Database</li><li>Ultrahuman Blog</li><li>Special Pricing - Military, Student &amp; More</li><li>HSA/FSA</li><li>Science</li><li>Ultra Work</li><li>Ultrahuman X Clue</li><li>3D Print Ring Sizes</li><li>Blood Vision Cloud</li><li>Ring Sizing</li><li>Annual Return</li></ul></div>
+    <div class="col">
+      <h4>Company</h4><ul><li>About Us</li><li>Press &amp; News</li><li>Brand Kit</li><li>Careers</li></ul>
+      <div class="sub" style="margin-top:57px"><h4>Business</h4><ul><li>Partnerships</li><li>For Creators</li></ul></div>
+    </div>
+    <div class="col"><h4>Legal</h4><ul><li>R1 Terms of Sale</li><li>M1 Terms of Sale</li><li>Privacy Policy</li><li>Terms of Use</li></ul>
+      <div class="hsa"><img src="figma/10ad1.svg" width="20" height="27" alt=""><img src="figma/97b0b.svg" width="59" height="26" alt="HSA FSA"></div></div>
+  </div>
+  <div class="c3">
+    <div><h4>Contact</h4><div class="l"><span>support@ultrahuman.com</span><span>1800-102-8693</span></div></div>
+    <div><h4>Follow Us</h4><div style="margin-top:14px"><img src="figma/1ef01.svg" width="187" height="16" alt="Social"></div></div>
+    <div><h4>Download App</h4><div class="app"><a href="#"><small>GET IT ON</small><b>Google Play</b></a><a href="#"><small>Download on the</small><b>App Store</b></a></div></div>
+  </div>
+  <div class="legal">© 2020-2025 Ultrahuman Healthcare Pvt Ltd. All rights reserved. ISO27001, GDPR, and HIPAA compliant.</div>
+  <div class="wm"><img src="figma/a4b63.svg" alt="ULTRAHUMAN"></div>
+</footer>
+
+</div>
+<script>
+(function(){
+  var page=document.getElementById('page');
+  function fit(){
+    var s=Math.min(1,document.documentElement.clientWidth/1600);
+    page.style.zoom=s;
+  }
+  fit();addEventListener('resize',fit);
+
+  var track=document.getElementById('track'),cards=[].slice.call(track.children),
+      tabs=[].slice.call(document.querySelectorAll('#tabs button')),dots=[].slice.call(document.querySelectorAll('#dots i'));
+  function go(i){
+    track.style.transform='translateX('+(-i*1036)+'px)';
+    cards.forEach(function(c,k){c.classList.toggle('on',k===i)});
+    tabs.forEach(function(t){t.classList.toggle('on',+t.dataset.i===i)});
+    dots.forEach(function(d,k){d.classList.toggle('on',k===i)});
+  }
+  track.style.left='302px';
+  tabs.forEach(function(t){t.addEventListener('click',function(){go(+t.dataset.i)})});
+  dots.forEach(function(d,k){d.addEventListener('click',function(){go(k)})});
+  cards.forEach(function(c,k){c.addEventListener('click',function(){go(k)})});
+  go(1);
+})();
+</script>
+</body>
+</html>

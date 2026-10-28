@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pre-tax illustration · 10 directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#112baf;--ink:#000;--mute:rgba(0,0,0,.6);--line:#e4e4e4;--g1:#f5f5f5}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff;color:#000;font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased}
+.mono{font-family:'JetBrains Mono',monospace}
+button{font:inherit;color:inherit;cursor:pointer;appearance:none;border:0;background:none}
+.top{padding:90px 80px 40px;max-width:1440px;margin:0 auto}
+.top h1{font-size:56px;font-weight:400;letter-spacing:-2.5px;line-height:1.04}
+.top p{margin-top:16px;max-width:620px;font-size:17px;line-height:1.55;color:var(--mute)}
+.v{position:relative;padding:110px 80px;min-height:560px}
+.v:nth-of-type(even){background:var(--g1)}
+.in{max-width:1440px;margin:0 auto}
+.tag{position:absolute;left:80px;top:34px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,0,0,.45);display:flex;gap:10px;align-items:center}
+.tag b{font-weight:500;color:#000;background:#000;color:#fff;border-radius:20px;padding:5px 10px}
+h2{font-size:56px;font-weight:400;letter-spacing:-2.6px;line-height:1.03}
+.eb{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,0,0,.5);display:block;margin-bottom:18px}
+.mu{color:var(--mute);font-size:17px;line-height:1.55;letter-spacing:-.3px}
+.fine{font-size:13px;line-height:1.5;color:rgba(0,0,0,.5)}
+.blue{color:var(--blue)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips button{height:52px;padding:0 26px;border-radius:26px;border:1px solid #d9d9dc;background:#fff;font-size:17px;letter-spacing:-.3px;transition:.15s}
+.chips button:hover{border-color:#000}
+.chips button.on{background:#000;color:#fff;border-color:#000}
+.chips.sm button{height:42px;padding:0 18px;font-size:15px}
+.lg{display:flex;gap:26px;font-size:14px;color:var(--mute)}
+.lg span{display:inline-flex;align-items:center;gap:9px}
+.dt{width:10px;height:10px;border-radius:3px;display:inline-block}
+.dt.b{background:var(--blue)}.dt.g{background:#c8c8cd}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer;--p:50%}
+input[type=range]::-webkit-slider-runnable-track{height:5px;border-radius:3px;background:linear-gradient(90deg,#000 var(--p),#d3d3d8 var(--p))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;margin-top:-10px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.15),0 3px 10px rgba(0,0,0,.18)}
+input[type=range]::-moz-range-track{height:5px;border-radius:3px;background:#d3d3d8}
+input[type=range]::-moz-range-progress{height:5px;border-radius:3px;background:#000}
+input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:#fff;border:0;box-shadow:0 0 0 1px rgba(0,0,0,.15),0 3px 10px rgba(0,0,0,.18)}
+@keyframes mo{from{opacity:.25;filter:blur(6px);transform:translateY(4px)}to{opacity:1;filter:blur(0);transform:none}}
+.mo{animation:mo .3s cubic-bezier(.2,.7,.2,1)}
+
+/* 01 ring */
+.v1 .don{position:relative;width:330px;height:330px;margin:0 auto 22px}
+.v1 .don svg{width:100%;height:100%;transform:rotate(-90deg)}
+.v1 .don circle{fill:none;stroke-width:9}
+.v1 .don .tr{stroke:#dcdcdc}.v1 .don .fg{stroke:var(--blue);stroke-linecap:round;transition:stroke-dasharray .45s cubic-bezier(.2,.7,.2,1)}
+.v1 .mid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center}
+.v1 .mid span{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,0,0,.5)}
+.v1 .mid b{font-weight:400;font-size:56px;letter-spacing:-2.6px;line-height:1}
+.v1 .mid em{font-style:normal;font-size:15px;color:var(--mute)}
+.v1 .right{text-align:center}.v1 .lg{justify-content:center}.v1 .right .fine{margin-top:16px}
+/* 02 big number + slider */
+.v2 .big{font-size:150px;letter-spacing:-8px;line-height:1;color:var(--blue);font-weight:400;display:block;margin:20px 0 8px}
+.v2 .rate{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.v2 .rate b{font-weight:500;font-size:22px;letter-spacing:-.6px}
+.v2 .ticks{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute);margin-top:4px}
+/* 03 receipt */
+.v3 .rc{width:440px;margin:0 auto;background:#fff;padding:36px 34px 30px;font-family:'JetBrains Mono',monospace;font-size:14px;box-shadow:0 30px 60px -30px rgba(0,0,0,.25),0 0 0 1px rgba(0,0,0,.05);position:relative;-webkit-mask:radial-gradient(circle 9px at 9px 100%,#0000 98%,#000) -9px 100%/18px 100% repeat-x;mask:radial-gradient(circle 9px at 9px 100%,#0000 98%,#000) -9px 100%/18px 100% repeat-x;padding-bottom:42px}
+.v3 .rc h5{font-family:'Geist',sans-serif;font-size:18px;font-weight:500;margin-bottom:18px}
+.v3 .rw{display:flex;justify-content:space-between;padding:12px 0;border-top:1px dashed #cfcfd3}
+.v3 .rw.t{font-weight:500;color:var(--blue);font-size:16px}
+.v3 .rc .sl{margin:12px 0 4px}
+.v3 .rc .fine{font-family:'Geist',sans-serif;margin-top:14px}
+/* 04 stacked bar */
+.v4 .bigrow{display:flex;align-items:baseline;gap:18px;margin:26px 0 38px}
+.v4 .bigrow b{font-weight:400;font-size:96px;letter-spacing:-5px;line-height:1;color:var(--blue)}
+.v4 .bar{position:relative;height:84px;border-radius:14px;background:#e1e1e4;overflow:hidden}
+.v4 .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--blue);width:30%;transition:width .45s cubic-bezier(.2,.7,.2,1);display:flex;align-items:center;padding-left:22px;color:#fff;font-size:15px;white-space:nowrap}
+.v4 .bar span{position:absolute;right:22px;top:50%;transform:translateY(-50%);font-size:15px;color:rgba(0,0,0,.55)}
+.v4 .ctl{display:flex;justify-content:space-between;align-items:center;margin-top:34px;gap:40px}
+/* 05 amounts table */
+.v5 .tb{margin-top:34px;border-top:1px solid #000}
+.v5 .tr{display:grid;grid-template-columns:1.2fr 1fr 2fr 1fr;align-items:center;gap:24px;padding:26px 0;border-bottom:1px solid var(--line)}
+.v5 .tr span{color:var(--mute);font-size:15px}
+.v5 .tr .nm{color:#000;font-size:22px;letter-spacing:-.8px}
+.v5 .tr .amt{font-size:22px;letter-spacing:-.6px}
+.v5 .tr .bx{height:8px;border-radius:4px;background:#d9d9dd;position:relative}
+.v5 .tr .bx i{position:absolute;left:0;top:0;bottom:0;background:var(--blue);border-radius:4px;transition:width .4s}
+.v5 .tr .res{text-align:right;font-size:28px;letter-spacing:-1.2px;color:var(--blue)}
+.v5 .hdr span{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+/* 06 stepper */
+.v6 .c{text-align:center;max-width:760px;margin:0 auto}
+.v6 .st{display:inline-flex;align-items:center;gap:30px;margin:34px 0 10px}
+.v6 .st button{width:64px;height:64px;border-radius:50%;border:1px solid #cfcfd3;background:#fff;font-size:30px;line-height:1;transition:.15s}
+.v6 .st button:hover{border-color:#000}
+.v6 .st b{font-weight:400;font-size:120px;letter-spacing:-6px;line-height:1;min-width:300px}
+.v6 .res{font-size:22px;letter-spacing:-.6px;margin-top:6px}
+.v6 .res b{font-weight:500;color:var(--blue);font-size:44px;letter-spacing:-2px;margin:0 6px}
+/* 07 waffle */
+.v7 .wf{display:grid;grid-template-columns:repeat(10,1fr);gap:7px;width:400px;margin-bottom:26px}
+.v7 .wf i{aspect-ratio:1;border-radius:5px;background:#dedee2;transition:background .25s}
+.v7 .wf i.on{background:var(--blue)}
+.v7 .cap{font-size:19px;letter-spacing:-.4px;line-height:1.5;color:var(--mute);max-width:420px}
+.v7 .cap b{font-weight:500;color:#000}
+.v7 .big{font-size:84px;letter-spacing:-4px;line-height:1;font-weight:400;color:var(--blue);display:block;margin-bottom:10px}
+/* 08 ruler */
+.v8 .rl{position:relative;margin:90px 0 10px}
+.v8 .bub{position:absolute;bottom:46px;transform:translateX(-50%);background:#000;color:#fff;border-radius:14px;padding:12px 18px;text-align:center;white-space:nowrap;transition:left .3s cubic-bezier(.2,.7,.2,1)}
+.v8 .bub small{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:.6}
+.v8 .bub b{font-weight:500;font-size:28px;letter-spacing:-1px}
+.v8 .bub::after{content:"";position:absolute;left:50%;bottom:-6px;width:12px;height:12px;background:#000;transform:translateX(-50%) rotate(45deg);border-radius:2px}
+.v8 .rl .tk{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute);margin-top:6px}
+.v8 .rl input{margin:0}
+/* 09 calculator */
+.v9 .cd{background:#fff;border-radius:28px;padding:40px;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+.v9 .fl{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.v9 label{display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--mute)}
+.v9 input[type=number],.v9 select{height:56px;border:1px solid #d9d9dc;border-radius:14px;padding:0 18px;font:inherit;font-size:18px;color:#000;background:#fff;width:100%;-webkit-appearance:none;appearance:none}
+.v9 .rs{margin-top:26px;padding-top:26px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end}
+.v9 .rs span{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,0,0,.5);display:block;margin-bottom:8px}
+.v9 .rs b{font-weight:400;font-size:84px;letter-spacing:-4px;line-height:1;color:var(--blue)}
+/* 10 sentence */
+.v10 .s{font-size:76px;letter-spacing:-3.4px;line-height:1.14;font-weight:400;max-width:1260px}
+.v10 .s .sel{display:inline-block;position:relative;border-bottom:3px solid var(--blue);color:var(--blue)}
+.v10 .s select{font:inherit;color:inherit;letter-spacing:inherit;background:transparent;border:0;outline:0;cursor:pointer;-webkit-appearance:none;appearance:none;padding:0 4px 0 0}
+.v10 .s .amt{color:var(--blue)}
+.v10 .fine{margin-top:44px;max-width:560px}
+.v10 .mu{margin-top:30px;max-width:560px}
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>Pre-tax, illustrated.<br>10 directions.</h1>
+  <p>Same job in every version: pick a combined tax rate, see the potential tax benefit on a $479 Ring PRO. All wording stays on the careful side: “potential”, “illustration only”, “your purchase price stays $479”. Everything is live, so click around.</p>
+</div>
+
+<!-- 01 -->
+<section class="v v1" data-v="1"><span class="tag"><b>01</b>Ring gauge</span><div class="in cols">
+  <div><span class="eb">Optional illustration</span><h2>Pre-tax,<br>illustrated.</h2><p class="mu" style="margin:20px 0 30px;max-width:520px">HSA/FSA money usually goes in before tax. Choose a combined tax rate to see an example.</p><div class="chips" data-ctl="chips"></div></div>
+  <div class="right"><div class="don"><svg viewBox="0 0 200 200"><circle class="tr" cx="100" cy="100" r="88"/><circle class="fg" cx="100" cy="100" r="88" data-arc="552.92" stroke-dasharray="0 553"/></svg><div class="mid"><span>Potential tax benefit</span><b data-out="benefit"></b><em>at a <i data-out="rate" style="font-style:normal;color:#000"></i> rate on $479</em></div></div><div class="lg"><span><i class="dt b"></i>Potential tax benefit</span><span><i class="dt g"></i>Rest of the $479 price</span></div><p class="fine">Your purchase price stays $479. Illustration only. Not tax advice.</p></div>
+</div></section>
+
+<!-- 02 -->
+<section class="v v2" data-v="2"><span class="tag"><b>02</b>Big number + slider</span><div class="in cols">
+  <div><span class="eb">Optional illustration</span><h2>Pre-tax,<br>illustrated.</h2><p class="mu" style="margin-top:20px;max-width:480px">HSA/FSA money usually goes in before tax. Drag to a combined tax rate.</p></div>
+  <div><div class="rate"><span class="mu" style="font-size:15px">Assumed combined tax rate</span><b data-out="rate"></b></div><input type="range" min="15" max="40" step="1" value="30" data-ctl="range"><div class="ticks"><span>15%</span><span>20%</span><span>25%</span><span>30%</span><span>35%</span><span>40%</span></div><b class="big" data-out="benefit"></b><p class="mu">potential tax benefit on a $479 purchase. Your purchase price stays $479.</p><p class="fine" style="margin-top:14px">Illustration only. Depends on your taxes. Not tax advice.</p></div>
+</div></section>
+
+<!-- 03 -->
+<section class="v v3" data-v="3"><span class="tag"><b>03</b>Receipt</span><div class="in" style="display:grid;grid-template-columns:1fr 480px;gap:96px;align-items:center">
+  <div><span class="eb">Optional illustration</span><h2>Pre-tax,<br>illustrated.</h2><p class="mu" style="margin:20px 0 30px;max-width:480px">Your itemized receipt, with one extra line: the potential tax benefit at the rate you pick.</p><div class="chips" data-ctl="chips"></div></div>
+  <div class="rc"><h5>Itemized receipt</h5><div class="rw"><span>Ring PRO · case included</span><span>$479.00</span></div><div class="rw"><span>Paid with HSA/FSA</span><span>$479.00</span></div><div class="rw"><span>Combined tax rate</span><span data-out="rate"></span></div><div class="rw t"><span>Potential tax benefit</span><span data-out="benefit"></span></div><p class="fine">Your purchase price stays $479.00. Illustration only. Not tax advice.</p></div>
+</div></section>
+
+<!-- 04 -->
+<section class="v v4" data-v="4"><span class="tag"><b>04</b>One bar</span><div class="in">
+  <span class="eb">Optional illustration</span><h2>Pre-tax, illustrated.</h2>
+  <div class="bigrow"><b data-out="benefit"></b><span class="mu">potential tax benefit on a $479 purchase</span></div>
+  <div class="bar"><i data-w="rate"><span style="color:#fff;position:static;transform:none">Potential tax benefit</span></i><span>Ring PRO · $479</span></div>
+  <div class="ctl"><div class="chips sm" data-ctl="chips"></div><p class="fine" style="max-width:420px;text-align:right">The bar is your $479 price. The blue part is the potential benefit. Your price stays $479. Illustration only. Not tax advice.</p></div>
+</div></section>
+
+<!-- 05 -->
+<section class="v v5" data-v="5"><span class="tag"><b>05</b>Across amounts</span><div class="in">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:60px"><div><span class="eb">Optional illustration</span><h2>Pre-tax,<br>illustrated.</h2></div><div class="chips" data-ctl="chips"></div></div>
+  <div class="tb"><div class="tr hdr"><span>Purchase</span><span>Price</span><span>Share of the price</span><span style="text-align:right">Potential benefit</span></div>
+    <div class="tr" data-price="100"><div class="nm">Accessory</div><div class="amt">$100</div><div class="bx"><i data-w="rate"></i></div><div class="res" data-out="calc"></div></div>
+    <div class="tr" data-price="479"><div class="nm">Ring PRO</div><div class="amt">$479</div><div class="bx"><i data-w="rate"></i></div><div class="res" data-out="calc"></div></div>
+    <div class="tr" data-price="1000"><div class="nm">Ring PRO + extras</div><div class="amt">$1,000</div><div class="bx"><i data-w="rate"></i></div><div class="res" data-out="calc"></div></div></div>
+  <p class="fine" style="margin-top:24px">At <b data-out="rate"></b>. Examples only. Prices stay as listed. Depends on your taxes. Not tax advice.</p>
+</div></section>
+
+<!-- 06 -->
+<section class="v v6" data-v="6"><span class="tag"><b>06</b>Stepper</span><div class="in"><div class="c">
+  <span class="eb">Optional illustration</span><h2>What’s your combined tax rate?</h2>
+  <div class="st"><button data-ctl="minus" aria-label="Lower">−</button><b data-out="rate"></b><button data-ctl="plus" aria-label="Higher">+</button></div>
+  <p class="res mu">could mean a potential tax benefit of <b data-out="benefit"></b>on a $479 Ring PRO.</p>
+  <p class="fine" style="margin-top:18px">Your purchase price stays $479. Illustration only. Not tax advice.</p>
+</div></div></section>
+
+<!-- 07 -->
+<section class="v v7" data-v="7"><span class="tag"><b>07</b>Waffle</span><div class="in cols">
+  <div><span class="eb">Optional illustration</span><h2>Pre-tax,<br>illustrated.</h2><p class="mu" style="margin:20px 0 30px;max-width:480px">Think of your $479 as 100 small squares. The blue ones show the potential tax benefit.</p><div class="chips" data-ctl="chips"></div></div>
+  <div style="display:flex;gap:56px;align-items:center"><div class="wf" data-wf></div><div><b class="big" data-out="benefit"></b><p class="cap"><b data-out="rate"></b> of the price. Your purchase price stays <b>$479</b>. Illustration only. Not tax advice.</p></div></div>
+</div></section>
+
+<!-- 08 -->
+<section class="v v8" data-v="8"><span class="tag"><b>08</b>Ruler</span><div class="in">
+  <span class="eb">Optional illustration</span><h2>Slide to your tax rate.</h2>
+  <div class="rl"><div class="bub" data-bub><small>Potential tax benefit</small><b data-out="benefit"></b></div><input type="range" min="15" max="40" step="1" value="30" data-ctl="range"><div class="tk"><span>15%</span><span>20%</span><span>25%</span><span>30%</span><span>35%</span><span>40%</span></div></div>
+  <p class="mu" style="margin-top:50px;max-width:640px">At a <b data-out="rate" style="font-weight:500;color:#000"></b> combined tax rate on a $479 Ring PRO. Your purchase price stays $479. Illustration only. Not tax advice.</p>
+</div></section>
+
+<!-- 09 -->
+<section class="v v9" data-v="9"><span class="tag"><b>09</b>Your numbers</span><div class="in cols">
+  <div><span class="eb">Optional illustration</span><h2>Try your<br>own numbers.</h2><p class="mu" style="margin-top:20px;max-width:460px">Change the price and the rate. Defaults to Ring PRO at 30%.</p></div>
+  <div class="cd"><div class="fl"><label>Purchase price ($)<input type="number" min="1" step="1" value="479" data-ctl="price"></label><label>Combined tax rate<select data-ctl="select"></select></label></div><div class="rs"><div><span>Potential tax benefit</span><b data-out="benefit"></b></div><p class="fine" style="max-width:220px;text-align:right">Price stays <span data-out="price" style="all:unset"></span>. Illustration only. Not tax advice.</p></div></div>
+</div></section>
+
+<!-- 10 -->
+<section class="v v10" data-v="10"><span class="tag"><b>10</b>One sentence</span><div class="in">
+  <span class="eb">Optional illustration</span>
+  <p class="s">At a <span class="sel"><select data-ctl="select"></select></span> combined tax rate, paying with pre-tax HSA/FSA money could mean about <span class="amt" data-out="benefit"></span> in potential tax benefit.</p>
+  <p class="mu">On a $479 Ring PRO. Your purchase price stays $479.</p>
+  <p class="fine">Illustration only. Depends on your taxes. CA and NJ tax HSA contributions. Not tax advice.</p>
+</div></section>
+
+<script>
+(function(){
+  var RATES=[15,20,25,30,35,40];
+  function money(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',')}
+  function setText(el,t){if(el.textContent===t)return;el.textContent=t;el.classList.remove('mo');void el.offsetWidth;el.classList.add('mo')}
+  document.querySelectorAll('.v').forEach(function(sec){
+    var st={r:30,price:479};
+    var chips=sec.querySelector('[data-ctl=chips]'),range=sec.querySelector('[data-ctl=range]'),sel=sec.querySelector('[data-ctl=select]'),pin=sec.querySelector('[data-ctl=price]'),minus=sec.querySelector('[data-ctl=minus]'),plus=sec.querySelector('[data-ctl=plus]'),wf=sec.querySelector('[data-wf]');
+    if(chips){RATES.forEach(function(r){var b=document.createElement('button');b.type='button';b.textContent=r+'%';b.dataset.r=r;b.addEventListener('click',function(){st.r=r;render()});chips.appendChild(b)})}
+    if(sel){for(var r=15;r<=40;r+=5){var o=document.createElement('option');o.value=r;o.textContent=r+'%';if(r===30)o.selected=true;sel.appendChild(o)}sel.addEventListener('change',function(){st.r=+sel.value;render()})}
+    if(range)range.addEventListener('input',function(){st.r=+range.value;render()});
+    if(pin)pin.addEventListener('input',function(){st.price=Math.max(1,parseFloat(pin.value)||0);render()});
+    if(minus)minus.addEventListener('click',function(){st.r=Math.max(15,st.r-1);render()});
+    if(plus)plus.addEventListener('click',function(){st.r=Math.min(40,st.r+1);render()});
+    if(wf){for(var i=0;i<100;i++)wf.appendChild(document.createElement('i'))}
+    function render(){
+      var r=st.r,ben=st.price*r/100;
+      sec.querySelectorAll('[data-out=benefit]').forEach(function(e){setText(e,money(ben))});
+      sec.querySelectorAll('[data-out=rate]').forEach(function(e){setText(e,r+'%')});
+      sec.querySelectorAll('[data-out=price]').forEach(function(e){e.textContent=money(st.price)});
+      sec.querySelectorAll('[data-price]').forEach(function(row){var p=+row.dataset.price;row.querySelector('[data-out=calc]').textContent=money(p*r/100)});
+      sec.querySelectorAll('[data-w=rate]').forEach(function(e){e.style.width=r+'%'});
+      sec.querySelectorAll('[data-arc]').forEach(function(e){var c=+e.dataset.arc;e.setAttribute('stroke-dasharray',(c*r/100)+' '+c)});
+      if(chips)[].forEach.call(chips.children,function(b){b.classList.toggle('on',+b.dataset.r===r)});
+      if(range){range.value=r;range.style.setProperty('--p',((r-15)/25*100)+'%')}
+      if(sel)sel.value=Math.round(r/5)*5;
+      if(wf)[].forEach.call(wf.children,function(c,i){c.classList.toggle('on',i<r)});
+      var bub=sec.querySelector('[data-bub]');if(bub){var w=range.offsetWidth;bub.style.left=(13+(w-26)*((r-15)/25))+'px'}
+    }
+    render();
+    window.addEventListener('resize',render);
+  });
+})();
+</script>
+</body>
+</html>

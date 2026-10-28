@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ring PRO HSA/FSA · versions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#fff}
+iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
+.vt{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:50;display:flex;gap:4px;padding:5px;border-radius:999px;background:rgba(20,20,22,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 10px 30px rgba(0,0,0,.28),0 0 0 1px rgba(255,255,255,.08);font-family:'Geist',system-ui,sans-serif}
+.vt button{appearance:none;border:0;background:transparent;color:rgba(255,255,255,.68);height:38px;padding:0 18px;border-radius:999px;font:inherit;font-size:13px;letter-spacing:-.1px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .15s,color .15s}
+.vt button:hover{color:#fff}
+.vt button.on{background:#fff;color:#000}
+.vt button small{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.04em;opacity:.6;text-transform:uppercase}
+.vt button:focus-visible{outline:2px solid #1539f5;outline-offset:2px}
+</style>
+</head>
+<body>
+<iframe id="f" title="HSA/FSA page version"></iframe>
+<div class="vt" role="tablist" aria-label="Page version">
+  <button role="tab" data-v="sample">Sample</button>
+  <button role="tab" data-v="v1">V1</button>
+  <button role="tab" data-v="v2">V2</button>
+</div>
+<script>
+(function(){
+  var files={sample:'hsa-fsa-sample.html',v1:'hsa-fsa-v1.html',v2:'hsa-fsa-v2.html'};
+  var alias={v0:'sample'};
+  var f=document.getElementById('f'),btns=[].slice.call(document.querySelectorAll('.vt button'));
+  function saved(){try{var v=localStorage.getItem('hsa-version');return alias[v]||v}catch(e){return null}}
+  function pick(){var h=location.hash.replace('#','');h=alias[h]||h;return files[h]?h:(files[saved()]?saved():'v2')}
+  function show(v,push){
+    f.src=files[v];
+    btns.forEach(function(b){var on=b.dataset.v===v;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});
+    try{localStorage.setItem('hsa-version',v)}catch(e){}
+    if(push)history.replaceState(null,'','#'+v);
+    document.title='Ring PRO HSA/FSA · '+(v==='sample'?'Sample':v.toUpperCase());
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.v,true)})});
+  addEventListener('hashchange',function(){show(pick())});
+  show(pick());
+})();
+</script>
+</body>
+</html>

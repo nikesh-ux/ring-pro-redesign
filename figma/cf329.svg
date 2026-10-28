@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Repeat group 1">
+<g id="Repeat group 1_inner" data-figma-trr="r7p13.61-0f">
+<path id="Rectangle 5" d="M13.6422 1.70082C13.2875 1.34609 12.7124 1.34603 12.3577 1.70074C9.87474 4.1837 9.87496 8.20984 12.3578 10.6929C12.7125 11.0477 13.2876 11.0477 13.6423 10.693C16.1253 8.21008 16.125 4.18393 13.6422 1.70082Z" fill="white"/>
+</g>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(15.0584 -5.26918) rotate(51.4286)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(28.5668 3.21871) rotate(102.857)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(30.3531 19.0721) rotate(154.286)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(19.0721 30.3531) rotate(-154.286)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(3.21871 28.5668) rotate(-102.857)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(-5.26918 15.0584) rotate(-51.4286)"/>
+</g>
+</svg>

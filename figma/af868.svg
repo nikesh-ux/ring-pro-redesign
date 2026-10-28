@@ -1,0 +1,41 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="418" height="20" viewBox="0 0 418 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 1686552677">
+<path id="Vector 34" d="M3.99609 10H414.001" stroke="url(#paint0_linear_0_371)" stroke-opacity="0.16"/>
+<g id="Group 182">
+<path id="Subtract" d="M223.001 0C226.314 0.0002635 229 2.68651 229 6V14C229 17.3135 226.314 19.9997 223.001 20H169C165.686 20 163 17.3136 163 14V6C163 2.68634 165.686 0 169 0H223.001ZM173 4C169.686 4 167 6.68629 167 10C167 13.3137 169.686 16 173 16C176.314 16 179 13.3137 179 10C179 6.68629 176.314 4 173 4Z" fill="white" fill-opacity="0.6"/>
+<path id="Vector 3" d="M170 10.0408L171.964 12L176 8" stroke-linecap="round" stroke="white"/>
+<g id="Vector 2">
+</g>
+</g>
+<g id="Group 183">
+<path id="Subtract_2" d="M259 0C262.314 0.000169681 265 2.68645 265 6V14C265 17.3135 262.313 19.9998 259 20H237C233.686 20 231 17.3136 231 14V6C231 2.68634 233.686 0 237 0H259ZM241 4C237.686 4 235 6.68629 235 10C235 13.3137 237.686 16 241 16C244.314 16 247 13.3137 247 10C247 6.68629 244.314 4 241 4Z" fill="white" fill-opacity="0.6"/>
+<path id="Vector 3_2" d="M238 10.0408L239.964 12L244 8" stroke-linecap="round" stroke="white"/>
+<g id="Vector 2_2">
+</g>
+</g>
+<g id="Group 184">
+<path id="Subtract_3" d="M397 0C400.314 0 403 2.68635 403 6V14C403 17.3137 400.314 20 397 20H324C320.686 19.9999 318 17.3137 318 14V6C318 2.68639 320.686 7.69192e-05 324 0H397ZM328 4C324.686 4 322 6.68629 322 10C322 13.3137 324.686 16 328 16C331.314 16 334 13.3137 334 10C334 6.68629 331.314 4 328 4Z" fill="white" fill-opacity="0.6"/>
+<path id="Vector 3_3" d="M325 10.0408L326.964 12L331 8" stroke-linecap="round" stroke="white"/>
+<g id="Vector 2_3">
+</g>
+</g>
+<g id="Full-sleep-cycle-checkmark">
+<path id="Subtract_4" d="M112 0C115.313 0.000232372 118 2.68649 118 6V14C118 17.3135 115.313 19.9998 112 20H18C14.6864 20 12.0001 17.3136 12 14V6C12.0001 2.68635 14.6863 0 18 0H112ZM22 4C18.6863 4 16 6.68629 16 10C16 13.3137 18.6863 16 22 16C25.3137 16 28 13.3137 28 10C28 6.68629 25.3137 4 22 4Z" fill="white" fill-opacity="0.6"/>
+<path id="Vector 3_4" d="M19 10.0408L20.9636 12L25 8" stroke-linecap="round" stroke="white"/>
+<g id="Vector 2_4">
+</g>
+</g>
+<circle id="Ellipse 109" cx="2" cy="10" r="2" fill="white"/>
+<circle id="Ellipse 110" cx="416" cy="10" r="2" fill="white"/>
+<rect id="Rectangle 513" opacity="0.3" x="120" width="41" height="20" rx="6" fill="white"/>
+<rect id="Rectangle 516" opacity="0.3" x="267" width="49" height="20" rx="6" fill="white"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_371" x1="3.99609" y1="10.5" x2="414.001" y2="10.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="0.0510175" stop-color="white" stop-opacity="0"/>
+<stop offset="0.948253" stop-color="white" stop-opacity="0"/>
+<stop offset="1" stop-color="white"/>
+</linearGradient>
+</defs>
+</svg>

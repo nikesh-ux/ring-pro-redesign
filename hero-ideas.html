@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hero ideas · photo-tile heroes</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#112BAF;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff;color:#000;font-family:'Geist',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.page{max-width:1600px;margin:0 auto;padding:56px 24px 120px}
+.top{display:flex;flex-direction:column;gap:12px;margin-bottom:56px;max-width:760px}
+.eb{font:500 11px 'JetBrains Mono',monospace;letter-spacing:.8px;text-transform:uppercase;color:rgba(0,0,0,.5)}
+h1.t{font-weight:400;font-size:44px;letter-spacing:-1.6px;line-height:1.1}
+.top p{font-size:16px;color:rgba(0,0,0,.6);line-height:1.5;letter-spacing:-.3px}
+.idea{margin-bottom:72px}
+.meta{display:flex;align-items:baseline;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+.meta .n{font:500 12px 'JetBrains Mono',monospace;color:rgba(0,0,0,.45)}
+.meta h2{font-weight:400;font-size:24px;letter-spacing:-.8px}
+.meta p{font-size:14px;color:rgba(0,0,0,.55);letter-spacing:-.2px;flex-basis:100%;max-width:820px;line-height:1.5}
+.fit{width:100%;border-radius:16px;overflow:hidden;background:#f4f4f4}
+.stage{width:1600px;height:780px;position:relative;overflow:hidden;background:#f4f4f4;transform-origin:0 0}
+/* shared hero copy */
+.cp h1{font-weight:400;font-size:64px;line-height:1.06;letter-spacing:-2.6px}
+.cp p{font-size:17px;line-height:1.5;letter-spacing:-.4px;color:rgba(0,0,0,.62);margin-top:18px;max-width:460px}
+.btn{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 28px;border-radius:50px;background:var(--blue);color:#fff;font-size:14px;letter-spacing:-.2px;margin-top:26px;transition:transform .2s var(--ease),opacity .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:rgba(0,0,0,.08);color:#000}
+.btn.w{background:#fff;color:#000}
+.tile{position:absolute;background-size:cover;background-position:center;border-radius:20px;overflow:hidden;box-shadow:0 20px 40px -22px rgba(0,0,0,.45)}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.28));pointer-events:none}
+.tile .lb{position:absolute;left:14px;bottom:12px;z-index:1;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.6px;color:#fff;text-transform:uppercase}
+.abs{position:absolute}
+/* 1 fan */
+.i1 .tiles{position:absolute;left:0;right:0;top:40px;height:470px;-webkit-mask-image:radial-gradient(70% 120% at 50% 40%,#000 55%,transparent 100%);mask-image:radial-gradient(70% 120% at 50% 40%,#000 55%,transparent 100%)}
+.i1 .tile{left:50%;top:0;width:290px;height:380px;transition:transform .8s var(--ease)}
+.i1 .cp{position:absolute;left:0;right:0;top:520px;text-align:center}
+.i1 .cp h1{font-size:56px}.i1 .cp p{margin:14px auto 0}
+.i1 .cp .btn{margin-top:22px}
+/* 2 coverflow */
+.i2{background:#0b0b0d}
+.i2 .cf{position:absolute;left:0;right:0;top:44px;height:420px;perspective:1700px}
+.i2 .tile{left:50%;top:0;width:290px;height:390px;margin-left:-145px;transition:transform .9s var(--ease),opacity .9s,filter .9s;box-shadow:0 30px 60px -30px #000}
+.i2 .cp{position:absolute;left:0;right:0;bottom:36px;text-align:center;color:#fff}
+.i2 .cp h1{font-size:48px}.i2 .cp p{color:rgba(255,255,255,.65);margin:10px auto 0}
+.i2 .cp .btn{margin-top:18px}
+/* 3 deck */
+.i3 .cp{position:absolute;left:100px;top:50%;transform:translateY(-50%)}
+.i3 .deck{position:absolute;right:140px;top:90px;width:440px;height:600px}
+.i3 .tile{left:0;top:0;width:360px;height:480px;transition:transform .9s var(--ease)}
+.i3 .hint{position:absolute;right:140px;bottom:34px;font:500 11px 'JetBrains Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.6px}
+/* 4 marquee */
+.i4{background:#e9e7e2}
+.i4 .rows{position:absolute;inset:-160px -200px;transform:rotate(-8deg);display:flex;flex-direction:column;gap:20px;justify-content:center}
+.i4 .row{display:flex;gap:20px;width:max-content;animation:mq 60s linear infinite}
+.i4 .row.r{animation-direction:reverse}
+.i4 .row .tile{position:relative;width:260px;height:300px;flex:none}
+@keyframes mq{to{transform:translateX(-50%)}}
+.i4 .card{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;border-radius:28px;padding:48px 56px;text-align:center;box-shadow:0 40px 80px -30px rgba(0,0,0,.35);width:640px}
+.i4 .card p{margin:14px auto 0}
+/* 5 orbit */
+.i5{background:#fafaf8}
+.i5 .cp{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);text-align:center;z-index:30;width:620px}
+.i5 .cp p{margin:14px auto 0}
+.i5 .tile{width:170px;height:224px;border-radius:18px}
+.i5 .ring{position:absolute;left:50%;top:50%;width:1320px;height:584px;margin:-292px 0 0 -660px;border:1px dashed rgba(0,0,0,.12);border-radius:50%}
+/* 6 columns */
+.i6{background:#111}
+.i6 .cols{position:absolute;inset:-100px 0;display:flex;gap:20px;padding-left:800px;transform:rotate(6deg)}
+.i6 .col{display:flex;flex-direction:column;gap:20px;animation:up 40s linear infinite;width:240px;flex:none}
+.i6 .col:nth-child(even){animation-direction:reverse;margin-top:-120px}
+.i6 .col .tile{position:relative;width:240px;height:320px;flex:none}
+@keyframes up{to{transform:translateY(-50%)}}
+.i6::before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,#111 28%,rgba(17,17,17,.8) 48%,transparent 72%)}
+.i6 .cp{position:absolute;left:100px;top:50%;transform:translateY(-50%);z-index:3;color:#fff}
+.i6 .cp p{color:rgba(255,255,255,.65)}
+/* 7 accordion */
+.i7 .cp{position:absolute;left:100px;top:50px}
+.i7 .cp h1{font-size:50px}
+.i7 .cp p{margin-top:12px}
+.i7 .cp .btn{margin-top:18px;height:44px}
+.i7 .acc{position:absolute;left:40px;right:40px;bottom:40px;height:400px;display:flex;gap:12px}
+.i7 .pn{flex:1;border-radius:22px;background-size:cover;background-position:center;position:relative;overflow:hidden;transition:flex .8s var(--ease);cursor:pointer}
+.i7 .pn.on{flex:5}
+.i7 .pn::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.55))}
+.i7 .pn span{position:absolute;left:22px;bottom:20px;z-index:1;color:#fff;font-size:22px;letter-spacing:-.6px;white-space:nowrap}
+.i7 .pn i{position:absolute;left:22px;top:20px;z-index:1;color:#fff;font:500 11px 'JetBrains Mono',monospace;font-style:normal;opacity:.8}
+/* 8 corridor */
+.i8{background:#f1efea}
+.i8 .scene{position:absolute;inset:0;perspective:1300px;perspective-origin:50% 45%}
+.i8 .tile{width:270px;height:380px;top:170px}
+.i8 .cp{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;width:560px;z-index:30}
+.i8 .cp p{margin:14px auto 0}
+/* 9 bento */
+.i9{padding:20px;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(4,1fr);gap:14px}
+.i9 .tile{position:relative;border-radius:22px;animation:pop .9s var(--ease) both}
+.i9 .tx{grid-column:1/4;grid-row:1/4;background:#fff;border-radius:22px;padding:56px;display:flex;flex-direction:column;justify-content:center}
+.i9 .st{background:var(--blue);color:#fff;border-radius:22px;padding:28px;display:flex;flex-direction:column;justify-content:flex-end;animation:pop .9s .5s var(--ease) both}
+.i9 .st b{font-weight:400;font-size:64px;letter-spacing:-3px;line-height:1}.i9 .st span{font-size:14px;opacity:.75;margin-top:8px}
+@keyframes pop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+/* 10 wheel */
+.i10{background:#0b0b0d}
+.i10 .cp{position:absolute;left:0;right:0;top:80px;text-align:center;color:#fff}
+.i10 .cp h1{font-size:58px}.i10 .cp p{color:rgba(255,255,255,.62);margin:14px auto 0}
+.i10 .wheel{position:absolute;left:50%;top:560px;width:0;height:0}
+.i10 .tile{width:230px;height:310px;margin:-155px 0 0 -115px}
+.i10 .glow{position:absolute;left:50%;top:420px;width:1100px;height:600px;margin-left:-550px;background:radial-gradient(closest-side,rgba(139,123,255,.25),transparent);pointer-events:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <span class="eb">Homepage hero · ideation</span>
+    <h1 class="t">10 hero ideas built from tilted photo tiles</h1>
+    <p>Inspired by the "Heroes of the world" card: photos sit on an arc, skewed and fading toward the edges. Each idea below turns that into a full homepage hero with the same copy, so only the image treatment changes. Photos are placeholders from our lifestyle set.</p>
+  </div>
+  <div id="ideas"></div>
+</div>
+<script>
+var OCC=['birthdays','weddings','new-parents','retirements','get-well','thank-you','graduations','promotions','anniversaries','christmas','welcome-kits','milestones','wellness-programs','retreats'].map(function(n){return 'gift/occ/'+n+'.jpg'});
+var CAR=['sleep','recovery','movement','heart'].map(function(n){return 'gift/dk/assets/car/'+n+'.jpg'});
+var P=CAR.concat(OCC);
+var LB=['Sleep','Recovery','Movement','Heart','Birthdays','Weddings','New parents','Retirements','Get well','Thank you','Graduations','Promotions','Anniversaries','Holidays'];
+function tile(i,lab){return '<div class="tile" style="background-image:url('+P[i%P.length]+')">'+(lab?'<span class="lb">'+LB[i%LB.length]+'</span>':'')+'</div>'}
+function copy(extra){return '<div class="cp '+(extra||'')+'"><h1>Health that looks<br>good on you.</h1><p>Ring PRO. Sleep, recovery and heart insights in a titanium ring. No subscription.</p><a class="btn" href="#">Buy Ring PRO <span>→</span></a></div>'}
+var ideas=[
+{t:'Fan arc',d:'Closest to the reference. Seven photos sit on an arc, each skewed and rotated a few degrees more toward the edges and fading out. Headline sits under the fan. Photos slide sideways on hover.',h:function(s){
+  s.classList.add('i1');var h='<div class="tiles">';for(var k=-3;k<=3;k++){var i=k+3;h+='<div class="tile" data-k="'+k+'" style="background-image:url('+P[i]+')"></div>'}h+='</div>'+copy();s.innerHTML=h;
+  function lay(off){s.querySelectorAll('.tile').forEach(function(t){var k=+t.dataset.k+off;var a=Math.abs(k);t.style.transform='translateX('+(-145+k*250)+'px) translateY('+(a*a*14)+'px) rotate('+(k*6)+'deg) skewY('+(k*-3)+'deg) scale('+(1-a*.07)+')';t.style.zIndex=10-Math.round(a);t.style.opacity=Math.max(.25,1-a*.18)})}
+  lay(0);s.addEventListener('mousemove',function(e){var r=s.getBoundingClientRect();lay(((e.clientX-r.left)/r.width-.5)*-.9)});s.addEventListener('mouseleave',function(){lay(0)})}},
+{t:'3D coverflow',d:'A dark stage with a classic coverflow. Photos turn on the Y axis and step back in depth. It advances by itself every few seconds; click a side photo to jump to it.',h:function(s){
+  s.parentNode.classList.add('x');s.classList.add('i2');var h='<div class="cf">';for(var i=0;i<9;i++)h+='<div class="tile" data-i="'+i+'" style="background-image:url('+P[i]+')"></div>';h+='</div>'+copy().replace('class="btn"','class="btn w"');s.innerHTML=h;
+  var cur=4,tiles=[].slice.call(s.querySelectorAll('.tile'));
+  function lay(){tiles.forEach(function(t,i){var d=i-cur,a=Math.abs(d);t.style.transform='translateX('+(d*230)+'px) translateZ('+(-a*140)+'px) rotateY('+(d===0?0:(d>0?-48:48))+'deg)';t.style.zIndex=20-a;t.style.opacity=a>3?0:1-a*.18;t.style.filter=a?'brightness('+(1-a*.14)+')':'none'})}
+  lay();tiles.forEach(function(t,i){t.addEventListener('click',function(){cur=i;lay()})});setInterval(function(){cur=(cur+1)%tiles.length;lay()},2800)}},
+{t:'Stacked deck',d:'Copy on the left, a loose deck of photos on the right. They sit stacked with small rotations and fan out on hover, so the hero stays calm until someone touches it.',h:function(s){
+  var h=copy()+'<div class="deck">';for(var i=0;i<6;i++)h+='<div class="tile" data-i="'+i+'" style="background-image:url('+P[i+4]+')"></div>';h+='</div><span class="hint">HOVER TO FAN OUT</span>';s.classList.add('i3');s.innerHTML=h;
+  var tl=[].slice.call(s.querySelectorAll('.tile'));function lay(f){tl.forEach(function(t,i){var r=(i-2.5)*(f?9:3);t.style.transform='translate('+(i*(f?58:14))+'px,'+(Math.abs(i-2.5)*(f?10:4))+'px) rotate('+r+'deg)';t.style.zIndex=i})}
+  lay(0);var d=s.querySelector('.deck');d.addEventListener('mouseenter',function(){lay(1)});d.addEventListener('mouseleave',function(){lay(0)})}},
+{t:'Skewed marquee',d:'Two rows of photos drift in opposite directions on a tilted plane behind a floating white card with the headline. Reads as "lots of people, lots of life" without a single hero shot.',h:function(s){
+  s.classList.add('i4');var row=function(off,cl){var a='';for(var k=0;k<2;k++)for(var i=0;i<8;i++)a+='<div class="tile" style="background-image:url('+P[(i+off)%P.length]+')"></div>';return '<div class="row '+cl+'">'+a+'</div>'};
+  s.innerHTML='<div class="rows">'+row(0,'')+row(5,'r')+row(9,'')+'</div><div class="card cp"><h1>Health that looks<br>good on you.</h1><p>Ring PRO. Sleep, recovery and heart insights in a titanium ring. No subscription.</p><a class="btn" href="#">Buy Ring PRO <span>→</span></a></div>'}},
+{t:'Orbit',d:'Small photos travel slowly around an ellipse that frames the headline, like moments orbiting one person. Photos closer to the viewer are larger and sharper, the rest sink back.',h:function(s){
+  s.classList.add('i5');var h='<div class="ring"></div>';for(var i=0;i<9;i++)h+='<div class="tile" data-i="'+i+'" style="background-image:url('+P[i+2]+')"></div>';h+=copy();s.innerHTML=h;var tl=[].slice.call(s.querySelectorAll('.tile')),t0=0;
+  function fr(){t0+=.0016;tl.forEach(function(t,i){var a=t0+i/9*Math.PI*2,x=Math.cos(a)*660,y=Math.sin(a)*292,z=(Math.sin(a)+1)/2;t.style.left=(800+x-85)+'px';t.style.top=(390+y-112)+'px';t.style.transform='scale('+(.6+z*.6)+')';t.style.zIndex=Math.round(z*10);t.style.opacity=.45+z*.55;t.style.filter='blur('+((1-z)*2.5)+'px)'});requestAnimationFrame(fr)}fr()}},
+{t:'Parallax columns',d:'Five columns of photos scroll in opposite directions on a slight tilt and fade into the copy on the left. Feels like a feed, but quiet. Works well as a dark hero.',h:function(s){
+  s.classList.add('i6');var h='<div class="cols">';for(var c=0;c<6;c++){h+='<div class="col">';for(var i=0;i<12;i++)h+='<div class="tile" style="background-image:url('+P[(i+c*3)%P.length]+')"></div>';h+='</div>'}h+='</div>'+copy();s.innerHTML=h}},
+{t:'Accordion slivers',d:'Six tall slivers across the bottom, one open. Hover a sliver and it grows while the others shrink, with the activity name on it. Gives the hero something to play with.',h:function(s){
+  s.classList.add('i7');var n=['Sleep','Recovery','Movement','Heart','Birthdays','New parents'],h=copy()+'<div class="acc">';n.forEach(function(x,i){h+='<div class="pn'+(i===0?' on':'')+'" style="background-image:url('+P[i]+')"><i>0'+(i+1)+'</i><span>'+x+'</span></div>'});h+='</div>';s.innerHTML=h;
+  var ps=s.querySelectorAll('.pn');ps.forEach(function(p){p.addEventListener('mouseenter',function(){ps.forEach(function(q){q.classList.remove('on')});p.classList.add('on')})})}},
+{t:'Corridor',d:'Photos line both walls of a corridor in perspective, shrinking toward the middle where the headline sits. A calm, symmetrical hero with real depth.',h:function(s){
+  s.classList.add('i8');var h='<div class="scene">';for(var k=0;k<3;k++){var z=k*-170,x=40+k*120,sc=1-k*.08;h+='<div class="tile" style="left:'+x+'px;transform:translateZ('+z+'px) rotateY(48deg) scale('+sc+');background-image:url('+P[k+4]+')"></div>';h+='<div class="tile" style="left:'+(1600-x-270)+'px;transform:translateZ('+z+'px) rotateY(-48deg) scale('+sc+');background-image:url('+P[k+8]+')"></div>'}h+='</div>'+copy();s.innerHTML=h}},
+{t:'Bento mosaic',d:'A grid of photos with the headline as the biggest cell and two blue stat cells. Tiles pop in one after another on load. Good when you want a hero that also carries proof.',h:function(s){
+  s.classList.add('i9');var pos=[['4/6','1/3'],['6/9','1/2'],['4/5','3/5'],['5/7','3/5'],['6/9','2/5'],['1/2','4/5']];var h='<div class="tx">'+copy().replace('class="cp "','class=""')+'</div>';
+  var cells=[['4/6','1/3',0],['6/9','1/2',1],['6/7','2/4',null],['7/9','2/5',2],['4/6','3/5',3],['1/4','4/5',4]];
+  h='<div class="tx">'+'<h1 style="font-weight:400;font-size:60px;line-height:1.06;letter-spacing:-2.4px">Health that looks<br>good on you.</h1><p style="font-size:17px;line-height:1.5;letter-spacing:-.4px;color:rgba(0,0,0,.62);margin-top:18px;max-width:420px">Ring PRO. Sleep, recovery and heart insights in a titanium ring. No subscription.</p><a class="btn" style="align-self:flex-start" href="#">Buy Ring PRO <span>→</span></a></div>';
+  h+='<div class="tile" style="grid-column:4/6;grid-row:1/3;background-image:url('+P[0]+');animation-delay:.1s"></div>';
+  h+='<div class="tile" style="grid-column:6/9;grid-row:1/2;background-image:url('+P[1]+');animation-delay:.2s"></div>';
+  h+='<div class="st" style="grid-column:6/7;grid-row:2/4"><b>15</b><span>day battery</span></div>';
+  h+='<div class="tile" style="grid-column:7/9;grid-row:2/5;background-image:url('+P[3]+');animation-delay:.3s"></div>';
+  h+='<div class="tile" style="grid-column:4/6;grid-row:3/5;background-image:url('+P[4]+');animation-delay:.4s"></div>';
+  h+='<div class="st" style="grid-column:1/3;grid-row:4/5;background:#000"><b>$0</b><span>subscription</span></div>';
+  h+='<div class="tile" style="grid-column:3/4;grid-row:4/5;background-image:url('+P[2]+');animation-delay:.5s"></div>';
+  h+='<div class="tile" style="grid-column:6/7;grid-row:4/5;background-image:url('+P[6]+');animation-delay:.6s"></div>';
+  s.innerHTML=h}},
+{t:'Bottom wheel',d:'Photos ride a huge circle whose top edge peeks up from the bottom of a dark hero. It rotates slowly and tilts toward the cursor. Headline stays quiet above it.',h:function(s){
+  s.classList.add('i10');var h='<div class="glow"></div>'+copy().replace('class="btn"','class="btn w"')+'<div class="wheel" id="wh">';for(var i=0;i<22;i++)h+='<div class="tile" style="background-image:url('+P[i%P.length]+')"></div>';h+='</div>';s.innerHTML=h;
+  var w=s.querySelector('#wh'),tl=[].slice.call(w.children),a0=0,R=1300,mx=0;s.addEventListener('mousemove',function(e){var r=s.getBoundingClientRect();mx=((e.clientX-r.left)/r.width-.5)*.25});
+  function fr(){a0+=.0007;tl.forEach(function(t,i){var a=a0+mx+i/22*Math.PI*2-Math.PI/2,x=Math.cos(a)*R,y=Math.sin(a)*R+R*0;t.style.transform='translate('+x+'px,'+(y+0)+'px) rotate('+(a*180/Math.PI+90)+'deg)'});requestAnimationFrame(fr)}
+  w.style.top='1930px';fr()}}
+];
+var box=document.getElementById('ideas');
+ideas.forEach(function(o,i){var d=document.createElement('div');d.className='idea';d.innerHTML='<div class="meta"><span class="n">'+String(i+1).padStart(2,'0')+'</span><h2>'+o.t+'</h2><p>'+o.d+'</p></div><div class="fit"><div class="stage"></div></div>';box.appendChild(d);o.h(d.querySelector('.stage'))});
+function fit(){var W=document.querySelector('.page').clientWidth-48;if(W<=0)W=innerWidth-48;var z=Math.max(.2,Math.min(1,W/1600));document.querySelectorAll('.stage').forEach(function(s){s.style.zoom=z})}
+fit();addEventListener('resize',fit);addEventListener('load',fit);if(window.ResizeObserver)new ResizeObserver(fit).observe(document.querySelector('.page'));
+</script>
+</body>
+</html>

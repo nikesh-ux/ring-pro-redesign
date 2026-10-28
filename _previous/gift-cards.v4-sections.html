@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ultrahuman Gift Cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#112baf;--ink:#000;--mute:rgba(0,0,0,.6);--line:rgba(0,0,0,.16);--soft:#f6f6f6;--ease:cubic-bezier(.2,.8,.2,1);--W:1600px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff;color:#000;font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:none}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit;color:inherit}
+#page{width:var(--W);margin:0 auto;position:relative}
+section{position:relative;width:1600px}
+.mono{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.5px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:43px;width:144px;border-radius:50px;font-size:13px;letter-spacing:-.104px;line-height:24px;white-space:nowrap;cursor:pointer;transition:transform .15s,opacity .15s}
+.btn:hover{opacity:.88}.btn:active{transform:scale(.98)}
+.btn.blue{background:var(--blue);color:#fff}
+.btn.ghost{border:1px solid var(--line);color:#000;height:41px}
+.btn.ghost.dk{border-color:rgba(255,255,255,.16);color:#fff}
+.btn.white{background:#fff;color:#000;height:41px}
+.btnrow{display:flex;gap:12px;align-items:flex-start}
+.ann{height:66px;border-bottom:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;font-size:12px;letter-spacing:-.24px;line-height:24px}
+.ann u{text-decoration-thickness:1px;text-underline-offset:2px;text-decoration-color:rgba(0,0,0,.64);margin-left:3px}
+.nav{position:relative;height:74px}
+.nav .t{position:absolute;top:18px;height:40px;display:flex;align-items:center;font-size:13px;letter-spacing:-.26px;white-space:nowrap}
+.btn{transition:transform .2s var(--ease),opacity .15s,box-shadow .2s}
+.btn:hover{opacity:1;transform:translateY(-1px)}
+.btn.blue:hover{box-shadow:0 10px 22px -10px rgba(17,43,175,.7)}
+.btn.blk{background:#000;color:#fff}
+.btn.lg{height:48px;padding:0 28px;width:auto;font-size:14px}
+.btn.full{width:100%;height:52px;font-size:15px}
+.arr{display:inline-block;transition:transform .25s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+.eb{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:rgba(0,0,0,.6)}
+.h2{font-weight:400;font-size:40px;line-height:48px;letter-spacing:-1px}
+.sub{font-size:16px;line-height:1.6;letter-spacing:-.6px;color:var(--mute)}
+
+/* ===== hero ===== */
+.ghero{margin:0 10px;width:1580px;height:760px;border-radius:16px;overflow:hidden;background:radial-gradient(70% 90% at 72% 40%,#e9e1d1 0%,#dccfb9 55%,#d3c6ae 100%)}
+.ghero .txt{z-index:2;position:absolute;left:100px;top:50%;transform:translateY(-50%);width:640px;display:flex;flex-direction:column;gap:24px}
+.ghero h1{font-weight:400;font-size:64px;line-height:1.1;letter-spacing:-2.4px;text-wrap:balance}
+.ghero .lead{font-size:18px;line-height:1.6;letter-spacing:-.5px;color:rgba(0,0,0,.72);width:470px}
+.ghero .cta{display:flex;gap:20px;align-items:center}
+.ghero .link{font-size:14px;letter-spacing:-.2px;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{display:inline-flex;gap:8px;align-items:center;padding:6px 14px 6px 10px;border-radius:40px;background:rgba(255,255,255,.45);box-shadow:0 2px 8px rgba(0,0,0,.06);font-size:14px;letter-spacing:-.3px;transition:background .25s,transform .3s var(--ease)}
+.chip:hover{background:rgba(255,255,255,.8);transform:translateY(-2px)}
+.chip svg{width:16px;height:16px}
+.ghero .photo{position:absolute;inset:0;overflow:hidden}
+.ghero .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;transform:scale(1.02);animation:kb 14s ease-in-out infinite alternate}
+@keyframes kb{to{transform:scale(1.1) translateX(-1.5%)}}
+.ghero .hcard{position:absolute;left:690px;bottom:50px;width:390px;perspective:900px;animation:float 7s ease-in-out infinite}
+.ghero .hcard img{display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 40px 60px -24px rgba(60,40,10,.6);transition:transform .6s var(--ease),box-shadow .6s;transform:rotateX(0) rotateY(0)}
+.ghero .hcard:hover img{transform:rotateX(4deg) rotateY(-8deg) scale(1.03);box-shadow:0 50px 70px -24px rgba(60,40,10,.7)}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-12px) rotate(.4deg)}}
+
+/* ===== builder ===== */
+.build{padding:160px 80px 140px}
+.build .hd{text-align:center;margin-bottom:72px}
+.build .hd .sub{margin-top:12px}
+.bgrid{display:grid;grid-template-columns:1fr 540px;gap:96px;align-items:start}
+.steps{display:flex;flex-direction:column;gap:56px}
+.st-h{display:flex;align-items:baseline;gap:16px;margin-bottom:20px}
+.st-h .n{font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(0,0,0,.5)}
+.st-h h3{font-weight:400;font-size:24px;letter-spacing:-.9px;line-height:1.2}
+.amts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.amts label,.styles label,.when label{position:relative;cursor:pointer}
+.amts input,.styles input,.when input{position:absolute;opacity:0;pointer-events:none}
+.amts span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;height:92px;border-radius:16px;background:var(--soft);font-size:22px;letter-spacing:-.8px;border:2px solid transparent;transition:border-color .25s,background .25s,transform .3s var(--ease)}
+.amts label:hover span{transform:translateY(-2px)}
+.amts small{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.5px;color:rgba(0,0,0,.5);font-weight:400}
+.amts input:checked+span{background:#fff;border-color:var(--blue)}
+.custom{display:flex;align-items:center;gap:14px;margin-top:14px;font-size:14px;color:var(--mute)}
+.custom input{width:140px}
+.styles{display:flex;gap:16px}
+.styles span{display:flex;flex-direction:column;gap:10px;align-items:center;font-size:13px;color:var(--mute);letter-spacing:-.2px}
+.styles i{display:block;width:96px;height:60px;border-radius:14px;border:2px solid transparent;outline:2px solid transparent;outline-offset:3px;transition:outline-color .25s,transform .3s var(--ease);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 14px -8px rgba(0,0,0,.4)}
+.styles label:hover i{transform:translateY(-2px)}
+.styles input:checked+span i{outline-color:var(--blue)}
+.styles input:checked+span{color:#000}
+.field{display:flex;flex-direction:column;gap:8px}
+.field+.field{margin-top:16px}
+.field label{font-size:13px;color:var(--mute);letter-spacing:-.2px}
+.field input,.field textarea,.field select{background:var(--soft);border:2px solid transparent;border-radius:14px;padding:14px 16px;font-size:16px;letter-spacing:-.3px;width:100%;outline:none;transition:border-color .2s,background .2s}
+.field input:focus,.field textarea:focus{border-color:var(--blue);background:#fff}
+.field textarea{min-height:104px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.row2 .field+.field{margin-top:0}
+.count{font-size:12px;color:rgba(0,0,0,.45);text-align:right;font-family:'JetBrains Mono',monospace}
+.when{display:flex;gap:10px;flex-wrap:wrap}
+.when span{display:inline-flex;align-items:center;height:43px;padding:0 22px;border-radius:50px;border:1px solid var(--line);font-size:13px;letter-spacing:-.1px;transition:background .25s,color .25s,border-color .25s}
+.when label:hover span{border-color:#000}
+.when input:checked+span{background:#000;color:#fff;border-color:#000}
+input:focus-visible+span,input:focus-visible+span i{outline:2px solid var(--blue);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* preview */
+.preview{position:sticky;top:40px;display:flex;flex-direction:column;gap:20px}
+.pvwrap{perspective:1200px}
+.gcard{position:relative;aspect-ratio:1.586/1;width:100%;border-radius:22px;padding:28px 30px;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden;color:#fff;transition:transform .5s var(--ease),box-shadow .5s;transform-style:preserve-3d;
+  background:linear-gradient(135deg,#2c2c2f 0%,#141416 46%,#303033 72%,#0f0f11 100%);box-shadow:0 40px 60px -30px rgba(40,30,10,.45),inset 0 1px 0 rgba(255,255,255,.14)}
+.gcard::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 1px,transparent 1px 3px),radial-gradient(60% 70% at 50% -10%,rgba(255,255,255,.22),transparent 70%);pointer-events:none}
+.gcard::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.14) 50%,transparent 65%);transform:translateX(-80%);transition:transform 1.1s var(--ease);pointer-events:none}
+.pvwrap:hover .gcard::after{transform:translateX(80%)}
+.pvwrap{overflow:hidden;aspect-ratio:1.78/1;margin-bottom:14px;-webkit-mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent)}
+.pvimg{display:block;width:100%;height:auto;mix-blend-mode:multiply;margin-top:-17%;transition:transform .5s var(--ease)}
+.gcard .top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+.gcard .lg{display:flex;align-items:center;gap:8px}
+.gcard .lg img{width:22px;height:22px;filter:invert(1)}
+.gcard .lg b{font-weight:500;font-size:13px;letter-spacing:.04em;font-style:italic;text-transform:uppercase}
+.gcard .k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.65}
+.gcard .amt{position:relative;z-index:1;align-self:center;font-size:72px;font-weight:500;letter-spacing:-3px;line-height:1}
+.gcard .bot{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.gcard .bot b{display:block;font-weight:500;font-size:16px;letter-spacing:-.3px;margin-top:4px}
+.gcard .msg{max-width:58%;font-size:13px;line-height:1.4;opacity:.75;text-align:right;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.gcard.gold{color:#4a3414;background:radial-gradient(90% 70% at 50% 0%,#f0dca4 0%,rgba(240,220,164,0) 60%),linear-gradient(160deg,#b8935a 0%,#8c6a35 45%,#5b4122 100%);box-shadow:0 40px 60px -30px rgba(90,60,10,.55),inset 0 1px 0 rgba(255,244,214,.55)}
+.gcard.gold .lg img{filter:none;opacity:.8}
+.gcard.gold .bot{color:#f6e8c6}.gcard.gold .bot .k,.gcard.gold .msg{opacity:.9}
+.gcard.gold .amt{text-shadow:0 1px 0 rgba(255,238,190,.5);opacity:.88}
+.gcard.silver{color:#1a1a1c;background:radial-gradient(90% 70% at 50% 0%,#fff 0%,rgba(255,255,255,0) 60%),linear-gradient(160deg,#dcdcde 0%,#b1b1b5 50%,#8f8f94 100%);box-shadow:0 40px 60px -30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.8)}
+.gcard.silver .lg img{filter:none;opacity:.85}
+.gcard.pop{animation:pop .45s var(--ease)}
+@keyframes pop{0%{transform:scale(.985)}100%{transform:none}}
+.sum{background:var(--soft);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.sum .r{display:flex;justify-content:space-between;gap:12px;font-size:15px;letter-spacing:-.3px}
+.sum .r span:first-child{color:var(--mute)}
+.sum .t{border-top:1px solid rgba(0,0,0,.1);padding-top:14px;margin-top:4px;font-size:18px;letter-spacing:-.6px}
+.sum .t span:first-child{color:#000}
+.sum .btn{margin-top:8px}
+.fine{font-size:12px;line-height:1.5;color:rgba(0,0,0,.5);text-align:center;margin-top:2px}
+
+
+/* ===== customizer ===== */
+.cz{height:1120px;margin:24px 10px 0;width:1580px;display:grid;grid-template-columns:800px 780px;border-radius:16px;overflow:clip;background:#fff;border:1px solid var(--line)}
+.czL{background:#eff0f2;position:relative;display:block}
+.czL .back{position:absolute;left:40px;top:40px;display:inline-flex;align-items:center;gap:8px;font-size:14px;letter-spacing:-.2px;color:rgba(0,0,0,.6);transition:color .2s}
+.czL .back:hover{color:#000}
+/*PV*/.czL .pvwrap{position:sticky;top:210px;perspective:none;width:596px;margin:0 auto;padding:0;aspect-ratio:auto;-webkit-mask-image:none;mask-image:none;flex:none}
+.czL .pvimg{margin:0;width:100%;mix-blend-mode:normal;border-radius:18px;box-shadow:0 44px 50px -26px rgba(60,40,10,.55),0 14px 24px -12px rgba(0,0,0,.2)}
+.czR{padding:40px 32px 64px;background:#fff}
+.czh{display:flex;flex-direction:column;gap:6px}
+.czh h2{font-weight:400;font-size:24px;letter-spacing:-.6px;line-height:normal;color:#212121}
+.czh p{font-size:16px;color:#6b6b6b;letter-spacing:-.3px}
+#gcForm{display:flex;flex-direction:column;gap:8px;margin-top:52px}
+.acc{border:1px solid rgba(0,0,0,.15);border-radius:16px;padding:32px;background:#fff;transition:border-color .3s}
+.acc .h{display:flex;gap:16px;align-items:flex-start;cursor:pointer;outline:none}
+.acc .num{width:28px;height:28px;border-radius:50%;border:1px solid #000;display:grid;place-items:center;font-size:13px;font-weight:500;letter-spacing:-.26px;position:relative;flex:none;transition:background .3s,color .3s}
+.acc .num svg{position:absolute;width:14px;height:14px;opacity:0;transform:scale(.5);transition:opacity .25s,transform .3s var(--ease)}
+.acc.done .num{background:#212121;border-color:#212121;color:#fff}
+.acc.done .num b{opacity:0}.acc.done .num svg{opacity:1;transform:none}
+.acc .tt{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.acc .tt h3{font-weight:400;font-size:20px;letter-spacing:-.6px;color:#212121;line-height:28px}
+.acc .tt .sub2{font-size:14px;line-height:1.5;color:#6b6b6b;letter-spacing:-.3px;max-height:0;opacity:0;overflow:hidden;transition:max-height .4s var(--ease),opacity .3s}
+.acc.done:not(.open) .tt .sub2{max-height:60px;opacity:1}
+.acc .edit{opacity:0;pointer-events:none;transition:opacity .3s;font-size:14px;letter-spacing:-.3px;border-bottom:1px solid rgba(0,0,0,.25);line-height:1.3;align-self:flex-start;margin-top:3px}
+.acc.done:not(.open) .edit{opacity:1;pointer-events:auto}
+.acc .bd{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.acc .bi{overflow:hidden;min-height:0;padding-top:0;opacity:0;transition:opacity .35s,padding-top .5s var(--ease)}
+.acc.open .bd{grid-template-rows:1fr}
+.acc.open .bi{opacity:1;padding-top:24px;transition:opacity .5s .1s,padding-top .5s var(--ease)}
+.acc .bi:focus-within{overflow:visible}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.acc .bi>.btn{margin-top:32px}
+.acc .intro{font-size:14px;line-height:1.5;color:#6b6b6b;letter-spacing:-.3px;margin:-16px 0 24px}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts label{position:relative;cursor:pointer;display:block}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts .o{display:flex;align-items:center;gap:16px;padding:20px;border:1px solid rgba(0,0,0,.15);border-radius:12px;transition:border-color .25s,background .25s,transform .3s var(--ease)}
+.opts label:hover .o{transform:translateY(-1px);border-color:rgba(0,0,0,.35)}
+.opts .rd{width:20px;height:20px;border-radius:50%;border:1px solid rgba(0,0,0,.25);flex:none;display:grid;place-items:center;transition:background .25s,border-color .25s}
+.opts .rd::after{content:"";width:6px;height:6px;border-radius:50%;background:#fff;transform:scale(0);transition:transform .25s var(--ease)}
+.opts input:checked+.o{border:1.8px solid var(--blue);padding:19.2px;background:rgba(17,43,175,.02)}
+.opts input:checked+.o .rd{background:var(--blue);border-color:var(--blue)}
+.opts input:checked+.o .rd::after{transform:scale(1)}
+.opts .lb{flex:1;display:flex;flex-direction:column;gap:2px}
+.opts .lb b{font-weight:400;font-size:16px;line-height:1.4;letter-spacing:-.6px;color:#212121;display:flex;gap:8px;align-items:center}
+.opts .lb small{font-size:15px;letter-spacing:-.3px;color:#6b6b6b}
+.opts .pr{font-size:16px;letter-spacing:-.6px;color:#212121}
+.tag{font-size:10px;line-height:1;padding:5px;border-radius:2px;background:var(--blue);color:#fff;letter-spacing:-.3px;font-weight:400}
+.custom{margin-top:8px}
+.grp{border:1px solid rgba(0,0,0,.15);border-radius:12px;overflow:hidden;margin-bottom:16px}
+.grp .gr{display:grid;grid-template-columns:1fr 1fr}
+.grp .gr+.gr,.grp>label+.gr{border-top:1px solid rgba(0,0,0,.15)}
+.grp .gr label+label{border-left:1px solid rgba(0,0,0,.15)}
+.grp label.f{display:flex;flex-direction:column;gap:2px;padding:12px 16px;transition:background .2s;cursor:text}
+.grp label.f:focus-within{background:#fafafa}
+.grp label.f span{font-size:13px;color:#6b6b6b;letter-spacing:-.2px}
+.grp label.f input,.grp label.f textarea{border:0;background:none;outline:none;font-size:16px;letter-spacing:-.3px;color:#212121;padding:0;width:100%;font-family:inherit}
+.grp label.f textarea{min-height:96px;resize:vertical}
+.acc .count{display:block;margin-top:-8px;margin-bottom:8px}
+.when span{height:40px}
+.rev{border:1px solid rgba(0,0,0,.15);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:8px;font-size:15px;letter-spacing:-.3px;color:#6b6b6b}
+.rev .r{display:flex;justify-content:space-between}
+.rev .t{border-top:1px solid rgba(0,0,0,.15);margin-top:8px;padding-top:16px;color:#212121}
+.rev .t span:last-child{font-size:16px}
+.rev .r span:last-child{color:#212121}
+.acc .fine{text-align:left;font-size:14px;color:#6b6b6b;margin:20px 0 0}
+.acc .bi>.btn.pay{margin-top:24px}
+
+
+/* ===== occasions ===== */
+.oc{height:calc(800px + 13*110px);padding:0 40px}
+.oc-pin{position:sticky;top:0;height:800px;display:flex;align-items:center;overflow:hidden}
+.oc-w{width:100%;display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;align-items:center;height:100%}
+.oc-lw{grid-column:2/7;height:100%;overflow:hidden;-webkit-mask-image:linear-gradient(transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(transparent,#000 22%,#000 78%,transparent)}
+.oc-l{display:flex;flex-direction:column;align-items:flex-end;text-align:right;will-change:transform}
+.oc-i{all:unset;box-sizing:border-box;cursor:pointer;display:block;padding:20px 0;font:400 64px/1.05 Geist,system-ui,sans-serif;letter-spacing:-3.2px;color:rgba(0,0,0,.18);transform-origin:100% 50%;will-change:transform,filter,opacity}
+.oc-i.a{color:#000}
+.oc-s{grid-column:8/12;display:flex;justify-content:center}
+.oc-f{position:relative;aspect-ratio:464/560;width:100%;max-width:520px;border-radius:24px;overflow:hidden;background:#e9e7e2}
+.oc-g{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;will-change:opacity,transform,filter}
+/* ===== cta ===== */
+.gcta{position:relative;overflow:hidden;background:#000;color:#fff;display:flex;justify-content:center;height:790px;padding:124px 80px 0}
+.gcta::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50.5%);width:900px;aspect-ratio:1958/1052;background:url(gift/cta-card.webp) center bottom/100% 100% no-repeat;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 52%,transparent 96%);mask-image:linear-gradient(180deg,#000 0,#000 52%,transparent 96%);pointer-events:none}
+.gcta-in{position:relative;z-index:1;max-width:760px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.gcta h2{font-weight:400;font-size:36px;line-height:1.25;letter-spacing:-1.1px;color:#fff;max-width:19em}
+.gcta-b{margin-top:40px;display:inline-flex;align-items:center;justify-content:center;height:43px;padding:0 26px;border-radius:50px;background:#fff;color:#111;font-size:14px;letter-spacing:-.2px;transition:background .25s,transform .25s}
+.gcta-b:hover{background:#ececec}.gcta-b:active{transform:scale(.97)}
+/* ===== faq ===== */
+.fq{background:#000;color:#fff;padding:140px 0 150px;margin-top:-1px}
+.fq-in{max-width:1320px;margin:0 auto;padding:0 60px}
+.fq h2{text-align:center;font-weight:500;font-size:48px;line-height:1.2;letter-spacing:-1.6px;margin-bottom:96px}
+.fq-row{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:48px;position:relative;align-items:start}
+.fq-row::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:rgba(255,255,255,.16)}
+.fq-row h5{font-weight:500;font-size:20px;line-height:28px;letter-spacing:-.4px;max-width:528px}
+.fq-a{font-size:16px;line-height:24px;letter-spacing:-.3px;color:rgba(255,255,255,.6);max-width:594px}
+
+/* ===== how ===== */
+.how{background:#000;color:#fff;padding:160px 80px;overflow:hidden}
+.how .hd{text-align:center;margin-bottom:72px;display:flex;flex-direction:column;gap:16px;align-items:center}
+.how .eb{color:rgba(255,255,255,.55)}
+.how .h2{color:#fff}
+.hcards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.hc{background:rgba(255,255,255,.08);border-radius:16px;padding:48px;height:380px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;transition:background .4s,transform .5s var(--ease)}
+.hc:hover{background:rgba(255,255,255,.12);transform:translateY(-4px)}
+.hc::after{content:"";position:absolute;left:0;top:0;height:2px;width:100%;background:linear-gradient(90deg,transparent,#112baf,#4a63e8,#8b7bff,transparent);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.hc:hover::after{transform:scaleX(1)}
+.hc .n{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.5px;color:rgba(255,255,255,.5)}
+.hc h3{font-weight:400;font-size:32px;line-height:1.15;letter-spacing:-1.2px;margin-bottom:14px}
+.hc p{font-size:16px;line-height:1.5;letter-spacing:-.3px;color:rgba(255,255,255,.6);max-width:340px;min-height:48px}
+.hc .ic{width:56px;height:56px;border-radius:16px;background:rgba(255,255,255,.1);display:grid;place-items:center}
+.hc .ic svg{width:26px;height:26px}
+
+/* ===== alt + faq ===== */
+.alt{padding:120px 80px 0}
+.strip{display:flex;align-items:center;gap:24px;background:var(--soft);border-radius:100px;padding:14px 14px 14px 36px;max-width:1100px;margin:0 auto}
+.strip b{font-weight:500;font-size:18px;letter-spacing:-.6px}
+.strip span{color:var(--mute);font-size:16px;letter-spacing:-.4px}
+.strip .g{flex:1}
+.faq{padding:140px 80px 160px}
+.faq .hd{display:flex;flex-direction:column;gap:12px;text-align:center;margin-bottom:56px;align-items:center}
+.fl{max-width:900px;margin:0 auto}
+details{border-top:1px solid rgba(0,0,0,.1)}
+details:last-child{border-bottom:1px solid rgba(0,0,0,.1)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:28px 0;font-size:24px;letter-spacing:-.9px;transition:padding .3s var(--ease)}
+summary::-webkit-details-marker{display:none}
+summary:hover{padding-left:12px}
+summary i{position:relative;width:20px;height:20px;flex:none}
+summary i::before,summary i::after{content:"";position:absolute;left:0;right:0;top:9px;height:1.5px;background:#000;transition:transform .35s var(--ease)}
+summary i::after{transform:rotate(90deg)}
+details[open] summary i::after{transform:rotate(0)}
+details p{padding:0 40px 30px 0;font-size:16px;line-height:1.6;letter-spacing:-.4px;color:var(--mute);max-width:720px;animation:rise .45s var(--ease)}
+@keyframes rise{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+footer{background:#fafafa;width:1600px;padding:40px 80px 0;position:relative;overflow:hidden;font-family:'Inter',sans-serif}
+footer .g{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(0,0,0,.1);height:535.5px}
+footer .col{border-right:1px solid rgba(0,0,0,.06);padding:44px 29px 0 28px}
+footer .col:first-child{padding-left:0}footer .col:last-child{border-right:0}
+footer h4{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(0,0,0,.3);line-height:13px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:13px;margin-top:20px}
+footer ul.g16{gap:16px}
+footer li{font-size:13px;letter-spacing:-.15px;color:rgba(0,0,0,.7);line-height:19.5px;white-space:nowrap}
+footer li .new{display:inline-block;margin-left:14px;background:rgba(0,0,0,.1);border-radius:3px;padding:2px 6px;font-size:8px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;line-height:10px;vertical-align:1px}
+footer .sub{border-top:1px solid rgba(0,0,0,.05);margin-top:21px;padding-top:21px}
+footer .sub ul{margin-top:20px}
+footer .hsa{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(0,0,0,.3);border-radius:8px;padding:8px;margin-top:20px}
+footer .c3{display:grid;grid-template-columns:repeat(3,1fr);height:161px;border-bottom:1px solid rgba(0,0,0,.1)}
+footer .c3>div{padding:28px 28px 0;border-right:1px solid rgba(0,0,0,.06)}
+footer .c3>div:first-child{padding-left:0}footer .c3>div:last-child{border-right:0}
+footer .c3 h4{font-size:10px;line-height:12px}
+footer .c3 .l{font-size:13px;color:rgba(0,0,0,.7);line-height:15.5px;margin-top:14px;display:flex;flex-direction:column;gap:8px}
+footer .app{display:flex;gap:8px;margin-top:14px}
+footer .app a{border:1px solid rgba(0,0,0,.08);border-radius:8px;height:36.5px;padding:1px 15px;display:flex;flex-direction:column;justify-content:center}
+footer .app small{font-size:7px;color:rgba(0,0,0,.7);line-height:8.5px}
+footer .app b{font-size:10px;font-weight:500;color:#111;line-height:12px}
+footer .legal{height:87px;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;padding-top:20px;font-size:12px;color:rgba(0,0,0,.3);line-height:17px}
+footer .wm{height:220px;padding:44px 96px 0;overflow:hidden}
+footer .wm img{width:1280px;height:117px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="page">
+
+<!-- announcement + nav -->
+<div class="ann"><b style="font-weight:500">Gift cards arrive instantly.</b><span style="margin:0 10px;opacity:.5">·</span><span>No shipping cutoffs</span><span style="margin:0 10px;opacity:.5">·</span><u style="margin-left:0"><a href="#build">Send one</a></u></div>
+<div class="nav">
+  <a class="t" style="left:40px;width:32px;height:32px;top:22px" href="#" aria-label="Menu"><svg width="32" height="32" viewBox="0 0 32 32"><path d="M2 13h28M2 19h28" stroke="#000" stroke-width="2"/></svg></a>
+  <a class="t" style="left:104px" href="compare.html">Ultrahuman Ring</a>
+  <a class="t" style="left:233px" href="#">Advanced Markers</a>
+  <a class="t" style="left:372px" href="#">Performance Lab</a>
+  <a class="t" style="left:502px" href="buy.html">Shop</a>
+  <a class="t" style="left:50%;margin-left:-89px;top:22px;gap:8px" href="home.html"><img src="figma/68979.svg" width="32" height="32" alt=""><img src="figma/b2adc.svg" width="161" height="14" alt="Ultrahuman"></a>
+  <div class="t" style="left:1160px;gap:40px;top:18px">
+    <span style="display:flex;gap:6px;align-items:center" class="mono"><i style="width:24px;height:24px;border-radius:12px;background:#f1f1f1;display:block"></i><b style="font-weight:600;font-size:13px;text-transform:uppercase">in</b></span>
+    <a href="buy.html"><img src="figma/7df20.svg" width="32" height="32" alt="Cart"></a>
+    <a class="btn blue" href="#build" style="width:auto;padding:0 24px">Send a gift card</a>
+  </div>
+</div>
+
+
+<div style="height:8px"></div>
+
+<!-- HERO -->
+<section class="ghero">
+  <div class="txt">
+    <h1>Health looks good on them.</h1>
+    <p class="lead">Send a gift card by email. They pick the ring, the finish and the size.</p>
+    <div class="cta">
+      <a class="btn blue lg" href="#build">Send a gift card <span class="arr">→</span></a>
+      <a class="link" href="gift.html">Or gift the ring itself</a>
+    </div>
+    <div class="chips">
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>Arrives instantly</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.5"/></svg>They choose their size</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9"/></svg>Schedule it</span>
+    </div>
+  </div>
+  <div class="photo"><img src="gift/hero-couple.webp" alt="A couple opening a gift together"></div>
+</section>
+
+<!-- BUILDER -->
+<section class="cz" id="build">
+  <aside class="czL">
+    <div class="pvwrap"><img class="pvimg" id="pv" src="gift/gold-cutout.webp" alt="Ultrahuman Ring gift card"></div>
+  </aside>
+  <div class="czR">
+    <div class="czh"><h2>Customize your gift</h2><p>Gift card</p></div>
+    <form id="gcForm" novalidate>
+      <div class="acc open" data-s="1">
+        <div class="h" tabindex="0" role="button"><span class="num"><b>1</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div class="tt"><h3>Choose an amount</h3><span class="sub2" id="v1"></span></div><span class="edit">Edit</span></div>
+        <div class="bd"><div class="bi">
+          <div class="opts" role="radiogroup" aria-label="Gift card amount">
+            <label><input type="radio" name="amt" id="amt-100" value="100"><span class="o"><i class="rd"></i><span class="lb"><b>$100</b><small>A good start toward any ring or extra.</small></span></span></label>
+            <label><input type="radio" name="amt" id="amt-250" value="250"><span class="o"><i class="rd"></i><span class="lb"><b>$250</b><small>Spend it on anything at Ultrahuman.</small></span></span></label>
+            <label><input type="radio" name="amt" id="amt-479" value="479" checked><span class="o"><i class="rd"></i><span class="lb"><b>$479 <em class="tag" style="font-style:normal">The whole ring</em></b><small>Ring PRO, covered in full.</small></span></span></label>
+            <label><input type="radio" name="amt" id="amt-c" value="custom"><span class="o"><i class="rd"></i><span class="lb"><b>Custom amount</b><small>Anything from $25 to $1,000.</small></span></span></label>
+          </div>
+          <div class="custom" id="customRow" hidden><div class="grp" style="margin:0"><label class="f"><span>Amount ($25–$1,000)</span><input id="amtCustom" type="number" inputmode="numeric" min="25" max="1000" step="1" value="150"></label></div></div>
+          <button class="btn blue" type="button" data-next="2">Continue</button>
+        </div></div>
+      </div>
+      <div class="acc" data-s="2">
+        <div class="h" tabindex="0" role="button"><span class="num"><b>2</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div class="tt"><h3>Who’s receiving it</h3><span class="sub2" id="v2"></span></div><span class="edit">Edit</span></div>
+        <div class="bd"><div class="bi">
+          <p class="intro">Only their details go on the gift. Yours are taken at checkout.</p>
+          <div class="grp">
+            <label class="f"><span>Their name</span><input id="toName" type="text" value="Alex" autocomplete="off"></label>
+            <div class="gr"><label class="f"><span>Their email</span><input id="toEmail" type="email" placeholder="alex@email.com" autocomplete="off"></label><label class="f"><span>From</span><input id="fromName" type="text" placeholder="Your name" autocomplete="name"></label></div>
+          </div>
+          <button class="btn blue" type="button" data-next="3">Continue</button>
+        </div></div>
+      </div>
+      <div class="acc" data-s="3">
+        <div class="h" tabindex="0" role="button"><span class="num"><b>3</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div class="tt"><h3>Add a personal note</h3><span class="sub2" id="v3"></span></div><span class="edit">Edit</span></div>
+        <div class="bd"><div class="bi">
+          <div class="grp"><label class="f"><span>Message</span><textarea id="msg" maxlength="160">Happy holidays. Sleep well.</textarea></label></div>
+          <span class="count" id="msgCount">27/160</span>
+          <div class="when" role="radiogroup" aria-label="Delivery" style="margin-top:20px">
+            <label><input type="radio" name="when" id="w-now" value="now" checked><span>Send now</span></label>
+            <label><input type="radio" name="when" id="w-xmas" value="2026-12-25"><span>Dec 25, 8am</span></label>
+            <label><input type="radio" name="when" id="w-pick" value="pick"><span>Pick a date</span></label>
+          </div>
+          <div class="grp" id="dateRow" hidden style="margin:16px 0 0;max-width:260px"><label class="f"><span>Send on</span><input id="sendDate" type="date" min="2026-10-23" value="2026-11-27"></label></div>
+          <button class="btn blue" type="button" data-next="4">Continue</button>
+        </div></div>
+      </div>
+      <div class="acc" data-s="4">
+        <div class="h" tabindex="0" role="button"><span class="num"><b>4</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div class="tt"><h3>Review and pay</h3><span class="sub2" id="v4"></span></div><span class="edit">Edit</span></div>
+        <div class="bd"><div class="bi">
+          <div class="rev" aria-live="polite">
+            <div class="r"><span>Gift card</span><span id="sAmt">$479.00</span></div>
+            <div class="r"><span>Delivery</span><span id="sWhen">By email, now</span></div>
+            <div class="r t"><span>Total</span><span id="sTot">$479.00</span></div>
+          </div>
+          <p class="fine" id="formNote">Digital only. No tax on gift cards. Tax applies when it’s spent.</p>
+          <button class="btn blue pay" type="submit" id="buyBtn">Add gift card · $479</button>
+        </div></div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="how">
+  <div class="hd"><span class="eb">How it works</span><div class="h2">They unwrap. They pick. They wear.</div></div>
+  <div class="hcards">
+    <div class="hc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg></div><div><span class="n">01</span><h3 style="margin-top:14px">It lands in their inbox.</h3><p>Now, on Christmas morning, or any date you choose.</p></div></div>
+    <div class="hc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.5"/></svg></div><div><span class="n">02</span><h3 style="margin-top:14px">They choose.</h3><p>Ring PRO in any finish. Free sizing kit ships first.</p></div></div>
+    <div class="hc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></div><div><span class="n">03</span><h3 style="margin-top:14px">They wear it.</h3><p>Sleep, recovery and heart insights. No membership needed.</p></div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<!-- OCCASIONS -->
+<section class="oc" id="occasions"><div class="oc-pin"><div class="oc-w">
+  <div class="oc-lw"><div class="oc-l" id="ocl"><button type="button" class="oc-i" data-i="0">Retreats and offsites</button><button type="button" class="oc-i" data-i="1">Welcome kits</button><button type="button" class="oc-i" data-i="2">Wellness programs</button><button type="button" class="oc-i" data-i="3">Milestones and rewards</button><button type="button" class="oc-i" data-i="4">Birthdays</button><button type="button" class="oc-i" data-i="5">Anniversaries</button><button type="button" class="oc-i" data-i="6">Weddings</button><button type="button" class="oc-i" data-i="7">New parents</button><button type="button" class="oc-i" data-i="8">Graduations</button><button type="button" class="oc-i" data-i="9">Promotions</button><button type="button" class="oc-i" data-i="10">Retirements</button><button type="button" class="oc-i" data-i="11">Thank you</button><button type="button" class="oc-i" data-i="12">Get well soon</button><button type="button" class="oc-i" data-i="13">Holidays</button></div></div>
+  <div class="oc-s"><div class="oc-f"><img class="oc-g" src="gift/occ/retreats.jpg" alt="Retreats and offsites" loading="lazy"><img class="oc-g" src="gift/occ/welcome-kits.jpg" alt="Welcome kits" loading="lazy"><img class="oc-g" src="gift/occ/wellness-programs.jpg" alt="Wellness programs" loading="lazy"><img class="oc-g" src="gift/occ/milestones.jpg" alt="Milestones and rewards" loading="lazy"><img class="oc-g" src="gift/occ/birthdays.jpg" alt="Birthdays" loading="lazy"><img class="oc-g" src="gift/occ/anniversaries.jpg" alt="Anniversaries" loading="lazy"><img class="oc-g" src="gift/occ/weddings.jpg" alt="Weddings" loading="lazy"><img class="oc-g" src="gift/occ/new-parents.jpg" alt="New parents" loading="lazy"><img class="oc-g" src="gift/occ/graduations.jpg" alt="Graduations" loading="lazy"><img class="oc-g" src="gift/occ/promotions.jpg" alt="Promotions" loading="lazy"><img class="oc-g" src="gift/occ/retirements.jpg" alt="Retirements" loading="lazy"><img class="oc-g" src="gift/occ/thank-you.jpg" alt="Thank you" loading="lazy"><img class="oc-g" src="gift/occ/get-well.jpg" alt="Get well soon" loading="lazy"><img class="oc-g" src="gift/occ/christmas.jpg" alt="Holidays" loading="lazy"></div></div>
+</div></div></section>
+
+<!-- CTA -->
+<section class="gcta"><div class="gcta-in"><h2>Not sure which one fits? Tell us who it is for and we will help you pick.</h2><a class="gcta-b" href="mailto:support@ultrahuman.com">Get in contact</a></div></section>
+
+<!-- FAQ -->
+<section class="fq"><div class="fq-in"><h2>Good to know</h2><div class="fq-list"><div class="fq-row"><h5>Does it expire?</h5><div class="fq-a">No. Proposed: gift cards never expire, in line with state rules.</div></div><div class="fq-row"><h5>What can they buy?</h5><div class="fq-a">Ring PRO and anything else on ultrahuman.com/us. If the order costs more, they pay the difference.</div></div><div class="fq-row"><h5>Can I pay with HSA/FSA?</h5><div class="fq-a">Gift cards can’t be bought with HSA/FSA. The recipient can use their own HSA/FSA card on top of the gift card.</div></div><div class="fq-row"><h5>Is there a physical card?</h5><div class="fq-a">Digital only. Print the email if you want something to hand over.</div></div><div class="fq-row"><h5>Can I change the date?</h5><div class="fq-a">Yes, any time before it sends. Find it in your order confirmation.</div></div></div></div></section>
+
+
+<footer>
+  <div class="g">
+    <div class="col">
+      <h4>Smart rings</h4>
+      <ul><li>Ultrahuman Ring PRO <span class="new">New</span></li><li>Ultrahuman Ring AIR</li><li>Diesel Ultrahuman Ring</li><li>Ultrahuman Ring Rare</li></ul>
+      <div class="sub" style="margin-top:57px"><h4>Health Monitoring</h4><ul><li>Ultrahuman M1 CGM</li><li>Ultrahuman Home</li><li>Ultrahuman Blood Vision</li><li>Powerplugs</li><li>Women’s Health</li><li>Ultrahuman Vision Dashboard</li></ul></div>
+    </div>
+    <div class="col"><h4>Resources</h4><ul class="g16"><li>OGDb - Open Glucose Database</li><li>Ultrahuman Blog</li><li><a href="hsa-fsa.html">Special Pricing - Military, Student &amp; More</a></li><li><a href="hsa-fsa.html">HSA/FSA</a></li><li>Science</li><li>Ultra Work</li><li>Ultrahuman X Clue</li><li>3D Print Ring Sizes</li><li>Blood Vision Cloud</li><li>Ring Sizing</li><li>Annual Return</li></ul></div>
+    <div class="col">
+      <h4>Company</h4><ul><li>About Us</li><li>Press &amp; News</li><li>Brand Kit</li><li>Careers</li></ul>
+      <div class="sub" style="margin-top:57px"><h4>Business</h4><ul><li>Partnerships</li><li>For Creators</li></ul></div>
+    </div>
+    <div class="col"><h4>Legal</h4><ul><li>R1 Terms of Sale</li><li>M1 Terms of Sale</li><li>Privacy Policy</li><li>Terms of Use</li></ul>
+      <div class="hsa"><img src="figma/10ad1.svg" width="20" height="27" alt=""><img src="figma/97b0b.svg" width="59" height="26" alt="HSA FSA"></div></div>
+  </div>
+  <div class="c3">
+    <div><h4>Contact</h4><div class="l"><span>support@ultrahuman.com</span><span>1800-102-8693</span></div></div>
+    <div><h4>Follow Us</h4><div style="margin-top:14px"><img src="figma/1ef01.svg" width="187" height="16" alt="Social"></div></div>
+    <div><h4>Download App</h4><div class="app"><a href="#"><small>GET IT ON</small><b>Google Play</b></a><a href="#"><small>Download on the</small><b>App Store</b></a></div></div>
+  </div>
+  <div class="legal">© 2020-2025 Ultrahuman Healthcare Pvt Ltd. All rights reserved. ISO27001, GDPR, and HIPAA compliant.</div>
+  <div class="wm"><img src="figma/a4b63.svg" alt="ULTRAHUMAN"></div>
+</footer>
+</div>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  function val(n){var e=document.querySelector('input[name="'+n+'"]:checked');return e?e.value:null}
+  function money(n){return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
+  function short(n){return '$'+(Math.round(n*100)/100).toLocaleString('en-US',{maximumFractionDigits:2})}
+  function amount(){var a=val('amt');if(a!=='custom')return +a;var c=Math.round(parseFloat($('amtCustom').value)||0);return Math.min(1000,Math.max(25,c))}
+  var lastSty=null;
+  function upd(){
+    var a=amount(),w=val('when');
+    $('customRow').hidden=val('amt')!=='custom';
+    $('dateRow').hidden=w!=='pick';
+    var m=$('msg').value;$('msgCount').textContent=m.length+'/160';
+    $('sAmt').textContent=money(a);$('sTot').textContent=money(a);
+    var t=w==='now'?'By email, now':w==='pick'?('By email, '+new Date($('sendDate').value+'T08:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'})+', 8am'):'By email, Dec 25, 8am';
+    $('sWhen').textContent=t;
+    $('v1').textContent=short(a)+' gift card';$('v2').textContent=($('toName').value.trim()||'Someone great')+($('toEmail').value?' · '+$('toEmail').value:'');$('v3').textContent='“'+m+'” · '+t.replace('By email, ','');
+    $('buyBtn').textContent='Add gift card · '+short(a);
+  }
+  document.querySelectorAll('#gcForm input, #gcForm textarea').forEach(function(i){i.addEventListener('input',upd);i.addEventListener('change',upd)});
+  $('gcForm').addEventListener('submit',function(e){
+    e.preventDefault();document.querySelector('.acc[data-s="3"]').classList.add('done');
+    var em=$('toEmail');
+    if(!em.value||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value)){$('formNote').textContent='Add their email so we know where to send it.';em.focus();return}
+    $('formNote').textContent='Added to your bag (demo).';
+  });
+
+  /* accordion */
+  var accs=document.querySelectorAll('.acc');
+  function openS(n){accs.forEach(function(a){a.classList.toggle('open',+a.dataset.s===n)});}
+  accs.forEach(function(a){var h=a.querySelector('.h');h.addEventListener('click',function(){openS(+a.dataset.s)});h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openS(+a.dataset.s)}})});
+  document.querySelectorAll('[data-next]').forEach(function(b){b.addEventListener('click',function(){var n=+b.dataset.next;document.querySelector('.acc[data-s="'+(n-1)+'"]').classList.add('done');openS(n)})});
+  /* card tilt */
+  var wrap=document.querySelector('.pvwrap'),pv=$('pv');
+  wrap.addEventListener('mousemove',function(e){var r=wrap.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;pv.style.transform='perspective(900px) rotateY('+(x*8)+'deg) rotateX('+(-y*8)+'deg)'});
+  wrap.addEventListener('mouseleave',function(){pv.style.transform=''});
+  upd();
+
+  /* occasions wheel */
+  (function(){var sec=document.getElementById('occasions'),l=document.getElementById('ocl');if(!sec||!l)return;
+    var it=[].slice.call(l.children),gs=[].slice.call(sec.querySelectorAll('.oc-g')),n=it.length,pin=sec.querySelector('.oc-pin'),lw=l.parentElement,val=0,run=0,cur=-1;
+    function tgt(){var r=sec.getBoundingClientRect(),range=Math.max(1,r.height-pin.getBoundingClientRect().height);return Math.min(1,Math.max(0,-r.top/range))*(n-1)}
+    function paint(idx){var i0=Math.min(n-1,Math.floor(idx)),i1=Math.min(n-1,i0+1),fr=idx-i0,c=function(i){return it[i].offsetTop+it[i].offsetHeight/2};
+      l.style.transform='translate3d(0,'+(Math.round((lw.clientHeight/2-(c(i0)+fr*(c(i1)-c(i0))))*10)/10)+'px,0)';
+      for(var i=0;i<n;i++){var d=i-idx,ad=Math.abs(d),cc=Math.max(-3,Math.min(3,d)),e=it[i];
+        e.style.transform='perspective(900px) translate3d('+Math.round(-cc*cc*9*10)/10+'px,0,0) rotateX('+(-cc*17).toFixed(2)+'deg) rotateZ('+(-cc*1.1).toFixed(2)+'deg) scale('+(1-Math.min(ad,3)*.04).toFixed(3)+')';
+        e.style.filter=ad<.03?'none':'blur('+(Math.min(ad,3)*1.5).toFixed(2)+'px)';
+        e.style.opacity=Math.max(.14,1-Math.min(ad,4)*.2).toFixed(3);
+        e.style.color='rgba(0,0,0,'+(.2+.8*Math.max(0,1-ad)).toFixed(3)+')'}
+      var w=Math.min(1,Math.max(0,idx-i0)),ew=w*w*w*(w*(w*6-15)+10);
+      gs.forEach(function(e,i){var prev=i===i0,next=i===i0+1,op=0,z=0,sc=1.06,fl='none';
+        if(prev||next){op=1;z=next?2:1}
+        if(prev){sc=1+.035*ew;fl='blur('+(2.2*ew).toFixed(2)+'px)'}else if(next){op=ew;sc=1.07-.07*ew;fl='blur('+(10*(1-ew)).toFixed(2)+'px)'}
+        e.style.opacity=op.toFixed(3);e.style.zIndex=z;e.style.filter=fl;e.style.transform='scale('+sc.toFixed(4)+')'});
+      var b=Math.round(idx);if(b!==cur){cur=b;it.forEach(function(e,i){e.classList.toggle('a',i===b)})}}
+    function tick(){var t=tgt();val+=(t-val)*.075;if(Math.abs(t-val)<.002)val=t;paint(val);if(val!==t)requestAnimationFrame(tick);else run=0}
+    function kick(){if(!run){run=1;requestAnimationFrame(tick)}}
+    addEventListener('scroll',function(){var r=sec.getBoundingClientRect();if(r.bottom<-300||r.top>innerHeight+300)return;kick()},{passive:true});addEventListener('resize',kick);
+    l.addEventListener('click',function(e){var b=e.target.closest('.oc-i');if(!b)return;var r=sec.getBoundingClientRect(),range=Math.max(1,r.height-pin.getBoundingClientRect().height);scrollTo({top:scrollY+r.top+(+(it.indexOf(b))/(n-1))*range+1,behavior:'smooth'})});
+    paint(0);kick();
+  })();
+  function fit(){document.getElementById('page').style.zoom=Math.min(1,document.documentElement.clientWidth/1600)}
+  fit();addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>
