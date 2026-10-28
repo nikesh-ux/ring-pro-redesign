@@ -764,7 +764,17 @@ footer .wm img{width:1280px;height:117px}
 .tnav .nr{justify-self:end;display:flex;align-items:center;gap:22px;font-size:13px;color:rgba(255,255,255,.75)}
 .tnav .nr .ex,.tnav .nr .cart{color:inherit}
 .tnav .nr .cta{justify-self:auto}
-.hh .bg{display:none}
+.hh{--d:0px}
+.hh .bg{display:block;overflow:hidden}
+.hh .bg .p{position:absolute;top:0;bottom:0;overflow:hidden}
+.hh .bg .p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;top:0!important}
+.hh .bg .p1{left:0;width:calc(533.33px + var(--d)/2);clip-path:polygon(0 0,calc(100% - var(--d)) 0,100% 100%,0 100%)}
+.hh .bg .p1 img{object-position:50% 100%}
+.hh .bg .p2{left:calc(533.33px - var(--d)/2);width:calc(533.33px + var(--d));clip-path:polygon(0 0,533.33px 0,100% 100%,var(--d) 100%)}
+.hh .bg .p2 img{object-position:50% 50%}
+.hh .bg .p3{right:0;width:calc(533.33px + var(--d)/2);clip-path:polygon(0 0,100% 0,100% 100%,var(--d) 100%)}
+.hh .bg .p3 img{left:0;width:100%;object-position:33% 0%}
+.hh .bg::after{background:linear-gradient(180deg,rgba(0,0,0,.92) 0,rgba(0,0,0,.78) 16%,rgba(0,0,0,.78) 60%,rgba(0,0,0,.73) 100%)}
 .hh{background:#050506}
 .hh .txt{top:50%;transform:translate(-50%,-50%)}
 /* FAQ: live-site design (centred title, question left / answer right, all open) */
@@ -803,7 +813,7 @@ footer .wm img{width:1280px;height:117px}
 
 <!-- hero -->
 <section class="hh">
-  <div class="bg"><img src="assets/hsa/hero-dark-baked.jpg" alt=""></div>
+  <div class="bg"><div class="p p1"><img src="assets/hsa/hero-stretch.webp" alt=""></div><div class="p p2"><img src="assets/hsa/hero-run.webp" alt=""></div><div class="p p3"><img src="assets/hsa/hero-latte.webp" alt=""></div></div>
   <div class="txt">
     <p class="elig"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" transform="translate(0.00 0.00)" d="M11.39 22.19C11.33 22.19 11.15 22.17 10.99 22.15C6.76 21.77 3.15 18.66 2.10 14.50C1.75 13.13 1.70 11.58 1.96 10.17C2.72 6.01 6.02 2.72 10.18 1.97C11.04 1.82 12.39 1.78 13.18 1.88C15.48 2.18 17.45 3.11 19.06 4.66C23.62 9.04 23.15 16.41 18.07 20.20C16.65 21.26 14.96 21.92 13.14 22.14C12.81 22.18 11.62 22.22 11.39 22.19ZM12.58 20.49C14.63 20.34 16.46 19.52 17.93 18.10C21.22 14.90 21.36 9.58 18.23 6.23C16.85 4.75 15.11 3.85 13.06 3.57C12.31 3.46 11.10 3.51 10.28 3.68C5.82 4.58 2.86 8.89 3.61 13.42C4.33 17.72 8.25 20.81 12.58 20.49ZM10.55 16.69C10.26 16.57 10.31 16.63 8.81 14.78C7.40 13.05 7.39 13.03 7.39 12.68C7.39 12.43 7.44 12.30 7.58 12.13C7.84 11.83 8.35 11.80 8.68 12.06C8.75 12.12 9.18 12.66 9.82 13.49C10.39 14.23 10.86 14.82 10.87 14.81C10.88 14.80 11.81 13.30 12.95 11.47C14.13 9.57 15.06 8.10 15.14 8.01C15.33 7.80 15.49 7.73 15.76 7.74C16.39 7.78 16.68 8.31 16.39 8.89C16.36 8.95 15.29 10.66 14.00 12.68C11.55 16.54 11.55 16.55 11.28 16.67C11.09 16.77 10.75 16.78 10.55 16.69Z"/></svg>HSA/FSA Eligible · Powered by Flex</p>
     <h1>Save an average of 30%<br>with HSA/FSA.</h1>
@@ -1105,7 +1115,7 @@ footer .wm img{width:1280px;height:117px}
   })();
   addEventListener('scroll',stp,{passive:true});
   if(sk){spT=spC=sTarget();sRender(spC)}
-  function fit(){var z=Math.min(1,document.documentElement.clientWidth/1600);page.style.zoom=z;hh.style.height=Math.max(740,innerHeight/z)+'px';page.style.setProperty('--vh',(innerHeight/z)+'px');place();stp()}
+  function fit(){var z=Math.min(1,document.documentElement.clientWidth/1600);page.style.zoom=z;var hH=Math.min(1050,Math.max(740,innerHeight/z));hh.style.height=hH+'px';hh.style.setProperty('--d','0px');page.style.setProperty('--vh',(innerHeight/z)+'px');place();stp()}
   fit();addEventListener('resize',fit);
 
   var $=function(i){return document.getElementById(i)};

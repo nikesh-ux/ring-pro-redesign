@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hero collage · 10 ideas</title>
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:#efeeea;color:#111;font:15px/1.5 -apple-system,"Inter",sans-serif;padding:40px 5vw 80px}
+h1{font-size:28px;font-weight:500;letter-spacing:-.5px}
+.lead{color:#666;margin:6px 0 32px;max-width:640px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:36px 28px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card .cap{margin-top:10px}
+.card .cap b{font-weight:600}
+.card .cap span{color:#666;display:block;font-size:13.5px}
+.v{position:relative;width:100%;aspect-ratio:16/9;container-type:size;overflow:hidden;background:#0a0a0b;color:#fff;border-radius:10px;--d:23.6cqw;--g:0cqw}
+.v.light{background:#f3f2ee;color:#111}
+.ph{position:absolute;overflow:hidden}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.stretch img{object-position:50% 100%}.run img{object-position:50% 50%}.latte img{object-position:50% 40%}.laugh img{object-position:50% 80%}.rest img{object-position:70% 60%}
+.scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.8),rgba(0,0,0,.55) 18%,rgba(0,0,0,.55) 60%,rgba(0,0,0,.5))}
+.t{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;width:80cqw;z-index:3}
+.t i{display:inline-block;font-style:normal;font-size:1.25cqw;padding:.35cqw 1.1cqw;border-radius:9cqw;background:rgba(255,255,255,.14);margin-bottom:1.6cqw}
+.t h4{font-weight:400;font-size:5.2cqw;line-height:1.04;letter-spacing:-.22cqw}
+.t p{font-size:1.45cqw;opacity:.75;margin-top:1.6cqw}
+.t .b{display:inline-block;margin-top:2cqw;background:#fff;color:#000;font-size:1.3cqw;padding:.9cqw 2.4cqw;border-radius:9cqw}
+.light .t .b{background:#111;color:#fff}
+.s1{left:0;top:0;bottom:0;width:calc(33.333cqw + var(--d)/2);clip-path:polygon(0 0,calc(100% - var(--d) - var(--g)) 0,calc(100% - var(--g)) 100%,0 100%)}
+.s2{left:calc(33.333cqw - var(--d)/2);top:0;bottom:0;width:calc(33.333cqw + var(--d));clip-path:polygon(var(--g) 0,calc(33.333cqw - var(--g)) 0,calc(100% - var(--g)) 100%,calc(var(--d) + var(--g)) 100%)}
+.s3{right:0;top:0;bottom:0;width:calc(33.333cqw + var(--d)/2);clip-path:polygon(var(--g) 0,100% 0,100% 100%,calc(var(--d) + var(--g)) 100%)}
+/* 2 */
+.col{top:0;bottom:0;width:19cqw;border-radius:1.2cqw}
+/* 6 marquee */
+.strip{position:absolute;left:0;bottom:-2cqw;display:flex;gap:1.5cqw;animation:m 26s linear infinite}
+.strip .ph{position:relative;flex:none;width:24cqw;height:29cqw;border-radius:1.4cqw}
+@keyframes m{to{transform:translateX(-77cqw)}}
+/* 8 expand */
+.fx{position:absolute;inset:0;display:flex;gap:.5cqw}
+.fx .ph{position:relative;flex:1;transition:flex .6s cubic-bezier(.2,.7,.2,1)}
+.fx .ph:hover{flex:2.4}
+/* 9 markers */
+.mk{position:absolute;width:3.4cqw;height:3.4cqw;margin:-1.7cqw 0 0 -1.7cqw;border:.18cqw solid #fff;border-radius:50%;z-index:2;box-shadow:0 0 0 .5cqw rgba(255,255,255,.18)}
+.lb{position:absolute;z-index:2;font-size:1.15cqw;background:rgba(255,255,255,.92);color:#000;padding:.4cqw 1cqw;border-radius:9cqw;white-space:nowrap}
+.big{position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);font-size:30cqw;line-height:1;letter-spacing:-1.4cqw;font-weight:500;color:#fff;mix-blend-mode:difference;z-index:3}
+</style></head><body>
+<h1>Hero collage · 10 ideas</h1>
+<p class="lead">All variants use the same five photos and the same hero copy. Hover the expanding one (08). Photos are positioned so each ring stays in frame.</p>
+<div class="grid">
+
+<!-- 1 -->
+<div class="card"><div class="v" style="--g:.3cqw">
+ <div class="ph s1 stretch"><img src="assets/hsa/hero-stretch.webp" alt=""></div>
+ <div class="ph s2 run"><img src="assets/hsa/hero-run.webp" alt=""></div>
+ <div class="ph s3 latte"><img src="assets/hsa/hero-latte.webp" alt=""></div>
+ <div class="scrim"></div>
+ <div class="t"><i>HSA/FSA Eligible · Powered by Flex</i><h4>Save an average of 30%<br>with HSA/FSA.</h4><p>Ring PRO is SIGIS-listed. Pay with your HSA or FSA card at checkout.</p><span class="b">Shop now</span></div>
+</div><div class="cap"><b>01 · Slanted bands with hairline gutters</b><span>The current layout, but with thin gaps so each photo reads as its own frame instead of one smeared image.</span></div></div>
+
+<!-- 2 -->
+<div class="card"><div class="v">
+ <div class="ph col stretch" style="left:3cqw;top:6cqw"><img src="assets/hsa/hero-stretch.webp" alt=""></div>
+ <div class="ph col run" style="left:22.5cqw;top:-4cqw"><img src="assets/hsa/hero-run.webp" alt=""></div>
+ <div class="ph col latte" style="left:42cqw;top:8cqw"><img src="assets/hsa/hero-latte.webp" alt=""></div>
+ <div class="ph col laugh" style="left:61.5cqw;top:-2cqw"><img src="assets/hsa/hero-laugh.webp" alt=""></div>
+ <div class="ph col rest" style="left:81cqw;top:7cqw"><img src="assets/hsa/hero-rest.webp" alt=""></div>
+ <div class="scrim" style="background:rgba(0,0,0,.5)"></div>
+ <div class="t"><i>HSA/FSA Eligible · Powered by Flex</i><h4>Save an average of 30%<br>with HSA/FSA.</h4><p>Ring PRO is SIGIS-listed. Pay with your HSA or FSA card at checkout.</p><span class="b">Shop now</span></div>
+</div><div class="cap"><b>02 · Five staggered columns</b><span>More people and more moments. Columns sit at different heights so the row feels candid, not like a grid.</span></div></div>
+
+<!-- 3 -->
+<div class="card"><div class="v light">
+ <div class="t" style="top:30%"><i style="background:rgba(0,0,0,.07)">HSA/FSA Eligible · Powered by Flex</i><h4 style="font-size:4.4cqw">Save an average of 30% with HSA/FSA.</h4><span class="b">Shop now</span></div>
+ <div class="ph stretch" style="left:5cqw;top:54cqw;width:28cqw;height:40cqw;border-radius:2cqw;top:53%"><img src="assets/hsa/hero-stretch.webp" alt=""></div>
+ <div class="ph run" style="left:36cqw;top:50%;width:28cqw;height:40cqw;border-radius:2cqw"><img src="assets/hsa/hero-run.webp" alt=""></div>
+ <div class="ph latte" style="left:67cqw;top:53%;width:28cqw;height:40cqw;border-radius:2cqw"><img src="assets/hsa/hero-latte.webp" alt=""></div>
+</div><div class="cap"><b>03 · Light page, photos below the headline</b><span>No overlay on the photos, so the colour and the rings stay true. The headline gets its own clean space.</span></div></div>
+
+<!-- 4 -->
+<div class="card"><div class="v">
+ <div class="t" style="left:5cqw;top:50%;transform:translateY(-50%);text-align:left;width:40cqw"><i>HSA/FSA Eligible · Powered by Flex</i><h4 style="font-size:4.6cqw">Save an average<br>of 30% with<br>HSA/FSA.</h4><p>Ring PRO is SIGIS-listed. Pay with your HSA or FSA card at checkout.</p><span class="b">Shop now</span></div>
+ <div class="ph stretch" style="right:27cqw;top:3cqw;width:20cqw;height:28cqw;border-radius:1.2cqw"><img src="assets/hsa/hero-stretch.webp" alt=""></div>
+ <div class="ph latte" style="right:3cqw;top:3cqw;width:22cqw;height:28cqw;border-radius:1.2cqw"><img src="assets/hsa/hero-latte.webp" alt=""></div>
+ <div class="ph run" style="right:27cqw;bottom:3cqw;width:20cqw;height:21cqw;border-radius:1.2cqw"><img src="assets/hsa/hero-run.webp" alt=""></div>
+ <div class="ph laugh" style="right:3cqw;bottom:3cqw;width:22cqw;height:21cqw;border-radius:1.2cqw"><img src="assets/hsa/hero-laugh.webp" alt=""></div>
+</div><div class="cap"><b>04 · Left-aligned headline, 2×2 mosaic</b><span>Text and photos stop fighting each other. Four ring moments are visible at once.</span></div></div>
+
+<!-- 5 -->
+<div class="card"><div class="v">
+ <div class="ph latte" style="left:50%;top:50%;width:30cqw;height:40cqw;transform:translate(-50%,-50%) rotate(-7deg) translateX(-24cqw);border-radius:1.2cqw"><img src="assets/hsa/hero-latte.webp" alt=""></div>
+ <div class="ph stretch" style="left:50%;top:50%;width:30cqw;height:40cqw;transform:translate(-50%,-50%) rotate(7deg) translateX(24cqw);border-radius:1.2cqw"><img src="assets/hsa/hero-stretch.webp" alt=""></div>
+ <div class="ph run" style="left:50%;top:50%;width:32cqw;height:44cqw;transform:translate(-50%,-50%);border-radius:1.2cqw"><img src="assets/hsa/hero-run.webp" alt=""></div>
+ <div class="scrim" style="background:rgba(0,0,0,.45)"></div>
+ <div class="t"><h4 style="font-size:4.6cqw">Save an average of 30%<br>with HSA/FSA.</h4><span class="b">Shop now</span></div>
+</div><div class="cap"><b>05 · Fanned prints</b><span>Three overlapping tilted cards, like photos on a table. Softer and more personal than hard bands.</span></div></div>
+
+<!-- 6 -->
+<div class="card"><div class="v">
+ <div class="t" style="top:30%"><i>HSA/FSA Eligible · Powered by Flex</i><h4 style="font-size:4.4cqw">Save an average of 30% with HSA/FSA.</h4><span class="b">Shop now</span></div>
+ <div class="strip">
+  <div class="ph stretch"><img src="assets/hsa/hero-stretch.webp" alt=""></div>
+  <div class="ph run"><img src="assets/hsa/hero-run.webp" alt=""></div>
+  <div class="ph latte"><img src="assets/hsa/hero-latte.webp" alt=""></div>
+  <div class="ph laugh"><img src="assets/hsa/hero-laugh.webp" alt=""></div>
+  <div class="ph rest"><img src="assets/hsa/hero-rest.webp" alt=""></div>
+  <div class="ph stretch"><img src="assets/hsa/hero-stretch.webp" alt=""></div>
+  <div class="ph run"><img src="assets/hsa/hero-run.webp" alt=""></div>
+ </div>
+</div><div class="cap"><b>06 · Slow filmstrip</b><span>A row of five photos drifting left. The page feels alive and the headline stays clean above it.</span></div></div>
+
+<!-- 7 -->
+<div class="card"><div class="v">
+ <div class="ph" style="inset:0"><img src="assets/hsa/hero-latte.webp" alt="" style="object-position:50% 35%"></div>
+ <div class="scrim" style="background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.2))"></div>
+ <div class="t" style="left:5cqw;top:50%;transform:translateY(-50%);text-align:left;width:46cqw"><i>HSA/FSA Eligible · Powered by Flex</i><h4>Save an average of 30%<br>with HSA/FSA.</h4><span class="b">Shop now</span></div>
+ <div class="ph stretch" style="right:3cqw;bottom:3cqw;width:14cqw;height:19cqw;border-radius:1cqw;outline:.25cqw solid rgba(255,255,255,.85)"><img src="assets/hsa/hero-stretch.webp" alt=""></div>
+ <div class="ph run" style="right:18.5cqw;bottom:3cqw;width:14cqw;height:19cqw;border-radius:1cqw;outline:.25cqw solid rgba(255,255,255,.85)"><img src="assets/hsa/hero-run.webp" alt=""></div>
+</div><div class="cap"><b>07 · One big photo, two small insets</b><span>One strong full-bleed moment sells the mood, the other two act as supporting proof.</span></div></div>
+
+<!-- 8 -->
+<div class="card"><div class="v">
+ <div class="fx">
+  <div class="ph stretch"><img src="assets/hsa/hero-stretch.webp" alt=""></div>
+  <div class="ph run"><img src="assets/hsa/hero-run.webp" alt=""></div>
+  <div class="ph latte"><img src="assets/hsa/hero-latte.webp" alt=""></div>
+ </div>
+ <div class="scrim" style="pointer-events:none;background:rgba(0,0,0,.4)"></div>
+ <div class="t" style="pointer-events:none"><i>HSA/FSA Eligible · Powered by Flex</i><h4>Save an average of 30%<br>with HSA/FSA.</h4><span class="b">Shop now</span></div>
+</div><div class="cap"><b>08 · Hover-to-expand bands</b><span>Straight bands that grow when hovered, so the ring in each photo can be seen larger.</span></div></div>
+
+<!-- 9 -->
+<div class="card"><div class="v" style="--g:.3cqw">
+ <div class="ph s1 stretch"><img src="assets/hsa/hero-stretch.webp" alt=""></div>
+ <div class="ph s2 run"><img src="assets/hsa/hero-run.webp" alt=""></div>
+ <div class="ph s3 latte"><img src="assets/hsa/hero-latte.webp" alt=""></div>
+ <div class="scrim" style="background:rgba(0,0,0,.5)"></div>
+ <div class="mk" style="left:23.7cqw;top:48.7cqw"></div><div class="lb" style="left:26.5cqw;top:47.6cqw">Ring PRO</div>
+ <div class="mk" style="left:51.4cqw;top:15.8cqw"></div><div class="lb" style="left:54.2cqw;top:14.7cqw">Ring PRO</div>
+ <div class="mk" style="left:83.7cqw;top:27.6cqw"></div><div class="lb" style="left:86.5cqw;top:26.5cqw">Ring PRO</div>
+ <div class="t" style="top:42%"><h4 style="font-size:4.6cqw">Save an average of 30%<br>with HSA/FSA.</h4><span class="b">Shop now</span></div>
+</div><div class="cap"><b>09 · Ring callouts</b><span>Small circles and labels point at the ring in each photo. The product stops being incidental.</span></div></div>
+
+<!-- 10 -->
+<div class="card"><div class="v">
+ <div class="ph s1 stretch"><img src="assets/hsa/hero-stretch.webp" alt=""></div>
+ <div class="ph s2 run"><img src="assets/hsa/hero-run.webp" alt=""></div>
+ <div class="ph s3 latte"><img src="assets/hsa/hero-latte.webp" alt=""></div>
+ <div class="big">30%</div>
+ <div class="t" style="top:auto;bottom:6cqw;transform:translateX(-50%)"><p style="margin:0;font-size:1.7cqw;opacity:1">Average saving with HSA/FSA · Ring PRO is SIGIS-listed</p><span class="b">Shop now</span></div>
+</div><div class="cap"><b>10 · One huge number</b><span>The photos carry the mood, and a giant inverted “30%” carries the message. The headline shrinks to a single line.</span></div></div>
+
+</div></body></html>
