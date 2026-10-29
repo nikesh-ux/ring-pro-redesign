@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ultrahuman Gift Cards · V1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--blue:#112baf;--ink:#000;--mute:rgba(0,0,0,.6);--line:#e4e4e4;--W:1600px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:hidden}
+body{font-family:'Geist',sans-serif;color:#000;background:#fff;-webkit-font-smoothing:antialiased;overflow-x:clip;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+img{display:block}
+[hidden]{display:none!important}
+#page{width:1600px;margin:0 auto;transform-origin:top left}
+.mono{font-family:'JetBrains Mono',monospace}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:43px;padding:0 28px;border-radius:50px;font-size:14px;letter-spacing:-.1px;transition:opacity .15s,background .15s}
+.btn.blue{background:var(--blue);color:#fff}
+.btn.blue:hover{opacity:.9}
+.btn.white{background:#fff;color:#000}
+.btn.line{border:1px solid var(--line);background:#fff}
+/* nav (white bar, as the Figma: 66px, 13px Geist links, 1px bottom border) */
+.gnav{height:66px;border-bottom:1px solid #ececec;background:#fff;position:relative;z-index:10;width:1600px}
+.gnav .in{height:65px;padding:0 40px;display:flex;align-items:center;justify-content:space-between;position:relative}
+.gnav .l{display:flex;align-items:center;gap:32px;font-size:13px;letter-spacing:-.26px;line-height:24px}
+.gnav .burger{position:relative;width:32px;height:32px;display:block;flex:none}
+.gnav .burger::before,.gnav .burger::after{content:"";position:absolute;left:2px;width:28px;height:1px;background:#000}
+.gnav .burger::before{top:13px}.gnav .burger::after{top:19px}
+.gnav .logo{position:absolute;left:50%;top:16px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;height:32px}
+.gnav .logo .mk{width:32px;height:32px}
+.gnav .logo .wm{width:161px;height:14px}
+.gnav .r{display:flex;align-items:center;gap:48px;font-size:13px}
+.gnav .r .fl{display:flex;align-items:center;gap:6px;height:24px}
+.gnav .r .fl i{width:24px;height:24px;border-radius:50%;background:#ececec;display:block}
+.gnav .r .fl b{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:13px}
+.gnav .r .cart{width:32px;height:32px;display:grid;place-items:center}
+.gnav .r .btn{height:43px;width:144px;padding:0;font-size:14px;letter-spacing:-.14px}
+/* hero card */
+.ghero{margin:10px;height:760px;border-radius:16px;position:relative;overflow:hidden;background:#d9d6cf}
+.ghero>img{position:absolute;left:-17px;top:-2px;width:1614px;height:908px;max-width:none;object-fit:cover}
+.ghero .tx{position:absolute;left:98px;top:182px;width:640px;display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+.ghero h1{font-size:64px;font-weight:400;line-height:65px;letter-spacing:-2.4px}
+.ghero .sub{font-size:18px;line-height:29px;letter-spacing:-.5px;color:#000;max-width:470px}
+.ghero .row{display:flex;align-items:center;gap:20px}
+.ghero .row .btn{height:48px;width:175px;padding:0;font-size:14px;letter-spacing:-.2px}
+.ghero .row a.u{font-size:14px;letter-spacing:-.2px;text-decoration:underline;text-underline-offset:3px}
+.ghero .chips{display:flex;gap:10px;margin-top:0}
+.ghero .chips span{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px;border-radius:40px;background:#fff;font-size:13px;letter-spacing:-.1px}
+.ghero .chips svg{width:15px;height:15px}
+/* customize */
+.gcz{margin:10px;min-height:1120px;border:1px solid #ececec;border-radius:16px;display:grid;grid-template-columns:800px 1fr;overflow:clip;background:#fff}
+.gcz .lp{background:#fafafa;position:relative;align-self:stretch}
+.gcard{position:relative;width:596px;height:342px;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;
+  background:linear-gradient(135deg,#2a2a2c 0%,#141415 45%,#2f2f31 70%,#0e0e0f 100%);color:#d6d6d6;box-shadow:0 40px 60px -30px rgba(60,40,10,.35),inset 0 1px 0 rgba(255,255,255,.12);transition:background .35s,color .35s}
+.gcard::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px);pointer-events:none}
+.gcard .mk{width:72px;height:72px;opacity:.55;filter:invert(1);position:relative}
+.gcard .nm{font-size:23px;line-height:1.2;letter-spacing:-.6px;font-weight:500;position:relative}
+.gcard .meta{position:absolute;left:30px;right:30px;bottom:24px;display:flex;justify-content:space-between;font-size:13px;letter-spacing:-.1px;opacity:.85}
+.gcard.gold{background:#a98d58 url(gift/gold-card-face.webp) center/cover;color:#4a3a1d}
+.gcard.gold .mk{display:none}
+.gcard.gold .nm{display:none}
+.gcard.gold .meta,.gcard.gold .msgp{color:#4a3a1d}
+.gcard.silver{background:linear-gradient(135deg,#eeeeef 0%,#b4b4b6 45%,#f4f4f5 70%,#a3a3a5 100%);color:#3a3a3c}
+.gcard.silver .mk{filter:none;opacity:.35}
+.gcard.raw{background:linear-gradient(135deg,#b9b8b4 0%,#7d7c79 40%,#c8c7c3 70%,#6e6d6a 100%);color:#2a2a2a}
+.gcard.raw .mk{filter:none;opacity:.3}
+.gcard .msgp{position:absolute;left:30px;right:30px;bottom:50px;font-size:12.5px;opacity:.75;text-align:left;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.gcz .lp .cap{font-size:13.5px;color:var(--mute)}
+.gcz .rp{padding:40px 32px 48px;display:flex;flex-direction:column;overflow:visible}
+.gcz .rp h2{font-size:24px;font-weight:400;letter-spacing:-.6px}
+.gcz .rp .st0{font-size:15px;color:var(--mute);margin-top:12px;margin-bottom:40px}
+.stp{border:1px solid var(--line);border-radius:20px;background:#fff;margin-bottom:8px;overflow:hidden}
+.stp .hd{display:flex;align-items:center;gap:16px;padding:33px;width:100%;text-align:left}
+.stp .bg{width:28px;height:28px;border-radius:50%;border:1.5px solid #000;display:grid;place-items:center;font-size:12px;flex:none}
+.stp .tt{font-size:20px;letter-spacing:-.4px;flex:1}
+.stp .val{font-size:14px;color:var(--mute)}
+.stp .bd{padding:0 33px 33px;display:none}
+.stp.on .bd{display:block}
+.stp.on .hd{padding-bottom:24px}
+.stp.done .bg{background:#000;color:#fff}
+.opt{display:flex;align-items:center;gap:16px;padding:21px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;cursor:pointer;transition:border-color .15s,background .15s}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .rd{width:20px;height:20px;border-radius:50%;border:1px solid #cfcfcf;flex:none;display:grid;place-items:center}
+.opt .l1{font-size:16px;letter-spacing:-.2px;display:flex;align-items:center;gap:8px}
+.opt .l2{font-size:14px;color:var(--mute);margin-top:2px}
+.opt .th{margin-left:auto;width:96px;height:68px;border-radius:10px;object-fit:cover;flex:none;background:#eee}
+.opt:has(input:checked) .th{outline:0}
+.opt .tag{font-size:10px;background:var(--blue);color:#fff;padding:4px 6px;border-radius:3px;letter-spacing:0}
+.opt:has(input:checked){border:2px solid var(--blue);padding:20px;background:#f7f8ff}
+.opt:has(input:checked) .rd{border-color:var(--blue)}
+.opt:has(input:checked) .rd::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue)}
+.opt:has(input:focus-visible){outline:2px solid var(--blue);outline-offset:2px}
+.swh{font-size:20px;letter-spacing:-.5px;margin-bottom:22px}.swh b{font-weight:400}.swh span{color:rgba(0,0,0,.35)}
+.sws{display:flex;gap:16px;padding:4px 4px 8px}
+.sw{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer;width:88px}
+.sw input{position:absolute;opacity:0;pointer-events:none}
+.sw img{width:56px;height:56px;border-radius:50%;box-shadow:0 0 0 2px #fff,0 0 0 3px transparent;transition:box-shadow .15s}
+.sw em{font-style:normal;font-size:12.5px;color:var(--mute);text-align:center;letter-spacing:-.1px}
+.sw:has(input:checked) img{box-shadow:0 0 0 3px #fff,0 0 0 4.5px #000}
+.sw:has(input:checked) em{color:#000}
+.sw:has(input:focus-visible) img{box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--blue)}
+.stp .cont{margin-top:14px}
+.fld{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+.fld label{font-size:13.5px;color:var(--mute)}
+.fld input,.fld textarea{border:1px solid var(--line);border-radius:12px;padding:14px 16px;font:inherit;font-size:16px;letter-spacing:-.2px;background:#fff;width:100%}
+.fld input:focus,.fld textarea:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
+.fld textarea{min-height:92px;resize:vertical}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cnt{font-size:12px;color:var(--mute);text-align:right;margin-top:-8px;margin-bottom:12px}
+.sub2{font-size:14px;color:var(--mute);margin:18px 0 10px}
+.sum .r{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid #efefef;font-size:16px;letter-spacing:-.2px}
+.sum .r:first-child{border-top:0}
+.sum .r span:first-child{color:var(--mute)}
+.sum .r.t{font-weight:500}.sum .r.t span:first-child{color:#000}
+.stp .pay{width:100%;height:52px;font-size:15px;margin-top:18px}
+.fine{font-size:13px;color:var(--mute);text-align:center;margin-top:12px}
+[data-f]:not(.stp).off,.stp.off{display:none!important}
+.sw.lt .lt-i{width:56px;height:56px;border-radius:50%;border:1.5px dashed #bdbdbd;display:grid;place-items:center;font-size:20px;color:#888;box-shadow:0 0 0 2px #fff,0 0 0 3px transparent;transition:box-shadow .15s}
+.sw.lt:has(input:checked) .lt-i{box-shadow:0 0 0 3px #fff,0 0 0 4.5px #000;color:#000}
+.sw.lt:has(input:focus-visible) .lt-i{box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--blue)}
+.hint{font-size:13px;color:var(--mute);margin-top:14px}
+.fld select{border:1px solid var(--line);border-radius:12px;padding:14px 16px;font:inherit;font-size:16px;background:#fff;width:100%}
+.chk{display:flex;align-items:flex-end;gap:10px;font-size:14px;padding-bottom:14px;cursor:pointer}.chk input{width:18px;height:18px;accent-color:#000}
+.ringfull{width:696px;height:557px;border-radius:24px;overflow:hidden;box-shadow:0 40px 60px -30px rgba(60,40,10,.35)}.ringfull img{width:100%;height:100%;object-fit:cover}
+.ringfull[hidden]{display:none}
+.lpi{position:sticky;top:0;height:min(100vh,1120px);display:grid;place-items:center}
+.rv{display:flex;flex-direction:column;gap:12px}
+.rc{border:1px solid var(--line);border-radius:16px;padding:24px 24px 8px;background:#fff}
+.rc:last-child{padding:18px 20px 18px;background:#fafafa}
+.rh{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.rc .sum .r:first-child{border-top:0}
+.ob{display:flex;justify-content:space-between;align-items:center;margin:8px 0 16px;padding:9px 14px;border-radius:10px;background:#eef1ff;font-size:13px;border:1px solid rgba(17,43,175,.14)}
+.ob b{font-weight:500;font-size:16px;letter-spacing:-.3px;color:var(--blue)}
+.ob.late{background:#fdeeee;color:#a3262d}.ob.late b{color:#a3262d}
+.tl{list-style:none;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;column-gap:0}
+.tl li{position:relative;display:grid;grid-template-rows:auto auto auto;grid-template-areas:"dot" "date" "body";justify-items:start;padding-right:10px}
+.tl li::before{content:"";position:absolute;left:26px;right:4px;top:10px;height:2px;background:linear-gradient(90deg,var(--blue),rgba(17,43,175,.2))}
+.tl li:last-child::before{display:none}
+.tl .d{grid-area:dot;position:relative;z-index:1;width:22px;height:22px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:10.5px;font-weight:500}
+.tl li:last-child .d{background:#000}
+.tl em{grid-area:date;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--blue);margin-top:10px;white-space:nowrap}
+.tl li:last-child em{color:#000}
+.tl li div{grid-area:body;margin-top:4px}
+.tl b{display:block;font-weight:500;font-size:13.5px;letter-spacing:-.2px;line-height:1.25}
+.tl span:not(.d){display:block;color:var(--mute);font-size:12px;margin-top:2px;line-height:1.3}
+/* order / ships / arrives */
+.gfit{padding:150px 84px 120px;background:#fff}
+.gfit .hd{text-align:center;display:flex;flex-direction:column;gap:16px;align-items:center}
+.gfit h2{font-size:48px;font-weight:400;letter-spacing:-2.2px;line-height:1.05}
+.gfit .hd p{font-size:16px;color:var(--mute);letter-spacing:-.3px}
+.tog{margin:36px auto 48px;width:max-content;background:#f1f1f1;border-radius:40px;padding:4px;display:flex;border:4px solid #f1f1f1}
+.tog button{height:44px;padding:0 24px;border-radius:30px;font-size:14px;color:var(--mute)}
+.tog button.on{background:#fff;color:#000}
+.fit3{display:grid;grid-template-columns:repeat(3,464px);gap:16px;justify-content:center}
+.fit3 img{width:464px;height:420px;object-fit:cover;border-radius:24px}
+.fit3 .n{display:flex;align-items:center;gap:12px;margin-top:16px}
+.fit3 .n b{width:24px;height:20px;border-radius:4px;background:var(--blue);color:#fff;font-size:11px;font-weight:500;display:grid;place-items:center}
+.fit3 .n i{flex:1;height:1px;background:linear-gradient(90deg,var(--blue),transparent)}
+.fit3 .d{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.02em;text-transform:uppercase;margin-top:16px}
+.fit3 h3{font-size:24px;font-weight:400;letter-spacing:-.6px;margin-top:12px}
+.fit3 p{font-size:16px;color:var(--mute);letter-spacing:-.3px;margin-top:12px;line-height:1.5}
+/* a gift that keeps giving */
+.gkeep{background:#0b0b0c;color:#fff;padding:112px 0 100px}
+.gkeep .hd{padding:0 88px}
+.gkeep h2{font-size:48px;font-weight:400;letter-spacing:-2.2px;line-height:1.05}
+.gkeep h2 span{color:rgba(255,255,255,.5);display:block}
+.car{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:64px 88px 0;scrollbar-width:none;scroll-padding-left:88px}
+.car::-webkit-scrollbar{display:none}
+.slide{flex:none;width:562px;scroll-snap-align:start}
+.slide .ph{position:relative;width:562px;height:562px;border-radius:32px;overflow:hidden}
+.slide .ph img.b{width:100%;height:100%;object-fit:cover}
+.slide .ph img.u{position:absolute;left:6%;bottom:7%;width:48%}
+.slide h3{font-size:24px;font-weight:400;letter-spacing:-.6px;margin-top:40px}
+.slide p{font-size:15px;line-height:1.4;color:rgba(255,255,255,.6);margin-top:10px;max-width:440px}
+.dots{display:flex;justify-content:center;gap:7px;margin-top:56px}
+.dots i{width:5px;height:5px;border-radius:5px;background:rgba(255,255,255,.35);transition:width .2s,background .2s}
+.dots i.on{width:26px;background:#fff}
+/* occasions */
+.gocc{height:1000px;position:relative;background:#fff}
+.gocc ul{list-style:none;position:absolute;right:850px;top:120px;text-align:right}
+.gocc li{font-size:56px;letter-spacing:-2.6px;line-height:107px;cursor:pointer;transition:color .3s;color:#d4d4d4}
+.gocc li.d0{color:#000}.gocc li.d1{color:#3d3d3d}.gocc li.d2{color:#909090}
+.gocc .ph{position:absolute;left:880px;top:210px;width:480px;height:580px;border-radius:16px;overflow:hidden;background:#111}
+.gocc .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+.gocc .ph img.on{opacity:1}
+/* cta */
+.gcta{background:#000;color:#fff;height:850px;position:relative;overflow:hidden;text-align:center}
+.gcta p{position:absolute;left:50%;top:180px;transform:translateX(-50%);width:700px;font-size:36px;line-height:1.25;letter-spacing:-1px}
+.gcta .btn{position:absolute;left:50%;top:310px;transform:translateX(-50%);height:43px}
+.gcta img{position:absolute;left:50%;top:366px;transform:translateX(-50%);width:900px;height:484px;object-fit:cover}
+/* faq */
+.gfaq{background:#000;color:#fff;padding:180px 140px 200px}
+.gfaq h2{font-size:48px;font-weight:400;letter-spacing:-2.2px;text-align:center;margin-bottom:96px}
+.gfaq .row{display:grid;grid-template-columns:592px 1fr;border-bottom:1px solid #262626;padding:48px 48px 48px}
+.gfaq .row:first-of-type{border-top:0}
+.gfaq h3{font-size:18px;font-weight:400;letter-spacing:-.3px;line-height:1.5}
+.gfaq p{font-size:15px;line-height:1.6;color:rgba(255,255,255,.55);max-width:594px}
+
+footer{background:#fafafa;width:1600px;padding:40px 80px 0;position:relative;overflow:hidden;font-family:'Inter',sans-serif}
+footer .g{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(0,0,0,.1);height:535.5px}
+footer .col{border-right:1px solid rgba(0,0,0,.06);padding:44px 29px 0 28px}
+footer .col:first-child{padding-left:0}footer .col:last-child{border-right:0}
+footer h4{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(0,0,0,.3);line-height:13px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:13px;margin-top:20px}
+footer ul.g16{gap:16px}
+footer li{font-size:13px;letter-spacing:-.15px;color:rgba(0,0,0,.7);line-height:19.5px;white-space:nowrap}
+footer li .new{display:inline-block;margin-left:14px;background:rgba(0,0,0,.1);border-radius:3px;padding:2px 6px;font-size:8px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;line-height:10px;vertical-align:1px}
+footer .sub{border-top:1px solid rgba(0,0,0,.05);margin-top:21px;padding-top:21px}
+footer .sub ul{margin-top:20px}
+footer .hsa{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(0,0,0,.3);border-radius:8px;padding:8px;margin-top:20px}
+footer .c3{display:grid;grid-template-columns:repeat(3,1fr);height:161px;border-bottom:1px solid rgba(0,0,0,.1)}
+footer .c3>div{padding:28px 28px 0;border-right:1px solid rgba(0,0,0,.06)}
+footer .c3>div:first-child{padding-left:0}footer .c3>div:last-child{border-right:0}
+footer .c3 h4{font-size:10px;line-height:12px}
+footer .c3 .l{font-size:13px;color:rgba(0,0,0,.7);line-height:15.5px;margin-top:14px;display:flex;flex-direction:column;gap:8px}
+footer .app{display:flex;gap:8px;margin-top:14px}
+footer .app a{border:1px solid rgba(0,0,0,.08);border-radius:8px;height:36.5px;padding:1px 15px;display:flex;flex-direction:column;justify-content:center}
+footer .app small{font-size:7px;color:rgba(0,0,0,.7);line-height:8.5px}
+footer .app b{font-size:10px;font-weight:500;color:#111;line-height:12px}
+footer .legal{height:87px;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;padding-top:20px;font-size:12px;color:rgba(0,0,0,.3);line-height:17px}
+footer .wm{height:220px;padding:44px 96px 0;overflow:hidden}
+footer .wm img{width:1280px;height:117px}
+</style>
+</head>
+<body>
+<div id="page">
+<header class="gnav"><div class="in">
+  <div class="l"><a class="burger" href="#" aria-label="Menu"></a><a href="#">Ultrahuman Ring</a><a href="#">Advanced Markers</a><a href="#">Performance Lab</a><a href="#">Shop</a></div>
+  <a class="logo" href="home.html" aria-label="Ultrahuman"><img class="mk" src="figma/68979.svg" alt=""><img class="wm" src="figma/b2adc.svg" alt="ULTRAHUMAN"></a>
+  <div class="r"><span class="fl"><i></i><b>US</b></span><a class="cart" href="#" aria-label="Cart"><svg width="16" height="20" viewBox="0 0 16 20" fill="none" stroke="#000" stroke-width="1.5"><path d="M1.5 5.5h13l-1 13h-11z"/><path d="M5 5.5V4a3 3 0 0 1 6 0v1.5"/></svg></a><a class="btn blue" href="buy.html">Buy now</a></div>
+</div></header>
+<section class="ghero">
+  <img src="gift/hero-couple.webp" alt="">
+  <div class="tx">
+    <h1>Health looks<br>good on them.</h1>
+    <p class="sub">Send a gift card by email. They pick the ring, the finish and the size.</p>
+    <div class="row"><a class="btn blue" href="#build">Send a gift card <span aria-hidden="true">→</span></a><a class="u" href="gift.html">Or gift the ring itself</a></div>
+    <div class="chips"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>Arrives instantly</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.5"/></svg>They choose their size</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9"/></svg>Schedule it</span></div>
+  </div>
+</section>
+<section class="gcz" id="build">
+  <div class="lp"><div class="lpi">
+    <div class="gcard gold" id="pv"><img class="mk" src="figma/68979.svg" alt=""><div class="nm">Ultrahuman Ring<br>Gift Card</div></div>
+    <div class="ringfull" id="pvR" hidden><img src="gift/ring-hero.webp" alt="Ring PRO"></div>
+  </div></div>
+  <form class="rp" id="gcForm" novalidate>
+    <h2>Customize your gift</h2><div class="st0" id="st0">Gift card</div>
+    <div class="stp on" data-k="what" data-f="gc ring"><button type="button" class="hd"><span class="bg"></span><span class="tt">What are you gifting</span><span class="val" id="v-what"></span></button><div class="bd"><label class="opt"><input type="radio" name="kind" value="gc" checked><span class="rd"></span><span><div class="l1">A gift card<span class="tag">Arrives instantly</span></div><div class="l2">Instant, any amount. They choose the ring, finish and size.</div></span><img class="th" src="gift/gold-card-face.webp" style="object-position:center" alt=""></label><label class="opt"><input type="radio" name="kind" value="ring"><span class="rd"></span><span><div class="l1">The ring itself<span class="tag">$479</span></div><div class="l2">Ring PRO in its case, boxed and ready to give.</div></span><img class="th" src="gift/fig/arrives.png" style="object-position:center" alt=""></label><button type="button" class="btn blue cont">Continue</button></div></div><div class="stp" data-k="amt" data-f="gc"><button type="button" class="hd"><span class="bg"></span><span class="tt">Choose an amount</span><span class="val" id="v-amt"></span></button><div class="bd"><label class="opt"><input type="radio" name="amt" value="100"><span class="rd"></span><span><div class="l1">$100</div><div class="l2">A good start toward any ring or extra.</div></span></label><label class="opt"><input type="radio" name="amt" value="250"><span class="rd"></span><span><div class="l1">$250</div><div class="l2">Spend it on anything at Ultrahuman.</div></span></label><label class="opt"><input type="radio" name="amt" value="479" checked><span class="rd"></span><span><div class="l1">$479<span class="tag">The whole ring</span></div><div class="l2">Ring PRO, covered in full.</div></span></label><label class="opt"><input type="radio" name="amt" value="custom"><span class="rd"></span><span><div class="l1">Custom amount</div><div class="l2">Anything from $25 to $1,000.</div></span></label><div class="fld" id="customRow" hidden><label for="amtCustom">Amount ($25 to $1,000)</label><input id="amtCustom" type="number" inputmode="numeric" min="25" max="1000" step="1" value="150"></div><button type="button" class="btn blue cont">Continue</button></div></div><div class="stp" data-k="path" data-f="ring"><button type="button" class="hd"><span class="bg"></span><span class="tt">How they get it</span><span class="val" id="v-path"></span></button><div class="bd"><label class="opt"><input type="radio" name="path" value="box" checked><span class="rd"></span><span><div class="l1">Gift box + sizing kit<span class="tag">Most flexible</span></div><div class="l2">They unwrap the kit, wear a sample for 24 hours, then the ring ships.</div></span><img class="th" src="gift/how/gen-kit.jpg" style="object-position:center" alt=""></label><label class="opt"><input type="radio" name="path" value="digital"><span class="rd"></span><span><div class="l1">Digital gift<span class="tag">Instant</span></div><div class="l2">We email them on your date. The kit follows.</div></span><img class="th" src="gift/how/laptop.jpg" style="object-position:center" alt=""></label><label class="opt"><input type="radio" name="path" value="known"><span class="rd"></span><span><div class="l1">I know their size<span class="tag">Fastest ring</span></div><div class="l2">Ships ready to wrap. Only if they wear Ultrahuman or used a kit.</div></span><img class="th" src="gift/how/bf8ef.jpg" style="object-position:50% 30%" alt=""></label><div class="fld" id="sizeRow" hidden><label for="rSize">Their Ultrahuman size</label><select id="rSize"><option value="">Choose size</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option></select></div><button type="button" class="btn blue cont">Continue</button></div></div><div class="stp" data-k="fin" data-f="ring"><button type="button" class="hd"><span class="bg"></span><span class="tt">Pick a finish</span><span class="val" id="v-fin"></span></button><div class="bd"><div class="swh"><b>Colour.</b> <span>Choose your favourite finish.</span></div><div class="sws"><label class="sw lt"><input type="radio" name="sty" value="" aria-label="Let them choose" checked><span class="lt-i">?</span><em>Let them choose</em></label><label class="sw"><input type="radio" name="sty" value="gold" aria-label="Bionic Gold"><img src="gift/sw/bionic-gold.webp" alt=""><em>Bionic Gold</em></label><label class="sw"><input type="radio" name="sty" value="silver" aria-label="Space Silver"><img src="gift/sw/space-silver.webp" alt=""><em>Space Silver</em></label><label class="sw"><input type="radio" name="sty" value="black" aria-label="Aster Black"><img src="gift/sw/aster-black.webp" alt=""><em>Aster Black</em></label><label class="sw"><input type="radio" name="sty" value="raw" aria-label="Raw Titanium"><img src="gift/sw/raw-titanium.webp" alt=""><em>Raw Titanium</em></label></div><p class="hint" id="finHint">They pick at sizing. Same price, every finish.</p><button type="button" class="btn blue cont">Continue</button></div></div><div class="stp" data-k="who" data-f="gc ring"><button type="button" class="hd"><span class="bg"></span><span class="tt">Who’s receiving it</span><span class="val" id="v-who"></span></button><div class="bd"><div class="r2"><div class="fld"><label for="toName">Their name</label><input id="toName" type="text" value="Alex" autocomplete="off"></div><div class="fld"><label for="toEmail">Their email <span id="emReq"></span></label><input id="toEmail" type="email" placeholder="alex@email.com" autocomplete="off"></div></div><div class="fld"><label for="fromName">From</label><input id="fromName" type="text" placeholder="Your name" autocomplete="name"></div><button type="button" class="btn blue cont">Continue</button></div></div><div class="stp" data-k="msg" data-f="gc"><button type="button" class="hd"><span class="bg"></span><span class="tt">Add a personal note</span><span class="val" id="v-msg"></span></button><div class="bd"><div class="fld"><label for="msg">Message</label><textarea id="msg" maxlength="160">Happy holidays. Sleep well.</textarea></div><div class="cnt" id="msgCount">27/160</div><div class="sub2">When should it arrive?</div><label class="opt"><input type="radio" name="when" value="now" checked><span class="rd"></span><span><div class="l1">Send now</div></span></label><label class="opt"><input type="radio" name="when" value="2026-12-25"><span class="rd"></span><span><div class="l1">Dec 25, 8am</div></span></label><label class="opt"><input type="radio" name="when" value="pick"><span class="rd"></span><span><div class="l1">Pick a date</div></span></label><div class="fld" id="dateRow" hidden><label for="sendDate">Send on</label><input id="sendDate" type="date" min="2026-10-29" value="2026-11-27"></div><button type="button" class="btn blue cont">Continue</button></div></div><div class="stp" data-k="rmsg" data-f="ring"><button type="button" class="hd"><span class="bg"></span><span class="tt">Message and date</span><span class="val" id="v-rmsg"></span></button><div class="bd"><div class="fld"><label for="rmsg">Gift message</label><textarea id="rmsg" maxlength="200" placeholder="Happy holidays. Here’s to better sleep."></textarea></div><div class="cnt" id="rCount">0/200</div><div class="r2"><div class="fld"><label for="rdate" id="rdateL">Gift day</label><input id="rdate" type="date" min="2026-10-29" max="2027-01-31" value="2026-12-24"></div><label class="chk"><input type="checkbox" id="rhide" checked><span>Hide price on receipt</span></label></div><button type="button" class="btn blue cont">Continue</button></div></div><div class="stp" data-k="rev" data-f="gc ring"><button type="button" class="hd"><span class="bg"></span><span class="tt">Review and pay</span><span class="val" id="v-rev"></span></button><div class="bd"><div data-f="gc"><div class="sum" aria-live="polite"><div class="r"><span>Gift card</span><span id="sAmt">$479.00</span></div><div class="r"><span>To</span><span id="sTo">Alex</span></div><div class="r"><span>Delivery</span><span id="sWhen">By email, now</span></div><div class="r t"><span>Total</span><span id="sTot">$479.00</span></div></div></div><div data-f="ring"><div class="rv"><div class="rc"><div class="rh">Your gift</div><div class="sum" aria-live="polite"><div class="r"><span>Gift</span><span>Ring PRO + case</span></div><div class="r"><span>Delivery</span><span id="rPath">Gift box + sizing kit</span></div><div class="r"><span>Size</span><span id="rSz">They size it</span></div><div class="r"><span>Finish</span><span id="rFin">They choose</span></div><div class="r"><span>Receipt</span><span id="rRec">Price hidden</span></div><div class="r t"><span>Total</span><span>$479.00</span></div></div></div><div class="rc"><div class="rh">When it happens</div><div class="ob" id="rOb"><span id="rObL">Order by</span><b id="rObD"></b></div><ol class="tl" id="rTl"></ol></div></div></div><button type="submit" class="btn blue pay" id="buyBtn">Add gift card · $479</button><p class="fine" id="formNote">Digital only. No tax on gift cards. Tax applies when it’s spent.</p></div></div>
+  </form>
+</section>
+<section class="gfit">
+  <div class="hd"><h2>They unwrap. They pick. They wear.</h2><p>Gift cards arrive instantly, so there are no shipping cutoffs.</p></div>
+  <div class="tog" id="tog"><button type="button" class="on" data-m="a">They know their size</button><button type="button" data-m="b">Send the free kit</button></div>
+  <div class="fit3">
+    <div><img src="gift/fig/order.png" alt=""><div class="n"><b>1</b><i></i></div><div class="d">Today</div><h3>Redeem</h3><p id="f1">Enter the gift card at checkout and pick Ring PRO in their size.</p></div>
+    <div><img src="gift/fig/ships.png" alt=""><div class="n"><b>2</b><i></i></div><div class="d">Ships by Oct 30</div><h3>Ships</h3><p id="f2">Their Ring PRO ships with the PRO Charger. They track it by email.</p></div>
+    <div><img src="gift/fig/arrives.png" alt=""><div class="n"><b>3</b><i></i></div><div class="d">Est. Nov 2</div><h3>Arrives</h3><p>They put it on and start tracking.</p></div>
+  </div>
+</section>
+<section class="gkeep">
+  <div class="hd"><h2>A gift that keeps giving back<span>Every morning, not just the day it is opened.</span></h2></div>
+  <div class="car" id="car"><div class="slide"><div class="ph"><img class="b" src="gift/dk/assets/car/sleep.jpg" alt=""><img class="u" src="gift/dk/assets/car/ui/sleep.png" alt=""></div><h3>Wake up to a sleep score</h3><p>An everyday score that shows how well you rested, with awake, REM, light and deep stages and 10+ contributing metrics.</p></div><div class="slide"><div class="ph"><img class="b" src="gift/dk/assets/car/recovery.jpg" alt=""><img class="u" src="gift/dk/assets/car/ui/recovery.png" alt=""></div><h3>Know when you are ready</h3><p>A real-time Recovery Score drawn from sleep, stress rhythm, skin temperature and HRV, tracked through the day.</p></div><div class="slide"><div class="ph"><img class="b" src="gift/dk/assets/car/movement.jpg" alt=""><img class="u" src="gift/dk/assets/car/ui/movement.png" alt=""></div><h3>Every step counted</h3><p>Step counting, distance, calories and VO2 Max, read in the app next to your sleep and recovery.</p></div><div class="slide"><div class="ph"><img class="b" src="gift/dk/assets/car/heart.jpg" alt=""><img class="u" src="gift/dk/assets/car/ui/heart.png" alt=""></div><h3>Heart rate and HRV, around the clock</h3><p>Red, green and infrared LEDs read your heart rate, with continuous 24/7 HRV monitoring.</p></div></div>
+  <div class="dots" id="dots"><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+<section class="gocc"><ul id="occL"><li>Birthdays</li><li>Anniversaries</li><li>Weddings</li><li>New parents</li><li>Graduations</li><li>Promotions</li><li>Retirements</li></ul><div class="ph" id="occP"><img src="gift/occ/birthdays.jpg" alt=""><img src="gift/occ/anniversaries.jpg" alt=""><img src="gift/occ/milestones.jpg" alt=""><img src="gift/fig/newparents.png" alt=""><img src="gift/occ/graduations.jpg" alt=""><img src="gift/occ/christmas.jpg" alt=""><img src="gift/occ/get-well.jpg" alt=""></div></section>
+<section class="gcta"><p>Not sure which one fits? Tell us who it is for and we will help you pick.</p><a class="btn white" href="home.html#help">Get in contact</a><img src="gift/cta-card.webp" alt=""></section>
+<section class="gfaq"><h2>Still got questions?</h2><div class="row"><h3>Does it expire?</h3><p>No. Gift cards never expire, in line with state rules.</p></div><div class="row"><h3>What can they buy?</h3><p>Ring PRO and anything else on ultrahuman.com/us. If the order costs more, they pay the difference.</p></div><div class="row"><h3>How do they choose the right ring size?</h3><p>When they redeem the card on a Ring PRO order, we send a free sizing kit with high-quality plastic sizers (sizes 5 to 14) so they can find their fit.</p></div><div class="row"><h3>Can I pay with HSA/FSA?</h3><p>Gift cards can’t be bought with HSA/FSA. The recipient can use their own HSA/FSA card on top of the gift card.</p></div><div class="row"><h3>Is there a physical card?</h3><p>Digital only. Print the email if you want something to hand over.</p></div><div class="row"><h3>Can I change the date?</h3><p>Yes, any time before it sends. Find it in your order confirmation.</p></div></section>
+<!-- footer -->
+<footer>
+  <div class="g">
+    <div class="col">
+      <h4>Smart rings</h4>
+      <ul><li>Ultrahuman Ring PRO <span class="new">New</span></li><li>Ultrahuman Ring AIR</li><li>Diesel Ultrahuman Ring</li><li>Ultrahuman Ring Rare</li></ul>
+      <div class="sub" style="margin-top:57px"><h4>Health Monitoring</h4><ul><li>Ultrahuman M1 CGM</li><li>Ultrahuman Home</li><li>Ultrahuman Blood Vision</li><li>Powerplugs</li><li>Women’s Health</li><li>Ultrahuman Vision Dashboard</li></ul></div>
+    </div>
+    <div class="col"><h4>Resources</h4><ul class="g16"><li>OGDb - Open Glucose Database</li><li>Ultrahuman Blog</li><li><a href="hsa-fsa.html">Special Pricing - Military, Student &amp; More</a></li><li><a href="hsa-fsa.html">HSA/FSA</a></li><li>Science</li><li>Ultra Work</li><li>Ultrahuman X Clue</li><li>3D Print Ring Sizes</li><li>Blood Vision Cloud</li><li>Ring Sizing</li><li>Annual Return</li></ul></div>
+    <div class="col">
+      <h4>Company</h4><ul><li>About Us</li><li>Press &amp; News</li><li>Brand Kit</li><li>Careers</li></ul>
+      <div class="sub" style="margin-top:57px"><h4>Business</h4><ul><li>Partnerships</li><li>For Creators</li></ul></div>
+    </div>
+    <div class="col"><h4>Legal</h4><ul><li>R1 Terms of Sale</li><li>M1 Terms of Sale</li><li>Privacy Policy</li><li>Terms of Use</li></ul>
+      <div class="hsa"><img src="figma/10ad1.svg" width="20" height="27" alt=""><img src="figma/97b0b.svg" width="59" height="26" alt="HSA FSA"></div></div>
+  </div>
+  <div class="c3">
+    <div><h4>Contact</h4><div class="l"><span>support@ultrahuman.com</span><span>1800-102-8693</span></div></div>
+    <div><h4>Follow Us</h4><div style="margin-top:14px"><img src="figma/1ef01.svg" width="187" height="16" alt="Social"></div></div>
+    <div><h4>Download App</h4><div class="app"><a href="#"><small>GET IT ON</small><b>Google Play</b></a><a href="#"><small>Download on the</small><b>App Store</b></a></div></div>
+  </div>
+  <div class="legal">© 2020-2025 Ultrahuman Healthcare Pvt Ltd. All rights reserved. ISO27001, GDPR, and HIPAA compliant.</div>
+  <div class="wm"><img src="figma/a4b63.svg" alt="ULTRAHUMAN"></div>
+</footer>
+</div>
+<script>
+(function(){
+  var page=document.getElementById('page');
+  function fit(){var z=Math.min(1,document.documentElement.clientWidth/1600);page.style.zoom=z}
+  fit();addEventListener('resize',fit);
+  var $=function(i){return document.getElementById(i)};
+  function val(n){var e=document.querySelector('input[name="'+n+'"]:checked');return e?e.value:null}
+  function money(n){return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
+  function short(n){return '$'+(Math.round(n*100)/100).toLocaleString('en-US',{maximumFractionDigits:2})}
+  var FIN={'':'They choose',black:'Aster Black',gold:'Bionic Gold',silver:'Space Silver',raw:'Raw Titanium'};
+  var TODAY=new Date(2026,9,29),MN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var D={known:9,box:8,kitTransit:4,ring:7};
+  function add(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x}
+  function fmt(d){return MN[d.getMonth()]+' '+d.getDate()}
+  function parseD(v){var p=(v||'').split('-');return p.length===3?new Date(+p[0],+p[1]-1,+p[2]):add(TODAY,7)}
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function li(i,b,s,e){return '<li><span class="d">'+i+'</span><div><b>'+b+'</b><span>'+s+'</span></div><em>'+e+'</em></li>'}
+  function amount(){var a=val('amt');if(a!=='custom')return +a;var c=Math.round(parseFloat($('amtCustom').value)||0);return Math.min(1000,Math.max(25,c))}
+  function whenTxt(){var w=val('when');return w==='now'?'By email, now':w==='pick'?('By email, '+fmt(parseD($('sendDate').value))+', 8am'):'By email, Dec 25, 8am'}
+  var flow='gc';
+  function steps(){return [].slice.call(document.querySelectorAll('.stp')).filter(function(s){return s.getAttribute('data-f').split(' ').indexOf(flow)>-1})}
+  function layout(){
+    var vis=steps();
+    document.querySelectorAll('.stp').forEach(function(s){s.classList.toggle('off',vis.indexOf(s)<0)});
+    vis.forEach(function(s,i){s.querySelector('.bg').textContent=i+1});
+    document.querySelectorAll('[data-f]:not(.stp)').forEach(function(e){e.classList.toggle('off',e.getAttribute('data-f')!==flow)});
+  }
+  function upd(){
+    flow=val('kind')||'gc';
+    layout();
+    $('pv').hidden=flow!=='gc';$('pvR').hidden=flow!=='ring';
+    $('st0').textContent=flow==='gc'?'Gift card':'Ring PRO';
+    var to=$('toName').value.trim()||'someone great';
+    $('v-what').textContent=flow==='gc'?'Gift card':'The ring';
+    $('v-who').textContent=$('toName').value.trim();
+    if(flow==='gc'){
+      var a=amount();
+      $('customRow').hidden=val('amt')!=='custom';$('dateRow').hidden=val('when')!=='pick';
+      $('msgCount').textContent=$('msg').value.length+'/160';
+      $('sAmt').textContent=money(a);$('sTot').textContent=money(a);$('sTo').textContent=to;$('sWhen').textContent=whenTxt();
+      $('buyBtn').textContent='Add gift card · '+short(a);
+      $('v-amt').textContent=short(a);$('v-msg').textContent=val('when')==='now'?'Now':whenTxt().replace('By email, ','');
+      $('emReq').textContent='';$('formNote').textContent='Digital only. No tax on gift cards. Tax applies when it’s spent.';
+      $('buyBtn').disabled=false;$('buyBtn').style.opacity='';
+    }else{ring()}
+  }
+  function ring(){
+    var path=val('path'),fin=val('sty'),date=parseD($('rdate').value),name=$('toName').value.trim(),who=name?esc(name):'They',rows=[],ob,obL='Order by';
+    $('sizeRow').hidden=path!=='known';
+    $('rCount').textContent=$('rmsg').value.length+'/200';
+    $('emReq').textContent=path==='digital'?'(required)':'(optional)';
+    $('rdateL').textContent=path==='digital'?'Send the email on':'Gift day';
+    $('finHint').textContent=fin===''?(path==='known'?'Pick a finish. It ships ready to wrap.':'They pick at sizing. Same price, every finish.'):'You picked '+FIN[fin]+'. '+(path==='known'?'Ships in '+FIN[fin]+'.':'They can still switch at sizing.');
+    if(path==='box'){ob=add(date,-D.box);
+      rows=[li(1,'You order','Box, kit and your card','Today'),li(2,'Box arrives with you','Ready to wrap. Ring comes later.','Est. '+fmt(add(TODAY,7))),li(3,who+' open'+(name?'s':'')+' it','Sample on for 24 hours, then size','On '+fmt(date)),li(4,'Ring PRO reaches '+(name?who:'them'),'At their address','Est. '+fmt(add(date,1+D.ring)))]}
+    else if(path==='digital'){ob=date;obL='Order by (sends that day)';
+      rows=[li(1,'You order','Nothing sends before your date','Today'),li(2,'Email reaches '+(name?who:'them'),'Your message and a claim link','On '+fmt(date)),li(3,'Sizing kit arrives','At their address','Est. '+fmt(add(date,D.kitTransit))),li(4,'Ring PRO arrives','About a week after sizing','Est. '+fmt(add(date,D.kitTransit+1+D.ring)))]}
+    else{ob=add(date,-D.known);
+      rows=[li(1,'You order','Size '+($('rSize').value||'not chosen yet'),'Today'),li(2,'Ring PRO arrives with you','In its case, ready to wrap','Est. '+fmt(add(TODAY,7))),li(3,'You give it','Returns till Jan 31 (proposed)','On '+fmt(date))]}
+    $('rTl').innerHTML=rows.join('');
+    var late=ob<TODAY;$('rOb').classList.toggle('late',late);
+    $('rObL').textContent=late?'Too late for this date. Go digital.':obL;$('rObD').textContent=late?'':fmt(ob);
+    $('rPath').textContent={box:'Gift box + sizing kit',digital:'Digital gift',known:'Ready to give'}[path];
+    $('rSz').textContent=path==='known'?($('rSize').value?'Size '+$('rSize').value:'Choose a size'):'They size it';
+    $('rFin').textContent=fin===''?(path==='known'?'Choose a finish':'They choose'):FIN[fin];
+    $('rRec').textContent=$('rhide').checked?'Price hidden':'Price shown';
+    $('v-path').textContent={box:'Box + kit',digital:'Digital',known:'Ready to give'}[path];$('v-fin').textContent=fin===''?'They choose':FIN[fin];$('v-rmsg').textContent=fmt(date);
+    var ok=!late&&!(path==='known'&&(!$('rSize').value||fin===''));
+    $('buyBtn').disabled=!ok;$('buyBtn').style.opacity=ok?'':'.45';
+    $('buyBtn').textContent=ok?'Add gift to bag · $479':(path==='known'?'Pick size and finish':'Add gift to bag · $479');
+    $('formNote').textContent='Est. from '+fmt(TODAY)+'. Tax and shipping at checkout.';
+  }
+  function openStep(s){document.querySelectorAll('.stp').forEach(function(x){x.classList.toggle('on',x===s)});var vis=steps(),i=vis.indexOf(s);vis.forEach(function(x,k){x.classList.toggle('done',k<i)})}
+  document.querySelectorAll('.stp .hd').forEach(function(h){h.addEventListener('click',function(){openStep(h.parentNode)})});
+  function emailOk(){var em=$('toEmail'),need=flow==='gc'||val('path')==='digital';
+    if(need&&(!em.value||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value))){em.focus();em.style.borderColor='#c0262d';return false}em.style.borderColor='';return true}
+  document.querySelectorAll('.cont').forEach(function(b){b.addEventListener('click',function(){
+    var cur=b.closest('.stp'),vis=steps(),nx=vis[vis.indexOf(cur)+1];
+    if(cur.getAttribute('data-k')==='who'&&!emailOk())return;
+    if(nx)openStep(nx);
+  })});
+  document.querySelectorAll('#gcForm input, #gcForm textarea, #gcForm select').forEach(function(i){i.addEventListener('input',upd);i.addEventListener('change',upd)});
+  $('gcForm').addEventListener('submit',function(e){e.preventDefault();
+    if(!emailOk()){$('formNote').textContent='Add their email so we know where to send it.';openStep(document.querySelector('.stp[data-k="who"]'));return}
+    $('formNote').textContent='Added to your bag (demo).'});
+  upd();
+  /* toggle: know size / free kit */
+  var T={a:['Enter the gift card at checkout and pick Ring PRO in their size.','Their Ring PRO ships with the PRO Charger. They track it by email.'],b:['They check out without picking a size. Their free sizing kit ships first.','Once they send their size, Ring PRO ships with the PRO Charger.']};
+  document.querySelectorAll('#tog button').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('#tog button').forEach(function(x){x.classList.toggle('on',x===b)});
+    var t=T[b.getAttribute('data-m')];$('f1').textContent=t[0];$('f2').textContent=t[1]})});
+  /* carousel dots */
+  var car=$('car'),dots=document.querySelectorAll('#dots i');
+  car.addEventListener('scroll',function(){var i=Math.round(car.scrollLeft/578);if(car.scrollLeft+car.clientWidth>=car.scrollWidth-4)i=dots.length-1;dots.forEach(function(d,k){d.classList.toggle('on',k===i)})},{passive:true});
+  /* occasions */
+  var lis=document.querySelectorAll('#occL li'),imgs=document.querySelectorAll('#occP img'),cur=0,timer;
+  function setOcc(n){cur=n;lis.forEach(function(l,k){var d=Math.abs(k-n);l.className=d>2?'':('d'+d)});imgs.forEach(function(im,k){im.classList.toggle('on',k===n)})}
+  lis.forEach(function(l,k){l.addEventListener('mouseenter',function(){clearInterval(timer);setOcc(k)})});
+  setOcc(3);timer=setInterval(function(){setOcc((cur+1)%lis.length)},3200);
+})();
+</script>
+</body>
+</html>
